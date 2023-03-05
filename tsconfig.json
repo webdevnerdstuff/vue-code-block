@@ -1,18 +1,52 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "strict": true,
-    "jsx": "preserve",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "lib": ["ESNext", "DOM"],
-    "skipLibCheck": true,
-    "noEmit": true
-  },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Node",
+		"strict": false,
+		"importHelpers": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"declaration": true,
+		"declarationDir": "./dist",
+		"baseUrl": ".",
+		"outDir": "./dist",
+		"rootDir": "src",
+		"lib": [
+			"ESNext",
+			"DOM"
+		],
+		"paths": {
+			"@/*": [
+				"./src/*"
+			]
+		},
+		"typeRoots": [
+			"./ts"
+		],
+		"skipLibCheck": true,
+		"useDefineForClassFields": true,
+		"jsx": "preserve",
+		"resolveJsonModule": true,
+		"noEmit": true
+	},
+	"types": [
+		"node"
+	],
+	"exclude": [
+        "src/App.vue",
+        "src/main.ts",
+		"src/components/**/*.ts",
+		"src/components/**/*.vue",
+		"node_modules"
+    ],
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.vue",
+	],
+	"references": [
+		{
+			"path": "./tsconfig.node.json"
+		}
+	]
 }
