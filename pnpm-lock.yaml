@@ -12,6 +12,7 @@ specifiers:
   '@rollup/plugin-node-resolve': ^15.0.1
   '@rollup/plugin-terser': ^0.4.0
   '@types/node': ^18.14.2
+  '@types/prismjs': ^1.26.0
   '@typescript-eslint/eslint-plugin': ^5.53.0
   '@typescript-eslint/parser': ^5.53.0
   '@vitejs/plugin-vue': ^4.0.0
@@ -71,6 +72,7 @@ devDependencies:
   '@rollup/plugin-node-resolve': 15.0.1_rollup@3.18.0
   '@rollup/plugin-terser': 0.4.0_rollup@3.18.0
   '@types/node': 18.14.6
+  '@types/prismjs': 1.26.0
   '@typescript-eslint/eslint-plugin': 5.54.0_6mj2wypvdnknez7kws2nfdgupi
   '@typescript-eslint/parser': 5.54.0_ycpbpc6yetojsgtrx3mwntkhsu
   '@vitejs/plugin-vue': 4.0.0_vite@4.1.4+vue@3.2.47
@@ -2004,6 +2006,10 @@ packages:
 
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
+    dev: true
+
+  /@types/prismjs/1.26.0:
+    resolution: {integrity: sha512-ZTaqn/qSqUuAq1YwvOFQfVW1AR/oQJlLSZVustdjwI+GZ8kr0MSHBj0tsXPW1EqHubx50gtBEjbPGsdZwQwCjQ==}
     dev: true
 
   /@types/qs/6.9.7:
