@@ -1,0 +1,33 @@
+:root {
+
+	/* Blue */
+	--v-code-block-blue: #146eb4;
+	--v-code-block-blue-rgb: 20, 110, 180;
+	--v-code-block-blue-hsl: 206, 80%, 39%;
+	--v-code-block-primary: var(--v-code-block-blue);
+	--v-code-block-primary-hsl: var(--v-code-block-blue-hsl);
+	--v-code-block-primary-rgb: var(--v-code-block-blue-rgb);
+
+	/* Green */
+	--v-code-block-green: #228b22;
+	--v-code-block-green-rgb: 34, 139, 34;
+	--v-code-block-green-hsl: 120, 61%, 34%;
+	--v-code-block-success: var(--v-code-block-green);
+	--v-code-block-success-hsl: var(--v-code-block-green-hsl);
+	--v-code-block-success-rgb: var(--v-code-block-green-rgb);
+
+	/* Red */
+	--v-code-block-red: #b22222;
+	--v-code-block-red-rgb: 178, 34, 34;
+	--v-code-block-red-hsl: 0, 68%, 42%;
+	--v-code-block-danger: var(--v-code-block-red);
+	--v-code-block-danger-hsl: var(--v-code-block-red-hsl);
+	--v-code-block-danger-rgb: var(--v-code-block-red-rgb);
+
+	/* Typography */
+	--v-code-block-font: system-ui, -apple-system, 'Segoe UI', 'Roboto',
+		'Helvetica Neue', 'Arial', 'Noto Sans', 'Liberation Sans', sans-serif,
+		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+	--v-code-block-label-font: var(--v-code-block-font);
+	--v-code-block-tab-font: var(--v-code-block-font);
+}
