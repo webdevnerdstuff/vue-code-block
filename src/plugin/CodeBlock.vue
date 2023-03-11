@@ -17,9 +17,11 @@
 			</div>
 
 			<div class="v-code-block--container-tabs" :style="tabGroupStyle">
+				<!-- ======================================== Copy Code Tab/Button -->
 				<div
 					v-if="showCopyButton && showButtons"
 					class="v-code-block--container-tab"
+					:class="tabClasses"
 					@click="copyCode"
 				>
 					<div class="v-code-block--container-button-copy">
@@ -33,9 +35,11 @@
 					</div>
 				</div>
 
+				<!-- ======================================== Run Tab/Button -->
 				<div
 					v-if="showRunButton && showButtons && !isMobile"
 					class="v-code-block--container-tab"
+					:class="tabClasses"
 					@click="runCode"
 				>
 					<div class="v-code-block--container-button-run">Run</div>
@@ -72,6 +76,7 @@ import prismThemeOkaidia from 'prismjs/themes/prism-okaidia.css?inline';
 import prismThemeSolarizedlight from 'prismjs/themes/prism-solarizedlight.css?inline';
 import prismThemeTomorrow from 'prismjs/themes/prism-tomorrow.css?inline';
 import prismThemeTwilight from 'prismjs/themes/prism-twilight.css?inline';
+import neonBunnyTheme from '@/plugin/theme/neon-bunny.css?inline';
 
 // ! Remove this later as it should be loaded by the user ! //
 import prismThemeNightOwl from 'prism-themes/themes/prism-night-owl.css?inline';
@@ -201,7 +206,14 @@ const headerStyles = computed(() => {
 });
 
 const iconClasses = computed(() => {
-	return `v-code-block--container-button-copy-icon-status-${copyStatus.value}`;
+	const theme = props.theme === '' || props.theme === 'prism' ? 'default' : props.theme;
+
+	const classes = {
+		[`v-code-block--container-tab-${theme}-icon`]: true,
+		[`v-code-block--container-button-copy-icon-status-${copyStatus.value}`]: true,
+		[`v-code-block--container-tab-${theme}-icon-status-${copyStatus.value}`]: true,
+	};
+	return classes;
 });
 
 const labelClasses = computed(() => {
@@ -232,6 +244,14 @@ const renderCode = computed(() => {
 	const html = Prism.highlight(convertedCode.value, Prism.languages[props.lang], props.lang);
 
 	return html;
+});
+
+const tabClasses = computed(() => {
+	const theme = props.theme === '' || props.theme === 'prism' ? 'default' : props.theme;
+	const classes = {
+		[`v-code-block--container-tab-${theme}`]: true,
+	};
+	return classes;
 });
 
 const tabGroupStyle = computed(() => {
@@ -315,6 +335,9 @@ function loadTheme(): void {
 	}
 
 	switch (useTheme.value) {
+		case 'neon-bunny':
+			selectedTheme = neonBunnyTheme;
+			break;
 		case 'coy':
 			selectedTheme = prismThemeCoy;
 			break;
@@ -344,6 +367,8 @@ function loadTheme(): void {
 			selectedTheme = prismTheme;
 			break;
 	}
+
+	console.log({ selectedTheme });
 
 	themeStyles.setAttribute('type', 'text/css');
 	themeStyles.id = stylesheetId;
@@ -427,6 +452,245 @@ function runCode(): void {
 			&:hover {
 				background-color: hsla(var(--v-code-block-primary-hsl), 0.2) !important;
 			}
+
+			// Prism coloring //
+			&-default {
+				background-color: hsla(var(--v-code-block-prism-default-hsl), 1) !important;
+				color: hsl(var(--v-code-block-prism-default-icon-hsl)) !important;
+
+				&:hover {
+					background-color: hsla(var(--v-code-block-prism-default-hsl), 0.5) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-code-block-prism-default-icon-hsl)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-code-block-prism-default-icon-success-hsl)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-code-block-prism-default-icon-failed-hsl)) !important;
+						}
+					}
+				}
+			}
+
+			&-coy {
+				background-color: hsla(var(--v-code-block-prism-coy-hsl), 0.1) !important;
+				border-left: 5px solid hsl(var(--v-code-block-prism-coy-hsl));
+				border-radius: 0;
+				color: hsl(var(--v-code-block-prism-coy-icon-hsl)) !important;
+
+				&:hover {
+					background-color: hsla(var(--v-code-block-prism-coy-hsl), 0.2) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-code-block-prism-coy-icon-hsl)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-code-block-prism-coy-icon-success-hsl)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-code-block-prism-default-icon-failed-hsl)) !important;
+						}
+					}
+				}
+			}
+
+			&-dark {
+				background-color: hsla(var(--v-code-block-prism-dark-hsl), 1) !important;
+				border-color: hsl(var(--v-code-block-prism-dark-border-hsl));
+				border-style: solid;
+				border-width: 0.3em 0.3em 0;
+				color: hsl(var(--v-code-block-prism-dark-icon-hsl)) !important;
+
+				&:hover {
+					background-color: hsla(var(--v-code-block-prism-dark-border-hsl), 0.5) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-code-block-prism-dark-icon-hsl)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-code-block-prism-dark-icon-success-hsl)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-code-block-prism-dark-icon-failed-hsl)) !important;
+						}
+					}
+				}
+			}
+
+			&-funky {
+				background-color: hsl(var(--v-code-block-prism-funky-dark-hsl)) !important;
+				color: hsl(var(--v-code-block-prism-funky-icon-hsl)) !important;
+
+				&:hover {
+					background-color: hsl(var(--v-code-block-prism-funky-hsl)) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-code-block-prism-funky-icon-hsl)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-code-block-prism-funky-icon-success-hsl)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-code-block-prism-funky-icon-failed-hsl)) !important;
+						}
+					}
+				}
+			}
+
+			&-okaidia {
+				background-color: hsla(var(--v-code-block-prism-okaidia-hsl), 1) !important;
+				color: hsl(var(--v-code-block-prism-okaidia-icon-hsl)) !important;
+
+				&:hover {
+					background-color: hsla(var(--v-code-block-prism-okaidia-hsl), 0.5) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-code-block-prism-okaidia-icon-hsl)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-code-block-prism-okaidia-icon-success-hsl)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-code-block-prism-okaidia-icon-failed-hsl)) !important;
+						}
+					}
+				}
+			}
+
+			&-solarizedlight {
+				background-color: hsla(var(--v-code-block-prism-solarizedlight-hsl), 1) !important;
+				color: hsl(var(--v-code-block-prism-solarizedlight-icon-hsl)) !important;
+
+				&:hover {
+					background-color: hsla(var(--v-code-block-prism-solarizedlight-hsl), 0.5) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-code-block-prism-solarizedlight-icon-hsl)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-code-block-prism-solarizedlight-icon-success-hsl)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-code-block-prism-solarizedlight-icon-failed-hsl)) !important;
+						}
+					}
+				}
+			}
+
+			&-tomorrow {
+				background-color: hsla(var(--v-code-block-prism-tomorrow-hsl), 1) !important;
+				color: hsl(var(--v-code-block-prism-tomorrow-icon-hsl)) !important;
+
+				&:hover {
+					background-color: hsla(var(--v-code-block-prism-tomorrow-hsl), 0.5) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-code-block-prism-tomorrow-icon-hsl)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-code-block-prism-tomorrow-icon-success-hsl)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-code-block-prism-tomorrow-icon-failed-hsl)) !important;
+						}
+					}
+				}
+			}
+
+			&-twilight {
+				background-color: hsla(var(--v-code-block-prism-twilight-hsl), 1) !important;
+				border-color: hsl(var(--v-code-block-prism-twilight-border-hsl));
+				border-style: solid;
+				border-width: 0.3em 0.3em 0;
+				color: hsl(var(--v-code-block-prism-twilight-icon-hsl)) !important;
+
+				&:hover {
+					background-color: hsla(var(--v-code-block-prism-twilight-hsl), 0.5) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-code-block-prism-twilight-icon-hsl)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-code-block-prism-twilight-icon-success-hsl)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-code-block-prism-twilight-icon-failed-hsl)) !important;
+						}
+					}
+				}
+			}
+
+			&-night-owl {
+				background-color: hsla(var(--v-code-block-prism-night-owl-hsl), 1) !important;
+				color: hsl(var(--v-code-block-prism-night-owl-icon-hsl)) !important;
+
+				&:hover {
+					background-color: hsla(var(--v-code-block-prism-night-owl-hsl), 0.5) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-code-block-prism-night-owl-icon-hsl)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-code-block-prism-night-owl-icon-success-hsl)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-code-block-prism-night-owl-icon-failed-hsl)) !important;
+						}
+					}
+				}
+			}
+
+			&-neon-bunny {
+				background-color: hsla(var(--v-code-block-prism-neon-bunny-hsl), 1) !important;
+				color: hsl(var(--v-code-block-prism-neon-bunny-text-hsl)) !important;
+
+				&:hover {
+					background-color: hsla(var(--v-code-block-prism-neon-bunny-hsl), 0.5) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-code-block-prism-neon-bunny-icon-hsl)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-code-block-prism-neon-bunny-icon-success-hsl)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-code-block-prism-neon-bunny-icon-failed-hsl)) !important;
+						}
+					}
+				}
+			}
 		}
 
 		&-button {
@@ -434,19 +698,19 @@ function runCode(): void {
 				&-icon {
 					font-size: 14px !important;
 
-					&-status {
-						&-copy {
-							color: hsl(var(--v-code-block-primary-hsl)) !important;
-						}
+					// &-status {
+					// 	&-copy {
+					// 		color: hsl(var(--v-code-block-primary-hsl));
+					// 	}
 
-						&-success {
-							color: hsl(var(--v-code-block-success-hsl)) !important;
-						}
+					// 	&-success {
+					// 		color: hsl(var(--v-code-block-success-hsl)) !important;
+					// 	}
 
-						&-failed {
-							color: hsl(var(--v-code-block-danger-hsl)) !important;
-						}
-					}
+					// 	&-failed {
+					// 		color: hsl(var(--v-code-block-danger-hsl)) !important;
+					// 	}
+					// }
 				}
 			}
 		}
