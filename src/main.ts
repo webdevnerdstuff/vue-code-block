@@ -10,7 +10,7 @@ library.add(fas);
 
 createApp(App)
 	.use(CodeBlock, {
-		// theme: 'coy',
+		theme: 'neon-bunny',
 	})
 	.component('fa-icon', FontAwesomeIcon)
 	.mount('#app');
