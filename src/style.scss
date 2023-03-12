@@ -1,99 +1,433 @@
-:root {
+.v-code-block {
+	&--container {
+		display: block;
+		max-width: 100%;
 
-	/* Blue */
-	--v-code-block-blue: #146eb4;
-	--v-code-block-blue-rgb: 20, 110, 180;
-	--v-code-block-blue-hsl: 206, 80%, 39%;
-	--v-code-block-primary: var(--v-code-block-blue);
-	--v-code-block-primary-hsl: var(--v-code-block-blue-hsl);
-	--v-code-block-primary-rgb: var(--v-code-block-blue-rgb);
+		&-header {
+			align-items: end;
+			display: flex;
+			justify-content: space-between;
+			overflow: visible;
+			position: relative;
+			width: 100%;
+		}
 
-	/* Green */
-	--v-code-block-green: #228b22;
-	--v-code-block-green-rgb: 34, 139, 34;
-	--v-code-block-green-hsl: 120, 61%, 34%;
-	--v-code-block-success: var(--v-code-block-green);
-	--v-code-block-success-hsl: var(--v-code-block-green-hsl);
-	--v-code-block-success-rgb: var(--v-code-block-green-rgb);
+		&-label {
+			font-family: var(--v-cb-label-font);
+			overflow: auto;
+		}
 
-	/* Red */
-	--v-code-block-red: #b22222;
-	--v-code-block-red-rgb: 178, 34, 34;
-	--v-code-block-red-hsl: 0, 68%, 42%;
-	--v-code-block-danger: var(--v-code-block-red);
-	--v-code-block-danger-hsl: var(--v-code-block-red-hsl);
-	--v-code-block-danger-rgb: var(--v-code-block-red-rgb);
+		&-tabs {
+			align-items: end;
+			display: flex;
+		}
 
-	/* Typography */
-	--v-code-block-font: system-ui, -apple-system, 'Segoe UI', 'Roboto',
-		'Helvetica Neue', 'Arial', 'Noto Sans', 'Liberation Sans', sans-serif,
-		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-	--v-code-block-label-font: var(--v-code-block-font);
-	--v-code-block-tab-font: var(--v-code-block-font);
+		&-tab {
+			align-items: center;
+			background-color: hsla(var(--v-cb-primary), 0.1) !important;
+			border-radius: 5px 5px 0 0;
+			cursor: pointer;
+			display: flex;
+			flex-direction: row;
+			font-family: var(--v-cb-tab-font);
+			justify-content: flex-start;
+			padding: 5px 15px;
+			text-align: center;
+			transition: background-color 0.35s ease;
+			white-space: nowrap;
+			width: fit-content;
 
-	/* Prism Colors */
+			&:hover {
+				background-color: hsla(var(--v-cb-primary), 0.2) !important;
+			}
 
-	// default //
-	--v-code-block-prism-default-hsl: 24, 20%, 95%;
-	--v-code-block-prism-default-icon-hsl: 0, 0%, 0%;
-	--v-code-block-prism-default-icon-success-hsl: 80, 100%, 30%;
-	--v-code-block-prism-default-icon-failed-hsl: 348, 68%, 58%;
+			// Prism coloring //
+			&-default {
+				background-color: hsla(var(--v-cb-tab-prism-default-bkg), 1) !important;
 
-	// coy //
-	--v-code-block-prism-coy-hsl: 205, 59%, 50%;
-	--v-code-block-prism-coy-icon-hsl: 0, 0%, 0%;
-	--v-code-block-prism-coy-icon-success-hsl: 80, 100%, 30%;
-	--v-code-block-prism-coy-icon-failed-hsl: 0, 64%, 48%;
+				&:hover {
+					background-color: hsla(var(--v-cb-tab-prism-default-bkg), 0.5) !important;
+				}
 
-	// dark //
-	--v-code-block-prism-dark-hsl: 30, 20%, 25%;
-	--v-code-block-prism-dark-border-hsl: 30, 20%, 40%;
-	--v-code-block-prism-dark-icon-hsl: 0, 0%, 100%;
-	--v-code-block-prism-dark-icon-success-hsl: 75, 70%, 60%;
-	--v-code-block-prism-dark-icon-failed-hsl: 0, 100%, 50%;
+				&-icon {
+					color: hsl(var(--v-cb-tab-prism-default-icon)) !important;
 
-	// funky //
-	--v-code-block-prism-funky-hsl: 0, 0%, 80%;
-	--v-code-block-prism-funky-dark-hsl: 0, 0%, 0%;
-	--v-code-block-prism-funky-icon-hsl: 0, 0%, 100%;
-	--v-code-block-prism-funky-icon-success-hsl: 80, 61%, 50%;
-	--v-code-block-prism-funky-icon-failed-hsl: 0, 100%, 50%;
+					&-status {
+						&-success {
+							color: hsl(var(--v-cb-tab-prism-default-icon-success)) !important;
+						}
 
-	// okaidia //
-	--v-code-block-prism-okaidia-hsl: 70, 8%, 15%;
-	--v-code-block-prism-okaidia-icon-hsl: 0, 0%, 100%;
-	--v-code-block-prism-okaidia-icon-success-hsl: 80, 76%, 53%;
-	--v-code-block-prism-okaidia-icon-failed-hsl: 338, 95%, 56%;
+						&-failed {
+							color: hsl(var(--v-cb-tab-prism-default-icon-failed)) !important;
+						}
+					}
+				}
 
-	// solarizedlight //
-	--v-code-block-prism-solarizedlight-hsl: 44, 87%, 94%;
-	--v-code-block-prism-solarizedlight-icon-hsl: 196, 13%, 45%;
-	--v-code-block-prism-solarizedlight-icon-success-hsl: 68, 100%, 30%;
-	--v-code-block-prism-solarizedlight-icon-failed-hsl: 18, 80%, 44%;
+				> div {
+					color: hsl(var(--v-cb-tab-prism-default-text));
+				}
+			}
 
-	// tomorrow //
-	--v-code-block-prism-tomorrow-hsl: 0, 0%, 18%;
-	--v-code-block-prism-tomorrow-icon-hsl: 0, 0%, 80%;
-	--v-code-block-prism-tomorrow-icon-success-hsl: 143, 39%, 64%;
-	--v-code-block-prism-tomorrow-icon-failed-hsl: 358, 65%, 68%;
+			&-coy {
+				background-color: hsla(var(--v-cb-tab-prism-coy-bkg), 0.1) !important;
+				border-left: 5px solid hsl(var(--v-cb-tab-prism-coy-bkg));
+				border-radius: 0;
 
-	// twilight //
-	--v-code-block-prism-twilight-hsl: 0, 0%, 8%;
-	--v-code-block-prism-twilight-border-hsl: 0, 0%, 33%;
-	--v-code-block-prism-twilight-icon-hsl: 0, 0%, 80%;
-	--v-code-block-prism-twilight-icon-success-hsl: 76, 21%, 52%;
-	--v-code-block-prism-twilight-icon-failed-hsl: 14, 58%, 55%;
+				&:hover {
+					background-color: hsla(var(--v-cb-tab-prism-coy-bkg), 0.2) !important;
+				}
 
-	// night-owl //
-	--v-code-block-prism-night-owl-hsl: 207, 95%, 8%;
-	--v-code-block-prism-night-owl-icon-hsl: 217, 34%, 88%;
-	--v-code-block-prism-night-owl-icon-success-hsl: 84, 62%, 63%;
-	--v-code-block-prism-night-owl-icon-failed-hsl: 350, 100%, 67%;
+				&-icon {
+					color: hsl(var(--v-cb-tab-prism-coy-icon)) !important;
 
-	// neon-bunny //
-	--v-code-block-prism-neon-bunny-hsl: 0, 0%, 0%;
-	--v-code-block-prism-neon-bunny-text-hsl: 0, 0%, 100%;
-	--v-code-block-prism-neon-bunny-icon-hsl: 207, 100%, 52%;
-	--v-code-block-prism-neon-bunny-icon-success-hsl: 119, 100%, 51%;
-	--v-code-block-prism-neon-bunny-icon-failed-hsl: 3, 100%, 58%;
+					&-status {
+						&-success {
+							color: hsl(var(--v-cb-tab-prism-coy-icon-success)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-cb-tab-prism-coy-icon-failed)) !important;
+						}
+					}
+				}
+
+				> div {
+					color: hsl(var(--v-cb-tab-prism-coy-text));
+				}
+			}
+
+			&-dark {
+				background-color: hsla(var(--v-cb-tab-prism-dark-bkg), 1) !important;
+				border-color: hsl(var(--v-cb-tab-prism-dark-border));
+				border-style: solid;
+				border-width: 0.3em 0.3em 0;
+
+				&:hover {
+					background-color: hsla(var(--v-cb-tab-prism-dark-border), 0.5) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-cb-tab-prism-dark-icon)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-cb-tab-prism-dark-icon-success)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-cb-tab-prism-dark-icon-failed)) !important;
+						}
+					}
+				}
+
+				> div {
+					color: hsl(var(--v-cb-tab-prism-dark-text));
+				}
+			}
+
+			&-funky {
+				background: url('data:image/svg+xml;charset=utf-8,<svg%20version%3D"1.1"%20xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"%20width%3D"100"%20height%3D"100"%20fill%3D"rgba(0%2C0%2C0%2C.2)">%0D%0A<polygon%20points%3D"0%2C50%2050%2C0%200%2C0"%20%2F>%0D%0A<polygon%20points%3D"0%2C100%2050%2C100%20100%2C50%20100%2C0"%20%2F>%0D%0A<%2Fsvg>');
+				background-size: 1em 1em;
+
+				&:hover {
+					background-color: hsl(var(--v-cb-tab-prism-funky-bkg)) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-cb-tab-prism-funky-icon)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-cb-tab-prism-funky-icon-success)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-cb-tab-prism-funky-icon-failed)) !important;
+						}
+					}
+				}
+
+				> div {
+					background-color: hsl(var(--v-cb-tab-prism-funky-dark)) !important;
+					color: hsl(var(--v-cb-tab-prism-funky-text));
+				}
+			}
+
+			&-okaidia {
+				background-color: hsla(var(--v-cb-tab-prism-okaidia-bkg), 1) !important;
+
+				&:hover {
+					background-color: hsla(var(--v-cb-tab-prism-okaidia-bkg), 0.5) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-cb-tab-prism-okaidia-icon)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-cb-tab-prism-okaidia-icon-success)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-cb-tab-prism-okaidia-icon-failed)) !important;
+						}
+					}
+				}
+
+				> div {
+					color: hsl(var(--v-cb-tab-prism-okaidia-text));
+				}
+			}
+
+			&-solarizedlight {
+				background-color: hsla(var(--v-cb-tab-prism-solarizedlight-bkg), 1) !important;
+
+				&:hover {
+					background-color: hsla(var(--v-cb-tab-prism-solarizedlight-bkg), 0.5) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-cb-tab-prism-solarizedlight-icon)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-cb-tab-prism-solarizedlight-icon-success)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-cb-tab-prism-solarizedlight-icon-failed)) !important;
+						}
+					}
+				}
+
+				> div {
+					color: hsl(var(--v-cb-tab-prism-solarizedlight-text));
+				}
+			}
+
+			&-tomorrow {
+				background-color: hsla(var(--v-cb-tab-prism-tomorrow-bkg), 1) !important;
+
+				&:hover {
+					background-color: hsla(var(--v-cb-tab-prism-tomorrow-bkg), 0.5) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-cb-tab-prism-tomorrow-icon)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-cb-tab-prism-tomorrow-icon-success)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-cb-tab-prism-tomorrow-icon-failed)) !important;
+						}
+					}
+				}
+
+				> div {
+					color: hsl(var(--v-cb-tab-prism-tomorrow-text));
+				}
+			}
+
+			&-twilight {
+				background-color: hsla(var(--v-cb-tab-prism-twilight-bkg), 1) !important;
+				border-color: hsl(var(--v-cb-tab-prism-twilight-border));
+				border-style: solid;
+				border-width: 0.3em 0.3em 0;
+
+				&:hover {
+					background-color: hsla(var(--v-cb-tab-prism-twilight-bkg), 0.5) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-cb-tab-prism-twilight-icon)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-cb-tab-prism-twilight-icon-success)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-cb-tab-prism-twilight-icon-failed)) !important;
+						}
+					}
+				}
+
+				> div {
+					color: hsl(var(--v-cb-tab-prism-twilight-text));
+				}
+			}
+
+			&-night-owl {
+				background-color: hsla(var(--v-cb-tab-prism-night-owl), 1) !important;
+
+				&:hover {
+					background-color: hsla(var(--v-cb-tab-prism-night-owl), 0.5) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-cb-tab-prism-night-owl-icon)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-cb-tab-prism-night-owl-icon-success)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-cb-tab-prism-night-owl-icon-failed)) !important;
+						}
+					}
+				}
+
+				> div {
+					color: hsl(var(--v-cb-tab-prism-night-owl-text));
+				}
+			}
+
+			&-neon-bunny {
+				background-color: hsla(var(--v-cb-tab-neon-bunny-bkg), 1) !important;
+				color: hsl(var(--v-cb-tab-neon-bunny-text)) !important;
+
+				&:hover {
+					background-color: hsla(var(--v-cb-tab-neon-bunny-bkg), 0.5) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-cb-tab-neon-bunny-icon)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-cb-tab-neon-bunny-icon-success)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-cb-tab-neon-bunny-icon-failed)) !important;
+						}
+					}
+				}
+
+				> div {
+					color: hsl(var(--v-cb-tab-neon-bunny-text));
+				}
+			}
+
+			&-neon-bunny-carrot {
+				background-color: hsla(var(--v-cb-tab-neon-bunny-carrot-bkg), 1) !important;
+				color: hsl(var(--v-cb-tab-neon-bunny-carrot-text)) !important;
+
+				&:hover {
+					background-color: hsla(var(--v-cb-tab-neon-bunny-carrot-bkg), 0.5) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-cb-tab-neon-bunny-carrot-icon)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-cb-tab-neon-bunny-carrot-icon-success)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-cb-tab-neon-bunny-carrot-icon-failed)) !important;
+						}
+					}
+				}
+
+				> div {
+					color: hsl(var(--v-cb-tab-neon-bunny-carrot-text));
+				}
+			}
+		}
+
+		&-button {
+			&-copy {
+				&-icon {
+					font-size: 14px !important;
+
+					// &-status {
+					// 	&-copy {
+					// 		color: hsl(var(--v-cb-primary));
+					// 	}
+
+					// 	&-success {
+					// 		color: hsl(var(--v-cb-success)) !important;
+					// 	}
+
+					// 	&-failed {
+					// 		color: hsl(var(--v-cb-danger)) !important;
+					// 	}
+					// }
+				}
+			}
+		}
+
+		&-code {
+			pre {
+				margin-top: 0;
+				// padding: 1em;
+
+				&[class*='language-'] {
+					margin-top: 0;
+
+					&::before,
+					&::after {
+						bottom: 0.95em;
+					}
+				}
+			}
+
+			&-browser {
+				&::before {
+					background-image: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fillRule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="%23FF5F56" stroke="%23E0443E" strokeWidth=".5" /><circle cx="26" cy="6" r="6" fill="%23FFBD2E" stroke="%23DEA123" strokeWidth=".5" /><circle cx="46" cy="6" r="6" fill="%2327C93F" stroke="%231AAB29" strokeWidth=".5" /></g></svg>');
+					background-position: 0.5em 0.5em;
+					background-repeat: no-repeat;
+					content: '';
+					display: block;
+					padding-right: 10em;
+					padding-top: 3rem;
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	// Utilities //
+	@for $i from 1 through 5 {
+
+		// ----------------------------- MISC MARGIN //
+		&-mt-#{$i} {
+			margin-top: $i * 0.25rem !important;
+		}
+
+		&-me-#{$i} {
+			margin-right: $i * 0.25rem !important;
+		}
+
+		&-mb-#{$i} {
+			margin-bottom: $i * 0.25rem !important;
+		}
+
+		&-ms-#{$i} {
+			margin-left: $i * 0.25rem !important;
+		}
+
+		// ----------------------------- MISC PADDING //
+		&-pt-#{$i} {
+			padding-top: $i * 0.25rem !important;
+		}
+
+		&-pe-#{$i} {
+			padding-right: $i * 0.25rem !important;
+		}
+
+		&-pb-#{$i} {
+			padding-bottom: $i * 0.25rem !important;
+		}
+
+		&-ps-#{$i} {
+			padding-left: $i * 0.25rem !important;
+		}
+	}
 }
