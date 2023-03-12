@@ -17,33 +17,38 @@
 			</div>
 
 			<div class="v-code-block--container-tabs" :style="tabGroupStyle">
-				<!-- ======================================== Copy Code Tab/Button -->
-				<div
-					v-if="showCopyButton && showButtons"
-					class="v-code-block--container-tab"
-					:class="tabClasses"
-					@click="copyCode"
-				>
-					<div class="v-code-block--container-button-copy">
-						<fa-icon
-							v-if="showCopyIcons"
-							class="fa-fw v-code-block-me-1 v-code-block--container-button-copy-icon"
-							:class="iconClasses"
-							:icon="buttonIconValue"
-						/>
-						{{ buttonTextValue }}
+				<template v-if="slots.tabs">
+					<slot name="tabs" />
+				</template>
+				<template v-else>
+					<!-- ======================================== Copy Code Tab/Button -->
+					<div
+						v-if="showCopyTab && showTabs"
+						class="v-code-block--container-tab"
+						:class="tabClasses"
+						@click="copyCode"
+					>
+						<div class="v-code-block--container-button-copy">
+							<fa-icon
+								v-if="showCopyIcons"
+								class="fa-fw v-code-block-me-1 v-code-block--container-button-copy-icon"
+								:class="iconClasses"
+								:icon="buttonIconValue"
+							/>
+							{{ buttonTextValue }}
+						</div>
 					</div>
-				</div>
 
-				<!-- ======================================== Run Tab/Button -->
-				<div
-					v-if="showRunButton && showButtons && !isMobile"
-					class="v-code-block--container-tab"
-					:class="tabClasses"
-					@click="runCode"
-				>
-					<div class="v-code-block--container-button-run">Run</div>
-				</div>
+					<!-- ======================================== Run Tab/Button -->
+					<div
+						v-if="showRunTab && showTabs && !isMobile"
+						class="v-code-block--container-tab"
+						:class="tabClasses"
+						@click="runCode"
+					>
+						<div class="v-code-block--container-button-run">Run</div>
+					</div>
+				</template>
 			</div>
 		</div>
 		<div class="v-code-block--container-code">
@@ -77,6 +82,7 @@ import prismThemeSolarizedlight from 'prismjs/themes/prism-solarizedlight.css?in
 import prismThemeTomorrow from 'prismjs/themes/prism-tomorrow.css?inline';
 import prismThemeTwilight from 'prismjs/themes/prism-twilight.css?inline';
 import neonBunnyTheme from '@/plugin/theme/neon-bunny.css?inline';
+import neonBunnyCarrotTheme from '@/plugin/theme/neon-bunny-carrot.css?inline';
 
 // ! Remove this later as it should be loaded by the user ! //
 import prismThemeNightOwl from 'prism-themes/themes/prism-night-owl.css?inline';
@@ -119,6 +125,16 @@ const props = defineProps({
 		required: false,
 		default: 'fa-solid fa-xmark',
 	},
+	floatingTabs: {
+		type: Boolean,
+		required: false,
+		default: true,
+	},
+	height: {
+		type: [String, Number],
+		required: false,
+		default: 'auto',
+	},
 	indent: {
 		type: Number,
 		required: false,
@@ -127,39 +143,39 @@ const props = defineProps({
 	label: {
 		type: String,
 		required: false,
-		default: 'Code Block Label',
+		default: '',
 	},
 	lang: {
 		type: String,
 		required: false,
 		default: 'javascript',
 	},
-	showButtons: {
-		type: Boolean,
+	maxHeight: {
+		type: [String, Number],
 		required: false,
-		default: true,
-	},
-	showCopyButton: {
-		type: Boolean,
-		required: false,
-		default: true,
+		default: 'auto',
 	},
 	showCopyIcons: {
 		type: Boolean,
 		required: false,
 		default: true,
 	},
-	showRunButton: {
+	showRunTab: {
+		type: Boolean,
+		required: false,
+		default: false,
+	},
+	showCopyTab: {
+		type: Boolean,
+		required: false,
+		default: true,
+	},
+	showTabs: {
 		type: Boolean,
 		required: false,
 		default: true,
 	},
 	successIcon: {
-		type: String,
-		required: false,
-		default: 'fa-solid fa-check',
-	},
-	successIconColor: {
 		type: String,
 		required: false,
 		default: 'fa-solid fa-check',
@@ -190,23 +206,24 @@ const useTheme = ref('');
 
 
 // -------------------------------------------------- Computed //
-const codeBlockClasses = computed(() => {
+const codeBlockClasses = computed<string>(() => {
 	return isMobile.value ? 'v-code-block--container-mobile' : '';
 });
 
-const codeTagStyles = computed(() => {
+const codeTagStyles = computed<object>(() => {
 	const width = useTheme.value === 'coy' ? '100%' : '';
 	return { width };
 });
 
-const headerStyles = computed(() => {
+const headerStyles = computed<object>(() => {
 	return {
+		bottom: props.floatingTabs ? '1px' : '0',
 		gap: props.tabGap,
 	};
 });
 
-const iconClasses = computed(() => {
-	const theme = props.theme === '' || props.theme === 'prism' ? 'default' : props.theme;
+const iconClasses = computed<object>(() => {
+	const theme = useTheme.value === '' || useTheme.value === 'prism' ? 'default' : useTheme.value;
 
 	const classes = {
 		[`v-code-block--container-tab-${theme}-icon`]: true,
@@ -216,15 +233,15 @@ const iconClasses = computed(() => {
 	return classes;
 });
 
-const labelClasses = computed(() => {
+const labelClasses = computed<string>(() => {
 	return isMobile.value ? 'v-code-block--container-label-mobile' : '';
 });
 
-const preTagStyles = computed(() => {
+const preTagStyles = computed<object>(() => {
 	const radius = props.codeBlockRadius;
 	let borderRadius = `${radius} 0 ${radius} ${radius}`;
 
-	if (!props.showButtons || (!props.showCopyButton && !props.showRunButton)) {
+	if (!props.showTabs || (!props.showCopyTab && !props.showRunTab)) {
 		borderRadius = radius;
 	}
 
@@ -232,13 +249,15 @@ const preTagStyles = computed(() => {
 
 	return {
 		borderRadius,
+		height: convertToUnit(props.height),
+		maxHeight: convertToUnit(props.maxHeight),
 		display,
 	};
 });
 
-const renderCode = computed(() => {
+const renderCode = computed<unknown>(() => {
 	convertCode();
-	console.log({ Prism });
+	// console.log({ Prism });
 	// console.log({ PrismComponents });
 
 	const html = Prism.highlight(convertedCode.value, Prism.languages[props.lang], props.lang);
@@ -246,15 +265,15 @@ const renderCode = computed(() => {
 	return html;
 });
 
-const tabClasses = computed(() => {
-	const theme = props.theme === '' || props.theme === 'prism' ? 'default' : props.theme;
+const tabClasses = computed<object>(() => {
+	const theme = useTheme.value === '' || useTheme.value === 'prism' ? 'default' : useTheme.value;
 	const classes = {
 		[`v-code-block--container-tab-${theme}`]: true,
 	};
 	return classes;
 });
 
-const tabGroupStyle = computed(() => {
+const tabGroupStyle = computed<object>(() => {
 	return {
 		gap: props.tabGap,
 	};
@@ -267,7 +286,13 @@ watch(props, () => {
 		useTheme.value = props.theme;
 		loadTheme();
 	}
+
+	if (props.copyText) {
+		buttonTextValue.value = props.copyText;
+	}
 });
+
+console.log({ Prism });
 
 
 // -------------------------------------------------- Mounts //
@@ -293,6 +318,17 @@ function convertCode(): void {
 
 	convertedCode.value = props.code;
 	return;
+}
+
+function convertToUnit(str: string | number, unit = 'px'): string {
+	if (str == null || str === '') {
+		return undefined;
+	}
+	else if (!+str) {
+		return String(str);
+	}
+
+	return `${Number(str)}${unit}`;
 }
 
 function copyCode(): void {
@@ -338,6 +374,9 @@ function loadTheme(): void {
 		case 'neon-bunny':
 			selectedTheme = neonBunnyTheme;
 			break;
+		case 'neon-bunny-carrot':
+			selectedTheme = neonBunnyCarrotTheme;
+			break;
 		case 'coy':
 			selectedTheme = prismThemeCoy;
 			break;
@@ -363,12 +402,14 @@ function loadTheme(): void {
 		case 'night-owl':
 			selectedTheme = prismThemeNightOwl;
 			break;
+		case 'default':
+		case 'prism':
+			selectedTheme = prismTheme;
+			break;
 		default:
 			selectedTheme = prismTheme;
 			break;
 	}
-
-	console.log({ selectedTheme });
 
 	themeStyles.setAttribute('type', 'text/css');
 	themeStyles.id = stylesheetId;
@@ -388,7 +429,6 @@ window.addEventListener("orientationchange", () => {
 });
 
 function runCode(): void {
-	console.log('run code');
 	emit('run');
 }
 </script>
@@ -411,375 +451,5 @@ function runCode(): void {
 </style>
 
 <style lang="scss" scoped>
-.v-code-block {
-	&--container {
-		display: block;
-		max-width: 100%;
-
-		&-header {
-			align-items: end;
-			display: flex;
-			justify-content: space-between;
-			width: 100%;
-		}
-
-		&-label {
-			font-family: var(--v-code-block-label-font);
-			overflow: auto;
-		}
-
-		&-tabs {
-			align-items: end;
-			border: 1px solid transparent;
-			display: flex;
-		}
-
-		&-tab {
-			align-items: center;
-			background-color: hsla(var(--v-code-block-primary-hsl), 0.1) !important;
-			border-radius: 5px 5px 0 0;
-			cursor: pointer;
-			display: flex;
-			flex-direction: row;
-			font-family: var(--v-code-block-tab-font);
-			justify-content: flex-start;
-			padding: 5px 15px;
-			text-align: center;
-			transition: background-color 0.35s ease;
-			white-space: nowrap;
-			width: fit-content;
-
-			&:hover {
-				background-color: hsla(var(--v-code-block-primary-hsl), 0.2) !important;
-			}
-
-			// Prism coloring //
-			&-default {
-				background-color: hsla(var(--v-code-block-prism-default-hsl), 1) !important;
-				color: hsl(var(--v-code-block-prism-default-icon-hsl)) !important;
-
-				&:hover {
-					background-color: hsla(var(--v-code-block-prism-default-hsl), 0.5) !important;
-				}
-
-				&-icon {
-					color: hsl(var(--v-code-block-prism-default-icon-hsl)) !important;
-
-					&-status {
-						&-success {
-							color: hsl(var(--v-code-block-prism-default-icon-success-hsl)) !important;
-						}
-
-						&-failed {
-							color: hsl(var(--v-code-block-prism-default-icon-failed-hsl)) !important;
-						}
-					}
-				}
-			}
-
-			&-coy {
-				background-color: hsla(var(--v-code-block-prism-coy-hsl), 0.1) !important;
-				border-left: 5px solid hsl(var(--v-code-block-prism-coy-hsl));
-				border-radius: 0;
-				color: hsl(var(--v-code-block-prism-coy-icon-hsl)) !important;
-
-				&:hover {
-					background-color: hsla(var(--v-code-block-prism-coy-hsl), 0.2) !important;
-				}
-
-				&-icon {
-					color: hsl(var(--v-code-block-prism-coy-icon-hsl)) !important;
-
-					&-status {
-						&-success {
-							color: hsl(var(--v-code-block-prism-coy-icon-success-hsl)) !important;
-						}
-
-						&-failed {
-							color: hsl(var(--v-code-block-prism-default-icon-failed-hsl)) !important;
-						}
-					}
-				}
-			}
-
-			&-dark {
-				background-color: hsla(var(--v-code-block-prism-dark-hsl), 1) !important;
-				border-color: hsl(var(--v-code-block-prism-dark-border-hsl));
-				border-style: solid;
-				border-width: 0.3em 0.3em 0;
-				color: hsl(var(--v-code-block-prism-dark-icon-hsl)) !important;
-
-				&:hover {
-					background-color: hsla(var(--v-code-block-prism-dark-border-hsl), 0.5) !important;
-				}
-
-				&-icon {
-					color: hsl(var(--v-code-block-prism-dark-icon-hsl)) !important;
-
-					&-status {
-						&-success {
-							color: hsl(var(--v-code-block-prism-dark-icon-success-hsl)) !important;
-						}
-
-						&-failed {
-							color: hsl(var(--v-code-block-prism-dark-icon-failed-hsl)) !important;
-						}
-					}
-				}
-			}
-
-			&-funky {
-				background-color: hsl(var(--v-code-block-prism-funky-dark-hsl)) !important;
-				color: hsl(var(--v-code-block-prism-funky-icon-hsl)) !important;
-
-				&:hover {
-					background-color: hsl(var(--v-code-block-prism-funky-hsl)) !important;
-				}
-
-				&-icon {
-					color: hsl(var(--v-code-block-prism-funky-icon-hsl)) !important;
-
-					&-status {
-						&-success {
-							color: hsl(var(--v-code-block-prism-funky-icon-success-hsl)) !important;
-						}
-
-						&-failed {
-							color: hsl(var(--v-code-block-prism-funky-icon-failed-hsl)) !important;
-						}
-					}
-				}
-			}
-
-			&-okaidia {
-				background-color: hsla(var(--v-code-block-prism-okaidia-hsl), 1) !important;
-				color: hsl(var(--v-code-block-prism-okaidia-icon-hsl)) !important;
-
-				&:hover {
-					background-color: hsla(var(--v-code-block-prism-okaidia-hsl), 0.5) !important;
-				}
-
-				&-icon {
-					color: hsl(var(--v-code-block-prism-okaidia-icon-hsl)) !important;
-
-					&-status {
-						&-success {
-							color: hsl(var(--v-code-block-prism-okaidia-icon-success-hsl)) !important;
-						}
-
-						&-failed {
-							color: hsl(var(--v-code-block-prism-okaidia-icon-failed-hsl)) !important;
-						}
-					}
-				}
-			}
-
-			&-solarizedlight {
-				background-color: hsla(var(--v-code-block-prism-solarizedlight-hsl), 1) !important;
-				color: hsl(var(--v-code-block-prism-solarizedlight-icon-hsl)) !important;
-
-				&:hover {
-					background-color: hsla(var(--v-code-block-prism-solarizedlight-hsl), 0.5) !important;
-				}
-
-				&-icon {
-					color: hsl(var(--v-code-block-prism-solarizedlight-icon-hsl)) !important;
-
-					&-status {
-						&-success {
-							color: hsl(var(--v-code-block-prism-solarizedlight-icon-success-hsl)) !important;
-						}
-
-						&-failed {
-							color: hsl(var(--v-code-block-prism-solarizedlight-icon-failed-hsl)) !important;
-						}
-					}
-				}
-			}
-
-			&-tomorrow {
-				background-color: hsla(var(--v-code-block-prism-tomorrow-hsl), 1) !important;
-				color: hsl(var(--v-code-block-prism-tomorrow-icon-hsl)) !important;
-
-				&:hover {
-					background-color: hsla(var(--v-code-block-prism-tomorrow-hsl), 0.5) !important;
-				}
-
-				&-icon {
-					color: hsl(var(--v-code-block-prism-tomorrow-icon-hsl)) !important;
-
-					&-status {
-						&-success {
-							color: hsl(var(--v-code-block-prism-tomorrow-icon-success-hsl)) !important;
-						}
-
-						&-failed {
-							color: hsl(var(--v-code-block-prism-tomorrow-icon-failed-hsl)) !important;
-						}
-					}
-				}
-			}
-
-			&-twilight {
-				background-color: hsla(var(--v-code-block-prism-twilight-hsl), 1) !important;
-				border-color: hsl(var(--v-code-block-prism-twilight-border-hsl));
-				border-style: solid;
-				border-width: 0.3em 0.3em 0;
-				color: hsl(var(--v-code-block-prism-twilight-icon-hsl)) !important;
-
-				&:hover {
-					background-color: hsla(var(--v-code-block-prism-twilight-hsl), 0.5) !important;
-				}
-
-				&-icon {
-					color: hsl(var(--v-code-block-prism-twilight-icon-hsl)) !important;
-
-					&-status {
-						&-success {
-							color: hsl(var(--v-code-block-prism-twilight-icon-success-hsl)) !important;
-						}
-
-						&-failed {
-							color: hsl(var(--v-code-block-prism-twilight-icon-failed-hsl)) !important;
-						}
-					}
-				}
-			}
-
-			&-night-owl {
-				background-color: hsla(var(--v-code-block-prism-night-owl-hsl), 1) !important;
-				color: hsl(var(--v-code-block-prism-night-owl-icon-hsl)) !important;
-
-				&:hover {
-					background-color: hsla(var(--v-code-block-prism-night-owl-hsl), 0.5) !important;
-				}
-
-				&-icon {
-					color: hsl(var(--v-code-block-prism-night-owl-icon-hsl)) !important;
-
-					&-status {
-						&-success {
-							color: hsl(var(--v-code-block-prism-night-owl-icon-success-hsl)) !important;
-						}
-
-						&-failed {
-							color: hsl(var(--v-code-block-prism-night-owl-icon-failed-hsl)) !important;
-						}
-					}
-				}
-			}
-
-			&-neon-bunny {
-				background-color: hsla(var(--v-code-block-prism-neon-bunny-hsl), 1) !important;
-				color: hsl(var(--v-code-block-prism-neon-bunny-text-hsl)) !important;
-
-				&:hover {
-					background-color: hsla(var(--v-code-block-prism-neon-bunny-hsl), 0.5) !important;
-				}
-
-				&-icon {
-					color: hsl(var(--v-code-block-prism-neon-bunny-icon-hsl)) !important;
-
-					&-status {
-						&-success {
-							color: hsl(var(--v-code-block-prism-neon-bunny-icon-success-hsl)) !important;
-						}
-
-						&-failed {
-							color: hsl(var(--v-code-block-prism-neon-bunny-icon-failed-hsl)) !important;
-						}
-					}
-				}
-			}
-		}
-
-		&-button {
-			&-copy {
-				&-icon {
-					font-size: 14px !important;
-
-					// &-status {
-					// 	&-copy {
-					// 		color: hsl(var(--v-code-block-primary-hsl));
-					// 	}
-
-					// 	&-success {
-					// 		color: hsl(var(--v-code-block-success-hsl)) !important;
-					// 	}
-
-					// 	&-failed {
-					// 		color: hsl(var(--v-code-block-danger-hsl)) !important;
-					// 	}
-					// }
-				}
-			}
-		}
-
-		&-code {
-			pre {
-				margin-top: 0;
-				// padding: 1em;
-
-				&[class*='language-'] {
-					margin-top: 0;
-
-					&::before,
-					&::after {
-						bottom: 0.95em;
-					}
-				}
-			}
-
-			&-browser {
-				&::before {
-					background-image: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fillRule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="%23FF5F56" stroke="%23E0443E" strokeWidth=".5" /><circle cx="26" cy="6" r="6" fill="%23FFBD2E" stroke="%23DEA123" strokeWidth=".5" /><circle cx="46" cy="6" r="6" fill="%2327C93F" stroke="%231AAB29" strokeWidth=".5" /></g></svg>');
-					background-position: 0.5em 0.5em;
-					background-repeat: no-repeat;
-					content: '';
-					display: block;
-					padding-right: 10em;
-					padding-top: 3rem;
-					width: 100%;
-				}
-			}
-		}
-	}
-
-	// Utilities //
-	@for $i from 1 through 5 {
-		// ----------------------------- MISC MARGIN //
-		&-mt-#{$i} {
-			margin-top: $i * 0.25rem !important;
-		}
-
-		&-me-#{$i} {
-			margin-right: $i * 0.25rem !important;
-		}
-
-		&-mb-#{$i} {
-			margin-bottom: $i * 0.25rem !important;
-		}
-
-		&-ms-#{$i} {
-			margin-left: $i * 0.25rem !important;
-		}
-
-		// ----------------------------- MISC PADDING //
-		&-pt-#{$i} {
-			padding-top: $i * 0.25rem !important;
-		}
-
-		&-pe-#{$i} {
-			padding-right: $i * 0.25rem !important;
-		}
-
-		&-pb-#{$i} {
-			padding-bottom: $i * 0.25rem !important;
-		}
-
-		&-ps-#{$i} {
-			padding-left: $i * 0.25rem !important;
-		}
-	}
-}
+@import '../style';
 </style>
