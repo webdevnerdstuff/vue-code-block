@@ -1,7 +1,7 @@
 import { App, Plugin } from 'vue';
 import { CodeBlock } from '@/plugin';
 import { OptionsSettings } from '@/types';
-import '@/style.scss';
+import '@/style.css';
 
 const CodeBlockPlugin = {
 	install(app: App, options: OptionsSettings) {
