@@ -125,6 +125,7 @@ module.exports = {
 		'vue/html-self-closing': 0,
 		'vue/max-attributes-per-line': 0,
 		'vue/no-multiple-template-root': 0,
+		'vue/no-v-for-template-key': 0,
 		'vue/no-template-shadow': 0,
 		'vue/no-v-html': 0,
 		'vue/singleline-html-element-content-newline': 0,
