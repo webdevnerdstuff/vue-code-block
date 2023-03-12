@@ -1,7 +1,7 @@
 /**
  * MIT License
  * Copyright (c) 2023 WebDevNerdStuff
- * WebDevNerdStuff Neon Bunny
+ * WebDevNerdStuff Neon Bunny - Carrot
  * VSCode Theme: https://marketplace.visualstudio.com/items?itemName=WebDevNerdStuff.neon-bunny
  */
 
@@ -78,7 +78,7 @@ pre[class*="language-"] {
 }
 
 .token.punctuation {
-	color: #0b93ff;
+	color: #ff9900;
 }
 
 .namespace {
@@ -91,21 +91,21 @@ pre[class*="language-"] {
 
 .token.symbol,
 .token.property {
-	color: #ff1190;
+	color: #ffc266;
 }
 
 .token.keyword {
-	color: #0B93FF;
+	color: #DA96DF;
 }
 
 
 .token.tag,
 .token.operator {
-	color: #2492ff;
+	color: #FF9900;
 }
 
 .token.boolean {
-	color: #2492FF;
+	color: #DA96DF;
 }
 
 .token.number {
@@ -117,7 +117,7 @@ pre[class*="language-"] {
 }
 
 .token.function {
-	color: #0aff04;
+	color: #FFC266;
 }
 
 .token.builtin {
@@ -137,7 +137,7 @@ pre[class*="language-"] {
 }
 
 .token.string {
-	color: #ffb46a;
+	color: #7CD47D;
 }
 
 .token.url {
@@ -151,7 +151,7 @@ pre[class*="language-"] {
 
 .language-css .token.string,
 .style .token.string {
-	color: #2bb71d;
+	color: #7CD47D;
 	font-style: italic;
 }
 
@@ -166,11 +166,11 @@ pre[class*="language-"] {
 }
 
 .token.variable {
-	color: #2bb71d;
+	color: #ff9900;
 }
 
 .token.important {
-	color: #ff3229;
+	color: #ff1190;
 	font-style: italic;
 }
 
@@ -184,7 +184,7 @@ pre[class*="language-"] {
 
 /* CSS */
 .language-css {
-	color: #C792EA !important;
+	color: #00EEFF !important;
 }
 
 .language-css .token.atrule {
@@ -196,7 +196,7 @@ pre[class*="language-"] {
 }
 
 .language-css .token.selector {
-	color: #B2FF02;
+	color: #FFFF00;
 }
 
 .language-css .token.property {
@@ -214,7 +214,7 @@ pre[class*="language-"] {
 /* JavaScript */
 .language-javascript,
 .language-js {
-	color: #2BB71D !important;
+	color: #FF9900 !important;
 	font-style: italic;
 }
 
@@ -228,9 +228,14 @@ pre[class*="language-"] {
 	color: #fff;
 }
 
+.language-javascript .token.template-string .token.string,
+.language-js .token.template-string .token.string {
+	color: #008B05;
+}
+
 .language-javascript .token.keyword,
 .language-js .token.keyword {
-	color: #0B93FF;
+	color: #DD00FF;
 }
 
 .language-javascript .token.operator,
@@ -241,19 +246,19 @@ pre[class*="language-"] {
 
 .language-javascript .token.literal-property.property,
 .language-js .token.literal-property.property {
-	color: #00FF00;
+	color: #FF9900;
 	font-style: italic;
 }
 
 /* HTML */
 .language-html .token.attr-name {
-	color: #00D205;
+	color: #FFC266;
 }
 
 .language-html .token.attr-value {
-	color: #FFB46A;
+	color: #00D205;
 }
 
 .language-html .token.attr-value .token.punctuation {
-	color: #FFB46A;
+	color: #00D205;
 }
