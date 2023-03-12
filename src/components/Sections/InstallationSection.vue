@@ -10,6 +10,7 @@
 				label="Using pnpm:"
 				lang="plain"
 				:showRunButton="false"
+				:theme="selectedTheme"
 			/>
 		</div>
 
@@ -19,6 +20,7 @@
 				label="Using npm:"
 				lang="plain"
 				:showRunButton="false"
+				:theme="selectedTheme"
 			/>
 		</div>
 	</div>
@@ -26,10 +28,10 @@
 
 <script setup>
 import { inject } from 'vue';
-import CodeBlock from '@/components/CodeBlock.vue';
 
 
 const styleData = inject('styleData');
+const selectedTheme = inject('selectedTheme');
 
 const pnpmCode = 'pnpm add vue3-code-block';
 const npmCode = 'npm i vue3-code-block';

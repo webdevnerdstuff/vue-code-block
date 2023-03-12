@@ -5,6 +5,8 @@
 		</div>
 
 		<div class="col-12">
+			<a :href="links.prism" target="_blank">Prism</a>
+			<br />
 			<a :href="links.vueJs" target="_blank">Vue 3</a>
 		</div>
 	</div>

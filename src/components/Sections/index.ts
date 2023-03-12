@@ -1,25 +1,27 @@
-import ChangeLogSection from '@/components/sections/ChangeLogSection.vue';
-import ConsoleMethodsSection from '@/components/sections/ConsoleMethodsSection.vue';
-import DependenciesSection from '@/components/sections/DependenciesSection.vue';
-import ExamplesSection from '@/components/sections/ExamplesSection.vue';
-import FooterSection from '@/components/sections/FooterSection.vue';
-import InstallationSection from '@/components/sections/InstallationSection.vue';
-import LicenseSection from '@/components/sections/LicenseSection.vue';
-import LogOptionsSection from '@/components/sections/LogOptionsSection.vue';
-import PluginOptionsSection from '@/components/sections/PluginOptionsSection.vue';
-import RegisterSection from '@/components/sections/RegisterSection.vue';
-import UsageSection from '@/components/sections/UsageSection.vue';
+import ChangeLogSection from '@/components/Sections/ChangeLogSection.vue';
+import CssVariablesSection from '@/components/Sections/CssVariablesSection.vue';
+import DependenciesSection from '@/components/Sections/DependenciesSection.vue';
+import ExamplesSection from '@/components/Sections/ExamplesSection.vue';
+import EventsSection from '@/components/Sections/EventsSection.vue';
+import FooterSection from '@/components/Sections/FooterSection.vue';
+import InstallationSection from '@/components/Sections/InstallationSection.vue';
+import LicenseSection from '@/components/Sections/LicenseSection.vue';
+import PropsSection from '@/components/Sections/PropsSection.vue';
+import SlotsSection from '@/components/Sections/SlotsSection.vue';
+import RegisterSection from '@/components/Sections/RegisterSection.vue';
+import UsageSection from '@/components/Sections/UsageSection.vue';
 
 export {
 	ChangeLogSection,
-	ConsoleMethodsSection,
+	CssVariablesSection,
 	DependenciesSection,
 	ExamplesSection,
+	EventsSection,
 	FooterSection,
 	InstallationSection,
 	LicenseSection,
-	LogOptionsSection,
-	PluginOptionsSection,
+	PropsSection,
+	SlotsSection,
 	RegisterSection,
 	UsageSection,
 };
