@@ -46,24 +46,21 @@
 							</li>
 							<li>
 								<a class="dropdown-item" href="#ul-register-plugin"
-									>Register Plugin</a
+									>Register Component</a
 								>
 							</li>
 							<li>
-								<a class="dropdown-item" href="#ul-usage">Usage</a>
+								<a class="dropdown-item" href="#ul-props">Props</a>
 							</li>
-
-							<li><hr class="dropdown-divider" /></li>
-
-							<!-- Options -->
-							<li><h6 class="dropdown-header">Options</h6></li>
 							<li>
-								<a class="dropdown-item" href="#ul-plugin-options">
-									Plugin Options
-								</a>
+								<a class="dropdown-item" href="#ul-events">Events</a>
 							</li>
-
-							<li><hr class="dropdown-divider" /></li>
+							<li>
+								<a class="dropdown-item" href="#ul-slots">Slots</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#ul-css-vars">CSS Variables</a>
+							</li>
 
 							<li>
 								<a class="dropdown-item" href="#ul-examples">Examples</a>
@@ -103,7 +100,10 @@
 						>
 							<li><h6 class="dropdown-header">Dropdown Header</h6></li>
 							<li>
-								<a class="dropdown-item" href="#text-TBD">example</a>
+								<a class="dropdown-item" href="#lang-examples">Languages</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#tabs-examples">Tabs</a>
 							</li>
 						</ul>
 					</li>
