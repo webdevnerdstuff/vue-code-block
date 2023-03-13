@@ -1,6 +1,6 @@
 {
 	"name": "vue3-code-block",
-	"version": "1.0.0",
+	"version": "1.0.0-beta",
 	"description": "Vue 3 Code Block Component",
 	"private": false,
 	"main": "dist/vue3-code-block.js",
@@ -64,9 +64,6 @@
 	"devDependencies": {
 		"@babel/core": "^7.21.0",
 		"@babel/eslint-parser": "^7.19.1",
-		"@fortawesome/fontawesome-svg-core": "^6.3.0",
-		"@fortawesome/free-solid-svg-icons": "^6.3.0",
-		"@fortawesome/vue-fontawesome": "^3.0.3",
 		"@rollup/plugin-alias": "^4.0.3",
 		"@rollup/plugin-commonjs": "^24.0.1",
 		"@rollup/plugin-json": "^6.0.0",
