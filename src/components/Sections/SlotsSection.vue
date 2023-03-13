@@ -32,6 +32,9 @@ import { inject } from 'vue';
 const styleData = inject('styleData');
 
 const componentEvents = {
+	copyButton: {
+		description: 'Slot for the copy button of the component.',
+	},
 	label: {
 		description: 'Slot for the label of the component.',
 	},

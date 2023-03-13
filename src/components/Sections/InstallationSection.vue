@@ -9,7 +9,7 @@
 				:code="pnpmCode"
 				label="Using pnpm:"
 				lang="plain"
-				:showRunButton="false"
+				:show-run="false"
 				:theme="selectedTheme"
 			/>
 		</div>
@@ -19,7 +19,7 @@
 				:code="npmCode"
 				label="Using npm:"
 				lang="plain"
-				:showRunButton="false"
+				:show-run="false"
 				:theme="selectedTheme"
 			/>
 		</div>

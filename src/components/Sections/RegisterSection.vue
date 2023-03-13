@@ -9,12 +9,14 @@
 				:code="asPluginGlobalCode"
 				label=""
 				lang="javascript"
-				:showRunButton="false"
+				:show-run="false"
 				:theme="selectedTheme"
 			/>
 		</div>
 	</div>
 </template>
+
+
 
 <script setup>
 import { inject } from 'vue';

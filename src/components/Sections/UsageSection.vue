@@ -5,20 +5,24 @@
 		</div>
 
 		<div class="col-12">
-			<!-- <CodeBlock
-				:code="setupCode"
-				label="Composition API (setup)"
-				lang="javascript"
-				:showRunButton="false"
-			/> -->
+			<CodeBlock
+				:code="componentCode"
+				label="My Code"
+				lang="html"
+				:show-run="false"
+				:theme="selectedTheme"
+			/>
 		</div>
 
 		<div class="col-12">
 			<CodeBlock
-				:code="optionsApi"
-				label="Options API"
-				lang="javascript"
-				:showRunButton="false"
+				:code="runCode"
+				label="Run My Code"
+				lang="html"
+				run-tab
+				tabs
+				:theme="selectedTheme"
+				@run="runMyCode"
 			/>
 		</div>
 	</div>
@@ -29,6 +33,46 @@ import { inject } from 'vue';
 
 
 const styleData = inject('styleData');
+const selectedTheme = inject('selectedTheme');
+
+const componentCode = `<template>
+  <CodeBlock
+    :code="myCode"
+    label="My Code"
+    lang="html"
+  />
+<\/template>
+
+<script setup>
+const myCode = \`const foo = 'bar';
+
+console.log(foo);
+\`;
+<\/script>`;
+
+const runCode = `<template>
+  <CodeBlock
+    :code="runCode"
+    label="Run My Code"
+    lang="html"
+    run-tab
+    @run="runMyCode"
+  />
+<\/template>
+
+<script setup>
+const myCode = \`const foo = 'bar';
+
+alert(foo);
+\`;
+<\/script>`;
+
+function runMyCode() {
+	const foo = 'bar';
+
+	alert(foo);
+}
+
 
 </script>
 

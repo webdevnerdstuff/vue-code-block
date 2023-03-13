@@ -6,8 +6,9 @@
 
 		<div class="col-12 mb-3">
 			<p>
-				All CSS variables are defined in the <code>src/style.css</code> file.
-				Colors are using <code>hsl</code> values.
+				All CSS variables are defined in the
+				<code>src/plugin/styles/cssVariables.css</code> file. Colors are using
+				<code>hsl</code> values.
 			</p>
 		</div>
 

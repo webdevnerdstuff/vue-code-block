@@ -35,6 +35,9 @@ const componentEvents = {
 	run: {
 		description: 'The event emitted when the run tab is clicked.',
 	},
+	'update:copy-status': {
+		description: 'The event emitted when the copy status is updated.',
+	},
 };
 </script>
 

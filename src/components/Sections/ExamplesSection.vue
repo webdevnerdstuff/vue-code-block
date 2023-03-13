@@ -10,19 +10,23 @@
 		<LangExamples id="lang-examples" />
 
 		<!-- ======================= Tabs -->
-		<TabExamples id="tabs-examples" />
+		<TabExamples id="tab-examples" />
+
+		<!-- ======================= Buttons -->
+		<ButtonExamples id="copy-button-examples" />
 
 		<!-- ======================= Browser Window -->
 		<BrowserWindowExamples id="browser-window-examples" />
 
 		<!-- ======================= Prop Examples -->
-		<OtherExamples id="prop-examples" />
+		<OtherExamples id="other-prop-examples" />
 	</div>
 </template>
 
 <script setup>
 import {
 	BrowserWindowExamples,
+	ButtonExamples,
 	LangExamples,
 	OtherExamples,
 	TabExamples,

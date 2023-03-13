@@ -54,11 +54,29 @@ const componentProps = {
 		default: '0.5rem',
 		description: 'The border radius of the code block.',
 	},
-	copyIcon: {
+	copyButton: {
+		type: Boolean,
+		required: false,
+		default: true,
+		description: 'To show a copy button within the code block',
+	},
+	copyIcons: {
+		type: 'Boolean',
+		required: false,
+		default: true,
+		description: 'To show the copy icons on the copy code tab.',
+	},
+	copyTab: {
+		type: 'Boolean',
+		required: false,
+		default: true,
+		description: 'To show the copy code tab.',
+	},
+	copyFailedText: {
 		type: 'String',
 		required: false,
-		default: 'fa-solid fa-copy',
-		description: 'The icon to be used for the copy tab.',
+		default: 'Copy failed!',
+		description: 'The text to be displayed when the code copy failed.',
 	},
 	copyText: {
 		type: 'String',
@@ -66,11 +84,11 @@ const componentProps = {
 		default: 'Copy Code',
 		description: 'The text to be displayed on the copy tab.',
 	},
-	failedIcon: {
+	copySuccessText: {
 		type: 'String',
 		required: false,
-		default: 'fa-solid fa-xmark',
-		description: 'The icon to be used for the failed tab.',
+		default: 'Copied!',
+		description: 'The text to be displayed when the code copy was successful.',
 	},
 	floatingTabs: {
 		type: 'Boolean',
@@ -79,7 +97,7 @@ const componentProps = {
 		description: 'To make the tabs float on top of the code block.',
 	},
 	height: {
-		type: 'String',
+		type: '[String, Number]',
 		required: false,
 		default: 'auto',
 		description: 'The height of the code block.',
@@ -103,40 +121,22 @@ const componentProps = {
 		description: 'The language of the code.',
 	},
 	maxHeight: {
-		type: String,
+		type: '[String, Number]',
 		required: false,
 		default: 'auto',
 		description: 'The max height of the code block.',
 	},
-	showCopyIcons: {
+	persistentCopyButton: {
 		type: 'Boolean',
 		required: false,
-		default: true,
-		description: 'To show the copy icons on the copy code tab.',
+		default: false,
+		description: 'To show a persistent copy button within the code block',
 	},
-	showRunTab: {
+	runTab: {
 		type: 'Boolean',
 		required: false,
 		default: false,
 		description: 'To show the run tab.',
-	},
-	showCopyTab: {
-		type: 'Boolean',
-		required: false,
-		default: true,
-		description: 'To show the copy code tab.',
-	},
-	showTabs: {
-		type: 'Boolean',
-		required: false,
-		default: true,
-		description: 'To show the tabs. This will show/hide all tabs.',
-	},
-	successIcon: {
-		type: 'String',
-		required: false,
-		default: 'fa-solid fa-check',
-		description: 'The icon to be used when the code copy was successful.',
 	},
 	tabGap: {
 		type: 'String',
@@ -144,10 +144,16 @@ const componentProps = {
 		default: '0.25rem',
 		description: 'The gap between the tabs.',
 	},
-	theme: {
-		type: 'String', Boolean,
+	tabs: {
+		type: 'Boolean',
 		required: false,
-		default: 'default',
+		default: false,
+		description: 'To show the tabs. This will show/hide all tabs.',
+	},
+	theme: {
+		type: '[String, Boolean]',
+		required: false,
+		default: 'neon-bunny',
 		description: `<p>The theme to be used for the code block. Available options include:</p>
 		<p>
 			<strong>Neon Bunny Themes</strong>
