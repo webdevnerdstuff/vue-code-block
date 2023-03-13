@@ -1,12 +1,11 @@
 import { App, Plugin } from 'vue';
 import { CodeBlock } from '@/plugin';
 import { OptionsSettings } from '@/types';
-import '@/style.css';
+import '@/plugin/styles/cssVariables.css';
 
 const CodeBlockPlugin = {
 	install(app: App, options: OptionsSettings) {
 		const codeBlockGlobalOptions = { globalOptions: true, ...options };
-		console.log({ codeBlockGlobalOptions });
 
 		app.provide('codeBlockGlobalOptions', codeBlockGlobalOptions);
 		app.component('CodeBlock', CodeBlock);

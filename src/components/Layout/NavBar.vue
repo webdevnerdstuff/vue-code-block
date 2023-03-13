@@ -1,7 +1,7 @@
 <template>
-	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark mb-5">
+	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-black mb-5">
 		<div class="container">
-			<a class="navbar-brand" :href="pageLinks.docs">Vue 3 CodeBlock</a>
+			<a class="navbar-brand" href="/vue3-code-block/">Vue 3 CodeBlock</a>
 			<button
 				aria-controls="navbarSupportedContent"
 				aria-expanded="false"
@@ -19,7 +19,7 @@
 						<a
 							aria-current="page"
 							class="nav-link active"
-							:href="pageLinks.docs"
+							href="/vue3-code-block/"
 						>
 							Home
 						</a>
@@ -98,12 +98,26 @@
 							aria-labelledby="examples-dropdown"
 							class="dropdown-menu dropdown-menu-dark"
 						>
-							<li><h6 class="dropdown-header">Dropdown Header</h6></li>
 							<li>
 								<a class="dropdown-item" href="#lang-examples">Languages</a>
 							</li>
 							<li>
-								<a class="dropdown-item" href="#tabs-examples">Tabs</a>
+								<a class="dropdown-item" href="#tab-examples">Tabs</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#copy-button-examples">
+									Copy Button
+								</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#browser-window-examples">
+									Browser Window
+								</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#other-prop-examples">
+									Other Props
+								</a>
 							</li>
 						</ul>
 					</li>
@@ -111,10 +125,14 @@
 				<div class="d-flex">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<a class="nav-link" :href="pageLinks.github">GitHub</a>
+							<a class="nav-link" :href="links.github" target="_blank"
+								>GitHub</a
+							>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" :href="pageLinks.npm">NPM Package</a>
+							<a class="nav-link" :href="links.npm" target="_blank"
+								>NPM Package</a
+							>
 						</li>
 					</ul>
 				</div>
@@ -126,5 +144,5 @@
 <script setup>
 import { inject } from 'vue';
 
-const pageLinks = inject('pageLinks');
+const links = inject('links');
 </script>

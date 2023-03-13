@@ -25,30 +25,39 @@
 		</div>
 	</div>
 
-	<div class="container mb-5 text-center">
-		<div aria-label="Basic example" class="btn-group mb-3" role="group">
-			<button
-				v-for="theme in themes"
-				:key="theme"
-				class="btn btn-success"
-				:class="{
-					active: selectedTheme === theme.value,
-					'btn-success': selectedTheme !== theme.value,
-				}"
-				type="button"
-				@click="changeTheme(theme.value)"
-			>
-				{{ theme.label }}
-			</button>
+	<div class="container mb-5">
+		<div class="row">
+			<div class="col-12 col-md-3">
+				<label class="form-label" for="theme-selection-select">Theme:</label>
+
+				<select
+					id="theme-selection-select"
+					aria-label="Theme Selection"
+					class="form-select"
+					@change="changeTheme($event.target.value)"
+				>
+					<option
+						v-for="theme in themes"
+						:key="theme"
+						:selected="selectedTheme === theme.value"
+						:value="theme.value"
+					>
+						{{ theme.label }}
+					</option>
+				</select>
+			</div>
 		</div>
 	</div>
 
-	<div class="container">
+	<div v-if="!demoTestPage" class="container">
 		<!-- ============================================== Installation -->
 		<InstallationSection id="ul-installation" />
 
 		<!-- ============================================== Register -->
 		<RegisterSection id="ul-register-plugin" />
+
+		<!-- ============================================== Usage -->
+		<UsageSection id="ul-usage" />
 
 		<!-- ============================================== Props -->
 		<PropsSection id="ul-props" />
@@ -76,6 +85,10 @@
 
 		<FooterSection />
 	</div>
+
+	<div v-else class="container">
+		<TestingExamples />
+	</div>
 </template>
 
 <script setup>
@@ -83,7 +96,7 @@ import {
 	provide,
 	ref,
 } from 'vue';
-import { name, version } from '../../package';
+import { version } from '../../package';
 import {
 	ChangeLogSection,
 	CssVariablesSection,
@@ -96,9 +109,12 @@ import {
 	PropsSection,
 	RegisterSection,
 	SlotsSection,
+	UsageSection,
 } from '@/components/Sections/';
+import { TestingExamples } from '@/components/Examples/';
 
 
+const demoTestPage = ref(false);
 const selectedTheme = ref('neon-bunny');
 const themes = [
 	{
@@ -149,34 +165,6 @@ const themes = [
 
 provide('selectedTheme', selectedTheme);
 
-provide('styleData', {
-	h2ColClass: 'col-12 mb-4',
-});
-
-const packageName = name;
-const repoBaseUrl = `https://github.com/webdevnerdstuff/${packageName}`;
-
-const links = {
-	changeLog: `${repoBaseUrl}/blob/main/CHANGELOG.md`,
-	docs: `https://webdevnerdstuff.github.io/${packageName}/`,
-	github: repoBaseUrl,
-	license: `${repoBaseUrl}/blob/main/LICENSE.md`,
-	neonBunnyTheme: 'https://marketplace.visualstudio.com/items?itemName=WebDevNerdStuff.neon-bunny',
-	npm: `https://www.npmjs.com/package/${packageName}`,
-	prism: 'https://prismjs.com/',
-	vueJs: 'https://vuejs.org/',
-};
-
-provide('links', links);
-
-
-const codeBlockOptions = ref({
-	browserWindow: false,
-	preHeight: '30em',
-});
-
-provide('codeBlockOptions', codeBlockOptions);
-
 function changeTheme(val) {
 	selectedTheme.value = val;
 }
@@ -185,7 +173,7 @@ function changeTheme(val) {
 
 <style lang="scss">
 :root {
-	--v-cb-label-font: 'Encode Sans Expanded', sans-serif;
+	--v-cb-label-font: 'Encode Sans Expanded', sans-serif !important;
 }
 
 html {
@@ -214,8 +202,21 @@ h2 {
 	padding-bottom: 0.5rem;
 }
 
+h5 {
+	font-weight: 600;
+}
+
 .vue-logo {
 	width: 80px;
+}
+
+.table-responsive {
+	box-shadow: 0 3px 1px -2px hsla(0, 0%, 0%, 0.2),
+		0 2px 2px 0 hsla(0, 0%, 0%, 0.14), 0 1px 5px 0 hsla(0, 0%, 0%, 0.12);
+
+	.table {
+		margin-bottom: 0;
+	}
 }
 
 .boolean-style {

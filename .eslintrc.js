@@ -21,6 +21,8 @@ module.exports = {
 	],
 	globals: {
 		Entry: true,
+		loadLanguages: true,
+		Prism: true,
 	},
 	parserOptions: {
 		parser: "@typescript-eslint/parser",
