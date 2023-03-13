@@ -1,13 +1,11 @@
 <template>
-	<div
-		class="v-code-block--container v-code-block-mb-5"
-		:class="codeBlockClasses"
-	>
-		<div class="v-code-block--container-header" :style="headerStyles">
-			<div
-				class="v-code-block--container-label v-code-block-pb-1"
-				:class="labelClasses"
-			>
+	<div class="v-code-block v-code-block--mb-5" :class="codeBlockClasses">
+		<div
+			v-if="label || tabs || slots.label || slots.tabs"
+			class="v-code-block--header"
+			:style="headerStyles"
+		>
+			<div class="v-code-block--label v-code-block--pb-1" :class="labelClasses">
 				<template v-if="slots.label">
 					<slot name="label" />
 				</template>
@@ -16,44 +14,62 @@
 				</template>
 			</div>
 
-			<div class="v-code-block--container-tabs" :style="tabGroupStyle">
+			<div class="v-code-block--tabs" :style="tabGroupStyle">
 				<template v-if="slots.tabs">
 					<slot name="tabs" />
 				</template>
 				<template v-else>
 					<!-- ======================================== Copy Code Tab/Button -->
 					<div
-						v-if="showCopyTab && showTabs"
-						class="v-code-block--container-tab"
+						v-if="copyTab && tabs"
+						class="v-code-block--tab"
 						:class="tabClasses"
 						@click="copyCode"
 					>
-						<div class="v-code-block--container-button-copy">
-							<fa-icon
-								v-if="showCopyIcons"
-								class="fa-fw v-code-block-me-1 v-code-block--container-button-copy-icon"
+						<div class="v-code-block--button-copy">
+							<StatusIcons
+								v-if="copyIcons"
+								class="v-code-block--button-copy-icon"
 								:class="iconClasses"
-								:icon="buttonIconValue"
+								:icon="copyStatus"
 							/>
-							{{ buttonTextValue }}
+							{{ copyTextValue }}
 						</div>
 					</div>
 
 					<!-- ======================================== Run Tab/Button -->
 					<div
-						v-if="showRunTab && showTabs && !isMobile"
-						class="v-code-block--container-tab"
+						v-if="runTab && tabs && !isMobile"
+						class="v-code-block--tab"
 						:class="tabClasses"
 						@click="runCode"
 					>
-						<div class="v-code-block--container-button-run">Run</div>
+						<div class="v-code-block--button-run">Run</div>
 					</div>
 				</template>
 			</div>
 		</div>
-		<div class="v-code-block--container-code">
+		<div class="v-code-block--code">
+			<div
+				class="v-code-block--code-copy-button"
+				:class="copyButtonClasses"
+				@click="copyCode"
+			>
+				<template v-if="slots.copyButton">
+					<slot name="copyButton" />
+				</template>
+				<template v-else>
+					<StatusIcons
+						v-if="copyButton"
+						class="v-code-block--button-copy-icon"
+						:class="iconClasses"
+						:icon="copyStatus"
+					/>
+				</template>
+			</div>
+
 			<pre :class="`language-${props.lang}`" :style="preTagStyles">
-<code :class="`language-${props.lang} ${browserWindow ? 'v-code-block--container-code-browser' : ''}`" :style="codeTagStyles" v-html="renderCode"></code>
+<code :class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''}`" :style="codeTagStyles" v-html="renderCode"></code>
 			</pre>
 		</div>
 	</div>
@@ -70,9 +86,11 @@ import {
 	watch,
 } from 'vue';
 import Prism from 'prismjs';
-// import PrismComponents from 'prismjs/components';
 import UAParser from 'ua-parser-js';
 
+import StatusIcons from '@/plugin/StatusIcons.vue';
+import neonBunnyCarrotTheme from '@/plugin/theme/neon-bunny-carrot.css?inline';
+import neonBunnyTheme from '@/plugin/theme/neon-bunny.css?inline';
 import prismTheme from 'prismjs/themes/prism.css?inline';
 import prismThemeCoy from 'prismjs/themes/prism-coy.css?inline';
 import prismThemeDark from 'prismjs/themes/prism-dark.css?inline';
@@ -81,15 +99,13 @@ import prismThemeOkaidia from 'prismjs/themes/prism-okaidia.css?inline';
 import prismThemeSolarizedlight from 'prismjs/themes/prism-solarizedlight.css?inline';
 import prismThemeTomorrow from 'prismjs/themes/prism-tomorrow.css?inline';
 import prismThemeTwilight from 'prismjs/themes/prism-twilight.css?inline';
-import neonBunnyTheme from '@/plugin/theme/neon-bunny.css?inline';
-import neonBunnyCarrotTheme from '@/plugin/theme/neon-bunny-carrot.css?inline';
 
 // ! Remove this later as it should be loaded by the user ! //
 import prismThemeNightOwl from 'prism-themes/themes/prism-night-owl.css?inline';
 
 
 // -------------------------------------------------- Emits & Slots & Injects //
-const emit = defineEmits(['copied', 'run']);
+const emit = defineEmits(['run', 'update:copy-status']);
 const slots = useSlots();
 const codeBlockGlobalOptions = inject('codeBlockGlobalOptions');
 
@@ -110,20 +126,35 @@ const props = defineProps({
 		required: false,
 		default: '0.5rem',
 	},
-	copyIcon: {
+	copyButton: {
+		type: Boolean,
+		required: false,
+		default: true,
+	},
+	copyIcons: {
+		type: Boolean,
+		required: false,
+		default: true,
+	},
+	copyTab: {
+		type: Boolean,
+		required: false,
+		default: true,
+	},
+	copyFailedText: {
 		type: String,
 		required: false,
-		default: 'fa-solid fa-copy',
+		default: 'Copy failed!',
 	},
 	copyText: {
 		type: String,
 		required: false,
 		default: 'Copy Code',
 	},
-	failedIcon: {
+	copySuccessText: {
 		type: String,
 		required: false,
-		default: 'fa-solid fa-xmark',
+		default: 'Copied!',
 	},
 	floatingTabs: {
 		type: Boolean,
@@ -138,7 +169,7 @@ const props = defineProps({
 	indent: {
 		type: Number,
 		required: false,
-		default: 4,
+		default: 2,
 	},
 	label: {
 		type: String,
@@ -155,51 +186,39 @@ const props = defineProps({
 		required: false,
 		default: 'auto',
 	},
-	showCopyIcons: {
-		type: Boolean,
-		required: false,
-		default: true,
-	},
-	showRunTab: {
+	persistentCopyButton: {
 		type: Boolean,
 		required: false,
 		default: false,
 	},
-	showCopyTab: {
+	runTab: {
 		type: Boolean,
 		required: false,
-		default: true,
-	},
-	showTabs: {
-		type: Boolean,
-		required: false,
-		default: true,
-	},
-	successIcon: {
-		type: String,
-		required: false,
-		default: 'fa-solid fa-check',
+		default: false,
 	},
 	tabGap: {
 		type: String,
 		required: false,
 		default: '0.25rem',
 	},
-	theme: {
-		type: String, Boolean,
+	tabs: {
+		type: Boolean,
 		required: false,
-		default: '',
+		default: false,
+	},
+	theme: {
+		type: [String, Boolean],
+		required: false,
+		default: 'neon-bunny',
 	}
 });
 
 
 // -------------------------------------------------- Data //
-const buttonIconValue: string = ref('');
-const buttonTextValue: string = ref('');
+const copyTextValue: string = ref('');
 const convertedCode: string = ref('');
 const copying: boolean = ref(false);
 const copyStatus: string = ref('copy');
-const iconClass: string = ref('fa-solid fa-copy');
 const isMobile: boolean = ref(false);
 const stylesheetId = 'v-code-block--theme';
 const useTheme = ref('');
@@ -207,7 +226,7 @@ const useTheme = ref('');
 
 // -------------------------------------------------- Computed //
 const codeBlockClasses = computed<string>(() => {
-	return isMobile.value ? 'v-code-block--container-mobile' : '';
+	return isMobile.value ? 'v-code-block--mobile' : '';
 });
 
 const codeTagStyles = computed<object>(() => {
@@ -215,10 +234,19 @@ const codeTagStyles = computed<object>(() => {
 	return { width };
 });
 
+const copyButtonClasses = computed<string>(() => {
+	return {
+		'v-code-block--code-copy-button': true,
+		'v-code-block--code-copy-button-mobile': isMobile.value,
+		[`v-code-block--code-copy-button-persist`]: props.persistentCopyButton,
+		[`v-code-block--code-copy-button-status-${copyStatus.value}`]: true,
+	};
+});
+
 const headerStyles = computed<object>(() => {
 	return {
 		bottom: props.floatingTabs ? '1px' : '0',
-		gap: props.tabGap,
+		gap: convertToUnit(props.tabGap),
 	};
 });
 
@@ -226,22 +254,23 @@ const iconClasses = computed<object>(() => {
 	const theme = useTheme.value === '' || useTheme.value === 'prism' ? 'default' : useTheme.value;
 
 	const classes = {
-		[`v-code-block--container-tab-${theme}-icon`]: true,
-		[`v-code-block--container-button-copy-icon-status-${copyStatus.value}`]: true,
-		[`v-code-block--container-tab-${theme}-icon-status-${copyStatus.value}`]: true,
+		'v-code-block--me-1': true,
+		[`v-code-block--tab-${theme}-icon`]: true,
+		[`v-code-block--button-copy-icon-status-${copyStatus.value}`]: true,
+		[`v-code-block--tab-${theme}-icon-status-${copyStatus.value}`]: true,
 	};
 	return classes;
 });
 
 const labelClasses = computed<string>(() => {
-	return isMobile.value ? 'v-code-block--container-label-mobile' : '';
+	return isMobile.value ? 'v-code-block--label-mobile' : '';
 });
 
 const preTagStyles = computed<object>(() => {
 	const radius = props.codeBlockRadius;
 	let borderRadius = `${radius} 0 ${radius} ${radius}`;
 
-	if (!props.showTabs || (!props.showCopyTab && !props.showRunTab)) {
+	if (!props.tabs || (!props.copyTab && !props.runTab)) {
 		borderRadius = radius;
 	}
 
@@ -268,14 +297,14 @@ const renderCode = computed<unknown>(() => {
 const tabClasses = computed<object>(() => {
 	const theme = useTheme.value === '' || useTheme.value === 'prism' ? 'default' : useTheme.value;
 	const classes = {
-		[`v-code-block--container-tab-${theme}`]: true,
+		[`v-code-block--tab-${theme}`]: true,
 	};
 	return classes;
 });
 
 const tabGroupStyle = computed<object>(() => {
 	return {
-		gap: props.tabGap,
+		gap: convertToUnit(props.tabGap),
 	};
 });
 
@@ -288,17 +317,14 @@ watch(props, () => {
 	}
 
 	if (props.copyText) {
-		buttonTextValue.value = props.copyText;
+		copyTextValue.value = props.copyText;
 	}
 });
-
-console.log({ Prism });
 
 
 // -------------------------------------------------- Mounts //
 onBeforeMount(() => {
-	buttonTextValue.value = props.copyText;
-	buttonIconValue.value = props.copyIcon;
+	copyTextValue.value = props.copyText;
 });
 
 onMounted(() => {
@@ -310,9 +336,9 @@ onMounted(() => {
 
 // -------------------------------------------------- Methods //
 function convertCode(): void {
-	if (props.lang === 'json') {
 
-		convertedCode.value = JSON.stringify(props.code, null, props.indent);
+	if (props.lang === 'json') {
+		convertedCode.value = JSON.stringify(JSON.parse(props.code), null, props.indent);
 		return;
 	}
 
@@ -339,23 +365,20 @@ function copyCode(): void {
 	copying.value = true;
 
 	navigator.clipboard.writeText(convertedCode.value).then(() => {
-		buttonIconValue.value = props.successIcon;
-		buttonTextValue.value = 'Copied!';
-		iconClass.value = 'fa-solid fa-check';
+		copyTextValue.value = props.copySuccessText;
 		copyStatus.value = 'success';
+		emit('update:copy-status', copyStatus.value);
 	}, (err) => {
-		buttonIconValue.value = props.failedIcon;
-		buttonTextValue.value = 'Copy failed!';
-		iconClass.value = 'fa-solid fa-xmark';
+		copyTextValue.value = props.copyFailedText;
 		copyStatus.value = 'failed';
+		emit('update:copy-status', copyStatus.value);
 		console.error('Copy to clipboard failed: ', err);
 	});
 
 	setTimeout(() => {
-		buttonIconValue.value = props.copyIcon;
-		buttonTextValue.value = props.copyText;
+		copyTextValue.value = props.copyText;
 		copyStatus.value = 'copy';
-		iconClass.value = 'fa-solid fa-copy';
+		emit('update:copy-status', copyStatus.value);
 		copying.value = false;
 	}, 3000);
 }
@@ -435,8 +458,10 @@ function runCode(): void {
 
 
 <style lang="scss">
+@import './styles/utilities';
+
 .v-code-block {
-	&--container {
+	&- {
 		&--label {
 			&-mobile {
 				input,
@@ -451,5 +476,6 @@ function runCode(): void {
 </style>
 
 <style lang="scss" scoped>
-@import '../style';
+@import './styles/main';
 </style>
+
