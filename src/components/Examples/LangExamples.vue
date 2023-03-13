@@ -7,69 +7,69 @@
 		</div>
 
 		<!-- ======================= Javascript Example -->
-		<div id="array-simple-example" class="row mb-4">
+		<div id="lang-js-examples" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
 					:code="jsExample2"
 					label="JavaScript"
 					lang="javascript"
 					:max-height="codeBlockOptions.preHeight"
-					:show-tabs="false"
+					:tabs="false"
 					:theme="selectedTheme"
 				/>
 			</div>
 		</div>
 
 		<!-- ======================= Vue Example -->
-		<div id="array-simple-example" class="row mb-4">
+		<div id="lang-vue-examples" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
 					:code="vueExample"
 					label="Vue (using lang = html)"
 					lang="html"
 					:max-height="codeBlockOptions.preHeight"
-					:show-tabs="false"
+					:tabs="false"
 					:theme="selectedTheme"
 				/>
 			</div>
 		</div>
 
 		<!-- ======================= CSS Example -->
-		<div id="css-example" class="row mb-4">
+		<div id="lang-css-examples" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
 					:code="cssExample"
 					label="CSS"
 					lang="css"
 					:max-height="codeBlockOptions.preHeight"
-					:show-tabs="false"
+					:tabs="false"
 					:theme="selectedTheme"
 				></CodeBlock>
 			</div>
 		</div>
 
 		<!-- ======================= HTML Example -->
-		<div id="html-example" class="row mb-4">
+		<div id="lang-html-examples" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
 					:code="htmlExample"
 					label="HTML"
 					lang="html"
 					:max-height="codeBlockOptions.preHeight"
-					:show-tabs="false"
+					:tabs="false"
 					:theme="selectedTheme"
 				></CodeBlock>
 			</div>
 		</div>
 
 		<!-- ======================= SVG Example -->
-		<div id="svg-example" class="row mb-4">
+		<div id="lang-svg-examples" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
 					:code="svgExample"
 					label="SVG"
 					lang="svg"
-					:show-tabs="false"
+					:tabs="false"
 					:theme="selectedTheme"
 				></CodeBlock>
 			</div>

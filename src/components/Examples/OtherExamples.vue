@@ -10,10 +10,9 @@
 		<div id="TBD-example" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
-					:code="exampleCode"
+					:code="copyBlockRadiusExample"
 					:code-block-radius="codeBlockRadius"
-					lang="javascript"
-					:show-tabs="false"
+					lang="html"
 					:theme="selectedTheme"
 				>
 					<template #label>
@@ -28,9 +27,11 @@
 		<div id="TBD-example" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
-					:code="exampleCode"
+					:code="copyTextExample"
+					copy-tab
 					:copyText="copyText"
-					lang="javascript"
+					lang="html"
+					tabs
 					:theme="selectedTheme"
 				>
 					<template #label>
@@ -45,10 +46,10 @@
 		<div id="TBD-example" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
-					:code="exampleCode"
+					:code="floatingTabsExample"
 					:floating-tabs="floatingTabs"
-					lang="javascript"
-					:show-tabs="true"
+					lang="html"
+					tabs
 					:theme="selectedTheme"
 				>
 					<template #label>
@@ -74,10 +75,10 @@
 		<div id="height-example" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
-					:code="exampleCode"
+					:code="heightExample"
 					:height="height"
-					lang="javascript"
-					:show-tabs="false"
+					lang="html"
+					:tabs="false"
 					:theme="selectedTheme"
 				>
 					<template #label>
@@ -96,7 +97,7 @@
 					:code="exampleJson"
 					:indent="indent"
 					lang="json"
-					:show-tabs="false"
+					:tabs="false"
 					:theme="selectedTheme"
 				>
 					<template #label>
@@ -111,10 +112,11 @@
 		<div id="height-example" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
-					:code="exampleCode"
-					lang="javascript"
-					:show-run-tab="true"
+					:code="tabGapExample"
+					lang="html"
+					:run-tab="true"
 					:tab-gap="tabGap"
+					tabs
 					:theme="selectedTheme"
 				>
 					<template #label>
@@ -149,11 +151,75 @@ const exampleCode = `const foo = 'bar';`;
 // `;
 
 const codeBlockRadius = ref('0 1em');
-const floatingTabs = ref(false);
+const floatingTabs = ref(true);
 const copyText = ref('Copy Text');
 const height = ref('200');
 // const indent = ref('0');
 const tabGap = ref('0.25rem');
+
+const copyBlockRadiusExample = `<CodeBlock
+  :code="myCode"
+  :code-block-radius="codeBlockRadius"
+  lang="html"
+>
+  <template #label>
+    codeBlockRadius:
+    <input v-model="codeBlockRadius" type="text" />
+  </template>
+</CodeBlock>`;
+const copyTextExample = `<CodeBlock
+  :code="myCode"
+  copy-tab
+  :copyText="copyText"
+  lang="html"
+  tabs
+>
+  <template #label>
+    copyText:
+    <input v-model="copyText" type="text" />
+  </template>
+</CodeBlock>`;
+const floatingTabsExample = `<CodeBlock
+  :code="exampleCode"
+  :floating-tabs="floatingTabs"
+  lang="html"
+  tabs
+>
+  <template #label>
+    <input
+      v-model="floatingTabs"
+      checked
+      type="checkbox"
+    />
+    <label class="form-check-label">
+      floatingTabs =
+      <span class="boolean-style">{{ floatingTabs }}</span>
+    </label>
+  </template>
+</CodeBlock>`;
+const heightExample = `<CodeBlock
+  :code="myCode"
+  :height="height"
+  lang="html"
+  :tabs="false"
+>
+  <template #label>
+    height:
+    <input v-model="height" type="number" />
+  </template>
+</CodeBlock>`;
+const tabGapExample = `<CodeBlock
+  :code="myCode"
+  lang="html"
+  :run-tab="true"
+  :tab-gap="tabGap"
+  tabs
+>
+  <template #label>
+    tabGap:
+    <input v-model="tabGap" type="text" />
+  </template>
+</CodeBlock>`;
 
 </script>
 

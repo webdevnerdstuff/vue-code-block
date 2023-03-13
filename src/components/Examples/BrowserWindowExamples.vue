@@ -12,8 +12,8 @@
 				<CodeBlock
 					:browser-window="true"
 					:code="browserWindowExample"
-					lang="javascript"
-					:show-tabs="false"
+					lang="html"
+					:tabs="false"
 					:theme="selectedTheme"
 				/>
 			</div>
@@ -28,6 +28,11 @@ import { inject } from 'vue';
 const selectedTheme = inject('selectedTheme');
 
 
-const browserWindowExample = `const foo = 'bar';`;
+const browserWindowExample = `<CodeBlock
+  :browser-window="true"
+  :code="myCode"
+  lang="javascript"
+  :tabs="false"
+/>`;
 
 </script>
