@@ -8,6 +8,8 @@
 			<a :href="links.prism" target="_blank">Prism</a>
 			<br />
 			<a :href="links.vueJs" target="_blank">Vue 3</a>
+			<br />
+			<a :href="links.uaParser" target="_blank">UAParser.js</a>
 		</div>
 	</div>
 </template>

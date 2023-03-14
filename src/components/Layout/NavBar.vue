@@ -59,14 +59,14 @@
 								<a class="dropdown-item" href="#ul-slots">Slots</a>
 							</li>
 							<li>
+								<a class="dropdown-item" href="#ul-examples">Examples</a>
+							</li>
+							<li>
 								<a class="dropdown-item" href="#ul-css-vars">CSS Variables</a>
 							</li>
 
-							<li>
-								<a class="dropdown-item" href="#ul-examples">Examples</a>
-							</li>
-
 							<li><hr class="dropdown-divider" /></li>
+
 							<li><h6 class="dropdown-header">Info</h6></li>
 							<li>
 								<a class="dropdown-item" href="#ul-dependencies">
@@ -100,6 +100,14 @@
 						>
 							<li>
 								<a class="dropdown-item" href="#lang-examples">Languages</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#add-lang-examples">
+									Additional Languages
+								</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#plugin-examples">Plugins</a>
 							</li>
 							<li>
 								<a class="dropdown-item" href="#tab-examples">Tabs</a>

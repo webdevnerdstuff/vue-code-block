@@ -44,7 +44,7 @@
 						:class="tabClasses"
 						@click="runCode"
 					>
-						<div class="v-code-block--button-run">Run</div>
+						<div class="v-code-block--button-run">{{ runTextValue }}</div>
 					</div>
 				</template>
 			</div>
@@ -196,6 +196,11 @@ const props = defineProps({
 		required: false,
 		default: false,
 	},
+	runText: {
+		type: String,
+		required: false,
+		default: 'Run',
+	},
 	tabGap: {
 		type: String,
 		required: false,
@@ -220,6 +225,7 @@ const convertedCode: string = ref('');
 const copying: boolean = ref(false);
 const copyStatus: string = ref('copy');
 const isMobile: boolean = ref(false);
+const runTextValue: string = ref('');
 const stylesheetId = 'v-code-block--theme';
 const useTheme = ref('');
 
@@ -319,12 +325,17 @@ watch(props, () => {
 	if (props.copyText) {
 		copyTextValue.value = props.copyText;
 	}
+
+	if (props.runText) {
+		runTextValue.value = props.runText;
+	}
 });
 
 
 // -------------------------------------------------- Mounts //
 onBeforeMount(() => {
 	copyTextValue.value = props.copyText;
+	runTextValue.value = props.runText;
 });
 
 onMounted(() => {

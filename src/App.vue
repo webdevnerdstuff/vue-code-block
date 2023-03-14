@@ -29,6 +29,7 @@ const links = {
 	neonBunnyTheme: 'https://marketplace.visualstudio.com/items?itemName=WebDevNerdStuff.neon-bunny',
 	npm: `https://www.npmjs.com/package/${packageName}`,
 	prism: 'https://prismjs.com/',
+	uaParser: 'https://www.npmjs.com/package/ua-parser-js',
 	vueJs: 'https://vuejs.org/',
 };
 

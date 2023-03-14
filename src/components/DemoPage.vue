@@ -13,22 +13,29 @@
 				<span class="badge bg-secondary rounded-pill">{{ version }}</span>
 			</div>
 		</div>
-
-		<div class="row">
-			<div class="col-12 mb-4">
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam fuga
-					officiis libero numquam eveniet ut quasi sint non possimus quaerat
-					fugit ad, quidem natus quia iste esse provident sequi minima?
-				</p>
-			</div>
-		</div>
 	</div>
 
 	<div class="container mb-5">
 		<div class="row">
+			<div class="col-12">
+				<p>
+					The Vue 3 CodeBlock component leverages the power of
+					<a :href="links.prism" target="_blank">PrismJS</a> to provide syntax
+					highlighting for code blocks within your application. The component
+					takes a prop, which is the code to be highlighted, and uses PrismJS to
+					render the code with syntax highlighting. The component supports a
+					variety of programming languages and can be customized with different
+					themes to match your application's design. With this component, your
+					users can display their code snippets with ease and clarity, making it
+					easier to share and collaborate on code within your application.
+				</p>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-12 col-md-3">
-				<label class="form-label" for="theme-selection-select">Theme:</label>
+				<label class="form-label" for="theme-selection-select"
+					>Switch Theme:</label
+				>
 
 				<select
 					id="theme-selection-select"
@@ -68,11 +75,11 @@
 		<!-- ============================================== Slots -->
 		<SlotsSection id="ul-slots" />
 
-		<!-- ============================================== CSS Variables -->
-		<CssVariablesSection id="ul-css-vars" />
-
 		<!-- ============================================== Examples -->
 		<ExamplesSection id="ul-examples" />
+
+		<!-- ============================================== CSS Variables -->
+		<CssVariablesSection id="ul-css-vars" />
 
 		<!-- ============================================== Dependencies -->
 		<DependenciesSection id="ul-dependencies" />
@@ -92,7 +99,10 @@
 </template>
 
 <script setup>
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
+	inject,
 	provide,
 	ref,
 } from 'vue';
@@ -112,8 +122,16 @@ import {
 	UsageSection,
 } from '@/components/Sections/';
 import { TestingExamples } from '@/components/Examples/';
+import Prism from 'prismjs';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-markup-templating';
+import 'prismjs/components/prism-php';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
 
+const links = inject('links');
 const demoTestPage = ref(false);
 const selectedTheme = ref('neon-bunny');
 const themes = [

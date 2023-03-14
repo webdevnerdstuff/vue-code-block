@@ -15,3 +15,5 @@ export interface OptionsSettings {
 	tabGap?: string | number;
 	theme?: string;
 }
+
+declare let Prism;

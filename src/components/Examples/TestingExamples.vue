@@ -1,3 +1,5 @@
+<!-- eslint-disable @typescript-eslint/no-unused-vars -->
+
 <template>
 	<div>
 		<div class="row mb-2">
@@ -25,11 +27,10 @@
 </template>
 
 <script setup>
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { inject } from 'vue';
-import Prism from 'prismjs';
-import 'prismjs/components/prism-json';
-import 'prismjs/components/prism-markup-templating';
-import 'prismjs/components/prism-php';
 
 const selectedTheme = inject('selectedTheme');
 

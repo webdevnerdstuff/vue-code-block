@@ -84,17 +84,6 @@ import neonBunnyTheme from '@/plugin/theme/neon-bunny.css?inline';
 const codeBlockOptions = inject('codeBlockOptions');
 const selectedTheme = inject('selectedTheme');
 
-const jsExample = `const foo = 'bar';
-
-function bar() {
-	return foo;
-}
-
-const fooObj = {
-	foo,
-};
-`;
-
 const vueExample = `<template>
   <div>
     <h1>{{ greeting }}<\/h1>
@@ -150,10 +139,13 @@ const htmlExample = `<!DOCTYPE html>
 	<title>Vue 3 CodeBlock<\/title>
 
 	<meta name="description"
-		content="TBD" />
+		content="Vue 3 CodeBlock - Highlight your code with ease using this
+		syntax highlighting component powered by PrismJS." />
 	<meta name="keywords"
-		content="vue3-code-block, code, pre, highlight, syntax, vue, vue3, component, javascript, neon bunny, webdevnerdstuff, wdns" />
-	<meta name="author" content="WebDevNerdStuff & Bunnies... lots and lots of bunnies!" />
+		content="vue3-code-block, code, pre, highlight, syntax, vue, vue3,
+		component, javascript, neon bunny, webdevnerdstuff, wdns" />
+	<meta name="author" content="WebDevNerdStuff & Bunnies... lots and lots
+	of bunnies!" />
 	<meta name="robots" content="index, follow" />
 	<meta name="googlebot" content="index, follow" />
 	<meta name="theme-color" content="#f01d7f" />
@@ -162,7 +154,8 @@ const htmlExample = `<!DOCTYPE html>
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="Vue 3 CodeBlock">
 	<meta property="og:description"
-		content="TBD">
+		content="Vue 3 CodeBlock - Highlight your code with ease using this
+		syntax highlighting component powered by PrismJS.">
 	<meta property="og:url" content="https://webdevnerdstuff.github.io/vue3-code-block/">
 	<meta property="og:image" content="https://webdevnerdstuff.github.io/vue3-code-block/vue3-code-block-social.jpg">
 	<meta property="og:image:width" content="1200" />

@@ -9,6 +9,12 @@
 		<!-- ======================= Lang -->
 		<LangExamples id="lang-examples" />
 
+		<!-- ======================= Additional Lang -->
+		<AdditionalLangExamples id="add-lang-examples" />
+
+		<!-- ======================= Plugins -->
+		<PluginExamples id="plugin-examples" />
+
 		<!-- ======================= Tabs -->
 		<TabExamples id="tab-examples" />
 
@@ -25,10 +31,12 @@
 
 <script setup>
 import {
+	AdditionalLangExamples,
 	BrowserWindowExamples,
 	ButtonExamples,
 	LangExamples,
 	OtherExamples,
+	PluginExamples,
 	TabExamples,
 } from '@/components/Examples';
 </script>
