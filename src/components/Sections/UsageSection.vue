@@ -72,8 +72,4 @@ function runMyCode() {
 
 	alert(foo);
 }
-
-
 </script>
-
-<style lang="scss"></style>

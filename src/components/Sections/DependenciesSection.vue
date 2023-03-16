@@ -20,6 +20,3 @@ import { inject } from 'vue';
 const styleData = inject('styleData');
 const links = inject('links');
 </script>
-
-<style lang="scss"></style>
-

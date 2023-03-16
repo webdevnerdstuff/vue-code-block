@@ -32,5 +32,3 @@ createApp()
   .use(CodeBlock)
   .mount('#app');`;
 </script>
-
-<style lang="scss"></style>

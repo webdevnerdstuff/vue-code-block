@@ -259,6 +259,3 @@ function runTextCodeExampleFunction() {
 	alert('Run Text Code Example Function');
 }
 </script>
-
-<style lang="scss" scoped>
-</style>
