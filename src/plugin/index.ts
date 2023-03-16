@@ -1,1 +1,1 @@
-export { default as CodeBlock } from '@/plugin/CodeBlock';
+export { default as CodeBlock } from '@/plugin/CodeBlock.vue';
