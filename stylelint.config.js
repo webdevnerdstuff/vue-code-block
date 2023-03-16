@@ -24,6 +24,7 @@ module.exports =
 		// ---------------------------- Possible errors
 		// Color
 		'color-no-invalid-hex': true,
+		'hue-degree-notation': 'number',
 
 		// Font family
 		'font-family-no-duplicate-names': true,

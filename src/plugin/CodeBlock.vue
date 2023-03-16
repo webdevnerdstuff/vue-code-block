@@ -90,8 +90,8 @@ import UAParser from 'ua-parser-js';
 import { Props } from '@/types';
 
 import StatusIcons from '@/plugin/StatusIcons.vue';
-const neonBunnyCarrotTheme = import.meta.glob('./theme/neon-bunny-carrot.css', { eager: true, as: 'raw' });
-const neonBunnyTheme = import.meta.glob('./theme/neon-bunny.css', { eager: true, as: 'raw' });
+const neonBunnyCarrotTheme = import.meta.glob('./themes/neon-bunny-carrot.css', { eager: true, as: 'raw' });
+const neonBunnyTheme = import.meta.glob('./themes/neon-bunny.css', { eager: true, as: 'raw' });
 const prismTheme = import.meta.glob('prismjs/themes/prism.css', { eager: true, as: 'raw' });
 const prismThemeCoy = import.meta.glob('prismjs/themes/prism-coy.css', { eager: true, as: 'raw' });
 const prismThemeDark = import.meta.glob('prismjs/themes/prism-dark.css', { eager: true, as: 'raw' });
@@ -483,5 +483,10 @@ function runCode(): void {
 
 <style lang="scss" scoped>
 @import './styles/main';
+
+.foo {
+	display: block;
+	z-index: 3;
+}
 </style>
 

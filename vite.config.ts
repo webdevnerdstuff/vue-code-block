@@ -21,6 +21,7 @@ export default defineConfig({
 			fix: true,
 			include: [
 				'src/**/*.{css,scss,sass,vue}',
+				'./src/components/**/*.{css,scss,sass,vue}',
 				'./src/plugin/styles/*.{css,scss,sass}'
 			],
 		}),
