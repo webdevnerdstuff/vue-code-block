@@ -89,8 +89,8 @@ import Prism from 'prismjs';
 import UAParser from 'ua-parser-js';
 
 import StatusIcons from '@/plugin/StatusIcons.vue';
-import neonBunnyCarrotTheme from '@/plugin/theme/neon-bunny-carrot.css?inline';
-import neonBunnyTheme from '@/plugin/theme/neon-bunny.css?inline';
+import neonBunnyCarrotTheme from '@/plugin/themes/neon-bunny-carrot.css?inline';
+import neonBunnyTheme from '@/plugin/themes/neon-bunny.css?inline';
 import prismTheme from 'prismjs/themes/prism.css?inline';
 import prismThemeCoy from 'prismjs/themes/prism-coy.css?inline';
 import prismThemeDark from 'prismjs/themes/prism-dark.css?inline';

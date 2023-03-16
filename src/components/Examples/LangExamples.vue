@@ -79,7 +79,7 @@
 
 <script setup>
 import { inject } from 'vue';
-import neonBunnyTheme from '@/plugin/theme/neon-bunny.css?inline';
+import neonBunnyTheme from '@/plugin/themes/neon-bunny.css?inline';
 
 const codeBlockOptions = inject('codeBlockOptions');
 const selectedTheme = inject('selectedTheme');
