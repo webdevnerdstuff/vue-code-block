@@ -87,27 +87,25 @@ import {
 } from 'vue';
 import Prism from 'prismjs';
 import UAParser from 'ua-parser-js';
+import { Props } from '@/types';
 
 import StatusIcons from '@/plugin/StatusIcons.vue';
-import neonBunnyCarrotTheme from '@/plugin/themes/neon-bunny-carrot.css?inline';
-import neonBunnyTheme from '@/plugin/themes/neon-bunny.css?inline';
-import prismTheme from 'prismjs/themes/prism.css?inline';
-import prismThemeCoy from 'prismjs/themes/prism-coy.css?inline';
-import prismThemeDark from 'prismjs/themes/prism-dark.css?inline';
-import prismThemeFunky from 'prismjs/themes/prism-funky.css?inline';
-import prismThemeOkaidia from 'prismjs/themes/prism-okaidia.css?inline';
-import prismThemeSolarizedlight from 'prismjs/themes/prism-solarizedlight.css?inline';
-import prismThemeTomorrow from 'prismjs/themes/prism-tomorrow.css?inline';
-import prismThemeTwilight from 'prismjs/themes/prism-twilight.css?inline';
-
-// ! Remove this later as it should be loaded by the user ! //
-import prismThemeNightOwl from 'prism-themes/themes/prism-night-owl.css?inline';
+const neonBunnyCarrotTheme = import.meta.glob('./theme/neon-bunny-carrot.css', { eager: true, as: 'raw' });
+const neonBunnyTheme = import.meta.glob('./theme/neon-bunny.css', { eager: true, as: 'raw' });
+const prismTheme = import.meta.glob('prismjs/themes/prism.css', { eager: true, as: 'raw' });
+const prismThemeCoy = import.meta.glob('prismjs/themes/prism-coy.css', { eager: true, as: 'raw' });
+const prismThemeDark = import.meta.glob('prismjs/themes/prism-dark.css', { eager: true, as: 'raw' });
+const prismThemeFunky = import.meta.glob('prismjs/themes/prism-funky.css', { eager: true, as: 'raw' });
+const prismThemeOkaidia = import.meta.glob('prismjs/themes/prism-okaidia.css', { eager: true, as: 'raw' });
+const prismThemeSolarizedlight = import.meta.glob('prismjs/themes/prism-solarizedlight.css', { eager: true, as: 'raw' });
+const prismThemeTomorrow = import.meta.glob('prismjs/themes/prism-tomorrow.css', { eager: true, as: 'raw' });
+const prismThemeTwilight = import.meta.glob('prismjs/themes/prism-twilight.css', { eager: true, as: 'raw' });
 
 
 // -------------------------------------------------- Emits & Slots & Injects //
 const emit = defineEmits(['run', 'update:copy-status']);
 const slots = useSlots();
-const codeBlockGlobalOptions = inject('codeBlockGlobalOptions');
+const codeBlockGlobalOptions = inject<Props>('codeBlockGlobalOptions');
 
 
 // -------------------------------------------------- Props //
@@ -220,14 +218,14 @@ const props = defineProps({
 
 
 // -------------------------------------------------- Data //
-const copyTextValue: string = ref('');
-const convertedCode: string = ref('');
-const copying: boolean = ref(false);
-const copyStatus: string = ref('copy');
-const isMobile: boolean = ref(false);
-const runTextValue: string = ref('');
+const copyTextValue = ref<string>('');
+const convertedCode = ref(null);
+const copying = ref<boolean>(false);
+const copyStatus = ref<string>('copy');
+const isMobile = ref<boolean>(false);
+const runTextValue = ref<string>('');
 const stylesheetId = 'v-code-block--theme';
-const useTheme = ref('');
+const useTheme = ref<boolean | string>('');
 
 
 // -------------------------------------------------- Computed //
@@ -240,7 +238,7 @@ const codeTagStyles = computed<object>(() => {
 	return { width };
 });
 
-const copyButtonClasses = computed<string>(() => {
+const copyButtonClasses = computed<object>(() => {
 	return {
 		'v-code-block--code-copy-button': true,
 		'v-code-block--code-copy-button-mobile': isMobile.value,
@@ -292,8 +290,6 @@ const preTagStyles = computed<object>(() => {
 
 const renderCode = computed<unknown>(() => {
 	convertCode();
-	// console.log({ Prism });
-	// console.log({ PrismComponents });
 
 	const html = Prism.highlight(convertedCode.value, Prism.languages[props.lang], props.lang);
 
@@ -347,9 +343,9 @@ onMounted(() => {
 
 // -------------------------------------------------- Methods //
 function convertCode(): void {
-
 	if (props.lang === 'json') {
-		convertedCode.value = JSON.stringify(JSON.parse(props.code), null, props.indent);
+		const propsCode = props.code.toString();
+		convertedCode.value = JSON.stringify(JSON.parse(propsCode), null, props.indent);
 		return;
 	}
 
@@ -395,7 +391,7 @@ function copyCode(): void {
 }
 
 function loadTheme(): void {
-	let selectedTheme = prismTheme;
+	let selectedTheme = null;
 	const loadedThemeStyles = document.getElementById(stylesheetId);
 	const head = document.getElementsByTagName('head')[0];
 	const themeStyles = document.createElement('style');
@@ -432,10 +428,6 @@ function loadTheme(): void {
 		case 'twilight':
 			selectedTheme = prismThemeTwilight;
 			break;
-		// ! Remove this later as it should be loaded by the user ! //
-		case 'night-owl':
-			selectedTheme = prismThemeNightOwl;
-			break;
 		case 'default':
 		case 'prism':
 			selectedTheme = prismTheme;
@@ -444,6 +436,9 @@ function loadTheme(): void {
 			selectedTheme = prismTheme;
 			break;
 	}
+
+	const themeKey = Object.keys(selectedTheme)[0];
+	selectedTheme = selectedTheme[themeKey];
 
 	themeStyles.setAttribute('type', 'text/css');
 	themeStyles.id = stylesheetId;
