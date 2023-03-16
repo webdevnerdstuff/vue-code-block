@@ -1,30 +1,48 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+	<NavBar />
+	<DemoPage />
 </template>
 
+<script setup lang="ts">
+import { ref, provide } from 'vue';
+import { name, } from '../package';
+import DemoPage from '@/components/DemoPage.vue';
+import NavBar from '@/components/Layout/NavBar.vue';
+
+
+provide('styleData', {
+	h2ColClass: 'col-12 mb-4',
+	fieldWidth: {
+		maxWidth: '100%',
+		width: '300px',
+	},
+});
+
+const packageName = name;
+const repoBaseUrl = `https://github.com/webdevnerdstuff/${packageName}`;
+
+const links = {
+	changeLog: `${repoBaseUrl}/blob/main/CHANGELOG.md`,
+	docs: `https://webdevnerdstuff.github.io/${packageName}/`,
+	github: repoBaseUrl,
+	license: `${repoBaseUrl}/blob/main/LICENSE.md`,
+	neonBunnyTheme: 'https://marketplace.visualstudio.com/items?itemName=WebDevNerdStuff.neon-bunny',
+	npm: `https://www.npmjs.com/package/${packageName}`,
+	prism: 'https://prismjs.com/',
+	uaParser: 'https://www.npmjs.com/package/ua-parser-js',
+	vueJs: 'https://vuejs.org/',
+};
+
+provide('links', links);
+
+const codeBlockOptions = ref({
+	browserWindow: false,
+	preHeight: '30em',
+});
+
+provide('codeBlockOptions', codeBlockOptions);
+</script>
+
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
 </style>
