@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Vue" width="256" src="https://github.com/webdevnerdstuff/vue3-code-block/raw/main/public/vue.svg">
+  <img alt="Vue" width="100" src="https://github.com/webdevnerdstuff/vue3-code-block/raw/main/public/vue.svg">
 </p>
 
 <p>
@@ -40,8 +40,8 @@ npm i vue3-code-block
 
 ## Dependencies
  
-[PrismJS](https://prismjs.com/)
-[Vue 3](https://vuejs.org/)
+[PrismJS](https://prismjs.com/)  
+[Vue 3](https://vuejs.org/)  
 [UAParser.js](https://www.npmjs.com/package/ua-parser-js)
 
 
