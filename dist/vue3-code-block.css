@@ -1,9 +1,9 @@
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-neon-bunny__eWYt5 {
-  background-color: hsl(var(--v-cb-tab-neon-bunny-bkg) 1) !important;
+  background-color: hsla(var(--v-cb-tab-neon-bunny-bkg), 1) !important;
   color: hsl(var(--v-cb-tab-neon-bunny-text)) !important;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-neon-bunny__eWYt5:hover {
-  background-color: hsl(var(--v-cb-tab-neon-bunny-bkg) 0.5) !important;
+  background-color: hsla(var(--v-cb-tab-neon-bunny-bkg), 0.5) !important;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-neon-bunny-icon__GIPg1 {
   color: hsl(var(--v-cb-tab-neon-bunny-icon)) !important;
@@ -21,11 +21,11 @@
   color: hsl(var(--v-cb-tab-neon-bunny-text));
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-neon-bunny-carrot__7MQNF {
-  background-color: hsl(var(--v-cb-tab-neon-bunny-carrot-bkg) 1) !important;
+  background-color: hsla(var(--v-cb-tab-neon-bunny-carrot-bkg), 1) !important;
   color: hsl(var(--v-cb-tab-neon-bunny-carrot-text)) !important;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-neon-bunny-carrot__7MQNF:hover {
-  background-color: hsl(var(--v-cb-tab-neon-bunny-carrot-bkg) 0.5) !important;
+  background-color: hsla(var(--v-cb-tab-neon-bunny-carrot-bkg), 0.5) !important;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-neon-bunny-carrot-icon__LyIOt {
   color: hsl(var(--v-cb-tab-neon-bunny-carrot-icon)) !important;
@@ -43,10 +43,10 @@
   color: hsl(var(--v-cb-tab-neon-bunny-carrot-text));
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-default__75jh3 {
-  background-color: hsl(var(--v-cb-tab-prism-default-bkg) 1) !important;
+  background-color: hsla(var(--v-cb-tab-prism-default-bkg), 1) !important;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-default__75jh3:hover {
-  background-color: hsl(var(--v-cb-tab-prism-default-bkg) 0.5) !important;
+  background-color: hsla(var(--v-cb-tab-prism-default-bkg), 0.5) !important;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-default-icon__Kkk1k {
   color: hsl(var(--v-cb-tab-prism-default-icon)) !important;
@@ -64,12 +64,12 @@
   color: hsl(var(--v-cb-tab-prism-default-text));
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-coy__XSIIu {
-  background-color: hsl(var(--v-cb-tab-prism-coy-bkg) 0.1) !important;
+  background-color: hsla(var(--v-cb-tab-prism-coy-bkg), 0.1) !important;
   border-left: 5px solid hsl(var(--v-cb-tab-prism-coy-bkg));
   border-radius: 0;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-coy__XSIIu:hover {
-  background-color: hsl(var(--v-cb-tab-prism-coy-bkg) 0.2) !important;
+  background-color: hsla(var(--v-cb-tab-prism-coy-bkg), 0.2) !important;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-coy-icon__FNdQg {
   color: hsl(var(--v-cb-tab-prism-coy-icon)) !important;
@@ -87,13 +87,13 @@
   color: hsl(var(--v-cb-tab-prism-coy-text));
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-dark__xw5Oq {
-  background-color: hsl(var(--v-cb-tab-prism-dark-bkg) 1) !important;
+  background-color: hsla(var(--v-cb-tab-prism-dark-bkg), 1) !important;
   border-color: hsl(var(--v-cb-tab-prism-dark-border));
   border-style: solid;
   border-width: 0.3em 0.3em 0;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-dark__xw5Oq:hover {
-  background-color: hsl(var(--v-cb-tab-prism-dark-border) 0.5) !important;
+  background-color: hsla(var(--v-cb-tab-prism-dark-border), 0.5) !important;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-dark-icon__qu0u8 {
   color: hsl(var(--v-cb-tab-prism-dark-icon)) !important;
@@ -134,10 +134,10 @@
   color: hsl(var(--v-cb-tab-prism-funky-text));
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-okaidia__bRHfN {
-  background-color: hsl(var(--v-cb-tab-prism-okaidia-bkg) 1) !important;
+  background-color: hsla(var(--v-cb-tab-prism-okaidia-bkg), 1) !important;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-okaidia__bRHfN:hover {
-  background-color: hsl(var(--v-cb-tab-prism-okaidia-bkg) 0.5) !important;
+  background-color: hsla(var(--v-cb-tab-prism-okaidia-bkg), 0.5) !important;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-okaidia-icon__OadLs {
   color: hsl(var(--v-cb-tab-prism-okaidia-icon)) !important;
@@ -155,10 +155,10 @@
   color: hsl(var(--v-cb-tab-prism-okaidia-text));
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-solarizedlight__4nxDB {
-  background-color: hsl(var(--v-cb-tab-prism-solarizedlight-bkg) 1) !important;
+  background-color: hsla(var(--v-cb-tab-prism-solarizedlight-bkg), 1) !important;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-solarizedlight__4nxDB:hover {
-  background-color: hsl(var(--v-cb-tab-prism-solarizedlight-bkg) 0.5) !important;
+  background-color: hsla(var(--v-cb-tab-prism-solarizedlight-bkg), 0.5) !important;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-solarizedlight-icon__B75ew {
   color: hsl(var(--v-cb-tab-prism-solarizedlight-icon)) !important;
@@ -176,10 +176,10 @@
   color: hsl(var(--v-cb-tab-prism-solarizedlight-text));
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-tomorrow__-0qg7 {
-  background-color: hsl(var(--v-cb-tab-prism-tomorrow-bkg) 1) !important;
+  background-color: hsla(var(--v-cb-tab-prism-tomorrow-bkg), 1) !important;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-tomorrow__-0qg7:hover {
-  background-color: hsl(var(--v-cb-tab-prism-tomorrow-bkg) 0.5) !important;
+  background-color: hsla(var(--v-cb-tab-prism-tomorrow-bkg), 0.5) !important;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-tomorrow-icon__-2VcM {
   color: hsl(var(--v-cb-tab-prism-tomorrow-icon)) !important;
@@ -197,13 +197,13 @@
   color: hsl(var(--v-cb-tab-prism-tomorrow-text));
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-twilight__v2hTK {
-  background-color: hsl(var(--v-cb-tab-prism-twilight-bkg) 1) !important;
+  background-color: hsla(var(--v-cb-tab-prism-twilight-bkg), 1) !important;
   border-color: hsl(var(--v-cb-tab-prism-twilight-border));
   border-style: solid;
   border-width: 0.3em 0.3em 0;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-twilight__v2hTK:hover {
-  background-color: hsl(var(--v-cb-tab-prism-twilight-bkg) 0.5) !important;
+  background-color: hsla(var(--v-cb-tab-prism-twilight-bkg), 0.5) !important;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-twilight-icon__iWaKS {
   color: hsl(var(--v-cb-tab-prism-twilight-icon)) !important;
@@ -221,10 +221,10 @@
   color: hsl(var(--v-cb-tab-prism-twilight-text));
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-night-owl__kBJeG {
-  background-color: hsl(var(--v-cb-tab-prism-night-owl) 1) !important;
+  background-color: hsla(var(--v-cb-tab-prism-night-owl), 1) !important;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-night-owl__kBJeG:hover {
-  background-color: hsl(var(--v-cb-tab-prism-night-owl) 0.5) !important;
+  background-color: hsla(var(--v-cb-tab-prism-night-owl), 0.5) !important;
 }
 .StatusIcons-vue-vue-type-style-index-0-lang_v-code-block--tab-night-owl-icon__l-r6P {
   color: hsl(var(--v-cb-tab-prism-night-owl-icon)) !important;
@@ -374,7 +374,6 @@ svg[data-v-7d8ba791] {
 .CodeBlock-vue-vue-type-style-index-1-scoped-5d79b278-lang_v-code-block__R426A {
   display: block;
   max-width: 100%;
-  z-index: 1;
 }
 .CodeBlock-vue-vue-type-style-index-1-scoped-5d79b278-lang_v-code-block--header__Vl0V1 {
   align-items: end;
@@ -390,12 +389,12 @@ svg[data-v-7d8ba791] {
 }
 .CodeBlock-vue-vue-type-style-index-1-scoped-5d79b278-lang_v-code-block--tabs__P9EKx {
   align-items: end;
-  display: flex;
   justify-content: flex-end;
+  display: flex;
 }
 .CodeBlock-vue-vue-type-style-index-1-scoped-5d79b278-lang_v-code-block--tab__80YkS {
   align-items: center;
-  background-color: hsl(var(--v-cb-primary) 0.1);
+  background-color: hsla(var(--v-cb-primary), 0.1);
   border-radius: 5px 5px 0 0;
   cursor: pointer;
   display: flex;
@@ -409,7 +408,7 @@ svg[data-v-7d8ba791] {
   width: fit-content;
 }
 .CodeBlock-vue-vue-type-style-index-1-scoped-5d79b278-lang_v-code-block--tab__80YkS:hover {
-  background-color: hsl(var(--v-cb-primary) 0.2);
+  background-color: hsla(var(--v-cb-primary), 0.2);
 }
 .CodeBlock-vue-vue-type-style-index-1-scoped-5d79b278-lang_v-code-block--code__qsRxQ {
   position: relative;
