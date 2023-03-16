@@ -21,7 +21,7 @@
 							class="nav-link active"
 							href="/vue3-code-block/"
 						>
-							Home
+							<fa-icon icon="fa-solid fa-house" />
 						</a>
 					</li>
 					<li class="nav-item dropdown">
@@ -133,14 +133,14 @@
 				<div class="d-flex">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<a class="nav-link" :href="links.github" target="_blank"
-								>GitHub</a
-							>
+							<a class="nav-link" :href="links.github" target="_blank">
+								<fa-icon icon="fa-brands fa-github" /> GitHub
+							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" :href="links.npm" target="_blank"
-								>NPM Package</a
-							>
+							<a class="nav-link" :href="links.npm" target="_blank">
+								<fa-icon icon="fa-brands fa-npm" /> Package
+							</a>
 						</li>
 					</ul>
 				</div>
@@ -154,3 +154,9 @@ import { inject } from 'vue';
 
 const links = inject('links');
 </script>
+
+<style lang="scss">
+.navbar {
+	box-shadow: 2px 0 5px #fff;
+}
+</style>

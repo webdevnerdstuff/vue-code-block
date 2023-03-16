@@ -43,16 +43,3 @@ const componentEvents = {
 	},
 };
 </script>
-
-<style lang="scss" scoped>
-.prop {
-	&-default {
-		color: #002eb9 !important;
-	}
-
-	&-type {
-		color: #900090 !important;
-		font-weight: bold !important;
-	}
-}
-</style>

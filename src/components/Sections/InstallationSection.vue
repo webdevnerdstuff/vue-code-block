@@ -36,6 +36,3 @@ const selectedTheme = inject('selectedTheme');
 const pnpmCode = 'pnpm add vue3-code-block';
 const npmCode = 'npm i vue3-code-block';
 </script>
-
-<style lang="scss"></style>
-

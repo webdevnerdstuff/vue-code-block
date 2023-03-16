@@ -1,6 +1,7 @@
 <template>
 	<NavBar />
 	<DemoPage />
+	<FooterBar />
 </template>
 
 <script setup lang="ts">
@@ -8,6 +9,7 @@ import { ref, provide } from 'vue';
 import { name, } from '../package';
 import DemoPage from '@/components/DemoPage.vue';
 import NavBar from '@/components/Layout/NavBar.vue';
+import FooterBar from '@/components/Layout/FooterBar.vue';
 
 
 provide('styleData', {

@@ -79,6 +79,7 @@
 			<div class="col-12">
 				<CodeBlock
 					:code="phpExample"
+					height="500px"
 					:indent="2"
 					label="PHP"
 					lang="php"
@@ -165,14 +166,112 @@ const phpUsageExample = `<template>
   import 'prismjs/components/prism-php';
 <\/script>`;
 const phpExample = `<?php
-class Greeting {
-  public function sayHello() {
-    echo "Hello, world!";
-  }
-}
 
-$greeting = new Greeting();
-$greeting->sayHello();
+namespace App\\Http\\Controllers;
+
+use App\\Models\\User;
+use Inertia\\Inertia;
+use Illuminate\\Http\\JsonResponse;
+use App\\Http\Controllers\\Controller;
+use App\\Http\Requests\\DestroyUserRequest;
+use App\\Http\Requests\\StoreUserRequest;
+use App\\Http\Requests\\UpdateUserRequest;
+use App\\Http\Resources\\UserResource;
+
+class UserController extends Controller
+{
+	/**
+	 * Users
+	 *
+	 * @return \\Inertia\\Response
+	 */
+	public function index()
+	{
+		$users = User::get();
+
+		return Inertia::render('Users/Index', [
+			'currentPage'	=> 'Site Options',
+			'users'			=> $users,
+		]);
+	}
+
+
+	/**
+	 * Store User.
+	 *
+	 */
+	public function store(StoreUserRequest $request): JsonResponse
+	{
+		$validated = $request->validated();
+
+		$user = [
+			'name'	=> $validated['name'],
+			'email'	=> $validated['email'],
+		];
+
+		$user = User::create($user);
+
+		$response = [
+			'err'   => !$user,
+			'msg'   => $user ? 'success' : 'error',
+			'user'  => new UserResource($user),
+		];
+
+		return response()->json($response);
+	}
+
+
+	/**
+	 * Update User
+	 */
+	public function update(UpdateUserRequest $request, User $userModel): JsonResponse
+	{
+		$validated  = $request->validated();
+		$user       = $userModel->withTrashed()->find($validated['id']);
+
+		$user->updated_by = auth()->id();
+
+		if ($validated['deletedAt'] === 'activate')
+		{
+			$user->restore();
+		}
+		else
+		{
+			$user->name		= $validated['name'];
+			$user->email	= $validated['email'];
+
+			$user->update($validated);
+		}
+
+		$response = [
+			'err'			=> !$user,
+			'msg'			=> $user ? 'success' : 'error',
+			'siteOption'	=> new UserResource($user),
+		];
+
+		return response()->json($response);
+	}
+
+
+	/**
+	 * Remove User
+	 */
+	public function destroy(DestroyUserRequest $request, User $userModel): JsonResponse
+	{
+		$validated	= $request->validated();
+		$user 		= $userModel->findOrFail($validated['id']);
+
+		$user->updated_by = auth()->id();
+
+		$results = $user->delete();
+
+		return response()->json([
+			'err'			=> !$results,
+			'status'		=> $results ? 'success' : 'error',
+			'siteOption'	=> new UserResource($user),
+		]);
+	}
+}
 ?>`;
 
 </script>

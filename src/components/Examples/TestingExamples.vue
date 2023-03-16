@@ -53,120 +53,112 @@ const jsonExample = `{
 }`;
 
 const phpExample = `
-namespace App\\Http\\Controllers\\API;
+<?php
 
-use App\\Http\\Controllers\\ApiController;
-use App\\Http\\Controllers\\Menu\\MenuItemController;
-use App\\Http\\Resources\\API\\Menu as MenuApiResource;
-use App\\Http\\Resources\\API\\PlatformUser as PlatformUserResource;
-use App\\Models\\Menu\\Menu;
-use App\\Models\\Menu\\MenuItem;
-use App\\Models\\Platform\\Platform;
-use App\\Models\\User\\User;
+namespace App\Http\Controllers;
 
-class MenuController extends ApiController
+use App\Models\User;
+use Inertia\Inertia;
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\DestroyUserRequest;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
+use App\Http\Resources\UserResource;
+
+class UserController extends Controller
 {
 
 	/**
-	 * ------------------------------------------------------ GET Platform Menu
+	 * Users
 	 *
-	 * @param string $platformName
-	 * @param string $menuName
-	 * @return \\Illuminate\Http\\Response
+	 * @return \Inertia\Response
 	 */
-	public function getPlatformMenu(Int $platform, String $menuName = false): Response
+	public function index()
 	{
-		$menu		= [];
-		$platformId = (new Platform)->getPlatform($platform)->id;
+		$users = User::get();
 
-		if (!$platformId)
-		{
-			return $this->errorResponse("Please provide a valid Platform Name or ID.", 400);
-		}
-		else
-		{
-			if (!$menuName)
-			{
-				return $this->errorResponse("Please provide a Menu name.", 400);
-			}
-			else
-			{
-				$menu = (new Menu)->getPlatformMenuByName($menuName, $platformId);
-
-				if (!$menu)
-				{
-					return $this->errorResponse("Menu '$menuName' does not exist.", 404);
-				}
-				else
-				{
-					$menu = new MenuApiResource($menu);
-				}
-			}
-		}
-
-		return $this->successResponse(compact('menu'));
+		return Inertia::render('Users/Index', [
+			'currentPage'   => 'Site Options',
+			'users'          => $users,
+		]);
 	}
 
 
 	/**
-	 * ------------------------------------------------------ GET Platform Menu Items
-	 *
-	 * @param string $platformName
-	 * @param string $menuName
-	 * @return \\Illuminate\\Http\\Response
+	 * Store User.
 	 *
 	 */
-	public function getPlatformMenuItems($platform, $menuName, $userId)
+	public function store(StoreUserRequest $request): JsonResponse
 	{
-		$menu		= [];
-		$platformId = (new Platform)->getPlatform($platform)?->id;
+		$validated = $request->validated();
 
-		if (!$platformId)
+		$user = [
+			'name'	=> $validated['name'],
+			'email'	=> $validated['email'],
+		];
+
+		$user = User::create($user);
+
+		$response = [
+			'err'   => !$user,
+			'msg'   => $user ? 'success' : 'error',
+			'user'  => new UserResource($user),
+		];
+
+		return response()->json($response);
+	}
+
+
+	/**
+	 * Update User
+	 */
+	public function update(UpdateUserRequest $request, User $userModel): JsonResponse
+	{
+		$validated  = $request->validated();
+		$user       = $userModel->withTrashed()->find($validated['id']);
+
+		$user->updated_by = auth()->id();
+
+		if ($validated['deletedAt'] === 'activate')
 		{
-			return $this->errorResponse("Please provide a valid Platform Name or ID.", 400);
+			$user->restore();
+		}
+		else
+		{
+			$user->name		= $validated['name'];
+			$user->email	= $validated['email'];
+
+			$user->update($validated);
 		}
 
-		$menu = (new Menu)->getPlatformMenuByName($menuName, $platformId);
+		$response = [
+			'err'       => !$user,
+			'msg'       => $user ? 'success' : 'error',
+			'siteOption'   => new UserResource($user),
+		];
 
-		if (!$menu->id)
-		{
-			return $this->errorResponse("Menu '$menuName' does not exist.", 404);
-		}
+		return response()->json($response);
+	}
 
-		unset($menu->platform);
 
-		$user = User::find($userId);
+	/**
+	 * Remove User
+	 */
+	public function destroy(DestroyUserRequest $request, User $userModel): JsonResponse
+	{
+		$validated	= $request->validated();
+		$user 		= $userModel->findOrFail($validated['id']);
 
-		if (!$user)
-		{
-			return $this->errorResponse("Please provide a valid User ID", 400);
-		}
+		$user->updated_by = auth()->id();
 
-		$platform = (object) ['id' => $platformId];
-		$user = (new PlatformUserResource($user, $platform))->resolve();
+		$results = $user->delete();
 
-		$menuItemsArray = [];
-		$menuItems = MenuItem::select('id', 'parent_menu_item_id', 'weight', 'name', 'link', 'target', 'icon_class')
-			->with('menuItemRoles')
-			->where('menu_id', $menu->id)
-			->orderBy('parent_menu_item_id', 'ASC')
-			->get()
-			->toArray();
-
-		foreach ($menuItems as $key => $item)
-		{
-			foreach ($item['menu_item_roles'] as $role)
-			{
-				if (in_array($role['slug'], $user['roles_slugs']))
-				{
-					array_push($menuItemsArray, $item);
-					break;
-				}
-			}
-		}
-
-		$menu->menuItems  = (new MenuItemController)->buildMenuTree($menuItemsArray);
-		return $this->successResponse(compact('menu'));
+		return response()->json([
+			'err'			=> !$results,
+			'status'		=> $results ? 'success' : 'error',
+			'siteOption'	=> new UserResource($user),
+		]);
 	}
 }
 `;
@@ -174,12 +166,7 @@ class MenuController extends ApiController
 // function handleCopyStatus(status) {
 // 	console.log('handleCopyStatus', status);
 // }
-
 </script>
 
-<style>
-/* svg {
-	height: 14px;
-	width: 14px;
-} */
+<style lang="scss">
 </style>

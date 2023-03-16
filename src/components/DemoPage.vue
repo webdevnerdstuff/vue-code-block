@@ -175,10 +175,6 @@ const themes = [
 		label: 'Twilight',
 		value: 'twilight',
 	},
-	{
-		label: 'Night Owl',
-		value: 'night-owl',
-	},
 ];
 
 provide('selectedTheme', selectedTheme);
@@ -229,8 +225,8 @@ h5 {
 }
 
 .table-responsive {
-	box-shadow: 0 3px 1px -2px hsla(0, 0%, 0%, 0.2),
-		0 2px 2px 0 hsla(0, 0%, 0%, 0.14), 0 1px 5px 0 hsla(0, 0%, 0%, 0.12);
+	box-shadow: 0 3px 1px -2px hsl(0 0% 0% / 20%), -0 2px 2px 0 hsl(0 0% 0% / 14%),
+		0 1px 5px 0 hsl(0 0% 0% / 12%);
 
 	.table {
 		margin-bottom: 0;
@@ -238,7 +234,7 @@ h5 {
 }
 
 .boolean-style {
-	color: hsl(240, 100%, 50%) !important;
+	color: hsl(240 100% 50%) !important;
 	font-weight: 500;
 }
 </style>

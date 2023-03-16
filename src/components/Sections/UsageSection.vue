@@ -44,10 +44,9 @@ const componentCode = `<template>
 <\/template>
 
 <script setup>
-const myCode = \`const foo = 'bar';
+  const myCode = \`const foo = 'bar';
 
-console.log(foo);
-\`;
+  console.log(foo);
 <\/script>`;
 
 const runCode = `<template>
@@ -61,10 +60,9 @@ const runCode = `<template>
 <\/template>
 
 <script setup>
-const myCode = \`const foo = 'bar';
+  const myCode = \`const foo = 'bar';
 
-alert(foo);
-\`;
+  alert(foo);
 <\/script>`;
 
 function runMyCode() {
@@ -72,8 +70,4 @@ function runMyCode() {
 
 	alert(foo);
 }
-
-
 </script>
-
-<style lang="scss"></style>

@@ -1,19 +1,24 @@
-export interface OptionsSettings {
-	code?: string;
-	codeBlockRadius?: string | number;
-	copyIcon?: string;
+export type Props = {
+	browserWindow?: boolean;
+	code?: object | [] | string | number;
+	codeBlockRadius?: string;
+	copyButton?: boolean;
+	copyIcons?: boolean;
+	copyTab?: boolean;
+	copyFailedText?: string;
 	copyText?: string;
-	failedIcon?: string;
+	copySuccessText?: string;
+	floatingTabs?: boolean;
+	globalOptions?: boolean;
+	height?: string | number;
 	indent?: number;
 	label?: string;
 	lang?: string;
-	showButtons?: boolean;
-	showCopyButton?: boolean;
-	showCopyIcons?: boolean;
-	showRunButton?: boolean;
-	successIcon?: string;
-	tabGap?: string | number;
-	theme?: string;
-}
-
-declare let Prism;
+	maxHeight?: string | number;
+	persistentCopyButton?: boolean;
+	runTab?: boolean;
+	runText?: string;
+	tabGap?: string;
+	tabs?: boolean;
+	theme?: string | boolean;
+};

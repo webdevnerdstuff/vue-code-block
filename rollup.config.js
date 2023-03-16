@@ -9,7 +9,8 @@ import json from '@rollup/plugin-json';
 import { fileURLToPath, URL } from 'node:url';
 import scss from 'rollup-plugin-scss';
 import postcss from 'rollup-plugin-postcss';
-import terser from '@rollup/plugin-terser';
+// import terser from '@rollup/plugin-terser';
+import copy from 'rollup-plugin-copy';
 
 const banner = `/**
  * @name ${pkg.name}
@@ -80,6 +81,10 @@ export default {
 			extract: true
 		}),
 		scss(),
-		terser(),
+		copy({
+			targets: [
+				{ src: 'src/plugin/themes', dest: 'dist' },
+			]
+		}),
 	],
 };
