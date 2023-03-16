@@ -175,10 +175,6 @@ const themes = [
 		label: 'Twilight',
 		value: 'twilight',
 	},
-	{
-		label: 'Night Owl',
-		value: 'night-owl',
-	},
 ];
 
 provide('selectedTheme', selectedTheme);
