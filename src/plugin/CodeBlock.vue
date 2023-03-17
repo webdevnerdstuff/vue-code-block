@@ -465,6 +465,7 @@ function runCode(): void {
 
 <style lang="scss">
 @import './styles/utilities';
+@import './styles/main';
 
 .v-code-block {
 	&- {
@@ -480,13 +481,3 @@ function runCode(): void {
 	}
 }
 </style>
-
-<style lang="scss" scoped>
-@import './styles/main';
-
-.foo {
-	display: block;
-	z-index: 3;
-}
-</style>
-
