@@ -78,7 +78,7 @@ export default {
 		}),
 		postcss({
 			modules: false,
-			extract: true,
+			extract: false,
 			inject: true,
 			// minimize: true,
 			use: [
