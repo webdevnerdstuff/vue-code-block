@@ -53,6 +53,11 @@
 		&:hover {
 			background-color: hsla(var(--v-cb-primary), 0.2);
 		}
+
+		svg {
+			height: 14px;
+			width: 14px;
+		}
 	}
 
 	&--code {

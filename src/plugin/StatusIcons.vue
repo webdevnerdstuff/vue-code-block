@@ -57,14 +57,3 @@ export default {
 	}
 };
 </script>
-
-<style lang="scss">
-@import './styles/themeStyles';
-</style>
-
-<style lang="scss" scoped>
-svg {
-	height: 14px;
-	width: 14px;
-}
-</style>

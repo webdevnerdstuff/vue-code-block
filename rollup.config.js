@@ -78,8 +78,9 @@ export default {
 		}),
 		postcss({
 			modules: true,
+			extract: true,
 			inject: true,
-			minimize: true,
+			// minimize: true,
 			use: [
 				[
 					"sass",
