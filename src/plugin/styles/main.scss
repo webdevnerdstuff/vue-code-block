@@ -2,6 +2,19 @@
 	display: block;
 	max-width: 100%;
 
+	&- {
+		&--label {
+			&-mobile {
+
+				input,
+				select,
+				textarea {
+					display: none;
+				}
+			}
+		}
+	}
+
 	&--header {
 		align-items: end;
 		display: flex;
@@ -102,6 +115,11 @@
 
 				&-persist {
 					opacity: .5;
+				}
+
+				svg {
+					height: 14px;
+					width: 14px;
 				}
 			}
 		}

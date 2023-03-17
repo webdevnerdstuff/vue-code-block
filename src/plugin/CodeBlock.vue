@@ -464,20 +464,8 @@ function runCode(): void {
 
 
 <style lang="scss">
+@import './styles/cssVariables';
 @import './styles/utilities';
 @import './styles/main';
-
-.v-code-block {
-	&- {
-		&--label {
-			&-mobile {
-				input,
-				select,
-				textarea {
-					display: none;
-				}
-			}
-		}
-	}
-}
+@import './styles/themeStyles';
 </style>
