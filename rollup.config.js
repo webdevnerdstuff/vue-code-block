@@ -78,7 +78,16 @@ export default {
 		}),
 		postcss({
 			modules: true,
-			extract: true
+			inject: true,
+			minimize: true,
+			use: [
+				[
+					"sass",
+					{
+						includePaths: ['./src/plugin/styles']
+					},
+				]
+			]
 		}),
 		scss(),
 		copy({
