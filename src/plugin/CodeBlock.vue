@@ -9,9 +9,7 @@
 				<template v-if="slots.label">
 					<slot name="label" />
 				</template>
-				<template v-else>
-					{{ props.label }}
-				</template>
+				<template v-else>{{ props.label }}</template>
 			</div>
 
 			<div class="v-code-block--tabs" :style="tabGroupStyle">
@@ -69,7 +67,11 @@
 			</div>
 
 			<pre :class="`language-${props.lang}`" :style="preTagStyles">
-<code :class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''}`" :style="codeTagStyles" v-html="renderCode"></code>
+<code
+  :class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''}`"
+  :style="codeTagStyles"
+  v-html="renderCode"
+></code>
 			</pre>
 		</div>
 	</div>
@@ -84,6 +86,7 @@ import {
 	ref,
 	useSlots,
 	watch,
+	StyleValue,
 } from 'vue';
 import Prism from 'prismjs';
 import UAParser from 'ua-parser-js';
@@ -101,12 +104,21 @@ const prismThemeSolarizedlight = import.meta.glob('prismjs/themes/prism-solarize
 const prismThemeTomorrow = import.meta.glob('prismjs/themes/prism-tomorrow.css', { eager: true, as: 'raw' });
 const prismThemeTwilight = import.meta.glob('prismjs/themes/prism-twilight.css', { eager: true, as: 'raw' });
 
+// import neonBunnyCarrotTheme from '@/plugin/themes/neon-bunny-carrot.css?inline';
+// import neonBunnyTheme from '@/plugin/themes/neon-bunny.css?inline';
+// import prismTheme from 'prismjs/themes/prism.css?inline';
+// import prismThemeCoy from 'prismjs/themes/prism-coy.css?inline';
+// import prismThemeDark from 'prismjs/themes/prism-dark.css?inline';
+// import prismThemeFunky from 'prismjs/themes/prism-funky.css?inline';
+// import prismThemeOkaidia from 'prismjs/themes/prism-okaidia.css?inline';
+// import prismThemeSolarizedlight from 'prismjs/themes/prism-solarizedlight.css?inline';
+// import prismThemeTomorrow from 'prismjs/themes/prism-tomorrow.css?inline';
+// import prismThemeTwilight from 'prismjs/themes/prism-twilight.css?inline';
 
 // -------------------------------------------------- Emits & Slots & Injects //
 const emit = defineEmits(['run', 'update:copy-status']);
 const slots = useSlots();
 const codeBlockGlobalOptions = inject<Props>('codeBlockGlobalOptions');
-
 
 // -------------------------------------------------- Props //
 const props = defineProps({
@@ -213,9 +225,8 @@ const props = defineProps({
 		type: [String, Boolean],
 		required: false,
 		default: 'neon-bunny',
-	}
+	},
 });
-
 
 // -------------------------------------------------- Data //
 const copyTextValue = ref<string>('');
@@ -227,13 +238,12 @@ const runTextValue = ref<string>('');
 const stylesheetId = 'v-code-block--theme';
 const useTheme = ref<boolean | string>('');
 
-
 // -------------------------------------------------- Computed //
 const codeBlockClasses = computed<string>(() => {
 	return isMobile.value ? 'v-code-block--mobile' : '';
 });
 
-const codeTagStyles = computed<object>(() => {
+const codeTagStyles = computed<StyleValue>(() => {
 	const width = useTheme.value === 'coy' ? '100%' : '';
 	return { width };
 });
@@ -247,7 +257,7 @@ const copyButtonClasses = computed<object>(() => {
 	};
 });
 
-const headerStyles = computed<object>(() => {
+const headerStyles = computed<StyleValue>(() => {
 	return {
 		bottom: props.floatingTabs ? '1px' : '0',
 		gap: convertToUnit(props.tabGap),
@@ -270,7 +280,7 @@ const labelClasses = computed<string>(() => {
 	return isMobile.value ? 'v-code-block--label-mobile' : '';
 });
 
-const preTagStyles = computed<object>(() => {
+const preTagStyles = computed<StyleValue>(() => {
 	const radius = props.codeBlockRadius;
 	let borderRadius = `${radius} 0 ${radius} ${radius}`;
 
@@ -291,7 +301,11 @@ const preTagStyles = computed<object>(() => {
 const renderCode = computed<unknown>(() => {
 	convertCode();
 
-	const html = Prism.highlight(convertedCode.value, Prism.languages[props.lang], props.lang);
+	const html = Prism.highlight(
+		convertedCode.value,
+		Prism.languages[props.lang],
+		props.lang,
+	);
 
 	return html;
 });
@@ -304,12 +318,11 @@ const tabClasses = computed<object>(() => {
 	return classes;
 });
 
-const tabGroupStyle = computed<object>(() => {
+const tabGroupStyle = computed<StyleValue>(() => {
 	return {
 		gap: convertToUnit(props.tabGap),
 	};
 });
-
 
 // -------------------------------------------------- Watch //
 watch(props, () => {
@@ -327,7 +340,6 @@ watch(props, () => {
 	}
 });
 
-
 // -------------------------------------------------- Mounts //
 onBeforeMount(() => {
 	copyTextValue.value = props.copyText;
@@ -339,7 +351,6 @@ onMounted(() => {
 	loadTheme();
 	mobileCheck();
 });
-
 
 // -------------------------------------------------- Methods //
 function convertCode(): void {
@@ -380,7 +391,8 @@ function copyCode(): void {
 		copyStatus.value = 'failed';
 		emit('update:copy-status', copyStatus.value);
 		console.error('Copy to clipboard failed: ', err);
-	});
+	},
+	);
 
 	setTimeout(() => {
 		copyTextValue.value = props.copyText;
@@ -437,9 +449,6 @@ function loadTheme(): void {
 			break;
 	}
 
-	const themeKey = Object.keys(selectedTheme)[0];
-	selectedTheme = selectedTheme[themeKey];
-
 	themeStyles.setAttribute('type', 'text/css');
 	themeStyles.id = stylesheetId;
 	themeStyles.appendChild(document.createTextNode(selectedTheme));
@@ -453,7 +462,7 @@ function mobileCheck(): void {
 	isMobile.value = device.type === 'mobile';
 }
 
-window.addEventListener("orientationchange", () => {
+window.addEventListener('orientationchange', () => {
 	mobileCheck();
 });
 
@@ -461,7 +470,6 @@ function runCode(): void {
 	emit('run');
 }
 </script>
-
 
 <style lang="scss">
 @import './styles/utilities';
@@ -484,4 +492,3 @@ function runCode(): void {
 <style lang="scss" scoped>
 @import './styles/main';
 </style>
-
