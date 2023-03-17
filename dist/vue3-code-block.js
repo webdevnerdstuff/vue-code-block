@@ -1,6 +1,6 @@
 /**
  * @name vue3-code-block
- * @version 1.0.5-beta.0
+ * @version 1.0.6-beta.0
  * @description Vue 3 CodeBlock - Highlight your code with ease using this syntax highlighting component powered by PrismJS.
  * @author WebDevNerdStuff & Bunnies... lots and lots of bunnies! <webdevnerdstuff@gmail.com> (https://webdevnerdstuff.com)
  * @copyright Copyright 2023, WebDevNerdStuff
@@ -40,9 +40,10 @@ const _sfc_main$1 = {
 	}
 };
 
-const _hoisted_1$1 = /*#__PURE__*/vue.createElementVNode("path", { d: "M224 0c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224zM64 160c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H288v64H64V224h64V160H64z" }, null, -1 /* HOISTED */);
-const _hoisted_2$1 = /*#__PURE__*/vue.createElementVNode("path", { d: "M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" }, null, -1 /* HOISTED */);
-const _hoisted_3$1 = /*#__PURE__*/vue.createElementVNode("path", { d: "M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z" }, null, -1 /* HOISTED */);
+const _withScopeId = n => (vue.pushScopeId("data-v-7d8ba791"),n=n(),vue.popScopeId(),n);
+const _hoisted_1$1 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/vue.createElementVNode("path", { d: "M224 0c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224zM64 160c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H288v64H64V224h64V160H64z" }, null, -1 /* HOISTED */));
+const _hoisted_2$1 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/vue.createElementVNode("path", { d: "M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" }, null, -1 /* HOISTED */));
+const _hoisted_3$1 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/vue.createElementVNode("path", { d: "M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z" }, null, -1 /* HOISTED */));
 
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return (vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
@@ -80,7 +81,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           : vue.createCommentVNode("v-if", true)
   ], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */))
 }
-var StatusIcons = /*#__PURE__*/_export_sfc(_sfc_main$1, [['render',_sfc_render],['__file',"src/plugin/StatusIcons.vue"]]);
+var StatusIcons = /*#__PURE__*/_export_sfc(_sfc_main$1, [['render',_sfc_render],['__scopeId',"data-v-7d8ba791"],['__file',"src/plugin/StatusIcons.vue"]]);
 
 const _hoisted_1 = { class: "v-code-block--button-copy" };
 const _hoisted_2 = { class: "v-code-block--button-run" };
@@ -426,7 +427,7 @@ var _sfc_main = /*#__PURE__*/ vue.defineComponent({
                             class: vue.normalizeClass(["v-code-block--label v-code-block--pb-1", vue.unref(labelClasses)])
                         }, [
                             (vue.unref(slots).label)
-                                ? vue.renderSlot(_ctx.$slots, "label", { key: 0 })
+                                ? vue.renderSlot(_ctx.$slots, "label", { key: 0 }, undefined, true)
                                 : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
                                     vue.createTextVNode(vue.toDisplayString(props.label), 1 /* TEXT */)
                                 ], 64 /* STABLE_FRAGMENT */))
@@ -436,7 +437,7 @@ var _sfc_main = /*#__PURE__*/ vue.defineComponent({
                             style: vue.normalizeStyle(vue.unref(tabGroupStyle))
                         }, [
                             (vue.unref(slots).tabs)
-                                ? vue.renderSlot(_ctx.$slots, "tabs", { key: 0 })
+                                ? vue.renderSlot(_ctx.$slots, "tabs", { key: 0 }, undefined, true)
                                 : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
                                     vue.createCommentVNode(" ======================================== Copy Code Tab/Button "),
                                     (__props.copyTab && __props.tabs)
@@ -477,7 +478,7 @@ var _sfc_main = /*#__PURE__*/ vue.defineComponent({
                         onClick: copyCode
                     }, [
                         (vue.unref(slots).copyButton)
-                            ? vue.renderSlot(_ctx.$slots, "copyButton", { key: 0 })
+                            ? vue.renderSlot(_ctx.$slots, "copyButton", { key: 0 }, undefined, true)
                             : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
                                 (__props.copyButton)
                                     ? (vue.openBlock(), vue.createBlock(StatusIcons, {
@@ -506,7 +507,7 @@ var _sfc_main = /*#__PURE__*/ vue.defineComponent({
     }
 });
 
-var CodeBlock = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "src/plugin/CodeBlock.vue"]]);
+var CodeBlock = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-5d79b278"], ["__file", "src/plugin/CodeBlock.vue"]]);
 
 const install = (app, options) => {
     const codeBlockGlobalOptions = { globalOptions: true, ...options };

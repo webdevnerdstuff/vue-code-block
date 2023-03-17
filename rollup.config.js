@@ -77,7 +77,7 @@ export default {
 			defaultLang: { script: 'ts' }
 		}),
 		postcss({
-			modules: true,
+			modules: false,
 			extract: true,
 			inject: true,
 			// minimize: true,
@@ -85,7 +85,7 @@ export default {
 				[
 					"sass",
 					{
-						includePaths: ['./src/plugin/styles']
+						includePaths: ['./src/plugin/styles'],
 					},
 				]
 			]

@@ -464,4 +464,24 @@ function runCode(): void {
 
 
 <style lang="scss">
+@import './styles/utilities';
+
+.v-code-block {
+	&- {
+		&--label {
+			&-mobile {
+				input,
+				select,
+				textarea {
+					display: none;
+				}
+			}
+		}
+	}
+}
 </style>
+
+<style lang="scss" scoped>
+@import './styles/main';
+</style>
+
