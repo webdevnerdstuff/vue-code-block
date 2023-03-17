@@ -1,10 +1,10 @@
 /**
  * @name vue3-code-block
- * @version 1.0.0-beta
+ * @version 1.0.1-beta
  * @description Vue 3 CodeBlock - Highlight your code with ease using this syntax highlighting component powered by PrismJS.
  * @author WebDevNerdStuff & Bunnies... lots and lots of bunnies! <webdevnerdstuff@gmail.com> (https://webdevnerdstuff.com)
  * @copyright Copyright 2023, WebDevNerdStuff
- * @homepage https://github.com/webdevnerdstuff/vue3-code-block
+ * @homepage https://webdevnerdstuff.github.io/vue3-code-block/
  * @repository https://github.com/webdevnerdstuff/vue3-code-block
  * @license MIT License
  */
