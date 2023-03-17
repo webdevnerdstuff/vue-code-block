@@ -1,6 +1,6 @@
 /**
  * @name vue3-code-block
- * @version 1.0.0
+ * @version 1.0.1
  * @description Vue 3 CodeBlock - Highlight your code with ease using this syntax highlighting component powered by PrismJS.
  * @author WebDevNerdStuff & Bunnies... lots and lots of bunnies! <webdevnerdstuff@gmail.com> (https://webdevnerdstuff.com)
  * @copyright Copyright 2023, WebDevNerdStuff
@@ -427,7 +427,7 @@ var _sfc_main = /*#__PURE__*/ vue.defineComponent({
                             class: vue.normalizeClass(["v-code-block--label v-code-block--pb-1", vue.unref(labelClasses)])
                         }, [
                             (vue.unref(slots).label)
-                                ? vue.renderSlot(_ctx.$slots, "label", { key: 0 }, undefined, true)
+                                ? vue.renderSlot(_ctx.$slots, "label", { key: 0 })
                                 : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
                                     vue.createTextVNode(vue.toDisplayString(props.label), 1 /* TEXT */)
                                 ], 64 /* STABLE_FRAGMENT */))
@@ -437,7 +437,7 @@ var _sfc_main = /*#__PURE__*/ vue.defineComponent({
                             style: vue.normalizeStyle(vue.unref(tabGroupStyle))
                         }, [
                             (vue.unref(slots).tabs)
-                                ? vue.renderSlot(_ctx.$slots, "tabs", { key: 0 }, undefined, true)
+                                ? vue.renderSlot(_ctx.$slots, "tabs", { key: 0 })
                                 : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
                                     vue.createCommentVNode(" ======================================== Copy Code Tab/Button "),
                                     (__props.copyTab && __props.tabs)
@@ -478,7 +478,7 @@ var _sfc_main = /*#__PURE__*/ vue.defineComponent({
                         onClick: copyCode
                     }, [
                         (vue.unref(slots).copyButton)
-                            ? vue.renderSlot(_ctx.$slots, "copyButton", { key: 0 }, undefined, true)
+                            ? vue.renderSlot(_ctx.$slots, "copyButton", { key: 0 })
                             : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
                                 (__props.copyButton)
                                     ? (vue.openBlock(), vue.createBlock(StatusIcons, {
@@ -507,14 +507,13 @@ var _sfc_main = /*#__PURE__*/ vue.defineComponent({
     }
 });
 
-var CodeBlock = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-5d79b278"], ["__file", "src/plugin/CodeBlock.vue"]]);
+var CodeBlock = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "src/plugin/CodeBlock.vue"]]);
 
-const CodeBlockPlugin = {
-    install(app, options) {
-        const codeBlockGlobalOptions = { globalOptions: true, ...options };
-        app.provide('codeBlockGlobalOptions', codeBlockGlobalOptions);
-        app.component('CodeBlock', CodeBlock);
-    },
+const install = (app, options) => {
+    const codeBlockGlobalOptions = { globalOptions: true, ...options };
+    app.provide('codeBlockGlobalOptions', codeBlockGlobalOptions);
+    app.component('CodeBlock', CodeBlock);
 };
+CodeBlock.install = install;
 
-exports.default = CodeBlockPlugin;
+exports.default = CodeBlock;
