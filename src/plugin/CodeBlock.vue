@@ -464,8 +464,4 @@ function runCode(): void {
 
 
 <style lang="scss">
-@import './styles/cssVariables';
-@import './styles/utilities';
-@import './styles/main';
-@import './styles/themeStyles';
 </style>

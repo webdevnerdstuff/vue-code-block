@@ -4,11 +4,11 @@
 		// Neon Bunny coloring //
 
 		&-neon-bunny {
-			background-color: hsla(var(--v-cb-tab-neon-bunny-bkg), 1) !important;
+			background-color: hsl(var(--v-cb-tab-neon-bunny-bkg) 1) !important;
 			color: hsl(var(--v-cb-tab-neon-bunny-text)) !important;
 
 			&:hover {
-				background-color: hsla(var(--v-cb-tab-neon-bunny-bkg), 0.5) !important;
+				background-color: hsl(var(--v-cb-tab-neon-bunny-bkg) 0.5) !important;
 			}
 
 			&-icon {
@@ -34,11 +34,11 @@
 		}
 
 		&-neon-bunny-carrot {
-			background-color: hsla(var(--v-cb-tab-neon-bunny-carrot-bkg), 1) !important;
+			background-color: hsl(var(--v-cb-tab-neon-bunny-carrot-bkg) 1) !important;
 			color: hsl(var(--v-cb-tab-neon-bunny-carrot-text)) !important;
 
 			&:hover {
-				background-color: hsla(var(--v-cb-tab-neon-bunny-carrot-bkg), 0.5) !important;
+				background-color: hsl(var(--v-cb-tab-neon-bunny-carrot-bkg) 0.5) !important;
 			}
 
 			&-icon {
@@ -65,10 +65,10 @@
 
 		// Prism coloring //
 		&-default {
-			background-color: hsla(var(--v-cb-tab-prism-default-bkg), 1) !important;
+			background-color: hsl(var(--v-cb-tab-prism-default-bkg) 1) !important;
 
 			&:hover {
-				background-color: hsla(var(--v-cb-tab-prism-default-bkg), 0.5) !important;
+				background-color: hsl(var(--v-cb-tab-prism-default-bkg) 0.5) !important;
 			}
 
 			&-icon {
@@ -94,12 +94,12 @@
 		}
 
 		&-coy {
-			background-color: hsla(var(--v-cb-tab-prism-coy-bkg), 0.1) !important;
+			background-color: hsl(var(--v-cb-tab-prism-coy-bkg) 0.1) !important;
 			border-left: 5px solid hsl(var(--v-cb-tab-prism-coy-bkg));
 			border-radius: 0;
 
 			&:hover {
-				background-color: hsla(var(--v-cb-tab-prism-coy-bkg), 0.2) !important;
+				background-color: hsl(var(--v-cb-tab-prism-coy-bkg) 0.2) !important;
 			}
 
 			&-icon {
@@ -125,13 +125,13 @@
 		}
 
 		&-dark {
-			background-color: hsla(var(--v-cb-tab-prism-dark-bkg), 1) !important;
+			background-color: hsl(var(--v-cb-tab-prism-dark-bkg) 1) !important;
 			border-color: hsl(var(--v-cb-tab-prism-dark-border));
 			border-style: solid;
 			border-width: 0.3em 0.3em 0;
 
 			&:hover {
-				background-color: hsla(var(--v-cb-tab-prism-dark-border), 0.5) !important;
+				background-color: hsl(var(--v-cb-tab-prism-dark-border) 0.5) !important;
 			}
 
 			&-icon {
@@ -188,10 +188,10 @@
 		}
 
 		&-okaidia {
-			background-color: hsla(var(--v-cb-tab-prism-okaidia-bkg), 1) !important;
+			background-color: hsl(var(--v-cb-tab-prism-okaidia-bkg) 1) !important;
 
 			&:hover {
-				background-color: hsla(var(--v-cb-tab-prism-okaidia-bkg), 0.5) !important;
+				background-color: hsl(var(--v-cb-tab-prism-okaidia-bkg) 0.5) !important;
 			}
 
 			&-icon {
@@ -217,10 +217,10 @@
 		}
 
 		&-solarizedlight {
-			background-color: hsla(var(--v-cb-tab-prism-solarizedlight-bkg), 1) !important;
+			background-color: hsl(var(--v-cb-tab-prism-solarizedlight-bkg) 1) !important;
 
 			&:hover {
-				background-color: hsla(var(--v-cb-tab-prism-solarizedlight-bkg), 0.5) !important;
+				background-color: hsl(var(--v-cb-tab-prism-solarizedlight-bkg) 0.5) !important;
 			}
 
 			&-icon {
@@ -246,10 +246,10 @@
 		}
 
 		&-tomorrow {
-			background-color: hsla(var(--v-cb-tab-prism-tomorrow-bkg), 1) !important;
+			background-color: hsl(var(--v-cb-tab-prism-tomorrow-bkg) 1) !important;
 
 			&:hover {
-				background-color: hsla(var(--v-cb-tab-prism-tomorrow-bkg), 0.5) !important;
+				background-color: hsl(var(--v-cb-tab-prism-tomorrow-bkg) 0.5) !important;
 			}
 
 			&-icon {
@@ -275,13 +275,13 @@
 		}
 
 		&-twilight {
-			background-color: hsla(var(--v-cb-tab-prism-twilight-bkg), 1) !important;
+			background-color: hsl(var(--v-cb-tab-prism-twilight-bkg) 1) !important;
 			border-color: hsl(var(--v-cb-tab-prism-twilight-border));
 			border-style: solid;
 			border-width: 0.3em 0.3em 0;
 
 			&:hover {
-				background-color: hsla(var(--v-cb-tab-prism-twilight-bkg), 0.5) !important;
+				background-color: hsl(var(--v-cb-tab-prism-twilight-bkg) 0.5) !important;
 			}
 
 			&-icon {
@@ -307,10 +307,10 @@
 		}
 
 		&-night-owl {
-			background-color: hsla(var(--v-cb-tab-prism-night-owl), 1) !important;
+			background-color: hsl(var(--v-cb-tab-prism-night-owl) 1) !important;
 
 			&:hover {
-				background-color: hsla(var(--v-cb-tab-prism-night-owl), 0.5) !important;
+				background-color: hsl(var(--v-cb-tab-prism-night-owl) 0.5) !important;
 			}
 
 			&-icon {
