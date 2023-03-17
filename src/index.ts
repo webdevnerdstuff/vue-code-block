@@ -3,13 +3,12 @@ import { CodeBlock } from '@/plugin';
 import { Props } from '@/types';
 import '@/plugin/styles/cssVariables.css';
 
-const CodeBlockPlugin = {
-	install(app: App, options: Props) {
-		const codeBlockGlobalOptions: Props = { globalOptions: true, ...options };
-
-		app.provide('codeBlockGlobalOptions', codeBlockGlobalOptions);
-		app.component('CodeBlock', CodeBlock);
-	},
+const install = (app: App, options: Props) => {
+	const codeBlockGlobalOptions: Props = { globalOptions: true, ...options };
+	app.provide('codeBlockGlobalOptions', codeBlockGlobalOptions);
+	app.component('CodeBlock', CodeBlock);
 };
 
-export default CodeBlockPlugin as unknown as Plugin;
+CodeBlock.install = install;
+
+export default CodeBlock as unknown as Plugin;
