@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import CodeBlock from '@/index';
+import CodeBlock from './index';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faCopyright, faHouse } from '@fortawesome/free-solid-svg-icons';
