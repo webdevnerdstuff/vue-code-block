@@ -9,6 +9,7 @@ import LicenseSection from '@/components/Sections/LicenseSection.vue';
 import PropsSection from '@/components/Sections/PropsSection.vue';
 import SlotsSection from '@/components/Sections/SlotsSection.vue';
 import RegisterSection from '@/components/Sections/RegisterSection.vue';
+import ThemesSection from '@/components/Sections/ThemesSection.vue';
 import UsageSection from '@/components/Sections/UsageSection.vue';
 
 export {
@@ -23,5 +24,6 @@ export {
 	PropsSection,
 	SlotsSection,
 	RegisterSection,
+	ThemesSection,
 	UsageSection,
 };

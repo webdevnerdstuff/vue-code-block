@@ -53,6 +53,9 @@
 								<a class="dropdown-item" href="#ul-props">Props</a>
 							</li>
 							<li>
+								<a class="dropdown-item" href="#ul-themes">Themes</a>
+							</li>
+							<li>
 								<a class="dropdown-item" href="#ul-events">Events</a>
 							</li>
 							<li>

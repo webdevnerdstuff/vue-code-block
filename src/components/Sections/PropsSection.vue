@@ -17,7 +17,7 @@
 					</thead>
 					<tbody>
 						<tr v-for="(prop, key) in componentProps" :key="prop">
-							<td valign="top">{{ key }}</td>
+							<td :id="prop?.id" valign="top">{{ key }}</td>
 							<td class="prop-type" valign="top">{{ prop.type }}</td>
 							<td class="prop-default" valign="top">{{ prop.default }}</td>
 							<td valign="top" v-html="prop.description"></td>
@@ -153,6 +153,7 @@ const componentProps = {
 	theme: {
 		type: '[String, Boolean]',
 		required: false,
+		id: 'props-theme-option',
 		default: 'neon-bunny',
 		description: `<p>The theme to be used for the code block. Available options include:</p>
 		<p>
