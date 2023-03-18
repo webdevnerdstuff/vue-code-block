@@ -3,7 +3,7 @@
 </p>
 
 <p>
-  <h1 align="center">Vue 3 CodeBlock (beta)</h1>
+  <h1 align="center">Vue 3 CodeBlock</h1>
 </p>
 
 <p align="center">
@@ -19,7 +19,7 @@
 
 ## Description
 
-The Vue 3 CodeBlock component leverages the power of PrismJS to provide syntax highlighting for code blocks within your application. The component takes a prop, which is the code to be highlighted, and uses PrismJS to render the code with syntax highlighting. The component supports a variety of programming languages and can be customized with different themes to match your application's design. With this component, your users can display their code snippets with ease and clarity, making it easier to share and collaborate on code within your application.
+The Vue 3 CodeBlock component leverages the power of [PrismJS](https://prismjs.com/) to provide syntax highlighting for code blocks within your application. The component takes a prop, which is the code to be highlighted, and uses PrismJS to render the code with syntax highlighting. The component supports a variety of programming languages and can be customized with different themes to match your application's design. With this component, your users can display their code snippets with ease and clarity, making it easier to share and collaborate on code within your application.
 
 
 ## Installation
