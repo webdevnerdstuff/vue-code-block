@@ -3,7 +3,7 @@
 </p>
 
 <p>
-  <h1 align="center">Vue 3 CodeBlock</h1>
+  <h1 align="center">Vue 3 CodeBlock (beta)</h1>
 </p>
 
 <p align="center">
@@ -11,7 +11,7 @@
     <img src="https://img.shields.io/npm/v/vue3-code-block?color=1867c0&logo=npm" alt="NPM Package">
   </a>
   &nbsp;
-  <a href="https://github.com/webdevnerdstuff/vuetify3-resize-drawer">
+  <a href="https://github.com/webdevnerdstuff/vue3-code-block">
     <img src="https://img.shields.io/badge/GitHub-WebDevNerdStuff-brightgreen.svg?logo=github" alt="@WebDevNerdStuff">
   </a>
 </p>
