@@ -91,12 +91,11 @@ import {
 import Prism from 'prismjs';
 import UAParser from 'ua-parser-js';
 import { Props } from '@/types';
-
-import { version } from 'prismjs/package.json';
-
 import StatusIcons from '@/plugin/StatusIcons.vue';
-import { neonBunnyCarrotTheme, neonBunnyTheme } from '@/plugin/themes';
+import { neonBunnyCarrotTheme, neonBunnyTheme } from './themes';
 
+
+const prismVersion = '1.29.0';
 
 // -------------------------------------------------- Emits & Slots & Injects //
 const emit = defineEmits(['run', 'update:copy-status']);
@@ -213,6 +212,7 @@ const props = defineProps({
 });
 
 
+
 // -------------------------------------------------- Data //
 const convertedCode = ref(null);
 const copyStatus = ref<string>('copy');
@@ -220,7 +220,7 @@ const copyTextValue = ref<string>('');
 const copying = ref<boolean>(false);
 const isLoading = ref<boolean>(false);
 const isMobile = ref<boolean>(false);
-const prismCdn = ref(`https://cdn.jsdelivr.net/gh/PrismJS/prism@${version}/themes`);
+const prismCdn = ref(`https://cdn.jsdelivr.net/gh/PrismJS/prism@${prismVersion}/themes`);
 const runTextValue = ref<string>('');
 const useTheme = ref<boolean | string>('');
 
@@ -398,7 +398,6 @@ function loadTheme(): void {
 	const themeStyles = document.createElement('style');
 	const themeId = `v-code-block--theme-${useTheme.value}`;
 	const loadedTheme = document.body.getAttribute('data-v-code-block-theme');
-
 	let isPrismTheme = true;
 	let cssFilename = '';
 
@@ -407,7 +406,7 @@ function loadTheme(): void {
 		return;
 	}
 
-	document.body.setAttribute('data-v-code-block-theme', useTheme.value);
+	document.body.setAttribute('data-v-code-block-theme', `${useTheme.value}`);
 
 	themeStyles.setAttribute('type', 'text/css');
 	themeStyles.setAttribute('data-theme-id', themeId);

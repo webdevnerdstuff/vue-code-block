@@ -17,6 +17,58 @@ var vue = require('vue');
 var Prism = require('prismjs');
 var UAParser = require('ua-parser-js');
 
+const _withScopeId = n => (vue.pushScopeId("data-v-7d8ba791"), n = n(), vue.popScopeId(), n);
+const _hoisted_1$1 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/ vue.createElementVNode("path", { d: "M224 0c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224zM64 160c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H288v64H64V224h64V160H64z" }, null, -1 /* HOISTED */));
+const _hoisted_2$1 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/ vue.createElementVNode("path", { d: "M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" }, null, -1 /* HOISTED */));
+const _hoisted_3$1 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/ vue.createElementVNode("path", { d: "M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z" }, null, -1 /* HOISTED */));
+var _sfc_main$1 = /*#__PURE__*/ vue.defineComponent({
+    __name: 'StatusIcons',
+    props: {
+        icon: {
+            type: String,
+            required: true
+        }
+    },
+    setup(__props) {
+        return (_ctx, _cache) => {
+            return (vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+                vue.createCommentVNode(" Copy Icon "),
+                (__props.icon === 'copy')
+                    ? (vue.openBlock(), vue.createElementBlock("svg", vue.mergeProps({ key: 0 }, _ctx.$attrs, {
+                        viewBox: "0 0 512 512",
+                        xmlns: "http://www.w3.org/2000/svg"
+                    }), [
+                        vue.createCommentVNode("! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. "),
+                        _hoisted_1$1
+                    ], 16 /* FULL_PROPS */))
+                    : (__props.icon === 'success')
+                        ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
+                            vue.createCommentVNode(" Success Icon "),
+                            (vue.openBlock(), vue.createElementBlock("svg", vue.mergeProps(_ctx.$attrs, {
+                                viewBox: "0 0 512 512",
+                                xmlns: "http://www.w3.org/2000/svg"
+                            }), [
+                                vue.createCommentVNode("! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. "),
+                                _hoisted_2$1
+                            ], 16 /* FULL_PROPS */))
+                        ], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */))
+                        : (__props.icon === 'failed')
+                            ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 2 }, [
+                                vue.createCommentVNode(" Failed Icon "),
+                                (vue.openBlock(), vue.createElementBlock("svg", vue.mergeProps(_ctx.$attrs, {
+                                    viewBox: "0 0 320 512",
+                                    xmlns: "http://www.w3.org/2000/svg"
+                                }), [
+                                    vue.createCommentVNode("! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. "),
+                                    _hoisted_3$1
+                                ], 16 /* FULL_PROPS */))
+                            ], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */))
+                            : vue.createCommentVNode("v-if", true)
+            ], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */));
+        };
+    }
+});
+
 function styleInject(css, ref) {
   if ( ref === void 0 ) ref = {};
   var insertAt = ref.insertAt;
@@ -58,63 +110,888 @@ var _export_sfc = (sfc, props) => {
   return target;
 };
 
-const _sfc_main$1 = {
-	name: 'StatusIcons',
-	props: {
-		icon: {
-			type: String,
-			required: true
-		}
-	},
-	setup(props) {
-		return {
-			props,
-		};
-	}
-};
+var StatusIcons = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-7d8ba791"], ["__file", "src/plugin/StatusIcons.vue"]]);
 
-const _withScopeId = n => (vue.pushScopeId("data-v-7d8ba791"),n=n(),vue.popScopeId(),n);
-const _hoisted_1$1 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/vue.createElementVNode("path", { d: "M224 0c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224zM64 160c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H288v64H64V224h64V160H64z" }, null, -1 /* HOISTED */));
-const _hoisted_2$1 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/vue.createElementVNode("path", { d: "M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" }, null, -1 /* HOISTED */));
-const _hoisted_3$1 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/vue.createElementVNode("path", { d: "M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z" }, null, -1 /* HOISTED */));
+const neonBunnyTheme = `
+/**
+ * MIT License
+ * Copyright (c) 2023 WebDevNerdStuff
+ * WebDevNerdStuff Neon Bunny
+ * VSCode Theme: https://marketplace.visualstudio.com/items?itemName=WebDevNerdStuff.neon-bunny
+ */
 
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-    vue.createCommentVNode(" Copy Icon "),
-    ($props.icon === 'copy')
-      ? (vue.openBlock(), vue.createElementBlock("svg", vue.mergeProps({ key: 0 }, _ctx.$attrs, {
-          viewBox: "0 0 512 512",
-          xmlns: "http://www.w3.org/2000/svg"
-        }), [
-          vue.createCommentVNode("! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. "),
-          _hoisted_1$1
-        ], 16 /* FULL_PROPS */))
-      : ($props.icon === 'success')
-        ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
-            vue.createCommentVNode(" Success Icon "),
-            (vue.openBlock(), vue.createElementBlock("svg", vue.mergeProps(_ctx.$attrs, {
-              viewBox: "0 0 512 512",
-              xmlns: "http://www.w3.org/2000/svg"
-            }), [
-              vue.createCommentVNode("! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. "),
-              _hoisted_2$1
-            ], 16 /* FULL_PROPS */))
-          ], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */))
-        : ($props.icon === 'failed')
-          ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 2 }, [
-              vue.createCommentVNode(" Failed Icon "),
-              (vue.openBlock(), vue.createElementBlock("svg", vue.mergeProps(_ctx.$attrs, {
-                viewBox: "0 0 320 512",
-                xmlns: "http://www.w3.org/2000/svg"
-              }), [
-                vue.createCommentVNode("! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. "),
-                _hoisted_3$1
-              ], 16 /* FULL_PROPS */))
-            ], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */))
-          : vue.createCommentVNode("v-if", true)
-  ], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */))
+:root {
+	--neon-bunny-blue-light: #2492ff;
+	--neon-bunny-blue: #0b93ff;
+	--neon-bunny-gray-lighter: #aaa;
+	--neon-bunny-gray: #7f817e;
+	--neon-bunny-green-darker-darker: #008b05;
+	--neon-bunny-green-darker: #2bb71d;
+	--neon-bunny-green-light: #2bb71d;
+	--neon-bunny-green-neon: #0aff04;
+	--neon-bunny-green: #00d205;
+	--neon-bunny-lime-lighter: #c3e88d;
+	--neon-bunny-lime: #b2ff02;
+	--neon-bunny-magenta: #df00df;
+	--neon-bunny-neon-green: #0f0;
+	--neon-bunny-orange: #e58100;
+	--neon-bunny-peach-darker: #ffb46a;
+	--neon-bunny-peach-light: #ffe4a6;
+	--neon-bunny-peach: #ffcb6b;
+	--neon-bunny-pink: #ff1190;
+	--neon-bunny-purple-light-dim: #c792ea;
+	--neon-bunny-purple-light: #d285cc;
+	--neon-bunny-purple: #ea03ff;
+	--neon-bunny-red: #ff3229;
+	--neon-bunny-salmon: #ff6f5b;
+	--neon-bunny-teal: #80fcff;
+	--neon-bunny-white: #fff;
+	--neon-bunny-yellow: #fef611;
+
+	/* Standard */
+	--neon-bunny-atrule: var(--neon-bunny-peach);
+	--neon-bunny-attr-name: var(--neon-bunny-purple-light-dim);
+	--neon-bunny-attr-value: var(--neon-bunny-peach);
+	--neon-bunny-boolean: var(--neon-bunny-blue-light);
+	--neon-bunny-builtin: var(--neon-bunny-purple);
+	--neon-bunny-cdata: var(--neon-bunny-gray);
+	--neon-bunny-char: var(--neon-bunny-pink);
+	--neon-bunny-class-name: var(--neon-bunny-peach);
+	--neon-bunny-comment: var(--neon-bunny-gray);
+	--neon-bunny-constant: var(--neon-bunny-green-darker);
+	--neon-bunny-deleted: var(--neon-bunny-red);
+	--neon-bunny-entity: var(--neon-bunny-peach);
+	--neon-bunny-function: var(--neon-bunny-green-neon);
+	--neon-bunny-important: var(--neon-bunny-red);
+	--neon-bunny-inserted: var(--neon-bunny-lime-lighter);
+	--neon-bunny-keyword: var(--neon-bunny-blue);
+	--neon-bunny-namespace: var(--neon-bunny-peach);
+	--neon-bunny-number: var(--neon-bunny-white);
+	--neon-bunny-operator: var(--neon-bunny-blue-light);
+	--neon-bunny-prolog: var(--neon-bunny-gray);
+	--neon-bunny-property: var(--neon-bunny-pink);
+	--neon-bunny-punctuation: var(--neon-bunny-blue);
+	--neon-bunny-regex: var(--neon-bunny-peach-light);
+	--neon-bunny-string: var(--neon-bunny-green-darker);
+	--neon-bunny-symbol: var(--neon-bunny-pink);
+	--neon-bunny-tag: var(--neon-bunny-blue-light);
+	--neon-bunny-url: var(--neon-bunny-orange);
+	--neon-bunny-variable: var(--neon-bunny-green-darker);
+
+	/* HTML */
+	--neon-bunny-html-attr-name: var(--neon-bunny-green);
+	--neon-bunny-html-attr-value-punctuation: var(--neon-bunny-peach-darker);
+	--neon-bunny-html-attr-value: var(--neon-bunny-peach-darker);
+
+	/* CSS */
+	--neon-bunny-css-atrule-rule: var(--neon-bunny-blue);
+	--neon-bunny-css-atrule: var(--neon-bunny-white);
+	--neon-bunny-css-function: var(--neon-bunny-orange);
+	--neon-bunny-css-property: var(--neon-bunny-pink);
+	--neon-bunny-css-punctuation: var(--neon-bunny-white);
+	--neon-bunny-css-selector: var(--neon-bunny-lime);
+	--neon-bunny-css-string: var(--neon-bunny-green-light);
+	--neon-bunny-css: var(--neon-bunny-purple-light-dim);
+
+	/* JS */
+	--neon-bunny-js-keyword: var(--neon-bunny-blue);
+	--neon-bunny-js-literal-property: var(--neon-bunny-neon-green);
+	--neon-bunny-js-operator: var(--neon-bunny-blue-light);
+	--neon-bunny-js-punctuation: var(--neon-bunny-white);
+	--neon-bunny-js-string: var(--neon-bunny-green-darker-darker);
+	--neon-bunny-js-template-string-string: var(--neon-bunny-green-darker-darker);
+	--neon-bunny-js: var(--neon-bunny-green-darker);
+
+	/* PHP */
+	--neon-bunny-php-boolean: var(--neon-bunny-blue);
+	--neon-bunny-php-class-name-definition-class-name: var(--neon-bunny-magenta);
+	--neon-bunny-php-class-name-return-type: var(--neon-bunny-gray-lighter);
+	--neon-bunny-php-class-name: var(--neon-bunny-teal);
+	--neon-bunny-php-double-quote-string: var(--neon-bunny-salmon);
+	--neon-bunny-php-function: var(--neon-bunny-green-neon);
+	--neon-bunny-php-keyword-type-hint: var(--neon-bunny-gray-lighter);
+	--neon-bunny-php-keyword: var(--neon-bunny-blue);
+	--neon-bunny-php-operator: var(--neon-bunny-purple);
+	--neon-bunny-php-package: var(--neon-bunny-peach);
+	--neon-bunny-php-property: var(--neon-bunny-purple-light);
+	--neon-bunny-php-punctuation: var(--neon-bunny-white);
+	--neon-bunny-php-single-quote-string: var(--neon-bunny-yellow);
+	--neon-bunny-php-variable: var(--neon-bunny-purple-light);
 }
-var StatusIcons = /*#__PURE__*/_export_sfc(_sfc_main$1, [['render',_sfc_render],['__scopeId',"data-v-7d8ba791"],['__file',"src/plugin/StatusIcons.vue"]]);
+
+code[class*='language-'],
+pre[class*='language-'] {
+	color: var(--neon-bunny-white);
+	font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	-webkit-hyphens: none;
+	hyphens: none;
+	line-height: 1.5;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+	text-align: left;
+	white-space: pre;
+	word-break: normal;
+	word-spacing: normal;
+	word-wrap: normal;
+}
+
+pre[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::selection {
+	background: rgba(29, 59, 83, 0.99);
+	text-shadow: none;
+}
+
+pre[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::selection {
+	background: #ffffff15;
+	text-shadow: none;
+}
+
+@media print {
+	code[class*='language-'],
+	pre[class*='language-'] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+	margin: 0.5em 0;
+	overflow: auto;
+	padding: 1em;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+	background: #000;
+	color: white;
+}
+
+:not(pre) > code[class*='language-'] {
+	border-radius: 0.3em;
+	padding: 0.1em;
+	white-space: normal;
+}
+
+/* -------------------------------------------------- Standard */
+.token.atrule {
+	color: var(--neon-bunny-atrule);
+}
+
+.token.attr-name {
+	color: var(--neon-bunny-attr-name);
+}
+
+.token.attr-value {
+	color: var(--neon-bunny-attr-value);
+}
+
+.token.bold {
+	font-weight: bold;
+}
+
+.token.boolean {
+	color: var(--neon-bunny-boolean);
+}
+
+.token.builtin {
+	color: var(--neon-bunny-builtin);
+}
+
+.token.cdata {
+	color: var(--neon-bunny-cdata);
+	font-style: italic;
+}
+
+.token.char {
+	color: var(--neon-bunny-char);
+}
+
+.token.class-name {
+	color: var(--neon-bunny-class-name);
+}
+
+.token.constant {
+	color: var(--neon-bunny-constant);
+}
+
+.token.comment {
+	color: var(--neon-bunny-comment);
+	font-style: italic;
+}
+
+.token.deleted {
+	color: var(--neon-bunny-deleted);
+}
+
+.token.entity {
+	color: var(--neon-bunny-entity);
+}
+
+.token.function {
+	color: var(--neon-bunny-function);
+}
+
+.token.important {
+	color: var(--neon-bunny-important);
+	font-style: italic;
+}
+
+.token.inserted {
+	color: var(--neon-bunny-inserted);
+}
+
+.token.italic {
+	font-style: italic;
+}
+
+.token.keyword {
+	color: var(--neon-bunny-keyword);
+}
+
+.namespace {
+	color: var(--neon-bunny-namespace);
+}
+
+.token.number {
+	color: var(--neon-bunny-number);
+}
+
+.token.operator {
+	color: var(--neon-bunny-operator);
+}
+
+.token.prolog {
+	color: var(--neon-bunny-prolog);
+	font-style: italic;
+}
+
+.token.property {
+	color: var(--neon-bunny-property);
+}
+
+.token.punctuation {
+	color: var(--neon-bunny-punctuation);
+}
+
+.token.regex {
+	color: var(--neon-bunny-regex);
+}
+
+.token.string {
+	color: var(--neon-bunny-string);
+}
+
+.token.symbol {
+	color: var(--neon-bunny-symbol);
+}
+
+.token.tag {
+	color: var(--neon-bunny-tag);
+}
+
+.token.url {
+	color: var(--neon-bunny-url);
+	text-decoration: underline;
+}
+
+.token.variable {
+	color: var(--neon-bunny-variable);
+}
+
+/* -------------------------------------------------- HTML */
+.language-html .token.attr-name {
+	color: var(--neon-bunny-html-attr-name);
+}
+
+.language-html .token.attr-value {
+	color: var(--neon-bunny-html-attr-value);
+}
+
+.language-html .token.attr-value .token.punctuation {
+	color: var(--neon-bunny-html-attr-value-punctuation);
+}
+
+/* -------------------------------------------------- CSS */
+.language-css {
+	color: var(--neon-bunny-css) !important;
+}
+
+.language-css .token.atrule {
+	color: var(--neon-bunny-css-atrule);
+}
+
+.language-css .token.atrule .token.rule {
+	color: var(--neon-bunny-css-atrule-rule);
+}
+
+.language-css .token.function {
+	color: var(--neon-bunny-css-function);
+}
+
+.language-css .token.property {
+	color: var(--neon-bunny-css-property);
+}
+
+.language-css .token.punctuation {
+	color: var(--neon-bunny-css-punctuation);
+}
+
+.language-css .token.selector {
+	color: var(--neon-bunny-css-selector);
+}
+
+.language-css .token.string,
+.style .token.string {
+	color: var(--neon-bunny-css-string);
+	font-style: italic;
+}
+
+/* -------------------------------------------------- JavaScript */
+.language-javascript,
+.language-js {
+	color: var(--neon-bunny-js) !important;
+	font-style: italic;
+}
+
+.language-javascript span,
+.language-js span {
+	font-style: normal;
+}
+
+.language-javascript .token.keyword,
+.language-js .token.keyword {
+	color: var(--neon-bunny-js-keyword);
+}
+
+.language-javascript .token.literal-property.property,
+.language-js .token.literal-property.property {
+	color: var(--neon-bunny-js-literal-property);
+	font-style: italic;
+}
+
+.language-javascript .token.operator,
+.language-js .token.operator {
+	color: var(--neon-bunny-js-operator);
+	font-style: italic;
+}
+
+.language-javascript .token.punctuation,
+.language-js .token.punctuation {
+	color: var(--neon-bunny-js-punctuation);
+}
+
+.language-javascript .token.template-string .token.string,
+.language-js .token.template-string .token.string {
+	color: var(--neon-bunny-js-template-string-string);
+}
+
+/* -------------------------------------------------- PHP */
+.language-php .token.boolean {
+	color: var(--neon-bunny-boolean);
+}
+
+.language-php .token.class-name {
+	color: var(--neon-bunny-php-class-name);
+}
+
+.language-php .token.class-name-definition.class-name {
+	color: var(--neon-bunny-php-class-name-definition-class-name);
+}
+
+.language-php .token.class-name.return-type {
+	color: var(--neon-bunny-php-class-name-return-type);
+	font-style: italic;
+}
+
+.language-php .token.function {
+	color: var(--neon-bunny-php-function);
+}
+
+.language-php .token.keyword {
+	color: var(--neon-bunny-php-keyword);
+}
+
+.language-php .token.keyword.type-hint {
+	color: var(--neon-bunny-php-keyword-type-hint);
+	font-style: italic;
+}
+
+.language-php .token.operator {
+	color: var(--neon-bunny-php-operator);
+}
+
+.language-php .token.package {
+	color: var(--neon-bunny-php-package);
+}
+
+.language-php .token.property {
+	color: var(--neon-bunny-php-property);
+}
+
+.language-php .token.punctuation {
+	color: var(--neon-bunny-php-punctuation);
+}
+
+.language-php .token.string.double-quoted-string {
+	color: var(--neon-bunny-php-double-quote-string);
+}
+
+.language-php .token.string.single-quoted-string {
+	color: var(--neon-bunny-php-single-quote-string);
+}
+
+.language-php .token.variable {
+	color: var(--neon-bunny-php-variable);
+}
+`;
+
+const neonBunnyCarrotTheme = `/**
+* MIT License
+* Copyright (c) 2023 WebDevNerdStuff
+* WebDevNerdStuff Neon Bunny - Carrot
+* VSCode Theme: https://marketplace.visualstudio.com/items?itemName=WebDevNerdStuff.neon-bunny
+*/
+
+:root {
+ --neon-bunny-blue-light: #2492ff;
+ --neon-bunny-blue: #0b93ff;
+ --neon-bunny-gray: #7f817e;
+ --neon-bunny-green-darker-darker: #008b05;
+ --neon-bunny-green-darker: #2bb71d;
+ --neon-bunny-green-light: #7cd47d;
+ --neon-bunny-green: #00d205;
+ --neon-bunny-lime: #c3e88d;
+ --neon-bunny-magenta: #dd00ff;
+ --neon-bunny-orange-darker: #e58100;
+ --neon-bunny-orange-light: #ffc266;
+ --neon-bunny-orange: #ff9900;
+ --neon-bunny-peach-light: #ffe4a6;
+ --neon-bunny-peach: #ffcb6b;
+ --neon-bunny-pink: #ff1190;
+ --neon-bunny-purple-light-dim: #c792ea;
+ --neon-bunny-purple-light: #da96df;
+ --neon-bunny-purple: #ea03ff;
+ --neon-bunny-red: #ff5370;
+ --neon-bunny-teal: #00EEFF;
+ --neon-bunny-white: #fff;
+ --neon-bunny-yellow-light: #ffffa2;
+ --neon-bunny-yellow: #ffff00;
+
+ /* Standard */
+ --neon-bunny-atrule: var(--neon-bunny-peach);
+ --neon-bunny-attr-name: var(--neon-bunny-purple-light-dim);
+ --neon-bunny-attr-value: var(--neon-bunny-peach);
+ --neon-bunny-boolean: var(--neon-bunny-purple-light);
+ --neon-bunny-builtin: var(--neon-bunny-purple);
+ --neon-bunny-cdata: var(--neon-bunny-gray);
+ --neon-bunny-char: var(--neon-bunny-pink);
+ --neon-bunny-class-name: var(--neon-bunny-peach);
+ --neon-bunny-comment: var(--neon-bunny-gray);
+ --neon-bunny-constant: var(--neon-bunny-green-darker);
+ --neon-bunny-deleted: var(--neon-bunny-red);
+ --neon-bunny-entity: var(--neon-bunny-peach);
+ --neon-bunny-function: var(--neon-bunny-orange-light);
+ --neon-bunny-important: var(--neon-bunny-pink);
+ --neon-bunny-inserted: var(--neon-bunny-lime);
+ --neon-bunny-keyword: var(--neon-bunny-purple-light);
+ --neon-bunny-namespace: var(--neon-bunny-peach);
+ --neon-bunny-number: var(--neon-bunny-white);
+ --neon-bunny-operator: var(--neon-bunny-orange);
+ --neon-bunny-prolog: var(--neon-bunny-gray);
+ --neon-bunny-property: var(--neon-bunny-orange-light);
+ --neon-bunny-punctuation: var(--neon-bunny-orange);
+ --neon-bunny-regex: var(--neon-bunny-peach-light);
+ --neon-bunny-string: var(--neon-bunny-green-light);
+ --neon-bunny-symbol: var(--neon-bunny-orange-light);
+ --neon-bunny-tag: var(--neon-bunny-orange);
+ --neon-bunny-url: var(--neon-bunny-orange-darker);
+ --neon-bunny-variable: var(--neon-bunny-orange);
+
+ /* HTML */
+ --neon-bunny-html-attr-name: var(--neon-bunny-orange-light);
+ --neon-bunny-html-attr-value-punctuation: var(--neon-bunny-green);
+ --neon-bunny-html-attr-value: var(--neon-bunny-green);
+
+ /* CSS */
+ --neon-bunny-css-atrule-rule: var(--neon-bunny-blue);
+ --neon-bunny-css-atrule: var(--neon-bunny-white);
+ --neon-bunny-css-function: var(--neon-bunny-orange-darker);
+ --neon-bunny-css-property: var(--neon-bunny-pink);
+ --neon-bunny-css-punctuation: var(--neon-bunny-white);
+ --neon-bunny-css-selector: var(--neon-bunny-yellow);
+ --neon-bunny-css-string: var(--neon-bunny-green-light);
+ --neon-bunny-css: var(--neon-bunny-teal);
+
+ /* JS */
+ --neon-bunny-js-keyword: var(--neon-bunny-magenta);
+ --neon-bunny-js-literal-property: var(--neon-bunny-orange);
+ --neon-bunny-js-operator: var(--neon-bunny-blue-light);
+ --neon-bunny-js-punctuation: var(--neon-bunny-white);
+ --neon-bunny-js-string: var(--neon-bunny-green-darker-darker);
+ --neon-bunny-js-template-string-string: var(--neon-bunny-green-darker-darker);
+ --neon-bunny-js: var(--neon-bunny-orange);
+
+ /* PHP */
+ --neon-bunny-php-boolean: var(--neon-bunny-purple-light);
+ --neon-bunny-php-class-name-return-type: var(--neon-bunny-yellow);
+ --neon-bunny-php-class-name: var(--neon-bunny-yellow);
+ --neon-bunny-php-double-quote-string: var(--neon-bunny-green);
+ --neon-bunny-php-function: var(--neon-bunny-orange-light);
+ --neon-bunny-php-keyword: var(--neon-bunny-magenta);
+ --neon-bunny-php-keyword-type-hint: var(--neon-bunny-magenta);
+ --neon-bunny-php-class-name-definition-class-name: var(--neon-bunny-yellow);
+ --neon-bunny-php-operator: var(--neon-bunny-yellow-light);
+ --neon-bunny-php-package: var(--neon-bunny-yellow);
+ --neon-bunny-php-property: var(--neon-bunny-orange);
+ --neon-bunny-php-punctuation: var(--neon-bunny-white);
+ --neon-bunny-php-single-quote-string: var(--neon-bunny-green-light);
+ --neon-bunny-php-variable: var(--neon-bunny-orange);
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+ -moz-hyphens: none;
+ -moz-tab-size: 4;
+ -ms-hyphens: none;
+ -o-tab-size: 4;
+ -webkit-hyphens: none;
+
+ color: var(--neon-bunny-white);
+ font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+ font-size: 1em;
+ hyphens: none;
+ line-height: 1.5;
+ tab-size: 4;
+ text-align: left;
+ white-space: pre;
+ word-break: normal;
+ word-spacing: normal;
+ word-wrap: normal;
+}
+
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
+ background: rgba(29, 59, 83, 0.99);
+ text-shadow: none;
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+ background: #ffffff15;
+ text-shadow: none;
+}
+
+@media print {
+
+ code[class*="language-"],
+ pre[class*="language-"] {
+	 text-shadow: none;
+ }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+ margin: 0.5em 0;
+ overflow: auto;
+ padding: 1em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+ background: #000000;
+ color: white;
+}
+
+:not(pre) > code[class*="language-"] {
+ border-radius: 0.3em;
+ padding: 0.1em;
+ white-space: normal;
+}
+
+/* -------------------------------------------------- Standard */
+.token.atrule {
+ color: var(--neon-bunny-atrule);
+}
+
+.token.attr-name {
+ color: var(--neon-bunny-attr-name);
+}
+
+.token.attr-value {
+ color: var(--neon-bunny-attr-value);
+}
+
+.token.bold {
+ font-weight: bold;
+}
+
+.token.boolean {
+ color: var(--neon-bunny-boolean);
+}
+
+.token.builtin {
+ color: var(--neon-bunny-builtin);
+}
+
+.token.cdata {
+ color: var(--neon-bunny-cdata);
+ font-style: italic;
+}
+
+.token.char {
+ color: var(--neon-bunny-char);
+}
+
+.token.class-name {
+ color: var(--neon-bunny-class-name);
+}
+
+.token.constant {
+ color: var(--neon-bunny-constant);
+}
+
+.token.comment {
+ color: var(--neon-bunny-comment);
+ font-style: italic;
+}
+
+.token.deleted {
+ color: var(--neon-bunny-deleted);
+}
+
+.token.entity {
+ color: var(--neon-bunny-entity);
+}
+
+.token.function {
+ color: var(--neon-bunny-function);
+}
+
+.token.important {
+ color: var(--neon-bunny-important);
+ font-style: italic;
+}
+
+.token.inserted {
+ color: var(--neon-bunny-inserted);
+}
+
+.token.italic {
+ font-style: italic;
+}
+
+.token.keyword {
+ color: var(--neon-bunny-keyword);
+}
+
+.namespace {
+ color: var(--neon-bunny-namespace);
+}
+
+.token.number {
+ color: var(--neon-bunny-number);
+}
+
+.token.operator {
+ color: var(--neon-bunny-operator);
+}
+
+.token.prolog {
+ color: var(--neon-bunny-prolog);
+ font-style: italic;
+}
+
+.token.property {
+ color: var(--neon-bunny-property);
+}
+
+.token.punctuation {
+ color: var(--neon-bunny-punctuation);
+}
+
+.token.regex {
+ color: var(--neon-bunny-regex);
+}
+
+.token.string {
+ color: var(--neon-bunny-string);
+}
+
+.token.symbol {
+ color: var(--neon-bunny-symbol);
+}
+
+.token.tag {
+ color: var(--neon-bunny-tag);
+}
+
+.token.url {
+ color: var(--neon-bunny-url);
+ text-decoration: underline;
+}
+
+.token.variable {
+ color: var(--neon-bunny-variable);
+}
+
+/* -------------------------------------------------- HTML */
+.language-html .token.attr-name {
+ color: var(--neon-bunny-html-attr-name);
+}
+
+.language-html .token.attr-value {
+ color: var(--neon-bunny-html-attr-value);
+}
+
+.language-html .token.attr-value .token.punctuation {
+ color: var(--neon-bunny-html-attr-value-punctuation);
+}
+
+/* -------------------------------------------------- CSS */
+.language-css {
+ color: var(--neon-bunny-css) !important;
+}
+
+.language-css .token.atrule {
+ color: var(--neon-bunny-css-atrule);
+}
+
+.language-css .token.atrule .token.rule {
+ color: var(--neon-bunny-css-atrule-rule);
+}
+
+.language-css .token.function {
+ color: var(--neon-bunny-css-function);
+}
+
+.language-css .token.property {
+ color: var(--neon-bunny-css-property);
+}
+
+.language-css .token.punctuation {
+ color: var(--neon-bunny-css-punctuation);
+}
+
+.language-css .token.selector {
+ color: var(--neon-bunny-css-selector);
+}
+
+.language-css .token.string,
+.style .token.string {
+ color: var(--neon-bunny-css-string);
+ font-style: italic;
+}
+
+/* -------------------------------------------------- JavaScript */
+.language-javascript,
+.language-js {
+ color: var(--neon-bunny-js) !important;
+ font-style: italic;
+}
+
+.language-javascript span,
+.language-js span {
+ font-style: normal;
+}
+
+.language-javascript .token.keyword,
+.language-js .token.keyword {
+ color: var(--neon-bunny-js-keyword);
+}
+
+.language-javascript .token.literal-property.property,
+.language-js .token.literal-property.property {
+ color: var(--neon-bunny-js-literal-property);
+ font-style: italic;
+}
+
+.language-javascript .token.operator,
+.language-js .token.operator {
+ color: var(--neon-bunny-js-operator);
+ font-style: italic;
+}
+
+.language-javascript .token.punctuation,
+.language-js .token.punctuation {
+ color: var(--neon-bunny-js-punctuation);
+}
+
+.language-javascript .token.template-string .token.string,
+.language-js .token.template-string .token.string {
+ color: var(--neon-bunny-js-template-string-string);
+}
+
+/* -------------------------------------------------- PHP */
+.language-php .token.boolean {
+ color: var(--neon-bunny-boolean);
+}
+
+.language-php .token.class-name {
+ color: var(--neon-bunny-php-class-name);
+}
+
+.language-php .token.class-name-definition.class-name {
+ color: var(--neon-bunny-php-class-name-definition-class-name);
+}
+
+.language-php .token.class-name.return-type {
+ color: var(--neon-bunny-php-class-name-return-type);
+}
+
+.language-php .token.function {
+ color: var(--neon-bunny-php-function);
+ text-decoration: underline;
+}
+
+.language-php .token.keyword {
+ color: var(--neon-bunny-php-keyword);
+}
+
+.language-php .token.keyword.type-hint {
+ color: var(--neon-bunny-php-keyword-type-hint);
+}
+
+.language-php .token.operator {
+ color: var(--neon-bunny-php-operator);
+}
+
+.language-php .token.package {
+ color: var(--neon-bunny-php-package);
+}
+
+.language-php .token.property {
+ color: var(--neon-bunny-php-property);
+}
+
+.language-php .token.punctuation {
+ color: var(--neon-bunny-php-punctuation);
+}
+
+.language-php .token.string.double-quoted-string {
+ color: var(--neon-bunny-php-double-quote-string);
+}
+
+.language-php .token.string.single-quoted-string {
+ color: var(--neon-bunny-php-single-quote-string);
+}
+
+.language-php .token.variable {
+ color: var(--neon-bunny-php-variable);
+}
+`;
 
 const _hoisted_1 = { class: "v-code-block--button-copy" };
 const _hoisted_2 = { class: "v-code-block--button-run" };
@@ -226,40 +1103,32 @@ var _sfc_main = /*#__PURE__*/ vue.defineComponent({
             type: [String, Boolean],
             required: false,
             default: 'neon-bunny',
-        }
+        },
     },
     emits: ['run', 'update:copy-status'],
     setup(__props, { emit }) {
         const props = __props;
-        const neonBunnyCarrotTheme = undefined('./themes/neon-bunny-carrot.css', { eager: true, as: 'raw' });
-        const neonBunnyTheme = undefined('./themes/neon-bunny.css', { eager: true, as: 'raw' });
-        const prismTheme = undefined('prismjs/themes/prism.css', { eager: true, as: 'raw' });
-        const prismThemeCoy = undefined('prismjs/themes/prism-coy.css', { eager: true, as: 'raw' });
-        const prismThemeDark = undefined('prismjs/themes/prism-dark.css', { eager: true, as: 'raw' });
-        const prismThemeFunky = undefined('prismjs/themes/prism-funky.css', { eager: true, as: 'raw' });
-        const prismThemeOkaidia = undefined('prismjs/themes/prism-okaidia.css', { eager: true, as: 'raw' });
-        const prismThemeSolarizedlight = undefined('prismjs/themes/prism-solarizedlight.css', { eager: true, as: 'raw' });
-        const prismThemeTomorrow = undefined('prismjs/themes/prism-tomorrow.css', { eager: true, as: 'raw' });
-        const prismThemeTwilight = undefined('prismjs/themes/prism-twilight.css', { eager: true, as: 'raw' });
+        const prismVersion = '1.29.0';
         // -------------------------------------------------- Emits & Slots & Injects //
         const slots = vue.useSlots();
         const codeBlockGlobalOptions = vue.inject('codeBlockGlobalOptions');
         // -------------------------------------------------- Props //
         // -------------------------------------------------- Data //
-        const copyTextValue = vue.ref('');
         const convertedCode = vue.ref(null);
-        const copying = vue.ref(false);
         const copyStatus = vue.ref('copy');
+        const copyTextValue = vue.ref('');
+        const copying = vue.ref(false);
+        const isLoading = vue.ref(false);
         const isMobile = vue.ref(false);
+        const prismCdn = vue.ref(`https://cdn.jsdelivr.net/gh/PrismJS/prism@${prismVersion}/themes`);
         const runTextValue = vue.ref('');
-        const stylesheetId = 'v-code-block--theme';
         const useTheme = vue.ref('');
         // -------------------------------------------------- Computed //
         const codeBlockClasses = vue.computed(() => {
             return isMobile.value ? 'v-code-block--mobile' : '';
         });
         const codeTagStyles = vue.computed(() => {
-            const width = useTheme.value === 'coy' ? '100%' : '';
+            const width = useTheme.value === 'coy' && isLoading.value === false ? '100%' : '';
             return { width };
         });
         const copyButtonClasses = vue.computed(() => {
@@ -386,63 +1255,71 @@ var _sfc_main = /*#__PURE__*/ vue.defineComponent({
         }
         function loadTheme() {
             let selectedTheme = null;
-            const loadedThemeStyles = document.getElementById(stylesheetId);
             const head = document.getElementsByTagName('head')[0];
             const themeStyles = document.createElement('style');
-            if (loadedThemeStyles) {
-                loadedThemeStyles.remove();
+            const themeId = `v-code-block--theme-${useTheme.value}`;
+            const loadedTheme = document.body.getAttribute('data-v-code-block-theme');
+            let isPrismTheme = true;
+            let cssFilename = '';
+            // If theme is loaded, do not keep trying to add it again //
+            if (loadedTheme === useTheme.value) {
+                return;
             }
+            document.body.setAttribute('data-v-code-block-theme', `${useTheme.value}`);
+            themeStyles.setAttribute('type', 'text/css');
+            themeStyles.setAttribute('data-theme-id', themeId);
+            themeStyles.setAttribute('data-theme', 'v-code-block--theme-sheet');
             switch (useTheme.value) {
                 case 'neon-bunny':
                     selectedTheme = neonBunnyTheme;
+                    isPrismTheme = false;
                     break;
                 case 'neon-bunny-carrot':
                     selectedTheme = neonBunnyCarrotTheme;
-                    break;
-                case 'coy':
-                    selectedTheme = prismThemeCoy;
-                    break;
-                case 'dark':
-                    selectedTheme = prismThemeDark;
-                    break;
-                case 'funky':
-                    selectedTheme = prismThemeFunky;
-                    break;
-                case 'okaidia':
-                    selectedTheme = prismThemeOkaidia;
-                    break;
-                case 'solarizedlight':
-                    selectedTheme = prismThemeSolarizedlight;
-                    break;
-                case 'tomorrow':
-                    selectedTheme = prismThemeTomorrow;
-                    break;
-                case 'twilight':
-                    selectedTheme = prismThemeTwilight;
+                    isPrismTheme = false;
                     break;
                 case 'default':
                 case 'prism':
-                    selectedTheme = prismTheme;
+                    isPrismTheme = true;
+                    cssFilename = 'prism.css';
                     break;
                 default:
-                    selectedTheme = prismTheme;
+                    isPrismTheme = true;
+                    cssFilename = `prism-${useTheme.value}.css`;
                     break;
             }
-            const themeKey = Object.keys(selectedTheme)[0];
-            selectedTheme = selectedTheme[themeKey];
-            themeStyles.setAttribute('type', 'text/css');
-            themeStyles.id = stylesheetId;
-            themeStyles.appendChild(document.createTextNode(selectedTheme));
-            head.appendChild(themeStyles);
+            if (!isPrismTheme) {
+                removeStylesheets();
+                themeStyles.appendChild(document.createTextNode(selectedTheme));
+                head.appendChild(themeStyles);
+                return;
+            }
+            isLoading.value = true;
+            fetch(`${prismCdn.value}/${cssFilename}`).then((response) => {
+                return response.text();
+            }).then((data) => {
+                removeStylesheets();
+                themeStyles.appendChild(document.createTextNode(data));
+                head.appendChild(themeStyles);
+                isLoading.value = false;
+            });
         }
         function mobileCheck() {
             const ua = UAParser();
             const device = ua.device;
             isMobile.value = device.type === 'mobile';
         }
-        window.addEventListener("orientationchange", () => {
+        window.addEventListener('orientationchange', () => {
             mobileCheck();
         });
+        function removeStylesheets() {
+            const themeSheets = document.querySelectorAll('[data-theme="v-code-block--theme-sheet"]');
+            if (themeSheets.length > 0) {
+                themeSheets.forEach((themeSheet) => {
+                    themeSheet.remove();
+                });
+            }
+        }
         function runCode() {
             emit('run');
         }
