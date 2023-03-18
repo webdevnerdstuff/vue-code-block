@@ -104,23 +104,23 @@ const cssVariables = [
 			},
 			{
 				name: '--v-cb-tab-neon-bunny',
-				hsl: '0, 0%, 0%',
+				hsl: '0 0% 0%',
 			},
 			{
 				name: '--v-cb-tab-neon-bunny-text',
-				hsl: '0, 0%, 100%',
+				hsl: '0 0% 100%',
 			},
 			{
 				name: '--v-cb-tab-neon-bunny-icon',
-				hsl: '207, 100%, 52%',
+				hsl: '207 100% 52%',
 			},
 			{
 				name: '--v-cb-tab-neon-bunny-icon-success',
-				hsl: '119, 100%, 51%',
+				hsl: '119 100% 51%',
 			},
 			{
 				name: '--v-cb-tab-neon-bunny-icon-failed',
-				hsl: '3, 100%, 58%',
+				hsl: '3 100% 58%',
 			},
 			// neon-bunny-carrot //
 			{
@@ -129,23 +129,23 @@ const cssVariables = [
 			},
 			{
 				name: '--v-cb-tab-neon-bunny-carrot',
-				hsl: '0, 0%, 0%',
+				hsl: '0 0% 0%',
 			},
 			{
 				name: '--v-cb-tab-neon-bunny-carrot-text',
-				hsl: '0, 0%, 100%',
+				hsl: '0 0% 100%',
 			},
 			{
 				name: '--v-cb-tab-neon-bunny-carrot-icon',
-				hsl: '292, 100%, 50%',
+				hsl: '292 100% 50%',
 			},
 			{
 				name: '--v-cb-tab-neon-bunny-carrot-icon-success',
-				hsl: '119, 100%, 51%',
+				hsl: '119 100% 51%',
 			},
 			{
 				name: '--v-cb-tab-neon-bunny-carrot-icon-failed',
-				hsl: '3, 100%, 58%',
+				hsl: '3 100% 58%',
 			},
 		]
 	},
@@ -160,23 +160,23 @@ const cssVariables = [
 			},
 			{
 				name: '--v-cb-tab-prism-default-bkg',
-				hsl: '24, 20%, 95%',
+				hsl: '24 20% 95%',
 			},
 			{
 				name: '--v-cb-tab-prism-default-text',
-				hsl: '0, 0%, 0%',
+				hsl: '0 0% 0%',
 			},
 			{
 				name: '--v-cb-tab-prism-default-icon',
-				hsl: '198, 100%, 33%',
+				hsl: '198 100% 33%',
 			},
 			{
 				name: '--v-cb-tab-prism-default-icon-success',
-				hsl: '80, 100%, 30%',
+				hsl: '80 100% 30%',
 			},
 			{
 				name: '--v-cb-tab-prism-default-icon-failed',
-				hsl: '348, 68%, 58%',
+				hsl: '348 68% 58%',
 			},
 			// coy //
 			{
@@ -185,23 +185,23 @@ const cssVariables = [
 			},
 			{
 				name: '--v-cb-tab-prism-coy-bkg',
-				hsl: '205, 59%, 50%',
+				hsl: '205 59% 50%',
 			},
 			{
 				name: '--v-cb-tab-prism-coy-text',
-				hsl: '0, 0%, 0%',
+				hsl: '0 0% 0%',
 			},
 			{
 				name: '--v-cb-tab-prism-coy-icon',
-				hsl: '195, 76%, 41%',
+				hsl: '195 76% 41%',
 			},
 			{
 				name: '--v-cb-tab-prism-coy-icon-success',
-				hsl: '80, 100%, 30%',
+				hsl: '80 100% 30%',
 			},
 			{
 				name: '--v-cb-tab-prism-coy-icon-failed',
-				hsl: '0, 64%, 48%',
+				hsl: '0 64% 48%',
 			},
 			// dark //
 			{
@@ -210,27 +210,27 @@ const cssVariables = [
 			},
 			{
 				name: '--v-cb-tab-prism-dark-bkg',
-				hsl: '30, 20%, 25%',
+				hsl: '30 20% 25%',
 			},
 			{
 				name: '--v-cb-tab-prism-dark-text',
-				hsl: '0, 0%, 100%',
+				hsl: '0 0% 100%',
 			},
 			{
 				name: '--v-cb-tab-prism-dark-border',
-				hsl: '30, 20%, 40%',
+				hsl: '30 20% 40%',
 			},
 			{
 				name: '--v-cb-tab-prism-dark-icon',
-				hsl: '40, 90%, 60%',
+				hsl: '40 90% 60%',
 			},
 			{
 				name: '--v-cb-tab-prism-dark-icon-success',
-				hsl: '75, 70%, 60%',
+				hsl: '75 70% 60%',
 			},
 			{
 				name: '--v-cb-tab-prism-dark-icon-failed',
-				hsl: '0, 100%, 50%',
+				hsl: '0 100% 50%',
 			},
 			// funky //
 			{
@@ -239,27 +239,27 @@ const cssVariables = [
 			},
 			{
 				name: '--v-cb-tab-prism-funky-bkg',
-				hsl: '0, 0%, 80%',
+				hsl: '0 0% 80%',
 			},
 			{
 				name: '--v-cb-tab-prism-funky-text',
-				hsl: '0, 0%, 100%',
+				hsl: '0 0% 100%',
 			},
 			{
 				name: '--v-cb-tab-prism-funky-dark',
-				hsl: '0, 0%, 0%',
+				hsl: '0 0% 0%',
 			},
 			{
 				name: '--v-cb-tab-prism-funky-icon',
-				hsl: '328, 100%, 54%',
+				hsl: '328 100% 54%',
 			},
 			{
 				name: '--v-cb-tab-prism-funky-icon-success',
-				hsl: '80, 61%, 50%',
+				hsl: '80 61% 50%',
 			},
 			{
 				name: '--v-cb-tab-prism-funky-icon-failed',
-				hsl: '0, 100%, 50%',
+				hsl: '0 100% 50%',
 			},
 			// okaidia //
 			{
@@ -268,23 +268,23 @@ const cssVariables = [
 			},
 			{
 				name: '--v-cb-tab-prism-okaidia-bkg',
-				hsl: '70, 8%, 15%',
+				hsl: '70 8% 15%',
 			},
 			{
 				name: '--v-cb-tab-prism-okaidia-text',
-				hsl: '0, 0%, 100%',
+				hsl: '0 0% 100%',
 			},
 			{
 				name: '--v-cb-tab-prism-okaidia-icon',
-				hsl: '190, 81%, 67%',
+				hsl: '190 81% 67%',
 			},
 			{
 				name: '--v-cb-tab-prism-okaidia-icon-success',
-				hsl: '80, 76%, 53%',
+				hsl: '80 76% 53%',
 			},
 			{
 				name: '--v-cb-tab-prism-okaidia-icon-failed',
-				hsl: '338, 95%, 56%',
+				hsl: '338 95% 56%',
 			},
 			// solarizedlight //
 			{
@@ -293,23 +293,23 @@ const cssVariables = [
 			},
 			{
 				name: '--v-cb-tab-prism-solarizedlight-bkg',
-				hsl: '44, 87%, 94%',
+				hsl: '44 87% 94%',
 			},
 			{
 				name: '--v-cb-tab-prism-solarizedlight-text',
-				hsl: '196, 13%, 45%',
+				hsl: '196 13% 45%',
 			},
 			{
 				name: '--v-cb-tab-prism-solarizedlight-icon',
-				hsl: '175, 59%, 40%',
+				hsl: '175 59% 40%',
 			},
 			{
 				name: '--v-cb-tab-prism-solarizedlight-icon-success',
-				hsl: '68, 100%, 30%',
+				hsl: '68 100% 30%',
 			},
 			{
 				name: '--v-cb-tab-prism-solarizedlight-icon-failed',
-				hsl: '18, 80%, 44%',
+				hsl: '18 80% 44%',
 			},
 			// tomorrow //
 			{
@@ -318,23 +318,23 @@ const cssVariables = [
 			},
 			{
 				name: '--v-cb-tab-prism-tomorrow-bkg',
-				hsl: '0, 0%, 18%',
+				hsl: '0 0% 18%',
 			},
 			{
 				name: '--v-cb-tab-prism-tomorrow-text',
-				hsl: '0, 0%, 80%',
+				hsl: '0 0% 80%',
 			},
 			{
 				name: '--v-cb-tab-prism-tomorrow-icon',
-				hsl: '299, 34%, 70%',
+				hsl: '299 34% 70%',
 			},
 			{
 				name: '--v-cb-tab-prism-tomorrow-icon-success',
-				hsl: '143, 39%, 64%',
+				hsl: '143 39% 64%',
 			},
 			{
 				name: '--v-cb-tab-prism-tomorrow-icon-failed',
-				hsl: '358, 65%, 68%',
+				hsl: '358 65% 68%',
 			},
 			// twilight //
 			{
@@ -343,27 +343,27 @@ const cssVariables = [
 			},
 			{
 				name: '--v-cb-tab-prism-twilight-bkg',
-				hsl: '0, 0%, 8%',
+				hsl: '0 0% 8%',
 			},
 			{
 				name: '--v-cb-tab-prism-twilight-text',
-				hsl: '0, 0%, 80%',
+				hsl: '0 0% 80%',
 			},
 			{
 				name: '--v-cb-tab-prism-twilight-border',
-				hsl: '0, 0%, 33%',
+				hsl: '0 0% 33%',
 			},
 			{
 				name: '--v-cb-tab-prism-twilight-icon',
-				hsl: '53, 89%, 79%',
+				hsl: '53 89% 79%',
 			},
 			{
 				name: '--v-cb-tab-prism-twilight-icon-success',
-				hsl: '76, 21%, 52%',
+				hsl: '76 21% 52%',
 			},
 			{
 				name: '--v-cb-tab-prism-twilight-icon-failed',
-				hsl: '14, 58%, 55%',
+				hsl: '14 58% 55%',
 			},
 		]
 	},
