@@ -69,6 +69,9 @@
 		<!-- ============================================== Props -->
 		<PropsSection id="ul-props" />
 
+		<!-- ============================================== Props -->
+		<ThemesSection id="ul-themes" />
+
 		<!-- ============================================== Events -->
 		<EventsSection id="ul-events" />
 
@@ -119,6 +122,7 @@ import {
 	PropsSection,
 	RegisterSection,
 	SlotsSection,
+	ThemesSection,
 	UsageSection,
 } from '@/components/Sections/';
 import { TestingExamples } from '@/components/Examples/';
