@@ -1298,6 +1298,8 @@ var _sfc_main = /*#__PURE__*/ defineComponent({
                 themeStyles.appendChild(document.createTextNode(data));
                 head.appendChild(themeStyles);
                 isLoading.value = false;
+            }).catch((error) => {
+                console.error('PrismJS CDN Error:', error);
             });
         }
         function mobileCheck() {
