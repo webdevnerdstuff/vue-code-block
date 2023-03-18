@@ -35,84 +35,84 @@
 	/* Neon Bunny Colors */
 
 	/* neon-bunny */
-	--v-cb-tab-neon-bunny-bkg: 0, 0%, 0%;
-	--v-cb-tab-neon-bunny-text: 0, 0%, 100%;
-	--v-cb-tab-neon-bunny-icon: 207, 100%, 52%;
-	--v-cb-tab-neon-bunny-icon-success: 119, 100%, 51%;
-	--v-cb-tab-neon-bunny-icon-failed: 3, 100%, 58%;
+	--v-cb-tab-neon-bunny-bkg: 0 0% 0%;
+	--v-cb-tab-neon-bunny-text: 0 0% 100%;
+	--v-cb-tab-neon-bunny-icon: 207 100% 52%;
+	--v-cb-tab-neon-bunny-icon-success: 119 100% 51%;
+	--v-cb-tab-neon-bunny-icon-failed: 3 100% 58%;
 
 	/* neon-bunny-carrot */
-	--v-cb-tab-neon-bunny-carrot-bkg: 0, 0%, 0%;
-	--v-cb-tab-neon-bunny-carrot-text: 0, 0%, 100%;
-	--v-cb-tab-neon-bunny-carrot-icon: 292, 100%, 50%;
-	--v-cb-tab-neon-bunny-carrot-icon-success: 119, 100%, 51%;
-	--v-cb-tab-neon-bunny-carrot-icon-failed: 3, 100%, 58%;
+	--v-cb-tab-neon-bunny-carrot-bkg: 0 0% 0%;
+	--v-cb-tab-neon-bunny-carrot-text: 0 0% 100%;
+	--v-cb-tab-neon-bunny-carrot-icon: 292 100% 50%;
+	--v-cb-tab-neon-bunny-carrot-icon-success: 119 100% 51%;
+	--v-cb-tab-neon-bunny-carrot-icon-failed: 3 100% 58%;
 
 	/* Prism Colors */
 
 	/* default */
-	--v-cb-tab-prism-default-bkg: 24, 20%, 95%;
-	--v-cb-tab-prism-default-text: 0, 0%, 0%;
-	--v-cb-tab-prism-default-icon: 198, 100%, 33%;
-	--v-cb-tab-prism-default-icon-success: 80, 100%, 30%;
-	--v-cb-tab-prism-default-icon-failed: 348, 68%, 58%;
+	--v-cb-tab-prism-default-bkg: 24 20% 95%;
+	--v-cb-tab-prism-default-text: 0 0% 0%;
+	--v-cb-tab-prism-default-icon: 198 100% 33%;
+	--v-cb-tab-prism-default-icon-success: 80 100% 30%;
+	--v-cb-tab-prism-default-icon-failed: 348 68% 58%;
 
 	/* coy */
-	--v-cb-tab-prism-coy-bkg: 205, 59%, 50%;
-	--v-cb-tab-prism-coy-text: 0, 0%, 0%;
-	--v-cb-tab-prism-coy-icon: 195, 76%, 41%;
-	--v-cb-tab-prism-coy-icon-success: 80, 100%, 30%;
-	--v-cb-tab-prism-coy-icon-failed: 0, 64%, 48%;
+	--v-cb-tab-prism-coy-bkg: 205 59% 50%;
+	--v-cb-tab-prism-coy-text: 0 0% 0%;
+	--v-cb-tab-prism-coy-icon: 195 76% 41%;
+	--v-cb-tab-prism-coy-icon-success: 80 100% 30%;
+	--v-cb-tab-prism-coy-icon-failed: 0 64% 48%;
 
 	/* dark */
-	--v-cb-tab-prism-dark-bkg: 30, 20%, 25%;
-	--v-cb-tab-prism-dark-text: 0, 0%, 100%;
-	--v-cb-tab-prism-dark-border: 30, 20%, 40%;
-	--v-cb-tab-prism-dark-icon: 40, 90%, 60%;
-	--v-cb-tab-prism-dark-icon-success: 75, 70%, 60%;
-	--v-cb-tab-prism-dark-icon-failed: 0, 100%, 50%;
+	--v-cb-tab-prism-dark-bkg: 30 20% 25%;
+	--v-cb-tab-prism-dark-text: 0 0% 100%;
+	--v-cb-tab-prism-dark-border: 30 20% 40%;
+	--v-cb-tab-prism-dark-icon: 40 90% 60%;
+	--v-cb-tab-prism-dark-icon-success: 75 70% 60%;
+	--v-cb-tab-prism-dark-icon-failed: 0 100% 50%;
 
 	/* funky */
-	--v-cb-tab-prism-funky-bkg: 0, 0%, 80%;
-	--v-cb-tab-prism-funky-text: 0, 0%, 100%;
-	--v-cb-tab-prism-funky-dark: 0, 0%, 0%;
-	--v-cb-tab-prism-funky-icon: 328, 100%, 54%;
-	--v-cb-tab-prism-funky-icon-success: 80, 61%, 50%;
-	--v-cb-tab-prism-funky-icon-failed: 0, 100%, 50%;
+	--v-cb-tab-prism-funky-bkg: 0 0% 80%;
+	--v-cb-tab-prism-funky-text: 0 0% 100%;
+	--v-cb-tab-prism-funky-dark: 0 0% 0%;
+	--v-cb-tab-prism-funky-icon: 328 100% 54%;
+	--v-cb-tab-prism-funky-icon-success: 80 61% 50%;
+	--v-cb-tab-prism-funky-icon-failed: 0 100% 50%;
 
 	/* okaidia */
-	--v-cb-tab-prism-okaidia-bkg: 70, 8%, 15%;
-	--v-cb-tab-prism-okaidia-text: 0, 0%, 100%;
-	--v-cb-tab-prism-okaidia-icon: 190, 81%, 67%;
-	--v-cb-tab-prism-okaidia-icon-success: 80, 76%, 53%;
-	--v-cb-tab-prism-okaidia-icon-failed: 338, 95%, 56%;
+	--v-cb-tab-prism-okaidia-bkg: 70 8% 15%;
+	--v-cb-tab-prism-okaidia-text: 0 0% 100%;
+	--v-cb-tab-prism-okaidia-icon: 190 81% 67%;
+	--v-cb-tab-prism-okaidia-icon-success: 80 76% 53%;
+	--v-cb-tab-prism-okaidia-icon-failed: 338 95% 56%;
 
 	/* solarizedlight */
-	--v-cb-tab-prism-solarizedlight-bkg: 44, 87%, 94%;
-	--v-cb-tab-prism-solarizedlight-text: 196, 13%, 45%;
-	--v-cb-tab-prism-solarizedlight-icon: 175, 59%, 40%;
-	--v-cb-tab-prism-solarizedlight-icon-success: 68, 100%, 30%;
-	--v-cb-tab-prism-solarizedlight-icon-failed: 18, 80%, 44%;
+	--v-cb-tab-prism-solarizedlight-bkg: 44 87% 94%;
+	--v-cb-tab-prism-solarizedlight-text: 196 13% 45%;
+	--v-cb-tab-prism-solarizedlight-icon: 175 59% 40%;
+	--v-cb-tab-prism-solarizedlight-icon-success: 68 100% 30%;
+	--v-cb-tab-prism-solarizedlight-icon-failed: 18 80% 44%;
 
 	/* tomorrow */
-	--v-cb-tab-prism-tomorrow-bkg: 0, 0%, 18%;
-	--v-cb-tab-prism-tomorrow-text: 0, 0%, 80%;
-	--v-cb-tab-prism-tomorrow-icon: 299, 34%, 70%;
-	--v-cb-tab-prism-tomorrow-icon-success: 143, 39%, 64%;
-	--v-cb-tab-prism-tomorrow-icon-failed: 358, 65%, 68%;
+	--v-cb-tab-prism-tomorrow-bkg: 0 0% 18%;
+	--v-cb-tab-prism-tomorrow-text: 0 0% 80%;
+	--v-cb-tab-prism-tomorrow-icon: 299 34% 70%;
+	--v-cb-tab-prism-tomorrow-icon-success: 143 39% 64%;
+	--v-cb-tab-prism-tomorrow-icon-failed: 358 65% 68%;
 
 	/* twilight */
-	--v-cb-tab-prism-twilight-bkg: 0, 0%, 8%;
-	--v-cb-tab-prism-twilight-text: 0, 0%, 80%;
-	--v-cb-tab-prism-twilight-border: 0, 0%, 33%;
-	--v-cb-tab-prism-twilight-icon: 53, 89%, 79%;
-	--v-cb-tab-prism-twilight-icon-success: 76, 21%, 52%;
-	--v-cb-tab-prism-twilight-icon-failed: 14, 58%, 55%;
+	--v-cb-tab-prism-twilight-bkg: 0 0% 8%;
+	--v-cb-tab-prism-twilight-text: 0 0% 80%;
+	--v-cb-tab-prism-twilight-border: 0 0% 33%;
+	--v-cb-tab-prism-twilight-icon: 53 89% 79%;
+	--v-cb-tab-prism-twilight-icon-success: 76 21% 52%;
+	--v-cb-tab-prism-twilight-icon-failed: 14 58% 55%;
 
 	/* night-owl */
-	--v-cb-tab-prism-night-owl: 207, 95%, 8%;
-	--v-cb-tab-prism-night-owl-text: 217, 34%, 88%;
-	--v-cb-tab-prism-night-owl-icon: 169, 56%, 68%;
-	--v-cb-tab-prism-night-owl-icon-success: 84, 62%, 63%;
-	--v-cb-tab-prism-night-owl-icon-failed: 350, 100%, 67%;
+	--v-cb-tab-prism-night-owl: 207 95% 8%;
+	--v-cb-tab-prism-night-owl-text: 217 34% 88%;
+	--v-cb-tab-prism-night-owl-icon: 169 56% 68%;
+	--v-cb-tab-prism-night-owl-icon-success: 84 62% 63%;
+	--v-cb-tab-prism-night-owl-icon-failed: 350 100% 67%;
 }

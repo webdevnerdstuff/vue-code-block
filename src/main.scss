@@ -1,4 +1,5 @@
 .v-code-block {
+	z-index: 1;
 	display: block;
 	max-width: 100%;
 
@@ -18,13 +19,13 @@
 
 	&--tabs {
 		align-items: end;
-		display: flex;
 		justify-content: flex-end;
+		display: flex;
 	}
 
 	&--tab {
 		align-items: center;
-		background-color: hsl(var(--v-cb-primary) 0.1);
+		background-color: hsla(var(--v-cb-primary), 0.1);
 		border-radius: 5px 5px 0 0;
 		cursor: pointer;
 		display: flex;
@@ -38,7 +39,7 @@
 		width: fit-content;
 
 		&:hover {
-			background-color: hsl(var(--v-cb-primary) 0.2);
+			background-color: hsla(var(--v-cb-primary), 0.2);
 		}
 	}
 

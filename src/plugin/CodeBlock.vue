@@ -9,9 +9,7 @@
 				<template v-if="slots.label">
 					<slot name="label" />
 				</template>
-				<template v-else>
-					{{ props.label }}
-				</template>
+				<template v-else>{{ props.label }}</template>
 			</div>
 
 			<div class="v-code-block--tabs" :style="tabGroupStyle">
@@ -69,7 +67,11 @@
 			</div>
 
 			<pre :class="`language-${props.lang}`" :style="preTagStyles">
-<code :class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''}`" :style="codeTagStyles" v-html="renderCode"></code>
+<code
+  :class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''}`"
+  :style="codeTagStyles"
+  v-html="renderCode"
+></code>
 			</pre>
 		</div>
 	</div>
@@ -84,23 +86,16 @@ import {
 	ref,
 	useSlots,
 	watch,
+	StyleValue,
 } from 'vue';
 import Prism from 'prismjs';
 import UAParser from 'ua-parser-js';
 import { Props } from '@/types';
-
 import StatusIcons from '@/plugin/StatusIcons.vue';
-const neonBunnyCarrotTheme = import.meta.glob('./themes/neon-bunny-carrot.css', { eager: true, as: 'raw' });
-const neonBunnyTheme = import.meta.glob('./themes/neon-bunny.css', { eager: true, as: 'raw' });
-const prismTheme = import.meta.glob('prismjs/themes/prism.css', { eager: true, as: 'raw' });
-const prismThemeCoy = import.meta.glob('prismjs/themes/prism-coy.css', { eager: true, as: 'raw' });
-const prismThemeDark = import.meta.glob('prismjs/themes/prism-dark.css', { eager: true, as: 'raw' });
-const prismThemeFunky = import.meta.glob('prismjs/themes/prism-funky.css', { eager: true, as: 'raw' });
-const prismThemeOkaidia = import.meta.glob('prismjs/themes/prism-okaidia.css', { eager: true, as: 'raw' });
-const prismThemeSolarizedlight = import.meta.glob('prismjs/themes/prism-solarizedlight.css', { eager: true, as: 'raw' });
-const prismThemeTomorrow = import.meta.glob('prismjs/themes/prism-tomorrow.css', { eager: true, as: 'raw' });
-const prismThemeTwilight = import.meta.glob('prismjs/themes/prism-twilight.css', { eager: true, as: 'raw' });
+import { neonBunnyCarrotTheme, neonBunnyTheme } from './themes';
 
+
+const prismVersion = '1.29.0';
 
 // -------------------------------------------------- Emits & Slots & Injects //
 const emit = defineEmits(['run', 'update:copy-status']);
@@ -213,18 +208,20 @@ const props = defineProps({
 		type: [String, Boolean],
 		required: false,
 		default: 'neon-bunny',
-	}
+	},
 });
 
 
+
 // -------------------------------------------------- Data //
-const copyTextValue = ref<string>('');
 const convertedCode = ref(null);
-const copying = ref<boolean>(false);
 const copyStatus = ref<string>('copy');
+const copyTextValue = ref<string>('');
+const copying = ref<boolean>(false);
+const isLoading = ref<boolean>(false);
 const isMobile = ref<boolean>(false);
+const prismCdn = ref(`https://cdn.jsdelivr.net/gh/PrismJS/prism@${prismVersion}/themes`);
 const runTextValue = ref<string>('');
-const stylesheetId = 'v-code-block--theme';
 const useTheme = ref<boolean | string>('');
 
 
@@ -233,8 +230,8 @@ const codeBlockClasses = computed<string>(() => {
 	return isMobile.value ? 'v-code-block--mobile' : '';
 });
 
-const codeTagStyles = computed<object>(() => {
-	const width = useTheme.value === 'coy' ? '100%' : '';
+const codeTagStyles = computed<StyleValue>(() => {
+	const width = useTheme.value === 'coy' && isLoading.value === false ? '100%' : '';
 	return { width };
 });
 
@@ -247,7 +244,7 @@ const copyButtonClasses = computed<object>(() => {
 	};
 });
 
-const headerStyles = computed<object>(() => {
+const headerStyles = computed<StyleValue>(() => {
 	return {
 		bottom: props.floatingTabs ? '1px' : '0',
 		gap: convertToUnit(props.tabGap),
@@ -270,7 +267,7 @@ const labelClasses = computed<string>(() => {
 	return isMobile.value ? 'v-code-block--label-mobile' : '';
 });
 
-const preTagStyles = computed<object>(() => {
+const preTagStyles = computed<StyleValue>(() => {
 	const radius = props.codeBlockRadius;
 	let borderRadius = `${radius} 0 ${radius} ${radius}`;
 
@@ -291,7 +288,11 @@ const preTagStyles = computed<object>(() => {
 const renderCode = computed<unknown>(() => {
 	convertCode();
 
-	const html = Prism.highlight(convertedCode.value, Prism.languages[props.lang], props.lang);
+	const html = Prism.highlight(
+		convertedCode.value,
+		Prism.languages[props.lang],
+		props.lang,
+	);
 
 	return html;
 });
@@ -304,7 +305,7 @@ const tabClasses = computed<object>(() => {
 	return classes;
 });
 
-const tabGroupStyle = computed<object>(() => {
+const tabGroupStyle = computed<StyleValue>(() => {
 	return {
 		gap: convertToUnit(props.tabGap),
 	};
@@ -380,7 +381,8 @@ function copyCode(): void {
 		copyStatus.value = 'failed';
 		emit('update:copy-status', copyStatus.value);
 		console.error('Copy to clipboard failed: ', err);
-	});
+	},
+	);
 
 	setTimeout(() => {
 		copyTextValue.value = props.copyText;
@@ -392,59 +394,66 @@ function copyCode(): void {
 
 function loadTheme(): void {
 	let selectedTheme = null;
-	const loadedThemeStyles = document.getElementById(stylesheetId);
 	const head = document.getElementsByTagName('head')[0];
 	const themeStyles = document.createElement('style');
+	const themeId = `v-code-block--theme-${useTheme.value}`;
+	const loadedTheme = document.body.getAttribute('data-v-code-block-theme');
+	let isPrismTheme = true;
+	let cssFilename = '';
 
-	if (loadedThemeStyles) {
-		loadedThemeStyles.remove();
+	// If theme is loaded, do not keep trying to add it again //
+	if (loadedTheme === useTheme.value) {
+		return;
 	}
+
+	document.body.setAttribute('data-v-code-block-theme', `${useTheme.value}`);
+
+	themeStyles.setAttribute('type', 'text/css');
+	themeStyles.setAttribute('data-theme-id', themeId);
+	themeStyles.setAttribute('data-theme', 'v-code-block--theme-sheet');
 
 	switch (useTheme.value) {
 		case 'neon-bunny':
 			selectedTheme = neonBunnyTheme;
+			isPrismTheme = false;
 			break;
 		case 'neon-bunny-carrot':
 			selectedTheme = neonBunnyCarrotTheme;
-			break;
-		case 'coy':
-			selectedTheme = prismThemeCoy;
-			break;
-		case 'dark':
-			selectedTheme = prismThemeDark;
-			break;
-		case 'funky':
-			selectedTheme = prismThemeFunky;
-			break;
-		case 'okaidia':
-			selectedTheme = prismThemeOkaidia;
-			break;
-		case 'solarizedlight':
-			selectedTheme = prismThemeSolarizedlight;
-			break;
-		case 'tomorrow':
-			selectedTheme = prismThemeTomorrow;
-			break;
-		case 'twilight':
-			selectedTheme = prismThemeTwilight;
+			isPrismTheme = false;
 			break;
 		case 'default':
 		case 'prism':
-			selectedTheme = prismTheme;
+			isPrismTheme = true;
+			cssFilename = 'prism.css';
 			break;
 		default:
-			selectedTheme = prismTheme;
+			isPrismTheme = true;
+			cssFilename = `prism-${useTheme.value}.css`;
 			break;
 	}
 
-	const themeKey = Object.keys(selectedTheme)[0];
-	selectedTheme = selectedTheme[themeKey];
+	if (!isPrismTheme) {
+		removeStylesheets();
 
-	themeStyles.setAttribute('type', 'text/css');
-	themeStyles.id = stylesheetId;
-	themeStyles.appendChild(document.createTextNode(selectedTheme));
+		themeStyles.appendChild(document.createTextNode(selectedTheme));
+		head.appendChild(themeStyles);
 
-	head.appendChild(themeStyles);
+		return;
+	}
+
+	isLoading.value = true;
+
+	fetch(`${prismCdn.value}/${cssFilename}`).then((response) => {
+		return response.text();
+	}).then((data) => {
+		removeStylesheets();
+
+		themeStyles.appendChild(document.createTextNode(data));
+		head.appendChild(themeStyles);
+		isLoading.value = false;
+	}).catch((error) => {
+		console.error('PrismJS CDN Error:', error);
+	});
 }
 
 function mobileCheck(): void {
@@ -453,15 +462,24 @@ function mobileCheck(): void {
 	isMobile.value = device.type === 'mobile';
 }
 
-window.addEventListener("orientationchange", () => {
+window.addEventListener('orientationchange', () => {
 	mobileCheck();
 });
+
+function removeStylesheets() {
+	const themeSheets = document.querySelectorAll('[data-theme="v-code-block--theme-sheet"]');
+
+	if (themeSheets.length > 0) {
+		themeSheets.forEach((themeSheet) => {
+			themeSheet.remove();
+		});
+	}
+}
 
 function runCode(): void {
 	emit('run');
 }
 </script>
-
 
 <style lang="scss">
 @import './styles/utilities';
@@ -483,10 +501,4 @@ function runCode(): void {
 
 <style lang="scss" scoped>
 @import './styles/main';
-
-.foo {
-	display: block;
-	z-index: 3;
-}
 </style>
-

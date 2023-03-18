@@ -77,8 +77,18 @@ export default {
 			defaultLang: { script: 'ts' }
 		}),
 		postcss({
-			modules: true,
-			extract: true
+			modules: false,
+			extract: false,
+			inject: true,
+			// minimize: true,
+			use: [
+				[
+					"sass",
+					{
+						includePaths: ['./src/plugin/styles'],
+					},
+				]
+			]
 		}),
 		scss(),
 		copy({
