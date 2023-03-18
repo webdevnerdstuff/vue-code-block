@@ -24,6 +24,10 @@
 	"author": "WebDevNerdStuff & Bunnies... lots and lots of bunnies! <webdevnerdstuff@gmail.com> (https://webdevnerdstuff.com)",
 	"funding": [
 		{
+			"type": "paypal",
+			"url": "https://paypal.me/webdevnerdstuff"
+		},
+		{
 			"type": "patreon",
 			"url": "https://www.patreon.com/WebDevNerdStuff"
 		}
@@ -58,7 +62,6 @@
 		"vue": "^3.2.47"
 	},
 	"dependencies": {
-		"prism-themes": "^1.9.0",
 		"prismjs": "^1.29.0",
 		"ua-parser-js": "^1.0.34"
 	},

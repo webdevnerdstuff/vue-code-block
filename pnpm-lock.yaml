@@ -35,7 +35,6 @@ specifiers:
   postcss-html: ^1.5.0
   postcss-scss: ^4.0.6
   prettier: ^2.8.4
-  prism-themes: ^1.9.0
   prismjs: ^1.29.0
   rollup: ^3.17.3
   rollup-plugin-copy: ^3.4.0
@@ -58,7 +57,6 @@ specifiers:
   vue-tsc: ^1.2.0
 
 dependencies:
-  prism-themes: 1.9.0
   prismjs: 1.29.0
   ua-parser-js: 1.0.34
 
@@ -7469,10 +7467,6 @@ packages:
       lodash: 4.17.21
       renderkid: 3.0.0
     dev: true
-
-  /prism-themes/1.9.0:
-    resolution: {integrity: sha512-tX2AYsehKDw1EORwBps+WhBFKc2kxfoFpQAjxBndbZKr4fRmMkv47XN0BghC/K1qwodB1otbe4oF23vUTFDokw==}
-    dev: false
 
   /prismjs/1.29.0:
     resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
