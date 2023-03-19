@@ -68,9 +68,9 @@
 
 			<pre :class="`language-${props.lang}`" :style="preTagStyles">
 <code
-  :class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''}`"
+  :class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''}  ${lib === 'highlightjs' ? 'hljs' : ''}`"
   :style="codeTagStyles"
-  v-html="renderCode"
+  v-html="renderedCode"
 ></code>
 			</pre>
 		</div>
@@ -88,14 +88,23 @@ import {
 	watch,
 	StyleValue,
 } from 'vue';
-import Prism from 'prismjs';
+// import Prism from 'prismjs';
 import UAParser from 'ua-parser-js';
 import { Props } from '@/types';
 import StatusIcons from '@/plugin/StatusIcons.vue';
 import { neonBunnyCarrotTheme, neonBunnyTheme } from './themes';
 
+// import hljs from 'highlight.js/lib/core';
+import langCss from 'highlight.js/lib/languages/css';
+import langJavascript from 'highlight.js/lib/languages/javascript';
+import langJson from 'highlight.js/lib/languages/json';
+import langPhp from 'highlight.js/lib/languages/php';
 
+
+const highlightJsVersion = '11.7.0';
 const prismVersion = '1.29.0';
+
+
 
 // -------------------------------------------------- Emits & Slots & Injects //
 const emit = defineEmits(['run', 'update:copy-status']);
@@ -174,6 +183,11 @@ const props = defineProps({
 		required: false,
 		default: 'javascript',
 	},
+	lib: {
+		type: String,
+		required: false,
+		default: 'highlightjs',
+	},
 	maxHeight: {
 		type: [String, Number],
 		required: false,
@@ -213,6 +227,12 @@ const props = defineProps({
 
 
 
+let hljs;
+let Prism;
+
+
+
+
 // -------------------------------------------------- Data //
 const convertedCode = ref(null);
 const copyStatus = ref<string>('copy');
@@ -220,9 +240,12 @@ const copyTextValue = ref<string>('');
 const copying = ref<boolean>(false);
 const isLoading = ref<boolean>(false);
 const isMobile = ref<boolean>(false);
+const highlightCdn = ref(`https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@${highlightJsVersion}/build/styles/`);
 const prismCdn = ref(`https://cdn.jsdelivr.net/gh/PrismJS/prism@${prismVersion}/themes`);
+const renderedCode = ref('');
 const runTextValue = ref<string>('');
 const useTheme = ref<boolean | string>('');
+
 
 
 // -------------------------------------------------- Computed //
@@ -285,18 +308,6 @@ const preTagStyles = computed<StyleValue>(() => {
 	};
 });
 
-const renderCode = computed<unknown>(() => {
-	convertCode();
-
-	const html = Prism.highlight(
-		convertedCode.value,
-		Prism.languages[props.lang],
-		props.lang,
-	);
-
-	return html;
-});
-
 const tabClasses = computed<object>(() => {
 	const theme = useTheme.value === '' || useTheme.value === 'prism' ? 'default' : useTheme.value;
 	const classes = {
@@ -314,6 +325,10 @@ const tabGroupStyle = computed<StyleValue>(() => {
 
 // -------------------------------------------------- Watch //
 watch(props, () => {
+	if (props.code) {
+		renderCode();
+	}
+
 	if (props.theme) {
 		useTheme.value = props.theme;
 		loadTheme();
@@ -339,6 +354,7 @@ onMounted(() => {
 	useTheme.value = codeBlockGlobalOptions?.theme || props.theme;
 	loadTheme();
 	mobileCheck();
+	renderCode();
 });
 
 
@@ -393,16 +409,22 @@ function copyCode(): void {
 }
 
 function loadTheme(): void {
+	console.log('loadTheme', useTheme.value);
 	let selectedTheme = null;
 	const head = document.getElementsByTagName('head')[0];
 	const themeStyles = document.createElement('style');
 	const themeId = `v-code-block--theme-${useTheme.value}`;
 	const loadedTheme = document.body.getAttribute('data-v-code-block-theme');
+	let isHighlightTheme = true;
 	let isPrismTheme = true;
 	let cssFilename = '';
+	let fetchUrl = '';
+
+	console.log(useTheme.value);
 
 	// If theme is loaded, do not keep trying to add it again //
 	if (loadedTheme === useTheme.value) {
+		console.log('foo');
 		return;
 	}
 
@@ -416,23 +438,48 @@ function loadTheme(): void {
 		case 'neon-bunny':
 			selectedTheme = neonBunnyTheme;
 			isPrismTheme = false;
+			isHighlightTheme = false;
 			break;
 		case 'neon-bunny-carrot':
 			selectedTheme = neonBunnyCarrotTheme;
 			isPrismTheme = false;
+			isHighlightTheme = false;
 			break;
-		case 'default':
-		case 'prism':
-			isPrismTheme = true;
-			cssFilename = 'prism.css';
-			break;
+		// case 'default':
+		// case 'prism':
+		// 	isPrismTheme = true;
+		// 	cssFilename = 'prism.css';
+		// 	break;
 		default:
-			isPrismTheme = true;
-			cssFilename = `prism-${useTheme.value}.css`;
+			// isPrismTheme = true;
+			// cssFilename = `${useTheme.value}.css`;
 			break;
 	}
 
-	if (!isPrismTheme) {
+	console.log('props.lib', props.lib);
+
+	switch (props.lib) {
+		case 'highlightjs':
+			cssFilename = `${useTheme.value}.min.css`;
+			fetchUrl = `${highlightCdn.value}/${cssFilename}`;
+			break;
+		case 'prism':
+			cssFilename = `prism-${useTheme.value}.css`;
+
+			if (useTheme.value === 'default') {
+				cssFilename = `prism.css`;
+			}
+			fetchUrl = `${prismCdn.value}/${cssFilename}`;
+			break;
+		default:
+			isPrismTheme = true;
+			cssFilename = '';
+			break;
+	}
+
+	console.log({ fetchUrl });
+
+	if (!isPrismTheme && !isHighlightTheme) {
 		removeStylesheets();
 
 		themeStyles.appendChild(document.createTextNode(selectedTheme));
@@ -443,17 +490,19 @@ function loadTheme(): void {
 
 	isLoading.value = true;
 
-	fetch(`${prismCdn.value}/${cssFilename}`).then((response) => {
+	fetch(fetchUrl).then((response) => {
 		return response.text();
-	}).then((data) => {
-		removeStylesheets();
+	})
+		.then((data) => {
+			removeStylesheets();
 
-		themeStyles.appendChild(document.createTextNode(data));
-		head.appendChild(themeStyles);
-		isLoading.value = false;
-	}).catch((error) => {
-		console.error('PrismJS CDN Error:', error);
-	});
+			themeStyles.appendChild(document.createTextNode(data));
+			head.appendChild(themeStyles);
+			isLoading.value = false;
+		})
+		.catch((error) => {
+			console.error(`${props.lib} CDN Error:`, error);
+		});
 }
 
 function mobileCheck(): void {
@@ -473,6 +522,45 @@ function removeStylesheets() {
 		themeSheets.forEach((themeSheet) => {
 			themeSheet.remove();
 		});
+	}
+}
+
+function renderCode() {
+	convertCode();
+
+	if (props.lib === 'highlightjs') {
+		return import('highlight.js/lib/core')
+			.then((module) => {
+				hljs = module.HighlightJS;
+
+				hljs.registerLanguage('json', langJson);
+				hljs.registerLanguage('php', langPhp);
+				hljs.registerLanguage('javascript', langJavascript);
+				hljs.registerLanguage('css', langCss);
+
+
+				renderedCode.value = hljs.highlight(convertedCode.value, { language: props.lang }).value;
+			})
+			.catch((err) => {
+				console.error('Highlight.js import:', { err });
+			});
+	}
+
+	if (props.lib === 'prism') {
+		return import('prismjs')
+			.then((module) => {
+				Prism = module;
+
+				renderedCode.value = Prism.highlight(
+					convertedCode.value,
+					Prism.languages[props.lang],
+					props.lang,
+				);
+
+			})
+			.catch((err) => {
+				console.error('PrismJS import:', { err });
+			});
 	}
 }
 

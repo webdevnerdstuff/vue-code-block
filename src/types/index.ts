@@ -14,6 +14,7 @@ export type Props = {
 	indent?: number;
 	label?: string;
 	lang?: string;
+	lib?: string;
 	maxHeight?: string | number;
 	persistentCopyButton?: boolean;
 	runTab?: boolean;

@@ -15,7 +15,7 @@ library.add({
 
 createApp(App)
 	.use(CodeBlock, {
-		theme: 'neon-bunny',
+		// theme: 'atom-one-dark',
 	})
 	.component('fa-icon', FontAwesomeIcon)
 	.mount('#app');
