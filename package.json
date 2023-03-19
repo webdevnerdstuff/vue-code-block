@@ -62,6 +62,7 @@
 		"vue": "^3.2.47"
 	},
 	"dependencies": {
+		"highlight.js": "^11.7.0",
 		"prismjs": "^1.29.0",
 		"ua-parser-js": "^1.0.34"
 	},
