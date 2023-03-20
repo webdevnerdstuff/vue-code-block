@@ -120,6 +120,12 @@ const componentProps = {
 		default: 'javascript',
 		description: 'The language of the code.',
 	},
+	lib: {
+		type: 'String',
+		required: false,
+		default: 'prism',
+		description: 'The library to be used for the code block. Available options include: <code>prism</code> and <code>highlightjs</code>.',
+	},
 	maxHeight: {
 		type: '[String, Number]',
 		required: false,
