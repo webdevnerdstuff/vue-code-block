@@ -14,6 +14,7 @@
 					copy-tab
 					label="Copy Code Tab"
 					lang="html"
+					:lib="selectedLibrary"
 					:run-tab="false"
 					tabs
 					:theme="selectedTheme"
@@ -29,6 +30,7 @@
 					:copy-tab="false"
 					label="Run Code Tab"
 					lang="html"
+					:lib="selectedLibrary"
 					:max-height="codeBlockOptions.preHeight"
 					run-tab
 					tabs
@@ -45,6 +47,7 @@
 					:code="bothExample"
 					label="Copy &amp; Run Code Tabs"
 					lang="html"
+					:lib="selectedLibrary"
 					:max-height="codeBlockOptions.preHeight"
 					:run-tab="true"
 					tabs
@@ -60,6 +63,7 @@
 import { inject } from 'vue';
 
 const codeBlockOptions = inject('codeBlockOptions');
+const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
 const copyExample = `<CodeBlock

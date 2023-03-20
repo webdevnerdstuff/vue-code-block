@@ -13,6 +13,7 @@
 					:browser-window="true"
 					:code="browserWindowExample"
 					lang="html"
+					:lib="selectedLibrary"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -25,6 +26,7 @@
 import { inject } from 'vue';
 
 
+const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
 

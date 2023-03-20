@@ -22,6 +22,7 @@
 					:code="typescriptUsageExample"
 					label="Example of using PrismJS to highlight TypeScript"
 					lang="html"
+					:lib="selectedLibrary"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -34,6 +35,7 @@
 					:code="typescriptExample"
 					label="TypeScript"
 					lang="typescript"
+					:lib="selectedLibrary"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -46,6 +48,7 @@
 					:code="jsonUsageExample"
 					label="Example of using PrismJS to highlight JSON"
 					lang="html"
+					:lib="selectedLibrary"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -56,6 +59,7 @@
 					:indent="2"
 					label="JSON"
 					lang="json"
+					:lib="selectedLibrary"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -69,6 +73,7 @@
 					:code="phpUsageExample"
 					label="Example of using PrismJS to highlight PHP"
 					lang="html"
+					:lib="selectedLibrary"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -83,6 +88,7 @@
 					:indent="2"
 					label="PHP"
 					lang="php"
+					:lib="selectedLibrary"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -95,6 +101,7 @@
 import { inject } from 'vue';
 
 
+const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
 const typescriptUsageExample = `<template>

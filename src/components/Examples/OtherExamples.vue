@@ -13,6 +13,7 @@
 					:code="copyBlockRadiusExample"
 					:code-block-radius="codeBlockRadius"
 					lang="html"
+					:lib="selectedLibrary"
 					:theme="selectedTheme"
 				>
 					<template #label>
@@ -31,6 +32,7 @@
 					copy-tab
 					:copyText="copyText"
 					lang="html"
+					:lib="selectedLibrary"
 					tabs
 					:theme="selectedTheme"
 				>
@@ -49,6 +51,7 @@
 					:code="runTextExample"
 					:copy-tab="false"
 					lang="html"
+					:lib="selectedLibrary"
 					run-tab
 					:runText="runText"
 					tabs
@@ -70,6 +73,7 @@
 					:code="floatingTabsExample"
 					:floating-tabs="floatingTabs"
 					lang="html"
+					:lib="selectedLibrary"
 					tabs
 					:theme="selectedTheme"
 				>
@@ -99,6 +103,7 @@
 					:code="heightExample"
 					:height="height"
 					lang="html"
+					:lib="selectedLibrary"
 					:tabs="false"
 					:theme="selectedTheme"
 				>
@@ -116,6 +121,7 @@
 				<CodeBlock
 					:code="tabGapExample"
 					lang="html"
+					:lib="selectedLibrary"
 					:run-tab="true"
 					:tab-gap="tabGap"
 					tabs
@@ -136,6 +142,7 @@
 					:code="indentJsonExample"
 					:indent="indent"
 					lang="json"
+					:lib="selectedLibrary"
 					:tabs="false"
 					:theme="selectedTheme"
 				>
@@ -153,6 +160,7 @@
 import { inject, ref } from 'vue';
 
 
+const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
 const codeBlockRadius = ref('0 1em');

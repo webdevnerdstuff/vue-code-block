@@ -20,14 +20,16 @@
 			<div class="col-12">
 				<p>
 					The Vue 3 CodeBlock component leverages the power of
-					<a :href="links.prism" target="_blank">PrismJS</a> to provide syntax
-					highlighting for code blocks within your application. The component
-					takes a prop, which is the code to be highlighted, and uses PrismJS to
-					render the code with syntax highlighting. The component supports a
-					variety of programming languages and can be customized with different
-					themes to match your application's design. With this component, your
-					users can display their code snippets with ease and clarity, making it
-					easier to share and collaborate on code within your application.
+					<a :href="prismLinks.homepage" target="_blank">PrismJS</a> or
+					<a :href="highlightJsLinks.homepage" target="_blank">Highlight.js</a>
+					to provide syntax highlighting for code blocks within your
+					application. The component takes a prop, which is the code to be
+					highlighted, and uses PrismJS or Highlight.js to render the code with
+					syntax highlighting. The component supports a variety of programming
+					languages and can be customized with different themes to match your
+					application's design. With this component, your users can display
+					their code snippets with ease and clarity, making it easier to share
+					and collaborate on code within your application.
 				</p>
 			</div>
 		</div>
@@ -79,46 +81,45 @@
 
 	<div v-if="!demoTestPage" class="container">
 		<!-- ============================================== Installation -->
-		<!-- <InstallationSection id="ul-installation" /> -->
+		<InstallationSection id="ul-installation" />
 
 		<!-- ============================================== Register -->
-		<!-- <RegisterSection id="ul-register-plugin" /> -->
+		<RegisterSection id="ul-register-plugin" />
 
 		<!-- ============================================== Usage -->
-		<!-- <UsageSection id="ul-usage" /> -->
+		<UsageSection id="ul-usage" />
 
 		<!-- ============================================== Props -->
-		<!-- <PropsSection id="ul-props" /> -->
+		<PropsSection id="ul-props" />
 
 		<!-- ============================================== Props -->
-		<!-- <ThemesSection id="ul-themes" /> -->
+		<ThemesSection id="ul-themes" />
 
 		<!-- ============================================== Events -->
-		<!-- <EventsSection id="ul-events" /> -->
+		<EventsSection id="ul-events" />
 
 		<!-- ============================================== Slots -->
-		<!-- <SlotsSection id="ul-slots" /> -->
+		<SlotsSection id="ul-slots" />
 
 		<!-- ============================================== Examples -->
-		<!-- <ExamplesSection id="ul-examples" /> -->
+		<ExamplesSection id="ul-examples" />
 
 		<!-- ============================================== CSS Variables -->
-		<!-- <CssVariablesSection id="ul-css-vars" /> -->
+		<CssVariablesSection id="ul-css-vars" />
 
 		<!-- ============================================== Dependencies -->
-		<!-- <DependenciesSection id="ul-dependencies" /> -->
+		<DependenciesSection id="ul-dependencies" />
 
 		<!-- ============================================== Change Log -->
-		<!-- <ChangeLogSection id="ul-change-log" /> -->
+		<ChangeLogSection id="ul-change-log" />
 
 		<!-- ============================================== License -->
-		<!-- <LicenseSection id="ul-license" /> -->
+		<LicenseSection id="ul-license" />
 
-		<!-- <FooterSection /> -->
+		<FooterSection />
 	</div>
 
 	<div v-else class="container">
-		aaa
 		<TestingExamples />
 	</div>
 </template>
@@ -132,35 +133,38 @@ import {
 	ref,
 } from 'vue';
 import { version } from '../../package';
-// import {
-// 	ChangeLogSection,
-// 	CssVariablesSection,
-// 	DependenciesSection,
-// 	EventsSection,
-// 	ExamplesSection,
-// 	FooterSection,
-// 	InstallationSection,
-// 	LicenseSection,
-// 	PropsSection,
-// 	RegisterSection,
-// 	SlotsSection,
-// 	ThemesSection,
-// 	UsageSection,
-// } from '@/components/Sections/';
+import {
+	ChangeLogSection,
+	CssVariablesSection,
+	DependenciesSection,
+	EventsSection,
+	ExamplesSection,
+	FooterSection,
+	InstallationSection,
+	LicenseSection,
+	PropsSection,
+	RegisterSection,
+	SlotsSection,
+	ThemesSection,
+	UsageSection,
+} from '@/components/Sections/';
 import { TestingExamples } from '@/components/Examples/';
-// import Prism from 'prismjs';
-// import 'prismjs/components/prism-typescript';
-// import 'prismjs/components/prism-json';
-// import 'prismjs/components/prism-markup-templating';
-// import 'prismjs/components/prism-php';
-// import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
-// import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+import Prism from 'prismjs';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-markup-templating';
+import 'prismjs/components/prism-php';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
 
+const highlightJsLinks = inject('highlightJsLinks');
 const links = inject('links');
-const demoTestPage = ref(true);
+const prismLinks = inject('prismLinks');
+
+const demoTestPage = ref(false);
 const selectedLibrary = ref('prism');
-const selectedTheme = ref('coy');
+const selectedTheme = ref('neon-bunny');
 const selectOptions = ref(null);
 const libraries = [
 	{
@@ -172,8 +176,7 @@ const libraries = [
 		value: 'highlightjs',
 	},
 ];
-
-const defaultThemes = [
+const prismThemes = [
 	{
 		label: 'Neon Bunny',
 		value: 'neon-bunny',
@@ -182,9 +185,6 @@ const defaultThemes = [
 		label: 'Neon Bunny - Carrot',
 		value: 'neon-bunny-carrot',
 	},
-];
-
-const prismThemes = [
 	{
 		label: 'Default',
 		value: 'default',
@@ -218,8 +218,15 @@ const prismThemes = [
 		value: 'twilight',
 	},
 ];
-
 const highlightThemes = [
+	{
+		label: 'Neon Bunny',
+		value: 'neon-bunny-highlight',
+	},
+	{
+		label: 'Neon Bunny - Carrot',
+		value: 'neon-bunny-carrot-highlight',
+	},
 	{
 		label: 'Default',
 		value: 'default',
@@ -257,255 +264,255 @@ const highlightThemes = [
 		value: 'ascetic',
 	},
 	{
-		label: 'atom-one-dark-reasonable',
+		label: 'Atom One Dark Reasonable',
 		value: 'atom-one-dark-reasonable',
 	},
 	{
-		label: 'atom-one-dark',
+		label: 'Atom One Dark',
 		value: 'atom-one-dark',
 	},
 	{
-		label: 'atom-one-light',
+		label: 'Atom One Light',
 		value: 'atom-one-light',
 	},
 	{
-		label: 'brown-paper',
+		label: 'Brown Paper',
 		value: 'brown-paper',
 	},
 	{
-		label: 'brown-papersq',
+		label: 'Brown Paper sq',
 		value: 'brown-papersq',
 	},
 	{
-		label: 'codepen-embed',
+		label: 'CodePen Embed',
 		value: 'codepen-embed',
 	},
 	{
-		label: 'color-brewer',
+		label: 'Color Brewer',
 		value: 'color-brewer',
 	},
 	{
-		label: 'dark',
+		label: 'Dark',
 		value: 'dark',
 	},
 	{
-		label: 'devibeans',
+		label: 'DeviBeans',
 		value: 'devibeans',
 	},
 	{
-		label: 'docco',
+		label: 'Docco',
 		value: 'docco',
 	},
 	{
-		label: 'far',
+		label: 'Far',
 		value: 'far',
 	},
 	{
-		label: 'felipec',
+		label: 'Felipec',
 		value: 'felipec',
 	},
 	{
-		label: 'foundation',
+		label: 'Foundation',
 		value: 'foundation',
 	},
 	{
-		label: 'github-dark-dimmed',
+		label: 'Github Dark Dimmed',
 		value: 'github-dark-dimmed',
 	},
 	{
-		label: 'github-dark',
+		label: 'Github Dark',
 		value: 'github-dark',
 	},
 	{
-		label: 'github',
+		label: 'Github',
 		value: 'github',
 	},
 	{
-		label: 'gml',
+		label: 'GML',
 		value: 'gml',
 	},
 	{
-		label: 'googlecode',
+		label: 'Google Code',
 		value: 'googlecode',
 	},
 	{
-		label: 'gradient-dark',
+		label: 'Gradient Dark',
 		value: 'gradient-dark',
 	},
 	{
-		label: 'gradient-light',
+		label: 'Gradient Light',
 		value: 'gradient-light',
 	},
 	{
-		label: 'grayscale',
+		label: 'Grayscale',
 		value: 'grayscale',
 	},
 	{
-		label: 'hybrid',
+		label: 'Hybrid',
 		value: 'hybrid',
 	},
 	{
-		label: 'idea',
+		label: 'Idea',
 		value: 'idea',
 	},
 	{
-		label: 'intellij-light',
+		label: 'IntelliJ Light',
 		value: 'intellij-light',
 	},
 	{
-		label: 'ir-black',
+		label: 'IR Black',
 		value: 'ir-black',
 	},
 	{
-		label: 'isbl-editor-dark',
+		label: 'ISBL Editor Dark',
 		value: 'isbl-editor-dark',
 	},
 	{
-		label: 'isbl-editor-light',
+		label: 'ISBL Editor Light',
 		value: 'isbl-editor-light',
 	},
 	{
-		label: 'kimbie-dark',
+		label: 'Kimbie Dark',
 		value: 'kimbie-dark',
 	},
 	{
-		label: 'kimbie-light',
+		label: 'Kimbie Light',
 		value: 'kimbie-light',
 	},
 	{
-		label: 'lightfair',
+		label: 'Lightfair',
 		value: 'lightfair',
 	},
 	{
-		label: 'lioshi',
+		label: 'Lioshi',
 		value: 'lioshi',
 	},
 	{
-		label: 'magula',
+		label: 'Magula',
 		value: 'magula',
 	},
 	{
-		label: 'mono-blue',
+		label: 'Mono Blue',
 		value: 'mono-blue',
 	},
 	{
-		label: 'monokai-sublime',
+		label: 'Monokai Sublime',
 		value: 'monokai-sublime',
 	},
 	{
-		label: 'monokai',
+		label: 'Monokai',
 		value: 'monokai',
 	},
 	{
-		label: 'night-owl',
+		label: 'Night Owl',
 		value: 'night-owl',
 	},
 	{
-		label: 'nnfx-dark',
+		label: 'NNFX Dark',
 		value: 'nnfx-dark',
 	},
 	{
-		label: 'nnfx-light',
+		label: 'NNFX- Light',
 		value: 'nnfx-light',
 	},
 	{
-		label: 'nord',
+		label: 'Nord',
 		value: 'nord',
 	},
 	{
-		label: 'obsidian',
+		label: 'Obsidian',
 		value: 'obsidian',
 	},
 	{
-		label: 'panda-syntax-dark',
+		label: 'Panda Syntax Dark',
 		value: 'panda-syntax-dark',
 	},
 	{
-		label: 'panda-syntax-light',
+		label: 'Panda Syntax Light',
 		value: 'panda-syntax-light',
 	},
 	{
-		label: 'paraiso-dark',
+		label: 'Paraiso Dark',
 		value: 'paraiso-dark',
 	},
 	{
-		label: 'paraiso-light',
+		label: 'Paraiso Light',
 		value: 'paraiso-light',
 	},
 	{
-		label: 'pojoaque',
+		label: 'Pojoaque',
 		value: 'pojoaque',
 	},
 	{
-		label: 'purebasic',
+		label: 'PureBasic',
 		value: 'purebasic',
 	},
 	{
-		label: 'qtcreator-dark',
+		label: 'Qt Creator Dark',
 		value: 'qtcreator-dark',
 	},
 	{
-		label: 'qtcreator-light',
+		label: 'Qt Creator Light',
 		value: 'qtcreator-light',
 	},
 	{
-		label: 'rainbow',
+		label: 'Rainbow',
 		value: 'rainbow',
 	},
 	{
-		label: 'routeros',
+		label: 'RouterOS',
 		value: 'routeros',
 	},
 	{
-		label: 'school-book',
+		label: 'School Book',
 		value: 'school-book',
 	},
 	{
-		label: 'shades-of-purple',
+		label: 'Shades of Purple',
 		value: 'shades-of-purple',
 	},
 	{
-		label: 'srcery',
+		label: 'Srcery',
 		value: 'srcery',
 	},
 	{
-		label: 'stackoverflow-dark',
+		label: 'Stack Overflow Dark',
 		value: 'stackoverflow-dark',
 	},
 	{
-		label: 'stackoverflow-light',
+		label: 'Stack Overflow Light',
 		value: 'stackoverflow-light',
 	},
 	{
-		label: 'sunburst',
+		label: 'Sunburst',
 		value: 'sunburst',
 	},
 	{
-		label: 'tokyo-night-dark',
+		label: 'Tokyo Night Dark',
 		value: 'tokyo-night-dark',
 	},
 	{
-		label: 'tokyo-night-light',
+		label: 'Tokyo Night Light',
 		value: 'tokyo-night-light',
 	},
 	{
-		label: 'tomorrow-night-blue',
+		label: 'Tomorrow Night Blue',
 		value: 'tomorrow-night-blue',
 	},
 	{
-		label: 'tomorrow-night-bright',
+		label: 'Tomorrow Night Bright',
 		value: 'tomorrow-night-bright',
 	},
 	{
-		label: 'vs',
+		label: 'VS',
 		value: 'vs',
 	},
 	{
-		label: 'vs2015',
+		label: 'VS 2015',
 		value: 'vs2015',
 	},
 	{
-		label: 'xcode',
+		label: 'Xcode',
 		value: 'xcode',
 	},
 	{
@@ -514,23 +521,26 @@ const highlightThemes = [
 	},
 ];
 
-selectOptions.value = [...defaultThemes, ...prismThemes];
+selectOptions.value = [...prismThemes];
 
 provide('selectedTheme', selectedTheme);
 provide('selectedLibrary', selectedLibrary);
 
+if (selectedLibrary.value === 'highlightjs') {
+	selectOptions.value = [...highlightThemes];
+}
+
 function changeLibrary(val) {
-	console.log('changeLibrary', { val });
 	selectedLibrary.value = val;
 
 	if (val === 'prism') {
-		selectOptions.value = [...defaultThemes, ...prismThemes];
-		selectedTheme.value = 'default';
+		selectOptions.value = [...prismThemes];
+		selectedTheme.value = 'neon-bunny';
 		return;
 	}
 
-	selectOptions.value = [...defaultThemes, ...highlightThemes];
-	selectedTheme.value = 'default';
+	selectOptions.value = [...highlightThemes];
+	selectedTheme.value = 'neon-bunny-highlight';
 }
 
 function changeTheme(val) {

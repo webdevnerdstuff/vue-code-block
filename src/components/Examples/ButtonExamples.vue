@@ -13,6 +13,7 @@
 					:code="btnExample"
 					label="Visible on hover"
 					lang="html"
+					:lib="selectedLibrary"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -26,6 +27,7 @@
 					:code="btnPersistExample"
 					label="Persistent Copy Button"
 					lang="html"
+					:lib="selectedLibrary"
 					persistent-copy-button
 					:tabs="false"
 					:theme="selectedTheme"
@@ -38,6 +40,7 @@
 <script setup>
 import { inject } from 'vue';
 
+const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
 const btnExample = `<CodeBlock

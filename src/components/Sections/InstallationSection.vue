@@ -9,6 +9,7 @@
 				:code="pnpmCode"
 				label="Using pnpm:"
 				lang="plain"
+				:lib="selectedLibrary"
 				:show-run="false"
 				:theme="selectedTheme"
 			/>
@@ -19,6 +20,7 @@
 				:code="npmCode"
 				label="Using npm:"
 				lang="plain"
+				:lib="selectedLibrary"
 				:show-run="false"
 				:theme="selectedTheme"
 			/>
@@ -30,8 +32,9 @@
 import { inject } from 'vue';
 
 
-const styleData = inject('styleData');
+const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
+const styleData = inject('styleData');
 
 const pnpmCode = 'pnpm add vue3-code-block';
 const npmCode = 'npm i vue3-code-block';

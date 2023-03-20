@@ -23,6 +23,7 @@
 				:code="bunnyThemeExample"
 				label="Using the Neon Bunny Themes"
 				lang="html"
+				:lib="selectedLibrary"
 				:theme="selectedTheme"
 			/>
 
@@ -44,6 +45,7 @@
 				:code="themePropExample"
 				label="Using the theme prop"
 				lang="html"
+				:lib="selectedLibrary"
 				:theme="selectedTheme"
 			/>
 
@@ -59,6 +61,7 @@
 				:code="importJsExample"
 				label="Using import (javascript)"
 				lang="html"
+				:lib="selectedLibrary"
 				:theme="selectedTheme"
 			/>
 
@@ -68,6 +71,7 @@
 				:code="importCssExample"
 				label="Using import (css/sass/scss)"
 				lang="html"
+				:lib="selectedLibrary"
 				:theme="selectedTheme"
 			/>
 		</div>
@@ -77,9 +81,11 @@
 <script setup>
 import { inject } from 'vue';
 
+
 const links = inject('links');
-const styleData = inject('styleData');
+const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
+const styleData = inject('styleData');
 
 const bunnyThemeExample = `<CodeBlock
   :code="myCode"

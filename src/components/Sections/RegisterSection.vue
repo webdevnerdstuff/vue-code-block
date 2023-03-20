@@ -7,8 +7,8 @@
 		<div class="col-12">
 			<CodeBlock
 				:code="asPluginGlobalCode"
-				label=""
 				lang="javascript"
+				:lib="selectedLibrary"
 				:show-run="false"
 				:theme="selectedTheme"
 			/>
@@ -22,8 +22,9 @@
 import { inject } from 'vue';
 
 
-const styleData = inject('styleData');
+const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
+const styleData = inject('styleData');
 
 const asPluginGlobalCode = `import { createApp } from 'vue';
 import CodeBlock from 'vue3-code-block';

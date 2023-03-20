@@ -9,6 +9,7 @@
 				:code="componentCode"
 				label="My Code"
 				lang="html"
+				:lib="selectedLibrary"
 				:show-run="false"
 				:theme="selectedTheme"
 			/>
@@ -19,6 +20,7 @@
 				:code="runCode"
 				label="Run My Code"
 				lang="html"
+				:lib="selectedLibrary"
 				run-tab
 				tabs
 				:theme="selectedTheme"
@@ -32,8 +34,9 @@
 import { inject } from 'vue';
 
 
-const styleData = inject('styleData');
+const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
+const styleData = inject('styleData');
 
 const componentCode = `<template>
   <CodeBlock

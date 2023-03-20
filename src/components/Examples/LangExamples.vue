@@ -13,6 +13,7 @@
 					:code="jsExample2"
 					label="JavaScript"
 					lang="javascript"
+					:lib="selectedLibrary"
 					:max-height="codeBlockOptions.preHeight"
 					:tabs="false"
 					:theme="selectedTheme"
@@ -27,6 +28,7 @@
 					:code="vueExample"
 					label="Vue (using lang = html)"
 					lang="html"
+					:lib="selectedLibrary"
 					:max-height="codeBlockOptions.preHeight"
 					:tabs="false"
 					:theme="selectedTheme"
@@ -41,6 +43,7 @@
 					:code="cssExample"
 					label="CSS"
 					lang="css"
+					:lib="selectedLibrary"
 					:max-height="codeBlockOptions.preHeight"
 					:tabs="false"
 					:theme="selectedTheme"
@@ -55,6 +58,7 @@
 					:code="htmlExample"
 					label="HTML"
 					lang="html"
+					:lib="selectedLibrary"
 					:max-height="codeBlockOptions.preHeight"
 					:tabs="false"
 					:theme="selectedTheme"
@@ -69,6 +73,7 @@
 					:code="svgExample"
 					label="SVG"
 					lang="svg"
+					:lib="selectedLibrary"
 					:tabs="false"
 					:theme="selectedTheme"
 				></CodeBlock>
@@ -82,6 +87,7 @@ import { inject } from 'vue';
 import { neonBunnyTheme } from '@/plugin/themes';
 
 const codeBlockOptions = inject('codeBlockOptions');
+const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
 const vueExample = `<template>

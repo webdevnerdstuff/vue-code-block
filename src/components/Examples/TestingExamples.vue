@@ -12,10 +12,11 @@
 		<div id="copy-example" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
-					:code="jsExample2"
+					:code="phpExample"
 					copy-button
-					lang="javascript"
+					lang="php"
 					:lib="selectedLibrary"
+					:tabs="true"
 					:theme="selectedTheme"
 				>
 					<!-- <template #copyButton>
@@ -32,15 +33,139 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { inject } from 'vue';
+import neonBunnyHighlightTheme from '@/plugin/themes/highlight/css/neon-bunny.css?inline';
 
 const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
-const testingCode = `const foo = 'bar';
 
-alert(foo)';`;
+const cssExample = neonBunnyHighlightTheme;
 
-const jsExample2 = `// Example 1: Creating an array of numbers and finding the sum
+const testingCode = `const foo = 'bar'`;
+
+const htmlExample = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-79JKH4L3SC"><\/script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-79JKH4L3SC');
+	<\/script>
+
+
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Vue 3 CodeBlock<\/title>
+
+	<meta name="description"
+		content="Vue 3 CodeBlock - Highlight your code with ease using this
+		syntax highlighting component powered by PrismJS." />
+	<meta name="keywords"
+		content="vue3-code-block, code, pre, highlight, syntax, vue, vue3,
+		component, javascript, neon bunny, webdevnerdstuff, wdns" />
+	<meta name="author" content="WebDevNerdStuff & Bunnies... lots and lots
+	of bunnies!" />
+	<meta name="robots" content="index, follow" />
+	<meta name="googlebot" content="index, follow" />
+	<meta name="theme-color" content="#f01d7f" />
+
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Vue 3 CodeBlock">
+	<meta property="og:description"
+		content="Vue 3 CodeBlock - Highlight your code with ease using this
+		syntax highlighting component powered by PrismJS.">
+	<meta property="og:url" content="https://webdevnerdstuff.github.io/vue3-code-block/">
+	<meta property="og:image" content="https://webdevnerdstuff.github.io/vue3-code-block/vue3-code-block-social.jpg">
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Henny+Penny&family=Indie+Flower&display=swap" rel="stylesheet">
+
+	<link rel="icon" type="image/svg+xml" href="/vue.svg" />
+<\/head>
+
+<body>
+	<div id="app"><\/div>
+	<script type="module" src="/src/main.ts"><\/script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"><\/script>
+
+	<div id="foo" class="bar" data-id="foobar">
+		<p>Foo Bar<\/p>
+	<\/div>
+<\/body>
+
+<\/html>
+`;
+
+
+const jsExample2 = `
+function renderCode(): void {
+	convertCode();
+
+	const foo = 'bar';
+	const bar = foo;
+	isLoading.value = false;
+
+	if (!isPrismTheme && !isHighlightTheme) {
+		removeStylesheets();
+
+		themeStyles.appendChild(document.createTextNode(selectedTheme));
+		head.appendChild(themeStyles);
+
+		return;
+	}
+
+	if (props.lib === 'highlightjs') {
+		return import('highlight.js/lib/core')
+			.then((module) => {
+				hljs = module.HighlightJS;
+
+				hljs.registerLanguage('json', langJson);
+				hljs.registerLanguage('php', langPhp);
+				hljs.registerLanguage('javascript', langJavascript);
+				hljs.registerLanguage('css', langCss);
+				hljs.registerLanguage('html', langHtml);
+
+
+				renderedCode.value = hljs.highlight(convertedCode.value, { language: props.lang }).value;
+			})
+			.catch((err) => {
+				console.error('Highlight.js import:', { err });
+			});
+	}
+
+	if (props.lib === 'prism') {
+		return import('prismjs')
+			.then((module) => {
+				Prism = module;
+
+				renderedCode.value = Prism.highlight(
+					convertedCode.value,
+					Prism.languages[props.lang],
+					props.lang,
+				);
+
+			})
+			.catch((err) => {
+				console.error('PrismJS import:', { err });
+			});
+	}
+}
+
+
+// Example 1: Creating an array of numbers and finding the sum
 const numbers = [1, 2, 3, 4, 5];
 const sum = numbers.reduce((total, num) => total + num);
 console.log(sum); // Output: 15
@@ -68,6 +193,7 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
   .then(data => console.log(data))
   .catch(error => console.error(error));
 // Output: The JSON data for the TODO with ID 1 from the API
+
 `;
 
 
@@ -88,16 +214,16 @@ const jsonExample = `{
 const phpExample = `
 <?php
 
-namespace App\Http\Controllers;
+namespace App\\Http\\Controllers;
 
-use App\Models\User;
-use Inertia\Inertia;
-use Illuminate\Http\JsonResponse;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\DestroyUserRequest;
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
-use App\Http\Resources\UserResource;
+use App\\Models\User;
+use Inertia\\Inertia;
+use Illuminate\\Http\\JsonResponse;
+use App\\Http\\Controllers\\Controller;
+use App\\Http\\Requests\\DestroyUserRequest;
+use App\\Http\\Requests\\StoreUserRequest;
+use App\\Http\\Requests\\UpdateUserRequest;
+use App\\Http\\Resources\\UserResource;
 
 class UserController extends Controller
 {
@@ -105,7 +231,7 @@ class UserController extends Controller
 	/**
 	 * Users
 	 *
-	 * @return \Inertia\Response
+	 * @return \\Inertia\\Response
 	 */
 	public function index()
 	{
