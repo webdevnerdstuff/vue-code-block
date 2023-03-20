@@ -68,7 +68,7 @@
 
 			<pre :class="`language-${props.lang}`" :style="preTagStyles">
 <code
-  :class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''}  ${lib === 'highlightjs' ? 'hljs' : ''}`"
+  :class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${lib === 'highlight' || lib === 'highlightjs' ? 'hljs' : ''}`"
   :style="codeTagStyles"
   v-html="renderedCode"
 ></code>
@@ -194,7 +194,7 @@ const props = defineProps({
 	lib: {
 		type: String,
 		required: false,
-		default: 'highlightjs',
+		default: 'prism',
 	},
 	maxHeight: {
 		type: [String, Number],
@@ -460,6 +460,7 @@ function loadTheme(): void {
 	}
 
 	switch (props.lib) {
+		case 'highlight':
 		case 'highlightjs':
 			cssFilename = `${useTheme.value}.min.css`;
 			fetchUrl = `${highlightCdn.value}/${cssFilename}`;
@@ -527,7 +528,7 @@ function removeStylesheets() {
 function renderCode() {
 	convertCode();
 
-	if (props.lib === 'highlightjs') {
+	if (props.lib === 'highlight' || props.lib === 'highlightjs') {
 		return import('highlight.js/lib/core')
 			.then((module) => {
 				hljs = module.HighlightJS;
