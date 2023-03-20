@@ -5,7 +5,9 @@
 		</div>
 
 		<div class="col-12">
-			<a :href="links.prism" target="_blank">Prism</a>
+			<a :href="prismLinks.homepage" target="_blank">PrismJS</a>
+			<br />
+			<a :href="highlightJsLinks.homepage" target="_blank">Highlight.js</a>
 			<br />
 			<a :href="links.vueJs" target="_blank">Vue 3</a>
 			<br />
@@ -17,6 +19,9 @@
 <script setup>
 import { inject } from 'vue';
 
-const styleData = inject('styleData');
+
+const highlightJsLinks = inject('highlightJsLinks');
 const links = inject('links');
+const prismLinks = inject('prismLinks');
+const styleData = inject('styleData');
 </script>
