@@ -92,13 +92,21 @@ import {
 import UAParser from 'ua-parser-js';
 import { Props } from '@/types';
 import StatusIcons from '@/plugin/StatusIcons.vue';
-import { neonBunnyCarrotTheme, neonBunnyTheme } from './themes';
+import {
+	neonBunnyCarrotTheme,
+	neonBunnyTheme,
+	neonBunnyCarrotHighlightTheme,
+	neonBunnyHighlightTheme
+} from './themes';
 
 // import hljs from 'highlight.js/lib/core';
 import langCss from 'highlight.js/lib/languages/css';
 import langJavascript from 'highlight.js/lib/languages/javascript';
 import langJson from 'highlight.js/lib/languages/json';
 import langPhp from 'highlight.js/lib/languages/php';
+import langHtml from 'highlight.js/lib/languages/xml';
+import langPlaintext from 'highlight.js/lib/languages/plaintext';
+import langTypescript from 'highlight.js/lib/languages/typescript';
 
 
 const highlightJsVersion = '11.7.0';
@@ -226,14 +234,10 @@ const props = defineProps({
 });
 
 
-
+// -------------------------------------------------- Data //
 let hljs;
 let Prism;
 
-
-
-
-// -------------------------------------------------- Data //
 const convertedCode = ref(null);
 const copyStatus = ref<string>('copy');
 const copyTextValue = ref<string>('');
@@ -329,7 +333,7 @@ watch(props, () => {
 		renderCode();
 	}
 
-	if (props.theme) {
+	if (props.theme || props.lib) {
 		useTheme.value = props.theme;
 		loadTheme();
 	}
@@ -409,26 +413,22 @@ function copyCode(): void {
 }
 
 function loadTheme(): void {
-	console.log('loadTheme', useTheme.value);
 	let selectedTheme = null;
 	const head = document.getElementsByTagName('head')[0];
 	const themeStyles = document.createElement('style');
-	const themeId = `v-code-block--theme-${useTheme.value}`;
+	const themeId = `v-code-block--theme-${useTheme.value}-${props.lib}`;
 	const loadedTheme = document.body.getAttribute('data-v-code-block-theme');
 	let isHighlightTheme = true;
 	let isPrismTheme = true;
 	let cssFilename = '';
 	let fetchUrl = '';
 
-	console.log(useTheme.value);
-
 	// If theme is loaded, do not keep trying to add it again //
 	if (loadedTheme === useTheme.value) {
-		console.log('foo');
 		return;
 	}
 
-	document.body.setAttribute('data-v-code-block-theme', `${useTheme.value}`);
+	document.body.setAttribute('data-v-code-block-theme', themeId);
 
 	themeStyles.setAttribute('type', 'text/css');
 	themeStyles.setAttribute('data-theme-id', themeId);
@@ -445,18 +445,19 @@ function loadTheme(): void {
 			isPrismTheme = false;
 			isHighlightTheme = false;
 			break;
-		// case 'default':
-		// case 'prism':
-		// 	isPrismTheme = true;
-		// 	cssFilename = 'prism.css';
-		// 	break;
+		case 'neon-bunny-highlight':
+			selectedTheme = neonBunnyHighlightTheme;
+			isPrismTheme = false;
+			isHighlightTheme = false;
+			break;
+		case 'neon-bunny-carrot-highlight':
+			selectedTheme = neonBunnyCarrotHighlightTheme;
+			isPrismTheme = false;
+			isHighlightTheme = false;
+			break;
 		default:
-			// isPrismTheme = true;
-			// cssFilename = `${useTheme.value}.css`;
 			break;
 	}
-
-	console.log('props.lib', props.lib);
 
 	switch (props.lib) {
 		case 'highlightjs':
@@ -476,8 +477,6 @@ function loadTheme(): void {
 			cssFilename = '';
 			break;
 	}
-
-	console.log({ fetchUrl });
 
 	if (!isPrismTheme && !isHighlightTheme) {
 		removeStylesheets();
@@ -535,9 +534,11 @@ function renderCode() {
 
 				hljs.registerLanguage('json', langJson);
 				hljs.registerLanguage('php', langPhp);
+				hljs.registerLanguage('typescript', langTypescript);
 				hljs.registerLanguage('javascript', langJavascript);
 				hljs.registerLanguage('css', langCss);
-
+				hljs.registerLanguage('html', langHtml);
+				hljs.registerLanguage('plain', langPlaintext);
 
 				renderedCode.value = hljs.highlight(convertedCode.value, { language: props.lang }).value;
 			})
