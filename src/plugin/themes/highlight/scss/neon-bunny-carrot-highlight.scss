@@ -1,7 +1,7 @@
 /**
  * MIT License
  * Copyright (c) 2023 WebDevNerdStuff
- * WebDevNerdStuff Neon Bunny
+ * WebDevNerdStuff Neon Bunny Carrot
  * VSCode Theme: https://marketplace.visualstudio.com/items?itemName=WebDevNerdStuff.neon-bunny
  */
 
@@ -40,7 +40,7 @@
 	--neon-bunny-class: var(--neon-bunny-magenta);
 	--neon-bunny-comment: var(--neon-bunny-gray);
 	--neon-bunny-doctag: var(--neon-bunny-blue-light);
-	--neon-bunny-keyword: var(--neon-bunny-purple-light);
+	--neon-bunny-keyword: var(--neon-bunny-magenta);
 	--neon-bunny-literal: var(--neon-bunny-purple-light);
 	--neon-bunny-number: var(--neon-bunny-white);
 	--neon-bunny-operator: var(--neon-bunny-blue-light);
@@ -51,27 +51,27 @@
 	--neon-bunny-string: var(--neon-bunny-green);
 	--neon-bunny-subst: var(--neon-bunny-green-darker);
 	--neon-bunny-symbol: var(--neon-bunny-pink);
-	--neon-bunny-title-class-inherited: var(--neon-bunny-title);
+	--neon-bunny-title-class-inherited: var(--neon-bunny-orange);
 	--neon-bunny-title-class: var(--neon-bunny-green-neon);
-	--neon-bunny-title-function-invoke: var(--neon-bunny-title);
+	--neon-bunny-title-function-invoke: var(--neon-bunny-orange);
 	--neon-bunny-title-function: var(--neon-bunny-orange-light);
-	--neon-bunny-title: var(--neon-bunny-title);
+	--neon-bunny-title: var(--neon-bunny-orange);
 	--neon-bunny-type: var(--neon-bunny-pink);
-	--neon-bunny-variable-constant: var(--neon-bunny-variable);
+	--neon-bunny-variable-constant: var(--neon-bunny-green-darker);
 	--neon-bunny-variable-language: var(--neon-bunny-orange);
 	--neon-bunny-variable: var(--neon-bunny-green-darker);
 
 	/* ------------------------- Meta */
 	--neon-bunny-meta-keyword: var(--neon-bunny-purple-light);
-	--neon-bunny-meta-prompt: var(--neon-bunny-meta);
-	--neon-bunny-meta-string: var(--neon-bunny-meta);
+	--neon-bunny-meta-prompt: var(--neon-bunny-orange);
+	--neon-bunny-meta-string: var(--neon-bunny-orange);
 	--neon-bunny-meta: var(--neon-bunny-orange);
 
 	/* ------------------------- Tags, attributes, configs */
 	--neon-bunny-attr: var(--neon-bunny-orange);
-	--neon-bunny-attribute: var(--neon-bunny-attr);
+	--neon-bunny-attribute: var(---neon-bunny-orange);
 	--neon-bunny-name: var(--neon-bunny-orange);
-	--neon-bunny-section: var(--neon-bunny-attr);
+	--neon-bunny-section: var(--neon-bunny-orange);
 	--neon-bunny-tag-attr: var(--neon-bunny-orange-light);
 	--neon-bunny-tag: var(--neon-bunny-orange);
 
