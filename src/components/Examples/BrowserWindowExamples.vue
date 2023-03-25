@@ -11,9 +11,10 @@
 			<div class="col-12">
 				<CodeBlock
 					:browser-window="true"
-					:code="browserWindowExample"
+					:code="examples[selectedLibrary.id]"
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
 					lang="html"
-					:lib="selectedLibrary"
+					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -29,12 +30,20 @@ import { inject } from 'vue';
 const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
-
-const browserWindowExample = `<CodeBlock
+const examples = {
+	prism: `<CodeBlock
   :browser-window="true"
   :code="myCode"
   lang="javascript"
+  prismjs
   :tabs="false"
-/>`;
-
+/>`,
+	highlightjs: `<CodeBlock
+  :browser-window="true"
+  :code="myCode"
+  highlightjs
+  lang="javascript"
+  :tabs="false"
+/>`
+};
 </script>

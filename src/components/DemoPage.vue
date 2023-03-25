@@ -20,7 +20,8 @@
 			<div class="col-12">
 				<p>
 					The Vue 3 CodeBlock component leverages the power of
-					<a :href="prismLinks.homepage" target="_blank">PrismJS</a> or
+					<a :href="prismLinks.homepage" target="_blank">PrismJS</a>
+					or
 					<a :href="highlightJsLinks.homepage" target="_blank">Highlight.js</a>
 					to provide syntax highlighting for code blocks within your
 					application. The component takes a prop, which is the code to be
@@ -48,8 +49,8 @@
 					<option
 						v-for="lib in libraries"
 						:key="lib"
-						:selected="selectedLibrary === lib.value"
-						:value="lib.value"
+						:selected="library === lib.id"
+						:value="lib.id"
 					>
 						{{ lib.label }}
 					</option>
@@ -120,7 +121,7 @@
 	</div>
 
 	<div v-else class="container">
-		<TestingExamples />
+		<!-- <TestingExamples /> -->
 	</div>
 </template>
 
@@ -130,11 +131,13 @@
 import {
 	inject,
 	provide,
+	reactive,
 	ref,
 } from 'vue';
 import { version } from '../../package';
 import {
 	ChangeLogSection,
+	// TODO: Need to updated props with Highlight.js stuff //
 	CssVariablesSection,
 	DependenciesSection,
 	EventsSection,
@@ -142,6 +145,7 @@ import {
 	FooterSection,
 	InstallationSection,
 	LicenseSection,
+	// TODO: Need to updated props with Highlight.js stuff //
 	PropsSection,
 	RegisterSection,
 	SlotsSection,
@@ -154,8 +158,11 @@ import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-markup-templating';
 import 'prismjs/components/prism-php';
+
+// ! This is not working anymore for some reason //
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+
 
 
 const highlightJsLinks = inject('highlightJsLinks');
@@ -163,20 +170,22 @@ const links = inject('links');
 const prismLinks = inject('prismLinks');
 
 const demoTestPage = ref(false);
-const selectedLibrary = ref('prism');
+const library = ref('prism');
+
 const selectedTheme = ref('neon-bunny');
 const selectOptions = ref(null);
-const libraries = [
-	{
+const libraries = {
+	prism: {
 		label: 'PrismJS',
-		value: 'prism',
+		id: 'prism',
 	},
-	{
+	highlightjs: {
 		label: 'Highlight.js',
-		value: 'highlightjs',
+		id: 'highlightjs',
 	},
-];
-const prismThemes = [
+};
+const selectedLibrary = ref(libraries.prism);
+const neonBunnyThemes = [
 	{
 		label: 'Neon Bunny',
 		value: 'neon-bunny',
@@ -185,6 +194,8 @@ const prismThemes = [
 		label: 'Neon Bunny - Carrot',
 		value: 'neon-bunny-carrot',
 	},
+];
+const prismThemes = [
 	{
 		label: 'Default',
 		value: 'default',
@@ -219,14 +230,6 @@ const prismThemes = [
 	},
 ];
 const highlightThemes = [
-	{
-		label: 'Neon Bunny',
-		value: 'neon-bunny-highlight',
-	},
-	{
-		label: 'Neon Bunny - Carrot',
-		value: 'neon-bunny-carrot-highlight',
-	},
 	{
 		label: 'Default',
 		value: 'default',
@@ -521,26 +524,27 @@ const highlightThemes = [
 	},
 ];
 
-selectOptions.value = [...prismThemes];
+selectOptions.value = [...neonBunnyThemes, ...prismThemes];
 
 provide('selectedTheme', selectedTheme);
 provide('selectedLibrary', selectedLibrary);
 
-if (selectedLibrary.value === 'highlightjs') {
-	selectOptions.value = [...highlightThemes];
+if (library.value === 'highlightjs') {
+	selectOptions.value = [...neonBunnyThemes, ...highlightThemes];
+	selectedLibrary.value = libraries.highlightjs;
 }
 
 function changeLibrary(val) {
-	selectedLibrary.value = val;
+	library.value = val;
+	selectedLibrary.value = libraries[val];
+	selectedTheme.value = 'neon-bunny';
 
 	if (val === 'prism') {
-		selectOptions.value = [...prismThemes];
-		selectedTheme.value = 'neon-bunny';
+		selectOptions.value = [...neonBunnyThemes, ...prismThemes];
 		return;
 	}
 
-	selectOptions.value = [...highlightThemes];
-	selectedTheme.value = 'neon-bunny-highlight';
+	selectOptions.value = [...neonBunnyThemes, ...highlightThemes];
 }
 
 function changeTheme(val) {

@@ -14,8 +14,9 @@
 				<CodeBlock
 					:code="phpExample"
 					copy-button
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
 					lang="php"
-					:lib="selectedLibrary"
+					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="true"
 					:theme="selectedTheme"
 				>
@@ -63,7 +64,7 @@ const htmlExample = `<!DOCTYPE html>
 
 	<meta name="description"
 		content="Vue 3 CodeBlock - Highlight your code with ease using this
-		syntax highlighting component powered by PrismJS." />
+		syntax highlighting component powered by ${selectedLibrary.label}." />
 	<meta name="keywords"
 		content="vue3-code-block, code, pre, highlight, syntax, vue, vue3,
 		component, javascript, neon bunny, webdevnerdstuff, wdns" />
@@ -78,7 +79,7 @@ const htmlExample = `<!DOCTYPE html>
 	<meta property="og:title" content="Vue 3 CodeBlock">
 	<meta property="og:description"
 		content="Vue 3 CodeBlock - Highlight your code with ease using this
-		syntax highlighting component powered by PrismJS.">
+		syntax highlighting component powered by ${selectedLibrary.label}.">
 	<meta property="og:url" content="https://webdevnerdstuff.github.io/vue3-code-block/">
 	<meta property="og:image" content="https://webdevnerdstuff.github.io/vue3-code-block/vue3-code-block-social.jpg">
 	<meta property="og:image:width" content="1200" />

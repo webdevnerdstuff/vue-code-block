@@ -7,9 +7,10 @@
 		<div class="col-12 mb-4">
 			<CodeBlock
 				:code="pnpmCode"
+				:highlightjs="selectedLibrary.id === 'highlightjs'"
 				label="Using pnpm:"
 				lang="plain"
-				:lib="selectedLibrary"
+				:prismjs="selectedLibrary.id === 'prism'"
 				:show-run="false"
 				:theme="selectedTheme"
 			/>
@@ -18,9 +19,10 @@
 		<div class="col-12">
 			<CodeBlock
 				:code="npmCode"
+				:highlightjs="selectedLibrary.id === 'highlightjs'"
 				label="Using npm:"
 				lang="plain"
-				:lib="selectedLibrary"
+				:prismjs="selectedLibrary.id === 'prism'"
 				:show-run="false"
 				:theme="selectedTheme"
 			/>

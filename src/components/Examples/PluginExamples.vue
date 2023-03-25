@@ -6,7 +6,11 @@
 			</div>
 		</div>
 
-		<div id="plugin-example" class="row mb-4">
+		<div
+			v-if="selectedLibrary.id === 'prism'"
+			id="plugin-example"
+			class="row mb-4"
+		>
 			<div class="col-12">
 				<p>
 					PrismJS does not load all plugins by default. In order to use
@@ -50,8 +54,9 @@
 				<CodeBlock
 					class="line-numbers"
 					:code="pluginExample"
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
 					lang="html"
-					:lib="selectedLibrary"
+					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="false"
 					:theme="selectedTheme"
 				>
@@ -63,6 +68,13 @@
 						Plugin
 					</template>
 				</CodeBlock>
+			</div>
+		</div>
+		<div v-else id="plugin-example" class="row mb-4">
+			<div class="col-12">
+				<p>
+					Vue3 CodeBlock currently does not support the Highlight.js plugin API.
+				</p>
 			</div>
 		</div>
 	</div>

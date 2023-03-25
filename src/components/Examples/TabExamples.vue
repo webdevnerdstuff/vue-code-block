@@ -10,11 +10,12 @@
 		<div id="tab-copy-example" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
-					:code="copyExample"
+					:code="examples[selectedLibrary.id].copy"
 					copy-tab
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
 					label="Copy Code Tab"
 					lang="html"
-					:lib="selectedLibrary"
+					:prismjs="selectedLibrary.id === 'prism'"
 					:run-tab="false"
 					tabs
 					:theme="selectedTheme"
@@ -26,12 +27,13 @@
 		<div id="tab-run-example" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
-					:code="runExample"
+					:code="examples[selectedLibrary.id].run"
 					:copy-tab="false"
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
 					label="Run Code Tab"
 					lang="html"
-					:lib="selectedLibrary"
 					:max-height="codeBlockOptions.preHeight"
+					:prismjs="selectedLibrary.id === 'prism'"
 					run-tab
 					tabs
 					:theme="selectedTheme"
@@ -44,11 +46,12 @@
 		<div id="tab-both-example" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
-					:code="bothExample"
+					:code="examples[selectedLibrary.id].both"
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
 					label="Copy &amp; Run Code Tabs"
 					lang="html"
-					:lib="selectedLibrary"
 					:max-height="codeBlockOptions.preHeight"
+					:prismjs="selectedLibrary.id === 'prism'"
 					:run-tab="true"
 					tabs
 					:theme="selectedTheme"
@@ -66,18 +69,70 @@ const codeBlockOptions = inject('codeBlockOptions');
 const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
-const copyExample = `<CodeBlock
+const examples = {
+	prism: {
+		copy: `<CodeBlock
   :code="myCode"
   copy-tab
   label="Copy Code Tab"
   lang="javascript"
+  prismjs
   :run-tab="false"
   tabs
-/>`;
-const runExample = `<template>
+/>`,
+		run: `<template>
   <CodeBlock
     :code="myCode"
     :copy-tab="false"
+    label="Run Code Tab"
+    lang="javascript"
+    prismjs
+    run-tab
+    tabs
+    @run="runMyCodeFunction"
+  />
+<\/template>
+
+<script setup>
+  function runMyCodeFunction() {
+    const message = 'Run Code Tab';
+    alert(message);
+  }
+<\/script>`,
+		both: `<template>
+  <CodeBlock
+    :code="myCode"
+    label="Copy &amp; Run Code Tabs"
+    lang="javascript"
+    prismjs
+    :run-tab="true"
+    tabs
+    @run="runMyOtherCodeFunction"
+  />
+<\/template>
+
+<script setup>
+  function runMyCodeFunction() {
+    const message = 'bar';
+    alert(message);
+  }
+<\/script>`,
+	},
+	highlightjs: {
+		copy: `<CodeBlock
+  :code="myCode"
+  copy-tab
+  highlightjs
+  label="Copy Code Tab"
+  lang="javascript"
+  :run-tab="false"
+  tabs
+/>`,
+		run: `<template>
+  <CodeBlock
+    :code="myCode"
+    :copy-tab="false"
+    highlightjs
     label="Run Code Tab"
     lang="javascript"
     run-tab
@@ -91,10 +146,11 @@ const runExample = `<template>
     const message = 'Run Code Tab';
     alert(message);
   }
-<\/script>`;
-const bothExample = `<template>
+<\/script>`,
+		both: `<template>
   <CodeBlock
     :code="myCode"
+    highlightjs
     label="Copy &amp; Run Code Tabs"
     lang="javascript"
     :run-tab="true"
@@ -108,7 +164,9 @@ const bothExample = `<template>
     const message = 'bar';
     alert(message);
   }
-<\/script>`;
+<\/script>`,
+	}
+};
 
 function runMyCodeFunction() {
 	const message = 'Run Code Tab';

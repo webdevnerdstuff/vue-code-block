@@ -102,6 +102,12 @@ const componentProps = {
 		default: 'auto',
 		description: 'The height of the code block.',
 	},
+	highlightjs: {
+		type: 'Boolean',
+		required: false,
+		default: 'false',
+		description: 'Specifies that the Highlight.js library should be used.',
+	},
 	indent: {
 		type: 'Number',
 		required: false,
@@ -120,12 +126,6 @@ const componentProps = {
 		default: 'javascript',
 		description: 'The language of the code.',
 	},
-	lib: {
-		type: 'String',
-		required: false,
-		default: 'prism',
-		description: 'The library to be used for the code block. Available options include: <code>prism</code> and <code>highlightjs</code>.',
-	},
 	maxHeight: {
 		type: '[String, Number]',
 		required: false,
@@ -137,6 +137,12 @@ const componentProps = {
 		required: false,
 		default: false,
 		description: 'To show a persistent copy button within the code block',
+	},
+	prismjs: {
+		type: 'Boolean',
+		required: false,
+		default: 'true',
+		description: 'Specifies that the PrismJS library should be used.',
 	},
 	runTab: {
 		type: 'Boolean',

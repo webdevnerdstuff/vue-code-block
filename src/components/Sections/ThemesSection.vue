@@ -21,9 +21,10 @@
 
 			<CodeBlock
 				:code="bunnyThemeExample"
+				:highlightjs="selectedLibrary.id === 'highlightjs'"
 				label="Using the Neon Bunny Themes"
 				lang="html"
-				:lib="selectedLibrary"
+				:prismjs="selectedLibrary.id === 'prism'"
 				:theme="selectedTheme"
 			/>
 
@@ -43,9 +44,10 @@
 
 			<CodeBlock
 				:code="themePropExample"
+				:highlightjs="selectedLibrary.id === 'highlightjs'"
 				label="Using the theme prop"
 				lang="html"
-				:lib="selectedLibrary"
+				:prismjs="selectedLibrary.id === 'prism'"
 				:theme="selectedTheme"
 			/>
 
@@ -59,9 +61,10 @@
 
 			<CodeBlock
 				:code="importJsExample"
+				:highlightjs="selectedLibrary.id === 'highlightjs'"
 				label="Using import (javascript)"
 				lang="html"
-				:lib="selectedLibrary"
+				:prismjs="selectedLibrary.id === 'prism'"
 				:theme="selectedTheme"
 			/>
 
@@ -69,9 +72,10 @@
 
 			<CodeBlock
 				:code="importCssExample"
+				:highlightjs="selectedLibrary.id === 'highlightjs'"
 				label="Using import (css/sass/scss)"
 				lang="html"
-				:lib="selectedLibrary"
+				:prismjs="selectedLibrary.id === 'prism'"
 				:theme="selectedTheme"
 			/>
 		</div>

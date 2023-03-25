@@ -7,8 +7,9 @@
 		<div class="col-12">
 			<CodeBlock
 				:code="asPluginGlobalCode"
+				:highlightjs="selectedLibrary.id === 'highlightjs'"
 				lang="javascript"
-				:lib="selectedLibrary"
+				:prismjs="selectedLibrary.id === 'prism'"
 				:show-run="false"
 				:theme="selectedTheme"
 			/>

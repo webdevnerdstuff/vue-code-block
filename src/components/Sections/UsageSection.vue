@@ -7,9 +7,10 @@
 		<div class="col-12">
 			<CodeBlock
 				:code="componentCode"
+				:highlightjs="selectedLibrary.id === 'highlightjs'"
 				label="My Code"
 				lang="html"
-				:lib="selectedLibrary"
+				:prismjs="selectedLibrary.id === 'prism'"
 				:show-run="false"
 				:theme="selectedTheme"
 			/>
@@ -18,9 +19,10 @@
 		<div class="col-12">
 			<CodeBlock
 				:code="runCode"
+				:highlightjs="selectedLibrary.id === 'highlightjs'"
 				label="Run My Code"
 				lang="html"
-				:lib="selectedLibrary"
+				:prismjs="selectedLibrary.id === 'prism'"
 				run-tab
 				tabs
 				:theme="selectedTheme"
@@ -49,7 +51,7 @@ const componentCode = `<template>
 <script setup>
   const myCode = \`const foo = 'bar';
 
-  console.log(foo);
+  console.log(foo)\`;
 <\/script>`;
 
 const runCode = `<template>
@@ -65,7 +67,7 @@ const runCode = `<template>
 <script setup>
   const myCode = \`const foo = 'bar';
 
-  alert(foo);
+  alert(foo)\`;
 <\/script>`;
 
 function runMyCode() {
