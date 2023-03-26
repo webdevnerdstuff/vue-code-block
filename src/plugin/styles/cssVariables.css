@@ -24,14 +24,6 @@
 	--v-cb-danger-hex: var(--v-cb-red-hex);
 	--v-cb-danger-rgb: var(--v-cb-red-rgb);
 
-	/* Typography */
-	--v-cb-font: system-ui, -apple-system, 'Segoe UI', 'Roboto',
-		'Helvetica Neue', 'Arial', 'Noto Sans', 'Liberation Sans', sans-serif,
-		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-	--v-cb-label-font: var(--v-cb-font);
-	--v-cb-tab-font: var(--v-cb-font);
-
-
 	/* Neon Bunny Colors */
 
 	/* neon-bunny */

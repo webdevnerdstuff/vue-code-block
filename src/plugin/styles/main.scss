@@ -12,7 +12,6 @@
 	}
 
 	&--label {
-		font-family: var(--v-cb-label-font);
 		overflow: auto;
 	}
 
@@ -29,7 +28,6 @@
 		cursor: pointer;
 		display: flex;
 		flex-direction: row;
-		font-family: var(--v-cb-tab-font);
 		justify-content: flex-start;
 		padding: 5px 15px;
 		text-align: center;
@@ -39,6 +37,11 @@
 
 		&:hover {
 			background-color: hsl(var(--v-cb-primary) 0.2);
+		}
+
+		svg {
+			height: 0.85rem;
+			width: 0.85rem;
 		}
 	}
 
@@ -60,6 +63,10 @@
 
 			code {
 				width: 100%;
+
+				&.hljs {
+					overflow-x: unset;
+				}
 			}
 		}
 
@@ -106,6 +113,11 @@
 
 				&-persist {
 					opacity: .5;
+				}
+
+				svg {
+					height: 1rem;
+					width: 1rem;
 				}
 			}
 		}

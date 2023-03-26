@@ -1045,7 +1045,6 @@ pre[class*=language-] {
  -webkit-hyphens: none;
  color: var(--neon-bunny-white);
  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
- font-size: 1em;
  hyphens: none;
  line-height: 1.5;
  tab-size: 4;
@@ -2062,7 +2061,6 @@ pre[class*=language-] {
  -webkit-hyphens: none;
  color: var(--neon-bunny-white);
  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
- font-size: 1em;
  hyphens: none;
  line-height: 1.5;
  tab-size: 4;
