@@ -28,16 +28,18 @@ export default {
 	input: 'src/index.ts',
 	output: [
 		{
+			banner,
 			exports: 'named',
 			file: `dist/${pkg.name}.js`,
 			format: 'cjs',
-			banner,
+			inlineDynamicImports: true,
 		},
 		{
+			banner,
 			exports: 'named',
 			file: `dist/${pkg.name}.es.js`,
 			format: 'es',
-			banner,
+			inlineDynamicImports: true,
 		},
 	],
 	external: [
