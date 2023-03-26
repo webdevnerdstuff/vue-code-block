@@ -66,11 +66,16 @@
 				</template>
 			</div>
 
-			<pre :class="`language-${props.lang}`" :style="preTagStyles">
+			<pre
+				v-bind="$attrs"
+				:class="`language-${props.lang}`"
+				:style="preTagStyles"
+			>
 <code
   :class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
   :style="codeTagStyles"
-  v-html="prismPlugin ? computedCode : renderedCode"
+  v-html="!prismPlugin ? renderedCode : false"
+	v-text="prismPlugin ? computedCode : false"
 ></code>
 			</pre>
 		</div>
@@ -240,6 +245,7 @@ const props = defineProps({
 
 // -------------------------------------------------- Data //
 let hljs;
+let prismModule;
 
 const convertedCode = ref(null);
 const copyStatus = ref<string>('copy');
@@ -264,20 +270,17 @@ const computedCode = computed<unknown>(() => {
 
 	// We need to compute the code for Prism plugins to work //
 	if (props.prismjs && props.prismPlugin) {
-		convertCode();
-
-		html = Prism.highlight(
-			convertedCode.value,
-			Prism.languages[props.lang],
-			props.lang,
-		);
+		html = convertedCode.value;
 	}
 
 	return html;
 });
 
 const codeBlockClasses = computed<string>(() => {
-	return isMobile.value ? 'v-code-block--mobile' : '';
+	let classes = isMobile.value ? 'v-code-block--mobile' : '';
+	classes += props.prismjs ? ' v-code-block--prismjs' : ' v-code-block--highlightjs';
+
+	return classes;
 });
 
 const codeTagStyles = computed<StyleValue>(() => {
@@ -566,7 +569,7 @@ function renderCode(): void {
 	if (props.highlightjs) {
 		import('highlight.js/lib/core')
 			.then((module) => {
-				hljs = module.HighlightJS;
+				hljs = module.default;
 
 				hljs.registerLanguage('javascript', langJavascript);
 				hljs.registerLanguage('css', langCss);
@@ -581,16 +584,15 @@ function renderCode(): void {
 	}
 
 	if (props.prismjs) {
-		import('prismjs')
-			.then((module) => {
-				Prism = module;
+		import('prismjs').then((result) => {
+			prismModule = result;
 
-				renderedCode.value = Prism.highlight(
-					convertedCode.value,
-					Prism.languages[props.lang],
-					props.lang,
-				);
-			})
+			renderedCode.value = prismModule.highlight(
+				convertedCode.value,
+				prismModule.languages[props.lang],
+				props.lang,
+			);
+		})
 			.catch((err) => {
 				console.error('PrismJS import:', { err });
 			});
