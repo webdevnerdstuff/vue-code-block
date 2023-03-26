@@ -30,16 +30,15 @@
 
 			<p>
 				Another other is to use the main
-				<a :href="links.prism" target="_blank">PrismJS</a> themes. If you use
-				the component to load the theme, you just need to set the
+				<a :href="prismLinks.homepage" target="_blank">PrismJS</a> themes. If
+				you use the component to load the theme, you just need to set the
 				<a href="#props-theme-option">theme</a> prop to the desired theme. When
 				you load it this way, the component will use a <code>fetch</code> call
 				to load them themes from the
-				<a :href="links.jsDelivrPrism" target="_blank">jsDelivr CDN</a>.
-				Fetching the PrismJS themes from a CDN was the best method I could
-				figure out at this time to dynamically load the themes, while making it
-				easier for you to use them. You can also link to another CDN of your
-				choice.
+				<a :href="prismLinks.cdn" target="_blank">jsDelivr CDN</a>. Fetching the
+				PrismJS themes from a CDN was the best method I could figure out at this
+				time to dynamically load the themes, while making it easier for you to
+				use them. You can also link to another CDN of your choice.
 			</p>
 
 			<CodeBlock
@@ -55,7 +54,7 @@
 				You can also load the themes the traditional way of importing them
 				directly from the PrismJS package in <code>node_modules</code>. Themes
 				from their
-				<a :href="links.prismThemes" target="_blank">Prism themes</a>
+				<a :href="prismLinks.themes" target="_blank">Prism themes</a>
 				repository can be used this way as well (not build into the component).
 			</p>
 
@@ -87,6 +86,7 @@ import { inject } from 'vue';
 
 
 const links = inject('links');
+const prismLinks = inject('prismLinks');
 const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 const styleData = inject('styleData');

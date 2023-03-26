@@ -145,7 +145,6 @@ import {
 	FooterSection,
 	InstallationSection,
 	LicenseSection,
-	// TODO: Need to updated props with Highlight.js stuff //
 	PropsSection,
 	RegisterSection,
 	SlotsSection,
@@ -158,13 +157,11 @@ import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-markup-templating';
 import 'prismjs/components/prism-php';
-
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
 
 const highlightJsLinks = inject('highlightJsLinks');
-const links = inject('links');
 const prismLinks = inject('prismLinks');
 
 const demoTestPage = ref(false);
@@ -279,10 +276,6 @@ const highlightThemes = [
 	{
 		label: 'Brown Paper',
 		value: 'brown-paper',
-	},
-	{
-		label: 'Brown Paper sq',
-		value: 'brown-papersq',
 	},
 	{
 		label: 'CodePen Embed',

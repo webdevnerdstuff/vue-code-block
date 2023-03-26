@@ -17,8 +17,9 @@
 					:code="testingCode"
 					copy-button
 					:highlightjs="selectedLibrary.id === 'highlightjs'"
+					label="Hello World and foobar stuff"
 					lang="javascript"
-					prism-plugin
+					:prism-plugin="false"
 					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="true"
 					:theme="selectedTheme"
@@ -31,16 +32,28 @@
 <script setup>
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-
 import { inject } from 'vue';
 import neonBunnyHighlightTheme from '@/plugin/themes/highlight/css/neon-bunny.css?inline';
 
 import Prism from 'prismjs';
-// import 'prismjs/plugins/autoloader/prism-autoloader.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
-// console.log({ Prism });
+// import 'prismjs/plugins/autolinker/prism-autolinker.js';
+// import 'prismjs/plugins/autolinker/prism-autolinker.css';
+
+// import 'prismjs/plugins/command-line/prism-command-line.js';
+// import 'prismjs/plugins/command-line/prism-command-line.css';
+
+// import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
+// import 'prismjs/plugins/line-highlight/prism-line-highlight.css';
+
+// import 'prismjs/plugins/match-braces/prism-match-braces.js';
+// import 'prismjs/plugins/match-braces/prism-match-braces.css';
+
+// import 'prismjs/plugins/show-invisibles/prism-show-invisibles.js';
+// import 'prismjs/plugins/show-invisibles/prism-show-invisibles.css';
+
 
 const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');

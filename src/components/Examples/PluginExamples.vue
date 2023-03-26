@@ -25,8 +25,16 @@
 						</a>
 					</li>
 					<li>
-						<a href="https://prismjs.com/plugins/inline-color/" target="_blank">
-							inline-color
+						<a href="https://prismjs.com/plugins/command-line/" target="_blank">
+							command-line
+						</a>
+					</li>
+					<li>
+						<a
+							href="https://prismjs.com/plugins/line-highlight/"
+							target="_blank"
+						>
+							line-highlight
 						</a>
 					</li>
 					<li>
@@ -54,10 +62,9 @@
 				<CodeBlock
 					class="line-numbers"
 					:code="pluginExample"
-					:highlightjs="selectedLibrary.id === 'highlightjs'"
 					lang="html"
 					prism-plugin
-					:prismjs="selectedLibrary.id === 'prism'"
+					prismjs
 					:tabs="false"
 					:theme="selectedTheme"
 				>
