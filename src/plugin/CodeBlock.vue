@@ -70,7 +70,7 @@
 <code
   :class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
   :style="codeTagStyles"
-  v-html="renderedCode"
+  v-html="prismPlugin ? computedCode : renderedCode"
 ></code>
 			</pre>
 		</div>
@@ -88,7 +88,6 @@ import {
 	watch,
 	StyleValue,
 } from 'vue';
-// import Prism from 'prismjs';
 import UAParser from 'ua-parser-js';
 import { Props } from '@/types';
 import StatusIcons from '@/plugin/StatusIcons.vue';
@@ -98,7 +97,6 @@ import {
 	neonBunnyCarrotHighlightTheme,
 	neonBunnyHighlightTheme
 } from './themes';
-
 import langCss from 'highlight.js/lib/languages/css';
 import langJavascript from 'highlight.js/lib/languages/javascript';
 import langHtml from 'highlight.js/lib/languages/xml';
@@ -202,6 +200,11 @@ const props = defineProps({
 		required: false,
 		default: true,
 	},
+	prismPlugin: {
+		type: Boolean,
+		required: false,
+		default: false,
+	},
 	persistentCopyButton: {
 		type: Boolean,
 		required: false,
@@ -237,7 +240,6 @@ const props = defineProps({
 
 // -------------------------------------------------- Data //
 let hljs;
-let Prism;
 
 const convertedCode = ref(null);
 const copyStatus = ref<string>('copy');
@@ -252,8 +254,28 @@ const runTextValue = ref<string>('');
 const useTheme = ref<boolean | string>('');
 
 
-
 // -------------------------------------------------- Computed //
+const computedCode = computed<unknown>(() => {
+	let html = '';
+
+	if (props.highlightjs) {
+		html = renderedCode.value;
+	}
+
+	// We need to compute the code for Prism plugins to work //
+	if (props.prismjs && props.prismPlugin) {
+		convertCode();
+
+		html = Prism.highlight(
+			convertedCode.value,
+			Prism.languages[props.lang],
+			props.lang,
+		);
+	}
+
+	return html;
+});
+
 const codeBlockClasses = computed<string>(() => {
 	return isMobile.value ? 'v-code-block--mobile' : '';
 });
@@ -335,6 +357,7 @@ watch(props, () => {
 	}
 
 	if (props.theme || props.prismjs || props.highlightjs) {
+		checkLibrary();
 		useTheme.value = props.theme;
 		loadTheme();
 	}
@@ -368,7 +391,11 @@ onMounted(() => {
 // -------------------------------------------------- Methods //
 function checkLibrary(): void {
 	if (props.prismjs && props.highlightjs) {
-		throw new Error('You cannot have both prismjs and highlightjs props set at the same time.');
+		throw new Error('[vue3-code-block]: You cannot have both prismjs and highlightjs props set at the same time.');
+	}
+
+	if (props.highlightjs && props.prismPlugin) {
+		console.warn('[vue3-code-block]: Highlight.js does not support PrismJS plugins. Unexpected results may occur. Remove the `prism-plugin` prop from the vue3-code-block component.');
 	}
 }
 
@@ -533,11 +560,11 @@ function removeStylesheets() {
 	}
 }
 
-function renderCode() {
+function renderCode(): void {
 	convertCode();
 
 	if (props.highlightjs) {
-		return import('highlight.js/lib/core')
+		import('highlight.js/lib/core')
 			.then((module) => {
 				hljs = module.HighlightJS;
 
@@ -554,7 +581,7 @@ function renderCode() {
 	}
 
 	if (props.prismjs) {
-		return import('prismjs')
+		import('prismjs')
 			.then((module) => {
 				Prism = module;
 
@@ -563,7 +590,6 @@ function renderCode() {
 					Prism.languages[props.lang],
 					props.lang,
 				);
-
 			})
 			.catch((err) => {
 				console.error('PrismJS import:', { err });
