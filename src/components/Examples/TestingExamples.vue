@@ -9,21 +9,20 @@
 		</div>
 
 		<!-- ======================= Copy Code Tab -->
+
 		<div id="copy-example" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
-					:code="phpExample"
+					class="line-numbers"
+					:code="testingCode"
 					copy-button
 					:highlightjs="selectedLibrary.id === 'highlightjs'"
-					lang="php"
+					lang="javascript"
+					prism-plugin
 					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="true"
 					:theme="selectedTheme"
-				>
-					<!-- <template #copyButton>
-						<div>click me and shit</div>
-					</template> -->
-				</CodeBlock>
+				/>
 			</div>
 		</div>
 	</div>
@@ -35,6 +34,13 @@
 
 import { inject } from 'vue';
 import neonBunnyHighlightTheme from '@/plugin/themes/highlight/css/neon-bunny.css?inline';
+
+import Prism from 'prismjs';
+// import 'prismjs/plugins/autoloader/prism-autoloader.js';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+
+// console.log({ Prism });
 
 const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');

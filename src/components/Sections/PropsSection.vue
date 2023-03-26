@@ -144,6 +144,12 @@ const componentProps = {
 		default: 'true',
 		description: 'Specifies that the PrismJS library should be used.',
 	},
+	prismPlugin: {
+		type: 'Boolean',
+		required: false,
+		default: 'false',
+		description: 'Specifies that a PrismJS plugin is being used. This is needed for the plugin to work properly.',
+	},
 	runTab: {
 		type: 'Boolean',
 		required: false,

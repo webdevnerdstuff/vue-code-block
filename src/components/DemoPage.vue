@@ -121,7 +121,7 @@
 	</div>
 
 	<div v-else class="container">
-		<!-- <TestingExamples /> -->
+		<TestingExamples />
 	</div>
 </template>
 
@@ -159,10 +159,8 @@ import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-markup-templating';
 import 'prismjs/components/prism-php';
 
-// ! This is not working anymore for some reason //
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
-
 
 
 const highlightJsLinks = inject('highlightJsLinks');

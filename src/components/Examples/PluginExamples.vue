@@ -56,6 +56,7 @@
 					:code="pluginExample"
 					:highlightjs="selectedLibrary.id === 'highlightjs'"
 					lang="html"
+					prism-plugin
 					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="false"
 					:theme="selectedTheme"
@@ -93,6 +94,8 @@ const pluginExample = `<template>
     :code="pluginExample"
     label="line-numbers"
     lang="html"
+    prism-plugin
+    prismjs
     :tabs="false"
   />
 <\/template>
