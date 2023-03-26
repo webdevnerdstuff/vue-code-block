@@ -27,15 +27,10 @@ const highlightJsVersion = dependencies['highlight.js'].replace('^', '');
 
 const links = {
 	changeLog: `${repoBaseUrl}/blob/main/CHANGELOG.md`,
-	docs: `https://webdevnerdstuff.github.io/${packageName}/`,
 	github: repoBaseUrl,
-	jsDelivr: 'https://www.jsdelivr.com/',
-	jsDelivrPrism: `https://cdn.jsdelivr.net/gh/PrismJS/prism@${prismVersion}/themes/`,
 	license: `${repoBaseUrl}/blob/main/LICENSE.md`,
 	neonBunnyTheme: 'https://marketplace.visualstudio.com/items?itemName=WebDevNerdStuff.neon-bunny',
 	npm: `https://www.npmjs.com/package/${packageName}`,
-	prism: 'https://prismjs.com/',
-	prismThemes: 'https://github.com/PrismJS/prism-themes',
 	uaParser: 'https://www.npmjs.com/package/ua-parser-js',
 	vueJs: 'https://vuejs.org/',
 };
