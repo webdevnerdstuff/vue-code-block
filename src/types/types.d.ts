@@ -11,12 +11,13 @@ export type Props = {
 	floatingTabs?: boolean;
 	globalOptions?: boolean;
 	height?: string | number;
+	highlightjs?: boolean;
 	indent?: number;
 	label?: string;
 	lang?: string;
-	lib?: string;
 	maxHeight?: string | number;
 	persistentCopyButton?: boolean;
+	prismjs?: boolean;
 	runTab?: boolean;
 	runText?: string;
 	tabGap?: string;
