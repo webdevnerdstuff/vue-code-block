@@ -68,7 +68,7 @@
 
 			<pre :class="`language-${props.lang}`" :style="preTagStyles">
 <code
-  :class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${lib === 'highlight' || lib === 'highlightjs' ? 'hljs' : ''}`"
+  :class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
   :style="codeTagStyles"
   v-html="renderedCode"
 ></code>
@@ -99,14 +99,10 @@ import {
 	neonBunnyHighlightTheme
 } from './themes';
 
-// import hljs from 'highlight.js/lib/core';
 import langCss from 'highlight.js/lib/languages/css';
 import langJavascript from 'highlight.js/lib/languages/javascript';
-import langJson from 'highlight.js/lib/languages/json';
-import langPhp from 'highlight.js/lib/languages/php';
 import langHtml from 'highlight.js/lib/languages/xml';
 import langPlaintext from 'highlight.js/lib/languages/plaintext';
-import langTypescript from 'highlight.js/lib/languages/typescript';
 
 
 const highlightJsVersion = '11.7.0';
@@ -176,6 +172,11 @@ const props = defineProps({
 		required: false,
 		default: 'auto',
 	},
+	highlightjs: {
+		type: Boolean,
+		required: false,
+		default: false,
+	},
 	indent: {
 		type: Number,
 		required: false,
@@ -191,15 +192,15 @@ const props = defineProps({
 		required: false,
 		default: 'javascript',
 	},
-	lib: {
-		type: String,
-		required: false,
-		default: 'prism',
-	},
 	maxHeight: {
 		type: [String, Number],
 		required: false,
 		default: 'auto',
+	},
+	prismjs: {
+		type: Boolean,
+		required: false,
+		default: true,
 	},
 	persistentCopyButton: {
 		type: Boolean,
@@ -333,7 +334,7 @@ watch(props, () => {
 		renderCode();
 	}
 
-	if (props.theme || props.lib) {
+	if (props.theme || props.prismjs || props.highlightjs) {
 		useTheme.value = props.theme;
 		loadTheme();
 	}
@@ -352,6 +353,8 @@ watch(props, () => {
 onBeforeMount(() => {
 	copyTextValue.value = props.copyText;
 	runTextValue.value = props.runText;
+
+	checkLibrary();
 });
 
 onMounted(() => {
@@ -363,6 +366,12 @@ onMounted(() => {
 
 
 // -------------------------------------------------- Methods //
+function checkLibrary(): void {
+	if (props.prismjs && props.highlightjs) {
+		throw new Error('You cannot have both prismjs and highlightjs props set at the same time.');
+	}
+}
+
 function convertCode(): void {
 	if (props.lang === 'json') {
 		const propsCode = props.code.toString();
@@ -414,9 +423,11 @@ function copyCode(): void {
 
 function loadTheme(): void {
 	let selectedTheme = null;
+	const activeLibrary = props.highlightjs ? 'highlightjs' : 'prism';
+
 	const head = document.getElementsByTagName('head')[0];
 	const themeStyles = document.createElement('style');
-	const themeId = `v-code-block--theme-${useTheme.value}-${props.lib}`;
+	const themeId = `v-code-block--theme-${useTheme.value}-${activeLibrary}`;
 	const loadedTheme = document.body.getAttribute('data-v-code-block-theme');
 	let isHighlightTheme = true;
 	let isPrismTheme = true;
@@ -439,28 +450,34 @@ function loadTheme(): void {
 			selectedTheme = neonBunnyTheme;
 			isPrismTheme = false;
 			isHighlightTheme = false;
+
+			if (activeLibrary === 'highlightjs') {
+				selectedTheme = neonBunnyHighlightTheme;
+			}
 			break;
 		case 'neon-bunny-carrot':
 			selectedTheme = neonBunnyCarrotTheme;
 			isPrismTheme = false;
 			isHighlightTheme = false;
-			break;
-		case 'neon-bunny-highlight':
-			selectedTheme = neonBunnyHighlightTheme;
-			isPrismTheme = false;
-			isHighlightTheme = false;
-			break;
-		case 'neon-bunny-carrot-highlight':
-			selectedTheme = neonBunnyCarrotHighlightTheme;
-			isPrismTheme = false;
-			isHighlightTheme = false;
+
+			if (activeLibrary === 'highlightjs') {
+				selectedTheme = neonBunnyCarrotHighlightTheme;
+			}
 			break;
 		default:
 			break;
 	}
 
-	switch (props.lib) {
-		case 'highlight':
+	if (!isPrismTheme && !isHighlightTheme) {
+		removeStylesheets();
+
+		themeStyles.appendChild(document.createTextNode(selectedTheme));
+		head.appendChild(themeStyles);
+
+		return;
+	}
+
+	switch (activeLibrary) {
 		case 'highlightjs':
 			cssFilename = `${useTheme.value}.min.css`;
 			fetchUrl = `${highlightCdn.value}/${cssFilename}`;
@@ -474,18 +491,8 @@ function loadTheme(): void {
 			fetchUrl = `${prismCdn.value}/${cssFilename}`;
 			break;
 		default:
-			isPrismTheme = true;
 			cssFilename = '';
 			break;
-	}
-
-	if (!isPrismTheme && !isHighlightTheme) {
-		removeStylesheets();
-
-		themeStyles.appendChild(document.createTextNode(selectedTheme));
-		head.appendChild(themeStyles);
-
-		return;
 	}
 
 	isLoading.value = true;
@@ -501,7 +508,8 @@ function loadTheme(): void {
 			isLoading.value = false;
 		})
 		.catch((error) => {
-			console.error(`${props.lib} CDN Error:`, error);
+			const activeLibrary = props.highlightjs ? 'Highlight.js' : 'PrismJS';
+			console.error(`${activeLibrary} CDN Error:`, error);
 		});
 }
 
@@ -528,14 +536,11 @@ function removeStylesheets() {
 function renderCode() {
 	convertCode();
 
-	if (props.lib === 'highlight' || props.lib === 'highlightjs') {
+	if (props.highlightjs) {
 		return import('highlight.js/lib/core')
 			.then((module) => {
 				hljs = module.HighlightJS;
 
-				hljs.registerLanguage('json', langJson);
-				hljs.registerLanguage('php', langPhp);
-				hljs.registerLanguage('typescript', langTypescript);
 				hljs.registerLanguage('javascript', langJavascript);
 				hljs.registerLanguage('css', langCss);
 				hljs.registerLanguage('html', langHtml);
@@ -548,7 +553,7 @@ function renderCode() {
 			});
 	}
 
-	if (props.lib === 'prism') {
+	if (props.prismjs) {
 		return import('prismjs')
 			.then((module) => {
 				Prism = module;
