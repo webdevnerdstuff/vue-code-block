@@ -23,7 +23,7 @@
 
 	&--tab {
 		align-items: center;
-		background-color: hsl(var(--v-cb-primary) 0.1);
+		background-color: hsl(var(--v-cb-primary) / 10%);
 		border-radius: 5px 5px 0 0;
 		cursor: pointer;
 		display: flex;
@@ -36,7 +36,7 @@
 		width: fit-content;
 
 		&:hover {
-			background-color: hsl(var(--v-cb-primary) 0.2);
+			background-color: hsl(var(--v-cb-primary) / 20%);
 		}
 
 		svg {
@@ -63,10 +63,6 @@
 
 			code {
 				width: 100%;
-
-				&.hljs {
-					overflow-x: unset;
-				}
 			}
 		}
 
@@ -94,9 +90,10 @@
 		&-copy {
 			&-button {
 				align-items: center;
-				color: #fff;
+				color: #ccc;
 				cursor: pointer;
 				display: flex;
+				fill: #ccc;
 				height: 1.5em;
 				justify-content: center;
 				opacity: 0;
