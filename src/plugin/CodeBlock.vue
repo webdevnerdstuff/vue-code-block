@@ -112,7 +112,6 @@ const highlightJsVersion = '11.7.0';
 const prismVersion = '1.29.0';
 
 
-
 // -------------------------------------------------- Emits & Slots & Injects //
 const emit = defineEmits(['run', 'update:copy-status']);
 const slots = useSlots();
