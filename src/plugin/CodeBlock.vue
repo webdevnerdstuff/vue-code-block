@@ -305,13 +305,14 @@ const headerStyles = computed<StyleValue>(() => {
 });
 
 const iconClasses = computed<object>(() => {
+	const activeLibrary = props.highlightjs ? 'highlightjs' : 'prism';
 	const theme = useTheme.value === '' || useTheme.value === 'prism' ? 'default' : useTheme.value;
 
 	const classes = {
 		'v-code-block--me-1': true,
-		[`v-code-block--tab-${theme}-icon`]: true,
+		[`v-code-block--tab-${activeLibrary}-${theme}-icon`]: true,
 		[`v-code-block--button-copy-icon-status-${copyStatus.value}`]: true,
-		[`v-code-block--tab-${theme}-icon-status-${copyStatus.value}`]: true,
+		[`v-code-block--tab-${activeLibrary}-${theme}-icon-status-${copyStatus.value}`]: true,
 	};
 	return classes;
 });
@@ -340,8 +341,11 @@ const preTagStyles = computed<StyleValue>(() => {
 
 const tabClasses = computed<object>(() => {
 	const theme = useTheme.value === '' || useTheme.value === 'prism' ? 'default' : useTheme.value;
+	const activeLibrary = props.highlightjs ? 'highlightjs' : 'prism';
+
 	const classes = {
 		[`v-code-block--tab-${theme}`]: true,
+		[`v-code-block--tab-${activeLibrary}-${theme}`]: true,
 	};
 	return classes;
 });
