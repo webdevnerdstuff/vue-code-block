@@ -1,6 +1,6 @@
 {
 	"name": "vue3-code-block",
-	"version": "1.0.15",
+	"version": "2.0.0-beta.1",
 	"description": "Vue 3 CodeBlock - Highlight your code with ease using this syntax highlighting component powered by PrismJS.",
 	"private": false,
 	"main": "dist/vue3-code-block.js",
