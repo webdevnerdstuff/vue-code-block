@@ -12,7 +12,7 @@
 				lang="plain"
 				:prismjs="selectedLibrary.id === 'prism'"
 				:show-run="false"
-				tabs
+				:tabs="false"
 				:theme="selectedTheme"
 			/>
 		</div>
