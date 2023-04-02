@@ -4,10 +4,14 @@
 			<footer
 				class="d-flex flex-wrap justify-content-between align-items-center my-2"
 			>
-				<div class="col-md-4 d-flex align-items-center">
-					<span class="mb-3 mb-md-0 text-muted">
-						&copy; {{ year }} WebDevNerdStuff
-					</span>
+				<div class="text-muted col-md-4 d-flex align-items-center">
+					&copy; {{ year }}
+					<a
+						class="text-muted btn btn-link d-flex-inline ps-2"
+						:href="links.githubProfile"
+						target="_blank"
+						>WebDevNerdStuff</a
+					>
 				</div>
 
 				<ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
