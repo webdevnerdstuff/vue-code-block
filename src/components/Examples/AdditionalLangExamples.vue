@@ -158,10 +158,9 @@ const usageExamples = {
 <\/template>
 
 <script setup>
-  import hljs from 'highlight.js/lib/core';
-  import langJson from 'highlight.js/lib/languages/json';
-
-  hljs.registerLanguage('json', langJson);
+  import Prism from 'prismjs';
+  import 'prismjs/components/prism-markup-templating';
+  import 'prismjs/components/prism-php';
 <\/script>`,
 	},
 	highlightjs: {
