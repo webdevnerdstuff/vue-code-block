@@ -477,8 +477,6 @@ function loadTheme(): void {
 		return;
 	}
 
-	console.log({ themeId });
-
 	document.body.setAttribute('data-v-code-block-theme', themeId);
 
 	themeStyles.setAttribute('type', 'text/css');
@@ -522,7 +520,6 @@ function loadTheme(): void {
 	switch (activeLibrary) {
 		case 'highlightjs':
 			cssFilename = `${adjustCssFilename}.min.css`;
-			console.log(highlightCdn.value);
 			fetchUrl = `${highlightCdn.value}/${cssFilename}`;
 			break;
 		case 'prism':
