@@ -124,8 +124,6 @@
 
 		<!-- ============================================== License -->
 		<LicenseSection id="ul-license" />
-
-		<FooterSection />
 	</div>
 
 	<div v-else class="container">
@@ -150,7 +148,6 @@ import {
 	DependenciesSection,
 	EventsSection,
 	ExamplesSection,
-	FooterSection,
 	InstallationSection,
 	LicenseSection,
 	PropsSection,
@@ -289,6 +286,10 @@ const highlightThemes = [
 	{
 		label: 'Brown Paper',
 		value: 'brown-paper',
+	},
+	{
+		label: 'Base16 One Dark',
+		value: 'base16-onedark',
 	},
 	{
 		label: 'CodePen Embed',
