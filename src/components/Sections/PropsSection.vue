@@ -177,6 +177,9 @@ const componentProps = {
 		default: 'neon-bunny',
 		description: `<p>The theme to be used for the code block. Available options include:</p>
 		<p>
+			<code>false</code> - When you are loading the theme's styles yourself.
+		</p>
+		<p>
 			<strong>Neon Bunny Themes</strong>
 			<br />
 			<code>neon-bunny</code>
