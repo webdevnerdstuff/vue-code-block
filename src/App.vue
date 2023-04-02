@@ -39,15 +39,11 @@ const links = {
 	vueJs: 'https://vuejs.org/',
 };
 
-console.log({ prismVersion, highlightJsVersion });
-
 const highlightJsLinks = {
 	cdn: `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@${highlightJsVersion}/build/styles/`,
 	homepage: 'https://highlightjs.org/',
 	themes: `https://github.com/highlightjs/highlight.js/tree/${highlightJsVersion}/src/styles`,
 };
-
-
 
 const prismLinks = {
 	cdn: `https://cdn.jsdelivr.net/gh/PrismJS/prism@${prismVersion}/themes/`,

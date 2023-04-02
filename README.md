@@ -19,7 +19,7 @@
 
 ## Description
 
-The Vue 3 CodeBlock component leverages the power of [PrismJS](https://prismjs.com/) to provide syntax highlighting for code blocks within your application. The component takes a prop, which is the code to be highlighted, and uses PrismJS to render the code with syntax highlighting. The component supports a variety of programming languages and can be customized with different themes to match your application's design. With this component, your users can display their code snippets with ease and clarity, making it easier to share and collaborate on code within your application.
+The Vue 3 CodeBlock component leverages the power of [PrismJS](https://prismjs.com/) or [PrismJS](https://highlightjs.org/)to provide syntax highlighting for code blocks within your application. The component takes a prop, which is the code to be highlighted, and uses PrismJS or Highlight.js to render the code with syntax highlighting. The component supports a variety of programming languages and can be customized with different themes to match your application's design. With this component, your users can display their code snippets with ease and clarity, making it easier to share and collaborate on code within your application.
 
 
 ## Installation
@@ -41,6 +41,7 @@ npm i vue3-code-block
 ## Dependencies
  
 [PrismJS](https://prismjs.com/)  
+[Highlight.js](https://highlightjs.org/)  
 [Vue 3](https://vuejs.org/)  
 [UAParser.js](https://www.npmjs.com/package/ua-parser-js)
 
