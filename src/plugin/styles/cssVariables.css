@@ -42,13 +42,6 @@
 
 	/* -------------------------------------------------- Prism Colors */
 
-	/* default */
-	--v-cb-tab-prism-default-bkg: 24 20% 95%;
-	--v-cb-tab-prism-default-text: 0 0% 0%;
-	--v-cb-tab-prism-default-icon: 198 100% 33%;
-	--v-cb-tab-prism-default-icon-success: 80 100% 30%;
-	--v-cb-tab-prism-default-icon-failed: 348 68% 58%;
-
 	/* coy */
 	--v-cb-tab-prism-coy-bkg: 205 59% 50%;
 	--v-cb-tab-prism-coy-text: 0 0% 0%;
@@ -63,6 +56,13 @@
 	--v-cb-tab-prism-dark-icon: 40 90% 60%;
 	--v-cb-tab-prism-dark-icon-success: 75 70% 60%;
 	--v-cb-tab-prism-dark-icon-failed: 0 100% 50%;
+
+	/* default */
+	--v-cb-tab-prism-default-bkg: 24 20% 95%;
+	--v-cb-tab-prism-default-text: 0 0% 0%;
+	--v-cb-tab-prism-default-icon: 198 100% 33%;
+	--v-cb-tab-prism-default-icon-success: 80 100% 30%;
+	--v-cb-tab-prism-default-icon-failed: 348 68% 58%;
 
 	/* funky */
 	--v-cb-tab-prism-funky-bkg: 0 0% 80%;
@@ -109,13 +109,6 @@
 	--v-cb-tab-prism-themes-night-owl-icon-failed: 350 100% 67%;
 
 	/* -------------------------------------------------- Highlight.js Colors */
-
-	/* default */
-	--v-cb-tab-highlightjs-default-bkg: 0 0% 95%;
-	--v-cb-tab-highlightjs-default-text: 0 0% 27%;
-	--v-cb-tab-highlightjs-default-icon: 0 0% 27%;
-	--v-cb-tab-highlightjs-default-icon-success: 90, 100%, 23%;
-	--v-cb-tab-highlightjs-default-icon-failed: 0, 100%, 27%;
 
 	/* a11y-dark */
 	--v-cb-tab-highlightjs-a11y-dark-bkg: 0 0% 17%;
@@ -192,7 +185,14 @@
 	--v-cb-tab-highlightjs-atom-one-light-text: 228 8% 24%;
 	--v-cb-tab-highlightjs-atom-one-light-icon: 41 99% 30%;
 	--v-cb-tab-highlightjs-atom-one-light-icon-success: 119 34% 47%;
-	--v-cb-tab-highlightjs-atom-one-light-icon-failed: #e45649;
+	--v-cb-tab-highlightjs-atom-one-light-icon-failed: 5 74% 59%;
+
+	/* base16-onedark */
+	--v-cb-tab-highlightjs-base16-onedark-bkg: 220 13% 18%;
+	--v-cb-tab-highlightjs-base16-onedark-text: 219 14% 71%;
+	--v-cb-tab-highlightjs-base16-onedark-icon: 207 82% 66%;
+	--v-cb-tab-highlightjs-base16-onedark-icon-success: 95 38% 62%;
+	--v-cb-tab-highlightjs-base16-onedark-icon-failed: 5 48% 51%;
 
 	/* brown-paper */
 	--v-cb-tab-highlightjs-brown-paper-bkg: 35 22% 64%;
@@ -222,6 +222,13 @@
 	--v-cb-tab-highlightjs-dark-icon: 0 56% 70%;
 	--v-cb-tab-highlightjs-dark-icon-success: var(--v-cb-success);
 	--v-cb-tab-highlightjs-dark-icon-failed: var(--v-cb-failed);
+
+	/* default */
+	--v-cb-tab-highlightjs-default-bkg: 0 0% 95%;
+	--v-cb-tab-highlightjs-default-text: 0 0% 27%;
+	--v-cb-tab-highlightjs-default-icon: 0 0% 27%;
+	--v-cb-tab-highlightjs-default-icon-success: 90 100% 23%;
+	--v-cb-tab-highlightjs-default-icon-failed: 0 100% 27%;
 
 	/* devibeans */
 	--v-cb-tab-highlightjs-devibeans-bkg: 0 0% 0%;
@@ -321,7 +328,7 @@
 	--v-cb-tab-highlightjs-hybrid-text: 140 3% 78%;
 	--v-cb-tab-highlightjs-hybrid-icon: 208 32% 63%;
 	--v-cb-tab-highlightjs-hybrid-icon-success: 66 39% 57%;
-	--v-cb-tab-highlightjs-hybrid-icon-failed: #c66;
+	--v-cb-tab-highlightjs-hybrid-icon-failed: 0 50% 60%;
 
 	/* idea */
 	--v-cb-tab-highlightjs-idea-bkg: 0 0% 100%;
@@ -432,7 +439,7 @@
 	--v-cb-tab-highlightjs-nnfx-light-bkg: 0 0% 100%;
 	--v-cb-tab-highlightjs-nnfx-light-text: 0 0% 0%;
 	--v-cb-tab-highlightjs-nnfx-light-icon: 240 100% 50%;
-	--v-cb-tab-highlightjs-nnfx-light-icon-success: #070;
+	--v-cb-tab-highlightjs-nnfx-light-icon-success: 120 100% 23%;
 	--v-cb-tab-highlightjs-nnfx-light-icon-failed: 120 100% 48%;
 
 	/* nord */
@@ -453,7 +460,7 @@
 	--v-cb-tab-highlightjs-panda-syntax-dark-bkg: 200 3% 17%;
 	--v-cb-tab-highlightjs-panda-syntax-dark-text: 0 0% 90%;
 	--v-cb-tab-highlightjs-panda-syntax-dark-icon: 207 94% 62%;
-	--v-cb-tab-highlightjs-panda-syntax-dark-icon-success: 171, 95%, 54%;
+	--v-cb-tab-highlightjs-panda-syntax-dark-icon-success: 171 95% 54%;
 	--v-cb-tab-highlightjs-panda-syntax-dark-icon-failed: 342 100% 65%;
 
 	/* panda-syntax-light */
@@ -489,7 +496,7 @@
 	--v-cb-tab-highlightjs-purebasic-bkg: 60 100% 94%;
 	--v-cb-tab-highlightjs-purebasic-text: 0 0% 0%;
 	--v-cb-tab-highlightjs-purebasic-icon: 210 100% 50%;
-	--v-cb-tab-highlightjs-purebasic-icon-success: #0aa;
+	--v-cb-tab-highlightjs-purebasic-icon-success: 180 100% 33%;
 	--v-cb-tab-highlightjs-purebasic-icon-failed: 327 32% 43%;
 
 	/* qtcreator-dark */
