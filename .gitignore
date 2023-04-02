@@ -25,3 +25,4 @@ dist-ssr
 
 .stylelintcache
 src/plugin/themes/highlight/scss/template.scss
+dist/themes/highlight/scss/template.scss
