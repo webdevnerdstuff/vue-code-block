@@ -9,7 +9,7 @@ import json from '@rollup/plugin-json';
 import { fileURLToPath, URL } from 'node:url';
 import scss from 'rollup-plugin-scss';
 import postcss from 'rollup-plugin-postcss';
-// import terser from '@rollup/plugin-terser';
+import terser from '@rollup/plugin-terser';
 import copy from 'rollup-plugin-copy';
 
 const banner = `/**
@@ -82,7 +82,7 @@ export default {
 			modules: false,
 			extract: false,
 			inject: true,
-			// minimize: true,
+			minimize: true,
 			use: [
 				[
 					"sass",
@@ -98,5 +98,6 @@ export default {
 				{ src: 'src/plugin/themes', dest: 'dist' },
 			]
 		}),
+		terser(),
 	],
 };
