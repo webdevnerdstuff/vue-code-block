@@ -25,7 +25,10 @@
 					<template v-for="section in cssVariables" :key="section.name">
 						<tbody>
 							<!-- Section Header Row -->
-							<tr v-if="section.header" class="tbody-header-row">
+							<tr
+								v-if="section.header"
+								class="text-success-emphasis bg-success-subtle"
+							>
 								<th colspan="2">{{ section.name }}</th>
 							</tr>
 
@@ -33,7 +36,7 @@
 								<!-- Section Sub-Header Row -->
 								<td
 									v-if="variable.subHeader"
-									class="tbody-sub-header-row"
+									class="text-dark-emphasis bg-dark-subtle"
 									colspan="2"
 									valign="top"
 								>
@@ -139,14 +142,6 @@ const cssVariables = [
 
 
 <style lang="scss" scoped>
-.tbody-header-row {
-	background-color: #f0fff0;
-}
-
-.tbody-sub-header-row {
-	background-color: #eee;
-}
-
 .td-nowrap {
 	white-space: nowrap;
 }

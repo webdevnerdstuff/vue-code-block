@@ -34,14 +34,20 @@
 				</p>
 			</div>
 		</div>
+		<hr />
 		<div class="row">
-			<div class="col-12 col-md-3">
-				<label class="form-label" for="theme-selection-select">
-					Switch Library:
-				</label>
+			<div class="col-12 mb-3">
+				<h5>Switch between PrismJS and Highlight.js</h5>
 
+				<small
+					class="d-inline-flex align-items-center px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2"
+				>
+					<fa-icon class="text-success me-1" icon="fa-solid fa-circle-info" />
+					This will also update the examples and documentation below.
+				</small>
+			</div>
+			<div class="col-12 col-md-3 mb-3">
 				<select
-					id="library-selection-select"
 					aria-label="Library Selection"
 					class="form-select"
 					@change="changeLibrary($event.target.value)"
@@ -56,10 +62,12 @@
 					</option>
 				</select>
 			</div>
+		</div>
+		<div class="row">
 			<div class="col-12 col-md-3">
-				<label class="form-label" for="theme-selection-select">
-					Switch Theme:
-				</label>
+				<label class="form-label" for="theme-selection-select"
+					>Select Theme:</label
+				>
 
 				<select
 					id="theme-selection-select"
@@ -125,11 +133,12 @@
 	</div>
 </template>
 
-<script setup>
+<script setup lang='ts'>
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
 	inject,
+	onMounted,
 	provide,
 	reactive,
 	ref,
@@ -137,7 +146,6 @@ import {
 import { version } from '../../package';
 import {
 	ChangeLogSection,
-	// TODO: Need to updated props with Highlight.js stuff //
 	CssVariablesSection,
 	DependenciesSection,
 	EventsSection,
@@ -166,6 +174,7 @@ const prismLinks = inject('prismLinks');
 
 const demoTestPage = ref(false);
 const library = ref('prism');
+const storageName = ref('vue3-code-block-library');
 
 const selectedTheme = ref('neon-bunny');
 const selectOptions = ref(null);
@@ -223,11 +232,19 @@ const prismThemes = [
 		label: 'Twilight',
 		value: 'twilight',
 	},
+	{
+		label: 'Night Owl',
+		value: 'themes-night-owl',
+	},
 ];
 const highlightThemes = [
 	{
 		label: 'Default',
 		value: 'default',
+	},
+	{
+		label: 'Base16 One Dark',
+		value: 'base16-dracula',
 	},
 	{
 		label: 'A11y Dark',
@@ -515,6 +532,13 @@ const highlightThemes = [
 	},
 ];
 
+onMounted(() => {
+	library.value = getLocalStorage() ?? setLocalStorage();
+	changeLibrary(library.value);
+});
+
+const emit = defineEmits(['changedLibrary']);
+
 selectOptions.value = [...neonBunnyThemes, ...prismThemes];
 
 provide('selectedTheme', selectedTheme);
@@ -530,6 +554,9 @@ function changeLibrary(val) {
 	selectedLibrary.value = libraries[val];
 	selectedTheme.value = 'neon-bunny';
 
+	setLocalStorage(library.value);
+	emit('changedLibrary', selectedLibrary);
+
 	if (val === 'prism') {
 		selectOptions.value = [...neonBunnyThemes, ...prismThemes];
 		return;
@@ -541,6 +568,19 @@ function changeLibrary(val) {
 function changeTheme(val) {
 	selectedTheme.value = val;
 }
+
+function getLocalStorage(): string {
+	const value = localStorage.getItem(storageName.value);
+	return value;
+}
+
+function setLocalStorage(val = 'prism'): string {
+	const oldValue = localStorage.getItem(storageName.value);
+	const newValue = val ?? oldValue;
+
+	localStorage.setItem(storageName.value, newValue);
+	return newValue;
+};
 </script>
 
 
@@ -595,5 +635,12 @@ h5 {
 .boolean-style {
 	color: hsl(240 100% 50%) !important;
 	font-weight: 500;
+}
+
+[data-bs-theme='dark'] {
+	.boolean-style {
+		color: var(--bs-primary) !important;
+		font-weight: 500;
+	}
 }
 </style>

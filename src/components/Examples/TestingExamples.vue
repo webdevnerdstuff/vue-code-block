@@ -16,14 +16,14 @@
 					class="line-numbers"
 					:code="testingCode"
 					copy-button
-					:highlightjs="selectedLibrary.id === 'highlightjs'"
+					highlightjs
 					label="Hello World and foobar stuff"
 					lang="javascript"
-					:prism-plugin="false"
-					:prismjs="selectedLibrary.id === 'prism'"
+					:prismjs="false"
 					:tabs="true"
-					:theme="selectedTheme"
+					theme="base16-onedark"
 				/>
+				<!-- :theme="selectedTheme" -->
 			</div>
 		</div>
 	</div>
@@ -36,8 +36,8 @@ import { inject } from 'vue';
 import neonBunnyHighlightTheme from '@/plugin/themes/highlight/css/neon-bunny.css?inline';
 
 import Prism from 'prismjs';
-import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+// import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
+// import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
 // import 'prismjs/plugins/autolinker/prism-autolinker.js';
 // import 'prismjs/plugins/autolinker/prism-autolinker.css';

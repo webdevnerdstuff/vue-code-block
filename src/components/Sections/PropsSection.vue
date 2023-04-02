@@ -34,6 +34,8 @@ import { inject } from 'vue';
 
 
 const styleData = inject('styleData');
+const prismLinks = inject('prismLinks');
+const highlightJsLinks = inject('highlightJsLinks');
 
 const componentProps = {
 	browserWindow: {
@@ -182,25 +184,10 @@ const componentProps = {
 			<code>neon-bunny-carrot</code>
 		</p>
 		<p>
-			<strong>Prism Themes</strong>
-			<br />
-			<code>default</code>
-			<br />
-			<code>prism</code>
-			<br />
-			<code>coy</code>
-			<br />
-			<code>dark</code>
-			<br />
-			<code>funky</code>
-			<br />
-			<code>okaidia</code>
-			<br />
-			<code>solarizedlight</code>
-			<br />
-			<code>tomorrow</code>
-			<br />
-			<code>twilight</code>
+			<a href="${prismLinks.prismThemes}" target="_blank">PrismJS Themes</a>
+		</p>
+		<p>
+			<a href="${highlightJsLinks.themes}" target="_blank">Highlight.js Themes</a>
 		</p>
 		`,
 	}
@@ -216,6 +203,18 @@ const componentProps = {
 	&-type {
 		color: #900090 !important;
 		font-weight: bold !important;
+	}
+}
+
+[data-bs-theme='dark'] {
+	.prop {
+		&-default {
+			color: var(--bs-primary) !important;
+		}
+
+		&-type {
+			color: hsl(300 100% 38%) !important;
+		}
 	}
 }
 </style>
