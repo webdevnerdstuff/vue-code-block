@@ -23,7 +23,6 @@
 
 	&--tab {
 		align-items: center;
-		background-color: hsl(var(--v-cb-primary) / 10%);
 		border-radius: 5px 5px 0 0;
 		cursor: pointer;
 		display: flex;
@@ -34,10 +33,6 @@
 		transition: background-color 0.35s ease;
 		white-space: nowrap;
 		width: fit-content;
-
-		&:hover {
-			background-color: hsl(var(--v-cb-primary) / 20%);
-		}
 
 		svg {
 			height: 0.85rem;

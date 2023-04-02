@@ -1,6 +1,6 @@
 <template>
-	<NavBar />
-	<DemoPage />
+	<NavBar :selected-library="selectedLibrary" />
+	<DemoPage @changedLibrary="updateLibrary" />
 	<FooterBar />
 </template>
 
@@ -24,9 +24,12 @@ const packageName = name;
 const repoBaseUrl = `https://github.com/webdevnerdstuff/${packageName}`;
 const prismVersion = dependencies.prismjs.replace('^', '');
 const highlightJsVersion = dependencies['highlight.js'].replace('^', '');
+const selectedLibrary = ref({});
+
 
 const links = {
 	changeLog: `${repoBaseUrl}/blob/main/CHANGELOG.md`,
+	contribute: `${repoBaseUrl}/tree/main/src/plugin/styles`,
 	github: repoBaseUrl,
 	license: `${repoBaseUrl}/blob/main/LICENSE.md`,
 	neonBunnyTheme: 'https://marketplace.visualstudio.com/items?itemName=WebDevNerdStuff.neon-bunny',
@@ -35,15 +38,20 @@ const links = {
 	vueJs: 'https://vuejs.org/',
 };
 
+console.log({ prismVersion, highlightJsVersion });
+
 const highlightJsLinks = {
 	cdn: `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@${highlightJsVersion}/build/styles/`,
 	homepage: 'https://highlightjs.org/',
-	themes: 'https://github.com/highlightjs/highlight.js/tree/main/src/styles',
+	themes: `https://github.com/highlightjs/highlight.js/tree/${highlightJsVersion}/src/styles`,
 };
+
+
 
 const prismLinks = {
 	cdn: `https://cdn.jsdelivr.net/gh/PrismJS/prism@${prismVersion}/themes/`,
 	homepage: 'https://prismjs.com/',
+	prismThemes: `https://github.com/PrismJS/prism/tree/v${prismVersion}/themes`,
 	themes: 'https://github.com/PrismJS/prism-themes',
 };
 
@@ -57,6 +65,10 @@ const codeBlockOptions = ref({
 });
 
 provide('codeBlockOptions', codeBlockOptions);
+
+function updateLibrary(library) {
+	selectedLibrary.value = library.value;
+}
 </script>
 
 

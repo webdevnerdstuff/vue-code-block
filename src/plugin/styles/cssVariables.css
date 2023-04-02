@@ -102,11 +102,11 @@
 	--v-cb-tab-prism-twilight-icon-failed: 14 58% 55%;
 
 	/* night-owl */
-	--v-cb-tab-prism-night-owl: 207 95% 8%;
-	--v-cb-tab-prism-night-owl-text: 217 34% 88%;
-	--v-cb-tab-prism-night-owl-icon: 169 56% 68%;
-	--v-cb-tab-prism-night-owl-icon-success: 84 62% 63%;
-	--v-cb-tab-prism-night-owl-icon-failed: 350 100% 67%;
+	--v-cb-tab-prism-themes-night-owl: 207 95% 8%;
+	--v-cb-tab-prism-themes-night-owl-text: 217 34% 88%;
+	--v-cb-tab-prism-themes-night-owl-icon: 169 56% 68%;
+	--v-cb-tab-prism-themes-night-owl-icon-success: 84 62% 63%;
+	--v-cb-tab-prism-themes-night-owl-icon-failed: 350 100% 67%;
 
 	/* -------------------------------------------------- Highlight.js Colors */
 

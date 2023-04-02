@@ -110,6 +110,7 @@ import langPlaintext from 'highlight.js/lib/languages/plaintext';
 
 const highlightJsVersion = '11.7.0';
 const prismVersion = '1.29.0';
+const prismThemesVersion = '1.9.0';
 
 
 // -------------------------------------------------- Emits & Slots & Injects //
@@ -252,8 +253,10 @@ const copyTextValue = ref<string>('');
 const copying = ref<boolean>(false);
 const isLoading = ref<boolean>(false);
 const isMobile = ref<boolean>(false);
-const highlightCdn = ref(`https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@${highlightJsVersion}/build/styles/`);
+const highlightCdn = ref(`https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@${highlightJsVersion}/build/styles`);
 const prismCdn = ref(`https://cdn.jsdelivr.net/gh/PrismJS/prism@${prismVersion}/themes`);
+const prismThemesCdn = ref(`https://cdn.jsdelivr.net/gh/PrismJS/prism-themes@${prismThemesVersion}/themes`);
+
 const renderedCode = ref('');
 const runTextValue = ref<string>('');
 const useTheme = ref<boolean | string>('');
@@ -339,8 +342,8 @@ const preTagStyles = computed<StyleValue>(() => {
 });
 
 const tabClasses = computed<object>(() => {
-	const theme = useTheme.value === '' || useTheme.value === 'prism' ? 'default' : useTheme.value;
 	const activeLibrary = props.highlightjs ? 'highlightjs' : 'prism';
+	const theme = useTheme.value === '' || useTheme.value === 'prism' ? 'default' : useTheme.value;
 
 	const classes = {
 		[`v-code-block--tab-${theme}`]: true,
@@ -460,17 +463,21 @@ function loadTheme(): void {
 
 	const head = document.getElementsByTagName('head')[0];
 	const themeStyles = document.createElement('style');
-	const themeId = `v-code-block--theme-${useTheme.value}-${activeLibrary}`;
 	const loadedTheme = document.body.getAttribute('data-v-code-block-theme');
+	let themeId = `v-code-block--theme-${useTheme.value}-${activeLibrary}`;
 	let isHighlightTheme = true;
 	let isPrismTheme = true;
 	let cssFilename = '';
 	let fetchUrl = '';
 
-	// If theme is loaded, do not keep trying to add it again //
-	if (loadedTheme === useTheme.value) {
+	themeId = themeNameAdjustments(activeLibrary, themeId);
+
+	// If theme is loaded or false, do not keep trying to add it again //
+	if (loadedTheme === useTheme.value || loadedTheme === themeId || useTheme.value === false) {
 		return;
 	}
+
+	console.log({ themeId });
 
 	document.body.setAttribute('data-v-code-block-theme', themeId);
 
@@ -510,18 +517,27 @@ function loadTheme(): void {
 		return;
 	}
 
+	const adjustCssFilename = themeNameAdjustments(activeLibrary, useTheme.value);
+
 	switch (activeLibrary) {
 		case 'highlightjs':
-			cssFilename = `${useTheme.value}.min.css`;
+			cssFilename = `${adjustCssFilename}.min.css`;
+			console.log(highlightCdn.value);
 			fetchUrl = `${highlightCdn.value}/${cssFilename}`;
 			break;
 		case 'prism':
-			cssFilename = `prism-${useTheme.value}.css`;
+			cssFilename = `${adjustCssFilename}.css`;
 
 			if (useTheme.value === 'default') {
 				cssFilename = `prism.css`;
 			}
-			fetchUrl = `${prismCdn.value}/${cssFilename}`;
+
+			fetchUrl = `${prismCdn.value}/prism-${cssFilename}`;
+
+			if (useTheme.value.includes('themes-')) {
+				fetchUrl = `${prismThemesCdn.value}/${cssFilename}`;
+			}
+
 			break;
 		default:
 			cssFilename = '';
@@ -555,6 +571,27 @@ function mobileCheck(): void {
 window.addEventListener('orientationchange', () => {
 	mobileCheck();
 });
+
+function themeNameAdjustments(lib: string, name: string, clean = false): string {
+	let newName = name;
+
+	if (lib === 'prism') {
+		newName = newName.replace('themes-', 'prism-');
+		newName = newName.replace('prism-prism-', 'prism-');
+		newName = newName.replace('theme-prism-', 'theme-');
+
+		if (clean) {
+			newName = newName.replace('prism-prism-', '');
+			newName = newName.replace('prism-', '');
+		}
+	}
+
+	if (lib === 'highlightjs') {
+		newName = newName.replace('base16-', 'base16/');
+	}
+
+	return newName;
+}
 
 function removeStylesheets() {
 	const themeSheets = document.querySelectorAll('[data-theme="v-code-block--theme-sheet"]');

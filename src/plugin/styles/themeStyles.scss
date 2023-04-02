@@ -66,39 +66,10 @@
 			}
 		}
 
-		// Prism Themes //
+		// -------------------------------------------------- Prism Themes //
 		&-prism {
 
-			// Prism coloring //
-			&-default {
-				background-color: hsl(var(--v-cb-tab-prism-default-bkg) / 100%) !important;
-
-				&:hover {
-					background-color: hsl(var(--v-cb-tab-prism-default-bkg) / 50%) !important;
-				}
-
-				&-icon {
-					color: hsl(var(--v-cb-tab-prism-default-icon)) !important;
-					fill: hsl(var(--v-cb-tab-prism-default-icon)) !important;
-
-					&-status {
-						&-success {
-							color: hsl(var(--v-cb-tab-prism-default-icon-success)) !important;
-							fill: hsl(var(--v-cb-tab-prism-default-icon-success)) !important;
-						}
-
-						&-failed {
-							color: hsl(var(--v-cb-tab-prism-default-icon-failed)) !important;
-							fill: hsl(var(--v-cb-tab-prism-default-icon-failed)) !important;
-						}
-					}
-				}
-
-				> div {
-					color: hsl(var(--v-cb-tab-prism-default-text));
-				}
-			}
-
+			// Base Themes //
 			&-coy {
 				background-color: hsl(var(--v-cb-tab-prism-coy-bkg) / 10%) !important;
 				border-left: 5px solid hsl(var(--v-cb-tab-prism-coy-bkg));
@@ -159,6 +130,35 @@
 
 				> div {
 					color: hsl(var(--v-cb-tab-prism-dark-text));
+				}
+			}
+
+			&-default {
+				background-color: hsl(var(--v-cb-tab-prism-default-bkg) / 100%) !important;
+
+				&:hover {
+					background-color: hsl(var(--v-cb-tab-prism-default-bkg) / 50%) !important;
+				}
+
+				&-icon {
+					color: hsl(var(--v-cb-tab-prism-default-icon)) !important;
+					fill: hsl(var(--v-cb-tab-prism-default-icon)) !important;
+
+					&-status {
+						&-success {
+							color: hsl(var(--v-cb-tab-prism-default-icon-success)) !important;
+							fill: hsl(var(--v-cb-tab-prism-default-icon-success)) !important;
+						}
+
+						&-failed {
+							color: hsl(var(--v-cb-tab-prism-default-icon-failed)) !important;
+							fill: hsl(var(--v-cb-tab-prism-default-icon-failed)) !important;
+						}
+					}
+				}
+
+				> div {
+					color: hsl(var(--v-cb-tab-prism-default-text));
 				}
 			}
 
@@ -312,38 +312,46 @@
 				}
 			}
 
-			&-night-owl {
-				background-color: hsl(var(--v-cb-tab-prism-night-owl) 1) !important;
+			// Prism Themes Repo //
+			// ? Additional styles from the https://github.com/PrismJS/prism-themes //
+			&-themes {
 
-				&:hover {
-					background-color: hsl(var(--v-cb-tab-prism-night-owl) / 50%) !important;
-				}
+				// ? Add new Prism Themes here //
+				&-night-owl {
+					background-color: hsl(var(--v-cb-tab-prism-themes-night-owl) / 100%) !important;
 
-				&-icon {
-					color: hsl(var(--v-cb-tab-prism-night-owl-icon)) !important;
-					fill: hsl(var(--v-cb-tab-prism-night-owl-icon)) !important;
+					&:hover {
+						background-color: hsl(var(--v-cb-tab-prism-themes-night-owl) / 50%) !important;
+					}
 
-					&-status {
-						&-success {
-							color: hsl(var(--v-cb-tab-prism-night-owl-icon-success)) !important;
-							fill: hsl(var(--v-cb-tab-prism-night-owl-icon-success)) !important;
-						}
+					&-icon {
+						color: hsl(var(--v-cb-tab-prism-themes-night-owl-icon)) !important;
+						fill: hsl(var(--v-cb-tab-prism-themes-night-owl-icon)) !important;
 
-						&-failed {
-							color: hsl(var(--v-cb-tab-prism-night-owl-icon-failed)) !important;
-							fill: hsl(var(--v-cb-tab-prism-night-owl-icon-failed)) !important;
+						&-status {
+							&-success {
+								color: hsl(var(--v-cb-tab-prism-themes-night-owl-icon-success)) !important;
+								fill: hsl(var(--v-cb-tab-prism-themes-night-owl-icon-success)) !important;
+							}
+
+							&-failed {
+								color: hsl(var(--v-cb-tab-prism-themes-night-owl-icon-failed)) !important;
+								fill: hsl(var(--v-cb-tab-prism-themes-night-owl-icon-failed)) !important;
+							}
 						}
 					}
-				}
 
-				> div {
-					color: hsl(var(--v-cb-tab-prism-night-owl-text));
+					> div {
+						color: hsl(var(--v-cb-tab-prism-themes-night-owl-text));
+					}
 				}
 			}
 		}
 
-		// Highlight.js Themes //
+		// -------------------------------------------------- Highlight.js Themes //
 		&-highlightjs {
+
+			// Themes with additional styles //
 			&-brown-paper {
 				background-color: var(--v-cb-tab-highlightjs-brown-paper-bkg);
 				background-image: var(--v-cb-tab-highlightjs-brown-paper-bkg-img);
@@ -464,7 +472,8 @@
 				}
 			}
 
-			// Common styles for these themes //
+			// Themes that use common styles  //
+			// ? New themes that do not require additional styles should be added her (alpha order please) //
 			$hljs-themes: 'default',
 			'a11y-dark',
 			'a11y-light',
@@ -533,9 +542,11 @@
 			'vs2015',
 			'xcode',
 			'xt256',
+			'base16-onedark',
 			;
 
-			// Generate the styles for each common styled themes //
+			// Generate the styles for each commonly styled themes //
+			// ! Do not adjust the following code ! //
 			@each $theme in $hljs-themes {
 				&-#{$theme} {
 					background-color: hsl(var(--v-cb-tab-highlightjs-#{$theme}-bkg) / 100%) !important;
