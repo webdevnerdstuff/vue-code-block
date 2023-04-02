@@ -16,6 +16,9 @@
 		"prepublishOnly": "npm run bundle",
 		"lint": "eslint src/**/*.{ts,vue} --max-warnings 4"
 	},
+	"engines": {
+		"node": "19.0.1"
+	},
 	"lint-staged": {
 		"src/**/*.{js,ts,vue}": [
 			"npm run lint"
