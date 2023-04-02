@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 
 .stylelintcache
+src/plugin/themes/highlight/scss/template.scss
