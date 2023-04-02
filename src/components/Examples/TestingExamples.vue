@@ -67,16 +67,6 @@ const htmlExample = `<!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-79JKH4L3SC"><\/script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'G-79JKH4L3SC');
-	<\/script>
-
-
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Vue 3 CodeBlock<\/title>
