@@ -478,7 +478,7 @@ function loadTheme(): void {
 	}
 
 	// If theme is set to false, they are loading them them, do not continue //
-	if (useTheme.value === false) {
+	if (typeof useTheme.value === 'boolean') {
 		return;
 	}
 
