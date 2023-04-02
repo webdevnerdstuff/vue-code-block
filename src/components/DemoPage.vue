@@ -217,6 +217,10 @@ const prismThemes = [
 		value: 'funky',
 	},
 	{
+		label: 'Night Owl (Prism Themes Repo)',
+		value: 'themes-night-owl',
+	},
+	{
 		label: 'Okaidia',
 		value: 'okaidia',
 	},
@@ -232,19 +236,11 @@ const prismThemes = [
 		label: 'Twilight',
 		value: 'twilight',
 	},
-	{
-		label: 'Night Owl',
-		value: 'themes-night-owl',
-	},
 ];
 const highlightThemes = [
 	{
 		label: 'Default',
 		value: 'default',
-	},
-	{
-		label: 'Base16 One Dark',
-		value: 'base16-dracula',
 	},
 	{
 		label: 'A11y Dark',
