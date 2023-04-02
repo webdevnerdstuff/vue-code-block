@@ -31,6 +31,7 @@ const links = {
 	changeLog: `${repoBaseUrl}/blob/main/CHANGELOG.md`,
 	contribute: `${repoBaseUrl}/tree/main/src/plugin/styles`,
 	github: repoBaseUrl,
+	githubProfile: 'https://github.com/webdevnerdstuff',
 	license: `${repoBaseUrl}/blob/main/LICENSE.md`,
 	neonBunnyTheme: 'https://marketplace.visualstudio.com/items?itemName=WebDevNerdStuff.neon-bunny',
 	npm: `https://www.npmjs.com/package/${packageName}`,
