@@ -167,7 +167,7 @@
 						</li>
 						<li class="nav-item d-flex align-items-center ms-2">
 							<fa-icon
-								class="theme-switch"
+								class="theme-switch fa-fw"
 								:class="pageTheme === 'dark' ? 'moon' : 'sun'"
 								:icon="pageTheme === 'dark' ? 'fa-moon' : 'fa-sun'"
 								@click="setTheme('toggle')"
