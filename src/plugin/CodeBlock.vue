@@ -473,7 +473,12 @@ function loadTheme(): void {
 	themeId = themeNameAdjustments(activeLibrary, themeId);
 
 	// If theme is loaded or false, do not keep trying to add it again //
-	if (loadedTheme === useTheme.value || loadedTheme === themeId || useTheme.value === false) {
+	if (loadedTheme === useTheme.value || loadedTheme === themeId) {
+		return;
+	}
+
+	// If theme is set to false, they are loading them them, do not continue //
+	if (useTheme.value === false) {
 		return;
 	}
 
