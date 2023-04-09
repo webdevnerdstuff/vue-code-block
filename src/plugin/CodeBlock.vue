@@ -72,10 +72,16 @@
 				:style="preTagStyles"
 			>
 <code
+	v-if="prismPlugin"
   :class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
   :style="codeTagStyles"
-  v-html="!prismPlugin ? renderedCode : false"
-	v-text="prismPlugin ? computedCode : false"
+	v-text="computedCode"
+></code>
+<code
+	v-else
+  :class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
+  :style="codeTagStyles"
+  v-html="renderedCode"
 ></code>
 			</pre>
 		</div>
@@ -203,7 +209,7 @@ const props = defineProps({
 	prismjs: {
 		type: Boolean,
 		required: false,
-		default: true,
+		default: false,
 	},
 	prismPlugin: {
 		type: Boolean,
@@ -399,6 +405,10 @@ onMounted(() => {
 
 // -------------------------------------------------- Methods //
 function checkLibrary(): void {
+	if (!props.prismjs && !props.highlightjs) {
+		throw new Error('[vue3-code-block]: You must set either the prismjs or highlightjs props.');
+	}
+
 	if (props.prismjs && props.highlightjs) {
 		throw new Error('[vue3-code-block]: You cannot have both prismjs and highlightjs props set at the same time.');
 	}
