@@ -103,6 +103,9 @@
 	--neon-bunny-addition: var(--neon-bunny-green-neon);
 	--neon-bunny-deletion: var(--neon-bunny-red);
 
+	/* -------------------------------------------------- HTML */
+	--neon-bunny-html-tag-attr: var(--neon-bunny-green);
+
 	/* -------------------------------------------------- CSS */
 	--neon-bunny-css: var(--neon-bunny-purple-light-dim);
 
@@ -427,6 +430,16 @@ pre[class*="language-"] {
 
 	&-deletion {
 		color: var(--neon-bunny-deletion);
+	}
+
+	&.language-html {
+		.hljs {
+			&-tag {
+				.hljs-attr {
+					color: var(--neon-bunny-html-tag-attr);
+				}
+			}
+		}
 	}
 
 
