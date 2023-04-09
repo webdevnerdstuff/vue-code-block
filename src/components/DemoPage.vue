@@ -88,7 +88,7 @@
 		</div>
 	</div>
 
-	<div v-if="!demoTestPage" class="container">
+	<div class="container">
 		<!-- ============================================== Installation -->
 		<InstallationSection id="ul-installation" />
 
@@ -125,10 +125,6 @@
 		<!-- ============================================== License -->
 		<LicenseSection id="ul-license" />
 	</div>
-
-	<div v-else class="container">
-		<TestingExamples />
-	</div>
 </template>
 
 <script setup lang='ts'>
@@ -157,7 +153,6 @@ import {
 	ThemesSection,
 	UsageSection,
 } from '@/components/Sections/';
-import { TestingExamples } from '@/components/Examples/';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-json';
@@ -166,7 +161,6 @@ import 'prismjs/components/prism-php';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
-const demoTestPage = ref(false);
 
 const highlightJsLinks = inject('highlightJsLinks');
 const prismLinks = inject('prismLinks');
