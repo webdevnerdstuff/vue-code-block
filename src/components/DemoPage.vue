@@ -132,7 +132,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
 	inject,
-	onMounted,
+	onBeforeMount,
 	provide,
 	reactive,
 	ref,
@@ -177,7 +177,7 @@ const selectedLibrary = ref(libraries.prism);
 const selectedTheme = ref('neon-bunny');
 
 
-onMounted(() => {
+onBeforeMount(() => {
 	library.value = store.getLocalStorage() ?? store.setLocalStorage();
 	changeLibrary(library.value);
 });

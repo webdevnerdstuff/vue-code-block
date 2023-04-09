@@ -65,7 +65,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
 	inject,
-	onMounted,
+	onBeforeMount,
 	provide,
 	reactive,
 	ref,
@@ -77,9 +77,6 @@ import PlaygroundPage from '@/playground/PlaygroundPage.vue';
 
 const demoTestPage = ref(false);
 
-const highlightJsLinks = inject('highlightJsLinks');
-const prismLinks = inject('prismLinks');
-
 const store = useCoreStore();
 const library = ref('prism');
 const libraries = store.libraries;
@@ -88,12 +85,12 @@ const highlightThemes = store.highlightThemes;
 const neonBunnyThemes = store.neonBunnyThemes;
 const prismThemes = store.prismThemes;
 const selectOptions = ref(null);
-const selectedLibrary = ref(libraries.prism);
+const selectedLibrary = ref(libraries.prismjs);
 const selectedTheme = ref('neon-bunny');
 
 
-onMounted(() => {
-	library.value = store.getLocalStorage() ?? store.setLocalStorage();
+onBeforeMount(() => {
+	library.value = store.getLocalStorage() ?? store.setLocalStorage('prism');
 	changeLibrary(library.value);
 });
 
