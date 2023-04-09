@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import CodeBlock from './index';
+import { createPinia } from "pinia";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
@@ -23,8 +24,7 @@ library.add({
 });
 
 createApp(App)
-	.use(CodeBlock, {
-		// theme: 'atom-one-dark',
-	})
+	.use(CodeBlock, {})
+	.use(createPinia())
 	.component('fa-icon', FontAwesomeIcon)
 	.mount('#app');
