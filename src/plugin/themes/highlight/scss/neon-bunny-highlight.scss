@@ -118,6 +118,9 @@
 	/* ------------------------- Tags, attributes, configs */
 	--neon-bunny-css-attribute: var(--neon-bunny-pink);
 
+	/* -------------------------------------------------- JSON */
+	--neon-bunny-json-punctuation: var(--neon-bunny-white);
+
 	/* -------------------------------------------------- JavaScript */
 	--neon-bunny-js: var(--neon-bunny-green-darker);
 
@@ -659,6 +662,15 @@ pre[class*="language-"] {
 
 			&-deletion {
 				color: var(--neon-bunny-deletion);
+			}
+		}
+	}
+
+	/* -------------------------------------------------- JSON */
+	&.language-json {
+		.hljs {
+			&-punctuation {
+				color: var(--neon-bunny-json-punctuation);
 			}
 		}
 	}
