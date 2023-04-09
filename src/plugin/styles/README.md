@@ -88,6 +88,9 @@ Add the theme using the following as a template under the section `Add new Prism
 }
 ```
 
+## ⌨ Add theme to the demo site
+Update `src/stores/index.ts` by including the new theme name in either `prismThemes` or `highlightThemes` array depending on the theme added. Themes are alphabetically organized.
+
 ## 🔬 Test your changes
 There are plenty of examples in the demo site, so please make sure to test your changes before submitting a pull request.
 
