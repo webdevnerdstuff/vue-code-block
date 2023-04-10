@@ -178,7 +178,7 @@ const selectedTheme = ref('neon-bunny');
 
 
 onBeforeMount(() => {
-	library.value = store.getLocalStorage() ?? store.setLocalStorage();
+	library.value = store.getLocalStorage() ?? store.setLocalStorage('prism');
 	changeLibrary(library.value);
 });
 

@@ -24,7 +24,7 @@
 							<fa-icon icon="fa-solid fa-house" />
 						</a>
 					</li>
-					<li class="nav-item dropdown">
+					<li v-if="!isPlayground" class="nav-item dropdown">
 						<a
 							id="docs-dropdown"
 							aria-expanded="false"
@@ -86,7 +86,7 @@
 					</li>
 
 					<!-- Examples -->
-					<li class="nav-item dropdown">
+					<li v-if="!isPlayground" class="nav-item dropdown">
 						<a
 							id="examples-dropdown"
 							aria-expanded="false"
@@ -182,18 +182,24 @@
 
 <script setup>
 import { inject, ref } from 'vue';
+import { useCoreStore } from '@/stores/index';
 
 defineProps({
+	isPlayground: {
+		type: Boolean,
+		default: false,
+	},
 	selectedLibrary: {
 		type: Object,
 		required: true,
-	}
+	},
 });
 
 const links = inject('links');
 const prismLinks = inject('prismLinks');
 const highlightJsLinks = inject('highlightJsLinks');
 
+const store = useCoreStore();
 const storedTheme = localStorage.getItem('theme');
 const pageTheme = ref(storedTheme);
 
@@ -206,15 +212,7 @@ const getPreferredTheme = () => {
 };
 
 const setTheme = function(theme) {
-	if (theme === 'toggle') {
-		pageTheme.value = pageTheme.value !== 'dark' ? 'dark' : 'light';
-	}
-	else {
-		pageTheme.value = theme;
-	}
-
-	document.documentElement.setAttribute('data-bs-theme', pageTheme.value);
-	localStorage.setItem('theme', pageTheme.value);
+	pageTheme.value = store.setTheme(theme, pageTheme.value);
 };
 
 setTheme(getPreferredTheme());
