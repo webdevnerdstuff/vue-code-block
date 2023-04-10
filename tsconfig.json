@@ -38,6 +38,7 @@
         "src/main.ts",
 		"src/components/**/*.ts",
 		"src/components/**/*.vue",
+		"src/stores/**/*.ts",
 		"node_modules"
     ],
 	"include": [
