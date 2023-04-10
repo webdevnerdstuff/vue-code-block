@@ -94,6 +94,8 @@
 	/* ------------------------- Diff */
 	--neon-bunny-addition: var(--neon-bunny-green-neon);
 	--neon-bunny-deletion: var(--neon-bunny-red);
+	/* -------------------------------------------------- HTML */
+	--neon-bunny-html-tag-attr: var(--neon-bunny-green);
 	/* -------------------------------------------------- CSS */
 	--neon-bunny-css: var(--neon-bunny-purple-light-dim);
 	/* ------------------------- General purpose */
@@ -102,6 +104,8 @@
 	--neon-bunny-css-meta: var(--neon-bunny-red);
 	/* ------------------------- Tags, attributes, configs */
 	--neon-bunny-css-attribute: var(--neon-bunny-pink);
+	/* -------------------------------------------------- JSON */
+	--neon-bunny-json-punctuation: var(--neon-bunny-white);
 	/* -------------------------------------------------- JavaScript */
 	--neon-bunny-js: var(--neon-bunny-green-darker);
 	/* ------------------------- General purpose */
@@ -140,7 +144,6 @@ pre[class*=language-] {
 	-webkit-hyphens: none;
 	color: var(--neon-bunny-white);
 	font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-	font-size: 1em;
 	hyphens: none;
 	line-height: 1.5;
 	tab-size: 4;
@@ -192,6 +195,7 @@ pre[class*=language-] {
 	white-space: normal;
 }
 
+/* -------------------------------------------------- Standard */
 .hljs-built_in {
 	color: var(--neon-bunny-builtin);
 }
@@ -392,6 +396,10 @@ pre[class*=language-] {
 	color: var(--neon-bunny-deletion);
 }
 
+.hljs.language-html .hljs-tag .hljs-attr {
+	color: var(--neon-bunny-html-tag-attr);
+}
+
 .hljs.language-css {
 	color: var(--neon-bunny-css);
 }
@@ -589,6 +597,10 @@ pre[class*=language-] {
 
 .hljs.language-css .hljs-deletion {
 	color: var(--neon-bunny-deletion);
+}
+
+.hljs.language-json .hljs-punctuation {
+	color: var(--neon-bunny-json-punctuation);
 }
 
 .hljs.language-javascript, .hljs.language-js {

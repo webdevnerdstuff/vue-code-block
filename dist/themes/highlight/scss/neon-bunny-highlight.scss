@@ -103,6 +103,9 @@
 	--neon-bunny-addition: var(--neon-bunny-green-neon);
 	--neon-bunny-deletion: var(--neon-bunny-red);
 
+	/* -------------------------------------------------- HTML */
+	--neon-bunny-html-tag-attr: var(--neon-bunny-green);
+
 	/* -------------------------------------------------- CSS */
 	--neon-bunny-css: var(--neon-bunny-purple-light-dim);
 
@@ -114,6 +117,9 @@
 
 	/* ------------------------- Tags, attributes, configs */
 	--neon-bunny-css-attribute: var(--neon-bunny-pink);
+
+	/* -------------------------------------------------- JSON */
+	--neon-bunny-json-punctuation: var(--neon-bunny-white);
 
 	/* -------------------------------------------------- JavaScript */
 	--neon-bunny-js: var(--neon-bunny-green-darker);
@@ -429,6 +435,16 @@ pre[class*="language-"] {
 		color: var(--neon-bunny-deletion);
 	}
 
+	&.language-html {
+		.hljs {
+			&-tag {
+				.hljs-attr {
+					color: var(--neon-bunny-html-tag-attr);
+				}
+			}
+		}
+	}
+
 
 	&.language-css {
 		color: var(--neon-bunny-css);
@@ -646,6 +662,15 @@ pre[class*="language-"] {
 
 			&-deletion {
 				color: var(--neon-bunny-deletion);
+			}
+		}
+	}
+
+	/* -------------------------------------------------- JSON */
+	&.language-json {
+		.hljs {
+			&-punctuation {
+				color: var(--neon-bunny-json-punctuation);
 			}
 		}
 	}
