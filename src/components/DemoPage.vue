@@ -20,21 +20,53 @@
 			<div class="col-12">
 				<p>
 					The Vue 3 CodeBlock component leverages the power of
-					<a :href="links.prism" target="_blank">PrismJS</a> to provide syntax
-					highlighting for code blocks within your application. The component
-					takes a prop, which is the code to be highlighted, and uses PrismJS to
-					render the code with syntax highlighting. The component supports a
-					variety of programming languages and can be customized with different
-					themes to match your application's design. With this component, your
-					users can display their code snippets with ease and clarity, making it
-					easier to share and collaborate on code within your application.
+					<a :href="prismLinks.homepage" target="_blank">PrismJS</a>
+					or
+					<a :href="highlightJsLinks.homepage" target="_blank">Highlight.js</a>
+					to provide syntax highlighting for code blocks within your
+					application. The component takes a prop, which is the code to be
+					highlighted, and uses PrismJS or Highlight.js to render the code with
+					syntax highlighting. The component supports a variety of programming
+					languages and can be customized with different themes to match your
+					application's design. With this component, your users can display
+					their code snippets with ease and clarity, making it easier to share
+					and collaborate on code within your application.
 				</p>
+			</div>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="col-12 mb-3">
+				<h5>Switch between PrismJS and Highlight.js</h5>
+
+				<small
+					class="d-inline-flex align-items-center px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2"
+				>
+					<fa-icon class="text-success me-1" icon="fa-solid fa-circle-info" />
+					This will also update the examples and documentation below.
+				</small>
+			</div>
+			<div class="col-12 col-md-3 mb-3">
+				<select
+					aria-label="Library Selection"
+					class="form-select"
+					@change="changeLibrary($event.target.value)"
+				>
+					<option
+						v-for="lib in libraries"
+						:key="lib"
+						:selected="library === lib.id"
+						:value="lib.id"
+					>
+						{{ lib.label }}
+					</option>
+				</select>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-12 col-md-3">
 				<label class="form-label" for="theme-selection-select"
-					>Switch Theme:</label
+					>Select Theme:</label
 				>
 
 				<select
@@ -44,7 +76,7 @@
 					@change="changeTheme($event.target.value)"
 				>
 					<option
-						v-for="theme in themes"
+						v-for="theme in selectOptions"
 						:key="theme"
 						:selected="selectedTheme === theme.value"
 						:value="theme.value"
@@ -56,7 +88,7 @@
 		</div>
 	</div>
 
-	<div v-if="!demoTestPage" class="container">
+	<div class="container">
 		<!-- ============================================== Installation -->
 		<InstallationSection id="ul-installation" />
 
@@ -92,23 +124,20 @@
 
 		<!-- ============================================== License -->
 		<LicenseSection id="ul-license" />
-
-		<FooterSection />
-	</div>
-
-	<div v-else class="container">
-		<TestingExamples />
 	</div>
 </template>
 
-<script setup>
+<script setup lang='ts'>
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
 	inject,
+	onBeforeMount,
 	provide,
+	reactive,
 	ref,
 } from 'vue';
+import { useCoreStore } from '@/stores/index';
 import { version } from '../../package';
 import {
 	ChangeLogSection,
@@ -116,7 +145,6 @@ import {
 	DependenciesSection,
 	EventsSection,
 	ExamplesSection,
-	FooterSection,
 	InstallationSection,
 	LicenseSection,
 	PropsSection,
@@ -125,7 +153,6 @@ import {
 	ThemesSection,
 	UsageSection,
 } from '@/components/Sections/';
-import { TestingExamples } from '@/components/Examples/';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-json';
@@ -135,53 +162,53 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
 
-const links = inject('links');
-const demoTestPage = ref(false);
+const highlightJsLinks = inject('highlightJsLinks');
+const prismLinks = inject('prismLinks');
+
+const store = useCoreStore();
+const library = ref('prism');
+const libraries = store.libraries;
+
+const highlightThemes = store.highlightThemes;
+const neonBunnyThemes = store.neonBunnyThemes;
+const prismThemes = store.prismThemes;
+const selectOptions = ref(null);
+const selectedLibrary = ref(libraries.prism);
 const selectedTheme = ref('neon-bunny');
-const themes = [
-	{
-		label: 'Neon Bunny',
-		value: 'neon-bunny',
-	},
-	{
-		label: 'Neon Bunny - Carrot',
-		value: 'neon-bunny-carrot',
-	},
-	{
-		label: 'Prism Default',
-		value: 'default',
-	},
-	{
-		label: 'Coy',
-		value: 'coy',
-	},
-	{
-		label: 'Dark',
-		value: 'dark',
-	},
-	{
-		label: 'Funky',
-		value: 'funky',
-	},
-	{
-		label: 'Okaidia',
-		value: 'okaidia',
-	},
-	{
-		label: 'Solarizedlight',
-		value: 'solarizedlight',
-	},
-	{
-		label: 'Tomorrow',
-		value: 'tomorrow',
-	},
-	{
-		label: 'Twilight',
-		value: 'twilight',
-	},
-];
+
+
+onBeforeMount(() => {
+	library.value = store.getLocalStorage() ?? store.setLocalStorage();
+	changeLibrary(library.value);
+});
+
+const emit = defineEmits(['changedLibrary']);
+
+selectOptions.value = [...neonBunnyThemes, ...prismThemes];
 
 provide('selectedTheme', selectedTheme);
+provide('selectedLibrary', selectedLibrary);
+
+if (library.value === 'highlightjs') {
+	selectOptions.value = [...neonBunnyThemes, ...highlightThemes];
+	selectedLibrary.value = libraries.highlightjs;
+}
+
+function changeLibrary(val) {
+	library.value = val;
+	selectedLibrary.value = libraries[val];
+	selectedTheme.value = 'neon-bunny';
+
+	store.setLocalStorage(library.value);
+	emit('changedLibrary', selectedLibrary);
+
+	if (val === 'prism') {
+		selectOptions.value = [...neonBunnyThemes, ...prismThemes];
+		return;
+	}
+
+	selectOptions.value = [...neonBunnyThemes, ...highlightThemes];
+}
 
 function changeTheme(val) {
 	selectedTheme.value = val;
@@ -240,5 +267,12 @@ h5 {
 .boolean-style {
 	color: hsl(240 100% 50%) !important;
 	font-weight: 500;
+}
+
+[data-bs-theme='dark'] {
+	.boolean-style {
+		color: var(--bs-primary) !important;
+		font-weight: 500;
+	}
 }
 </style>

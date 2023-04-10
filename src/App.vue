@@ -1,12 +1,12 @@
 <template>
-	<NavBar />
-	<DemoPage />
+	<NavBar :selected-library="selectedLibrary" />
+	<DemoPage @changedLibrary="updateLibrary" />
 	<FooterBar />
 </template>
 
 <script setup lang="ts">
 import { ref, provide } from 'vue';
-import { dependencies, name } from '../package';
+import { useCoreStore } from '@/stores/index';
 import DemoPage from '@/components/DemoPage.vue';
 import NavBar from '@/components/Layout/NavBar.vue';
 import FooterBar from '@/components/Layout/FooterBar.vue';
@@ -20,26 +20,12 @@ provide('styleData', {
 	},
 });
 
-const packageName = name;
-const repoBaseUrl = `https://github.com/webdevnerdstuff/${packageName}`;
-const prismVersion = dependencies.prismjs.replace('^', '');
+const store = useCoreStore();
+const selectedLibrary = ref({});
 
-const links = {
-	changeLog: `${repoBaseUrl}/blob/main/CHANGELOG.md`,
-	docs: `https://webdevnerdstuff.github.io/${packageName}/`,
-	github: repoBaseUrl,
-	jsDelivr: 'https://www.jsdelivr.com/',
-	jsDelivrPrism: `https://cdn.jsdelivr.net/gh/PrismJS/prism@${prismVersion}/themes/`,
-	license: `${repoBaseUrl}/blob/main/LICENSE.md`,
-	neonBunnyTheme: 'https://marketplace.visualstudio.com/items?itemName=WebDevNerdStuff.neon-bunny',
-	npm: `https://www.npmjs.com/package/${packageName}`,
-	prism: 'https://prismjs.com/',
-	prismThemes: 'https://github.com/PrismJS/prism-themes',
-	uaParser: 'https://www.npmjs.com/package/ua-parser-js',
-	vueJs: 'https://vuejs.org/',
-};
-
-provide('links', links);
+provide('links', store.links);
+provide('highlightJsLinks', store.highlightJsLinks);
+provide('prismLinks', store.prismLinks);
 
 const codeBlockOptions = ref({
 	browserWindow: false,
@@ -47,6 +33,10 @@ const codeBlockOptions = ref({
 });
 
 provide('codeBlockOptions', codeBlockOptions);
+
+function updateLibrary(library) {
+	selectedLibrary.value = library.value;
+}
 </script>
 
 

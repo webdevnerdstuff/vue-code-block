@@ -11,9 +11,11 @@
 			<div class="col-12">
 				<CodeBlock
 					:code="jsExample2"
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
 					label="JavaScript"
 					lang="javascript"
 					:max-height="codeBlockOptions.preHeight"
+					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -25,9 +27,11 @@
 			<div class="col-12">
 				<CodeBlock
 					:code="vueExample"
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
 					label="Vue (using lang = html)"
 					lang="html"
 					:max-height="codeBlockOptions.preHeight"
+					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -39,9 +43,11 @@
 			<div class="col-12">
 				<CodeBlock
 					:code="cssExample"
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
 					label="CSS"
 					lang="css"
 					:max-height="codeBlockOptions.preHeight"
+					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="false"
 					:theme="selectedTheme"
 				></CodeBlock>
@@ -53,9 +59,11 @@
 			<div class="col-12">
 				<CodeBlock
 					:code="htmlExample"
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
 					label="HTML"
 					lang="html"
 					:max-height="codeBlockOptions.preHeight"
+					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="false"
 					:theme="selectedTheme"
 				></CodeBlock>
@@ -67,8 +75,10 @@
 			<div class="col-12">
 				<CodeBlock
 					:code="svgExample"
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
 					label="SVG"
 					lang="svg"
+					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="false"
 					:theme="selectedTheme"
 				></CodeBlock>
@@ -82,6 +92,7 @@ import { inject } from 'vue';
 import { neonBunnyTheme } from '@/plugin/themes';
 
 const codeBlockOptions = inject('codeBlockOptions');
+const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
 const vueExample = `<template>
@@ -140,7 +151,7 @@ const htmlExample = `<!DOCTYPE html>
 
 	<meta name="description"
 		content="Vue 3 CodeBlock - Highlight your code with ease using this
-		syntax highlighting component powered by PrismJS." />
+		syntax highlighting component powered by PrismJS or Highlight.js." />
 	<meta name="keywords"
 		content="vue3-code-block, code, pre, highlight, syntax, vue, vue3,
 		component, javascript, neon bunny, webdevnerdstuff, wdns" />
@@ -155,7 +166,7 @@ const htmlExample = `<!DOCTYPE html>
 	<meta property="og:title" content="Vue 3 CodeBlock">
 	<meta property="og:description"
 		content="Vue 3 CodeBlock - Highlight your code with ease using this
-		syntax highlighting component powered by PrismJS.">
+		syntax highlighting component powered by PrismJS or Highlight.js.">
 	<meta property="og:url" content="https://webdevnerdstuff.github.io/vue3-code-block/">
 	<meta property="og:image" content="https://webdevnerdstuff.github.io/vue3-code-block/vue3-code-block-social.jpg">
 	<meta property="og:image:width" content="1200" />

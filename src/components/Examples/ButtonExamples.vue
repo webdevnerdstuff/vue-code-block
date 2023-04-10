@@ -10,9 +10,11 @@
 		<div id="button-example" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
-					:code="btnExample"
+					:code="examples[selectedLibrary.id].btn"
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
 					label="Visible on hover"
 					lang="html"
+					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -23,10 +25,12 @@
 		<div id="persistent-button-example" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
-					:code="btnPersistExample"
+					:code="examples[selectedLibrary.id].btnPersist"
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
 					label="Persistent Copy Button"
 					lang="html"
 					persistent-copy-button
+					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -38,19 +42,43 @@
 <script setup>
 import { inject } from 'vue';
 
+const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
-const btnExample = `<CodeBlock
+const examples = {
+	prism: {
+		btn: `<CodeBlock
   :code="myCode"
   label="Visible on hover"
   lang="html"
+  prismjs
   :tabs="false"
-/>`;
-const btnPersistExample = `<CodeBlock
+/>`,
+		btnPersist: `<CodeBlock
   :code="myCode"
   label="Persistent Copy Button"
   lang="html"
   persistent-copy-button
+  prismjs
   :tabs="false"
-/>`;
+/>`,
+	},
+	highlightjs: {
+		btn: `<CodeBlock
+  :code="myCode"
+  highlightjs
+  label="Visible on hover"
+  lang="html"
+  :tabs="false"
+/>`,
+		btnPersist: `<CodeBlock
+  :code="myCode"
+  highlightjs
+  label="Persistent Copy Button"
+  lang="html"
+  persistent-copy-button
+  :tabs="false"
+/>`,
+	}
+};
 </script>

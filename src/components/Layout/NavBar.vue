@@ -133,6 +133,26 @@
 						</ul>
 					</li>
 				</ul>
+				<div class="d-flex my-2 me-2">
+					<a
+						:href="
+							selectedLibrary.id === 'prism'
+								? prismLinks.homepage
+								: highlightJsLinks.homepage
+						"
+						target="_blank"
+					>
+						<span
+							class="badge"
+							:class="
+								selectedLibrary.id === 'prism'
+									? 'badge-prism'
+									: 'badge-highlightjs'
+							"
+							>{{ selectedLibrary.label }} Active</span
+						>
+					</a>
+				</div>
 				<div class="d-flex">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
@@ -145,6 +165,14 @@
 								<fa-icon icon="fa-brands fa-npm" /> Package
 							</a>
 						</li>
+						<li class="nav-item d-flex align-items-center ms-2">
+							<fa-icon
+								class="theme-switch fa-fw"
+								:class="pageTheme === 'dark' ? 'moon' : 'sun'"
+								:icon="pageTheme === 'dark' ? 'fa-moon' : 'fa-sun'"
+								@click="setTheme('toggle')"
+							/>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -153,13 +181,72 @@
 </template>
 
 <script setup>
-import { inject } from 'vue';
+import { inject, ref } from 'vue';
+
+defineProps({
+	selectedLibrary: {
+		type: Object,
+		required: true,
+	}
+});
 
 const links = inject('links');
+const prismLinks = inject('prismLinks');
+const highlightJsLinks = inject('highlightJsLinks');
+
+const storedTheme = localStorage.getItem('theme');
+const pageTheme = ref(storedTheme);
+
+const getPreferredTheme = () => {
+	if (storedTheme) {
+		return storedTheme;
+	}
+
+	return 'dark';
+};
+
+const setTheme = function(theme) {
+	if (theme === 'toggle') {
+		pageTheme.value = pageTheme.value !== 'dark' ? 'dark' : 'light';
+	}
+	else {
+		pageTheme.value = theme;
+	}
+
+	document.documentElement.setAttribute('data-bs-theme', pageTheme.value);
+	localStorage.setItem('theme', pageTheme.value);
+};
+
+setTheme(getPreferredTheme());
 </script>
 
 <style lang="scss">
 .navbar {
 	box-shadow: 2px 0 5px #fff;
+}
+
+.theme-switch {
+	cursor: pointer;
+	transform: rotate(0deg);
+	transition: all 1s ease;
+
+	&.moon {
+		color: hsl(213 100% 67%);
+	}
+
+	&.sun {
+		color: hsl(35 100% 67%);
+		transform: rotate(180deg);
+	}
+}
+
+.badge {
+	&-prism {
+		background-color: #39a1cf;
+	}
+
+	&-highlightjs {
+		background-color: #600;
+	}
 }
 </style>

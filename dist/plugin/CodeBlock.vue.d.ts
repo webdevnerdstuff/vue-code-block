@@ -53,6 +53,11 @@ declare const _default: import("vue").DefineComponent<{
         required: false;
         default: string;
     };
+    highlightjs: {
+        type: BooleanConstructor;
+        required: false;
+        default: boolean;
+    };
     indent: {
         type: NumberConstructor;
         required: false;
@@ -72,6 +77,16 @@ declare const _default: import("vue").DefineComponent<{
         type: (StringConstructor | NumberConstructor)[];
         required: false;
         default: string;
+    };
+    prismjs: {
+        type: BooleanConstructor;
+        required: false;
+        default: boolean;
+    };
+    prismPlugin: {
+        type: BooleanConstructor;
+        required: false;
+        default: boolean;
     };
     persistentCopyButton: {
         type: BooleanConstructor;
@@ -160,6 +175,11 @@ declare const _default: import("vue").DefineComponent<{
         required: false;
         default: string;
     };
+    highlightjs: {
+        type: BooleanConstructor;
+        required: false;
+        default: boolean;
+    };
     indent: {
         type: NumberConstructor;
         required: false;
@@ -179,6 +199,16 @@ declare const _default: import("vue").DefineComponent<{
         type: (StringConstructor | NumberConstructor)[];
         required: false;
         default: string;
+    };
+    prismjs: {
+        type: BooleanConstructor;
+        required: false;
+        default: boolean;
+    };
+    prismPlugin: {
+        type: BooleanConstructor;
+        required: false;
+        default: boolean;
     };
     persistentCopyButton: {
         type: BooleanConstructor;
@@ -224,10 +254,13 @@ declare const _default: import("vue").DefineComponent<{
     copySuccessText: string;
     floatingTabs: boolean;
     height: string | number;
+    highlightjs: boolean;
     indent: number;
     label: string;
     lang: string;
     maxHeight: string | number;
+    prismjs: boolean;
+    prismPlugin: boolean;
     persistentCopyButton: boolean;
     runTab: boolean;
     runText: string;

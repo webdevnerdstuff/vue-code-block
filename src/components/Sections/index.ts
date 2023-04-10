@@ -3,7 +3,6 @@ import CssVariablesSection from '@/components/Sections/CssVariablesSection.vue';
 import DependenciesSection from '@/components/Sections/DependenciesSection.vue';
 import ExamplesSection from '@/components/Sections/ExamplesSection.vue';
 import EventsSection from '@/components/Sections/EventsSection.vue';
-import FooterSection from '@/components/Sections/FooterSection.vue';
 import InstallationSection from '@/components/Sections/InstallationSection.vue';
 import LicenseSection from '@/components/Sections/LicenseSection.vue';
 import PropsSection from '@/components/Sections/PropsSection.vue';
@@ -18,7 +17,6 @@ export {
 	DependenciesSection,
 	ExamplesSection,
 	EventsSection,
-	FooterSection,
 	InstallationSection,
 	LicenseSection,
 	PropsSection,

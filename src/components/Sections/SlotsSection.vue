@@ -33,7 +33,7 @@ const styleData = inject('styleData');
 
 const componentEvents = {
 	copyButton: {
-		description: 'Slot for the copy button of the component.',
+		description: 'Slot for the copy button inside the code block of the component.',
 	},
 	label: {
 		description: 'Slot for the label of the component.',

@@ -7,9 +7,12 @@
 		<div class="col-12 mb-4">
 			<CodeBlock
 				:code="pnpmCode"
+				:highlightjs="selectedLibrary.id === 'highlightjs'"
 				label="Using pnpm:"
 				lang="plain"
+				:prismjs="selectedLibrary.id === 'prism'"
 				:show-run="false"
+				:tabs="false"
 				:theme="selectedTheme"
 			/>
 		</div>
@@ -17,8 +20,10 @@
 		<div class="col-12">
 			<CodeBlock
 				:code="npmCode"
+				:highlightjs="selectedLibrary.id === 'highlightjs'"
 				label="Using npm:"
 				lang="plain"
+				:prismjs="selectedLibrary.id === 'prism'"
 				:show-run="false"
 				:theme="selectedTheme"
 			/>
@@ -30,8 +35,9 @@
 import { inject } from 'vue';
 
 
-const styleData = inject('styleData');
+const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
+const styleData = inject('styleData');
 
 const pnpmCode = 'pnpm add vue3-code-block';
 const npmCode = 'npm i vue3-code-block';

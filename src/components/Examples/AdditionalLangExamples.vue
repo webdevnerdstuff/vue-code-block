@@ -9,8 +9,9 @@
 		<div id="additional-languages-json-usage-example" class="row mb-4">
 			<div class="col-12">
 				<p>
-					PrismJS does not load all languages by default. In order to use
-					additional languages you will need to import that languages component.
+					{{ selectedLibrary.label }} does not load all languages by default. In
+					order to use additional languages you will need to import that
+					languages component.
 				</p>
 			</div>
 		</div>
@@ -19,9 +20,11 @@
 		<div id="additional-languages-ts-usage-example" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
-					:code="typescriptUsageExample"
-					label="Example of using PrismJS to highlight TypeScript"
+					:code="usageExamples[selectedLibrary.id].typescript"
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
+					:label="`Example of using ${selectedLibrary.label} to highlight TypeScript`"
 					lang="html"
+					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -32,8 +35,10 @@
 			<div class="col-12">
 				<CodeBlock
 					:code="typescriptExample"
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
 					label="TypeScript"
 					lang="typescript"
+					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -43,9 +48,11 @@
 		<div id="additional-languages-json-example" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
-					:code="jsonUsageExample"
-					label="Example of using PrismJS to highlight JSON"
+					:code="usageExamples[selectedLibrary.id].json"
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
+					:label="`Example of using ${selectedLibrary.label} to highlight JSON`"
 					lang="html"
+					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -53,9 +60,11 @@
 			<div class="col-12">
 				<CodeBlock
 					:code="jsonExample"
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
 					:indent="2"
 					label="JSON"
 					lang="json"
+					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -66,9 +75,11 @@
 		<div id="additional-languages-php-usage-example" class="row mb-4">
 			<div class="col-12">
 				<CodeBlock
-					:code="phpUsageExample"
-					label="Example of using PrismJS to highlight PHP"
+					:code="usageExamples[selectedLibrary.id].php"
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
+					:label="`Example of using ${selectedLibrary.label} to highlight PHP`"
 					lang="html"
+					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -80,9 +91,11 @@
 				<CodeBlock
 					:code="phpExample"
 					height="500px"
+					:highlightjs="selectedLibrary.id === 'highlightjs'"
 					:indent="2"
 					label="PHP"
 					lang="php"
+					:prismjs="selectedLibrary.id === 'prism'"
 					:tabs="false"
 					:theme="selectedTheme"
 				/>
@@ -94,13 +107,39 @@
 <script setup>
 import { inject } from 'vue';
 
+import hljs from 'highlight.js/lib/core';
+import langJson from 'highlight.js/lib/languages/json';
+import langPhp from 'highlight.js/lib/languages/php';
+import langTypescript from 'highlight.js/lib/languages/typescript';
 
+hljs.registerLanguage('json', langJson);
+hljs.registerLanguage('php', langPhp);
+hljs.registerLanguage('typescript', langTypescript);
+
+const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
-const typescriptUsageExample = `<template>
+const usageExamples = {
+	prism: {
+		json: `<template>
+  <CodeBlock
+    :code="myCode"
+    :indent="2"
+    lang="json"
+    prismjs
+    :tabs="false"
+  /\>
+<\/template>
+
+<script setup>
+  import Prism from 'prismjs';
+  import 'prismjs/components/prism-json';
+<\/script>`,
+		typescript: `<template>
   <CodeBlock
     :code="myCode"
     lang="typescript"
+    prismjs
     :tabs="false"
   /\>
 <\/template>
@@ -108,7 +147,72 @@ const typescriptUsageExample = `<template>
 <script setup>
   import Prism from 'prismjs';
   import 'prismjs/components/prism-typescript';
-<\/script>`;
+<\/script>`,
+		php: `<template>
+  <CodeBlock
+    :code="myCode"
+    lang="php"
+    prismjs
+    :tabs="false"
+  /\>
+<\/template>
+
+<script setup>
+  import Prism from 'prismjs';
+  import 'prismjs/components/prism-markup-templating';
+  import 'prismjs/components/prism-php';
+<\/script>`,
+	},
+	highlightjs: {
+		json: `<template>
+  <CodeBlock
+    :code="myCode"
+    highlightjs
+    :indent="2"
+    lang="json"
+    :tabs="false"
+  /\>
+<\/template>
+
+<script setup>
+  import hljs from 'highlight.js/lib/core';
+  import langJson from 'highlight.js/lib/languages/json';
+
+  hljs.registerLanguage('json', langJson);
+<\/script>`,
+		typescript: `<template>
+  <CodeBlock
+    :code="myCode"
+    highlightjs
+    lang="typescript"
+    :tabs="false"
+  /\>
+<\/template>
+
+<script setup>
+  import hljs from 'highlight.js/lib/core';
+  import langTypescript from 'highlight.js/lib/languages/typescript';
+
+  hljs.registerLanguage('typescript', langTypescript);
+<\/script>`,
+		php: `<template>
+  <CodeBlock
+    :code="myCode"
+    highlightjs
+    lang="php"
+    :tabs="false"
+  /\>
+<\/template>
+
+<script setup>
+  import hljs from 'highlight.js/lib/core';
+  import langPhp from 'highlight.js/lib/languages/php';
+
+  hljs.registerLanguage('php', langPhp);
+<\/script>`,
+	},
+};
+
 const typescriptExample = `class Person {
   private name: string;
   private age: number;
@@ -125,20 +229,6 @@ const typescriptExample = `class Person {
 
 const person = new Person("John Doe", 30);
 person.sayHello();`;
-
-const jsonUsageExample = `<template>
-  <CodeBlock
-    :code="myCode"
-    :indent="2"
-    lang="json"
-    :tabs="false"
-  /\>
-<\/template>
-
-<script setup>
-  import Prism from 'prismjs';
-  import 'prismjs/components/prism-json';
-<\/script>`;
 const jsonExample = `{
   "name": "John Doe",
   "age": 30,
@@ -152,19 +242,6 @@ const jsonExample = `{
   }
 }
 `;
-const phpUsageExample = `<template>
-  <CodeBlock
-    :code="myCode"
-    lang="php"
-    :tabs="false"
-  /\>
-<\/template>
-
-<script setup>
-  import Prism from 'prismjs';
-  import 'prismjs/components/prism-markup-templating';
-  import 'prismjs/components/prism-php';
-<\/script>`;
 const phpExample = `<?php
 
 namespace App\\Http\\Controllers;

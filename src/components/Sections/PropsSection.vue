@@ -34,6 +34,8 @@ import { inject } from 'vue';
 
 
 const styleData = inject('styleData');
+const prismLinks = inject('prismLinks');
+const highlightJsLinks = inject('highlightJsLinks');
 
 const componentProps = {
 	browserWindow: {
@@ -102,6 +104,12 @@ const componentProps = {
 		default: 'auto',
 		description: 'The height of the code block.',
 	},
+	highlightjs: {
+		type: 'Boolean',
+		required: false,
+		default: 'false',
+		description: 'Specifies that the Highlight.js library should be used.',
+	},
 	indent: {
 		type: 'Number',
 		required: false,
@@ -132,6 +140,18 @@ const componentProps = {
 		default: false,
 		description: 'To show a persistent copy button within the code block',
 	},
+	prismjs: {
+		type: 'Boolean',
+		required: false,
+		default: 'true',
+		description: 'Specifies that the PrismJS library should be used.',
+	},
+	prismPlugin: {
+		type: 'Boolean',
+		required: false,
+		default: 'false',
+		description: 'Specifies that a PrismJS plugin is being used. This is needed for the plugin to work properly.',
+	},
 	runTab: {
 		type: 'Boolean',
 		required: false,
@@ -157,6 +177,9 @@ const componentProps = {
 		default: 'neon-bunny',
 		description: `<p>The theme to be used for the code block. Available options include:</p>
 		<p>
+			<code>false</code> - When you are loading the theme's styles yourself.
+		</p>
+		<p>
 			<strong>Neon Bunny Themes</strong>
 			<br />
 			<code>neon-bunny</code>
@@ -164,25 +187,10 @@ const componentProps = {
 			<code>neon-bunny-carrot</code>
 		</p>
 		<p>
-			<strong>Prism Themes</strong>
-			<br />
-			<code>default</code>
-			<br />
-			<code>prism</code>
-			<br />
-			<code>coy</code>
-			<br />
-			<code>dark</code>
-			<br />
-			<code>funky</code>
-			<br />
-			<code>okaidia</code>
-			<br />
-			<code>solarizedlight</code>
-			<br />
-			<code>tomorrow</code>
-			<br />
-			<code>twilight</code>
+			<a href="${prismLinks.prismThemes}" target="_blank">PrismJS Themes</a>
+		</p>
+		<p>
+			<a href="${highlightJsLinks.themes}" target="_blank">Highlight.js Themes</a>
 		</p>
 		`,
 	}
@@ -198,6 +206,18 @@ const componentProps = {
 	&-type {
 		color: #900090 !important;
 		font-weight: bold !important;
+	}
+}
+
+[data-bs-theme='dark'] {
+	.prop {
+		&-default {
+			color: var(--bs-primary) !important;
+		}
+
+		&-type {
+			color: hsl(300 100% 38%) !important;
+		}
 	}
 }
 </style>
