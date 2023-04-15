@@ -34,10 +34,12 @@
 		"node"
 	],
 	"exclude": [
+		"playground",
         "src/App.vue",
         "src/main.ts",
 		"src/components/**/*.ts",
 		"src/components/**/*.vue",
+		"src/playground/**/*.ts",
 		"src/stores/**/*.ts",
 		"node_modules"
     ],
