@@ -541,15 +541,14 @@ function loadTheme(): void {
 			cssFilename = `${adjustCssFilename}.css`;
 
 			if (useTheme.value === 'default') {
-				cssFilename = `prism.css`;
+				fetchUrl = `${prismCdn.value}/prism.css`;
 			}
-
-			fetchUrl = `${prismCdn.value}/prism-${cssFilename}`;
-
-			if (useTheme.value.includes('themes-')) {
+			else if (useTheme.value.includes('themes-')) {
 				fetchUrl = `${prismThemesCdn.value}/${cssFilename}`;
 			}
-
+			else {
+				fetchUrl = `${prismCdn.value}/prism-${cssFilename}`;
+			}
 			break;
 		default:
 			cssFilename = '';

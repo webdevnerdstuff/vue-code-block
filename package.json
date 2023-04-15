@@ -1,6 +1,6 @@
 {
 	"name": "vue3-code-block",
-	"version": "2.0.0-beta.1",
+	"version": "2.0.0",
 	"description": "Vue 3 CodeBlock - Highlight your code with ease using this syntax highlighting component powered by PrismJS or Highlight.js.",
 	"private": false,
 	"main": "dist/vue3-code-block.js",
@@ -9,7 +9,7 @@
 	"scripts": {
 		"dev": "vite",
 		"watch": "pnpm dev",
-		"play": "sh src/playground/configs/build.sh && vite",
+		"play": "sh src/playground/configs/build.sh && NODE_ENV=playground vite",
 		"bundle": "rollup -c --bundleConfigAsCjs",
 		"build": "vite build",
 		"predeploy": "npm run build",
@@ -20,6 +20,7 @@
 	"engines": {
 		"node": "19.0.1"
 	},
+	"packageManager": "pnpm@7.14.2",
 	"lint-staged": {
 		"src/**/*.{js,ts,vue}": [
 			"npm run lint"
@@ -82,14 +83,14 @@
 		"@fortawesome/free-solid-svg-icons": "^6.4.0",
 		"@fortawesome/vue-fontawesome": "^3.0.3",
 		"@rollup/plugin-alias": "^5.0.0",
-		"@rollup/plugin-commonjs": "^24.0.1",
+		"@rollup/plugin-commonjs": "^24.1.0",
 		"@rollup/plugin-json": "^6.0.0",
 		"@rollup/plugin-node-resolve": "^15.0.2",
 		"@rollup/plugin-terser": "^0.4.1",
 		"@types/node": "^18.15.11",
 		"@types/prismjs": "^1.26.0",
-		"@typescript-eslint/eslint-plugin": "^5.57.1",
-		"@typescript-eslint/parser": "^5.57.1",
+		"@typescript-eslint/eslint-plugin": "^5.58.0",
+		"@typescript-eslint/parser": "^5.58.0",
 		"@vitejs/plugin-vue": "^4.1.0",
 		"@vue/cli-plugin-babel": "^5.0.8",
 		"@vue/cli-plugin-eslint": "^5.0.8",
@@ -101,7 +102,7 @@
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-import": "^2.27.5",
 		"eslint-plugin-prettier": "^4.2.1",
-		"eslint-plugin-vue": "^9.10.0",
+		"eslint-plugin-vue": "^9.11.0",
 		"gh-pages": "^5.0.0",
 		"husky": "^8.0.3",
 		"lint-staged": "^13.2.1",
@@ -116,7 +117,7 @@
 		"rollup-plugin-postcss": "^4.0.2",
 		"rollup-plugin-scss": "^4.0.0",
 		"rollup-plugin-typescript2": "^0.34.1",
-		"sass": "^1.61.0",
+		"sass": "^1.62.0",
 		"stylelint": "^15.4.0",
 		"stylelint-config-standard": "^32.0.0",
 		"stylelint-order": "^6.0.2",

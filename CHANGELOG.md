@@ -10,5 +10,5 @@ All notable changes to the "vue3-code-block" plugin will be documented in this f
 [main] Minor changes to fix issues after testing npm packaging. (@webdevnerdstuff)
 
 ## v2.0.0
-TBD
+2023-04-15
 [main] Major release update. Added in support to use either PrismJS or HighlightJS. (@webdevnerdstuff)

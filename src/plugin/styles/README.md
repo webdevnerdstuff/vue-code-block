@@ -13,7 +13,7 @@ Before you get started, please read the [Contributing](https://github.com/webdev
 4. Install the node packages `pnpm i`. Please do not use `npm` or `yarn`.
 5. Run the development server with the developer playground `pnpm play`.
 6. You can view the demo site at the link provided by vite that will display in the console. Ex. `http://localhost:5173/vue3-code-block/`
-7. You can view the playground page by adding `playground/` to the demo site link provided by vite that will display in the console. Ex. `http://localhost:5173/vue3-code-block/playground/`
+7. The playground page will open automatically or can be viewed by adding `playground/` to the demo site link provided by vite that will display in the console. Ex. `http://localhost:5173/vue3-code-block/playground/`. The base site link will also be working.
 
 ## 📋 Additional notes
 Make sure you are not adding a theme that already exists.  
