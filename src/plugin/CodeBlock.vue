@@ -206,17 +206,17 @@ const props = defineProps({
 		required: false,
 		default: 'auto',
 	},
+	persistentCopyButton: {
+		type: Boolean,
+		required: false,
+		default: false,
+	},
 	prismjs: {
 		type: Boolean,
 		required: false,
 		default: false,
 	},
 	prismPlugin: {
-		type: Boolean,
-		required: false,
-		default: false,
-	},
-	persistentCopyButton: {
 		type: Boolean,
 		required: false,
 		default: false,
@@ -331,7 +331,7 @@ const labelClasses = computed<string>(() => {
 
 const preTagStyles = computed<StyleValue>(() => {
 	const radius = props.codeBlockRadius;
-	let borderRadius = `${radius} 0 ${radius} ${radius}`;
+	let borderRadius = `${radius} 0 ${radius} ${radius} !important`;
 
 	if (!props.tabs || (!props.copyTab && !props.runTab)) {
 		borderRadius = radius;
@@ -341,9 +341,10 @@ const preTagStyles = computed<StyleValue>(() => {
 
 	return {
 		borderRadius,
+		display,
 		height: convertToUnit(props.height),
 		maxHeight: convertToUnit(props.maxHeight),
-		display,
+		overflow: 'auto',
 	};
 });
 
@@ -549,6 +550,7 @@ function loadTheme(): void {
 			else {
 				fetchUrl = `${prismCdn.value}/prism-${cssFilename}`;
 			}
+
 			break;
 		default:
 			cssFilename = '';
@@ -635,8 +637,8 @@ function renderCode(): void {
 	}
 
 	if (props.prismjs) {
-		import('prismjs').then((result) => {
-			prismModule = result;
+		import('prismjs').then((module) => {
+			prismModule = module.default;
 
 			renderedCode.value = prismModule.highlight(
 				convertedCode.value,

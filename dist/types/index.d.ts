@@ -18,6 +18,7 @@ export type Props = {
     maxHeight?: string | number;
     persistentCopyButton?: boolean;
     prismjs?: boolean;
+    prismPlugin?: boolean;
     runTab?: boolean;
     runText?: string;
     tabGap?: string;
