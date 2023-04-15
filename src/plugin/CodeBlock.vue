@@ -637,8 +637,8 @@ function renderCode(): void {
 	}
 
 	if (props.prismjs) {
-		import('prismjs').then((result) => {
-			prismModule = result;
+		import('prismjs').then((module) => {
+			prismModule = module.default;
 
 			renderedCode.value = prismModule.highlight(
 				convertedCode.value,
