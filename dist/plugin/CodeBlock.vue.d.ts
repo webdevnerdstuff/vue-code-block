@@ -78,17 +78,17 @@ declare const _default: import("vue").DefineComponent<{
         required: false;
         default: string;
     };
+    persistentCopyButton: {
+        type: BooleanConstructor;
+        required: false;
+        default: boolean;
+    };
     prismjs: {
         type: BooleanConstructor;
         required: false;
         default: boolean;
     };
     prismPlugin: {
-        type: BooleanConstructor;
-        required: false;
-        default: boolean;
-    };
-    persistentCopyButton: {
         type: BooleanConstructor;
         required: false;
         default: boolean;
@@ -200,17 +200,17 @@ declare const _default: import("vue").DefineComponent<{
         required: false;
         default: string;
     };
+    persistentCopyButton: {
+        type: BooleanConstructor;
+        required: false;
+        default: boolean;
+    };
     prismjs: {
         type: BooleanConstructor;
         required: false;
         default: boolean;
     };
     prismPlugin: {
-        type: BooleanConstructor;
-        required: false;
-        default: boolean;
-    };
-    persistentCopyButton: {
         type: BooleanConstructor;
         required: false;
         default: boolean;
@@ -259,9 +259,9 @@ declare const _default: import("vue").DefineComponent<{
     label: string;
     lang: string;
     maxHeight: string | number;
+    persistentCopyButton: boolean;
     prismjs: boolean;
     prismPlugin: boolean;
-    persistentCopyButton: boolean;
     runTab: boolean;
     runText: string;
     tabGap: string;

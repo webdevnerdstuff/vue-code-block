@@ -97,6 +97,9 @@
 	--neon-bunny-addition: var(--neon-bunny-green-neon);
 	--neon-bunny-deletion: var(--neon-bunny-red);
 
+	/* -------------------------------------------------- HTML */
+	--neon-bunny-html-tag-attr: var(--neon-bunny-orange-light);
+
 	/* -------------------------------------------------- CSS */
 	--neon-bunny-css: var(--neon-bunny-teal);
 
@@ -108,6 +111,9 @@
 
 	/* ------------------------- Tags, attributes, configs */
 	--neon-bunny-css-attribute: var(--neon-bunny-pink);
+
+	/* -------------------------------------------------- JSON */
+	--neon-bunny-json-punctuation: var(--neon-bunny-white);
 
 	/* -------------------------------------------------- JavaScript */
 	--neon-bunny-js: var(--neon-bunny-orange);
@@ -424,8 +430,21 @@ pre[class*="language-"] {
 		color: var(--neon-bunny-deletion);
 	}
 
+	/* -------------------------------------------------- HTML */
+	&.language-html,
+	.language-html {
+		.hljs {
+			&-tag {
+				.hljs-attr {
+					color: var(--neon-bunny-html-tag-attr);
+				}
+			}
+		}
+	}
+
 	/* -------------------------------------------------- CSS */
-	&.language-css {
+	&.language-css,
+	.language-css {
 		color: var(--neon-bunny-css);
 
 		.hljs {
@@ -646,9 +665,21 @@ pre[class*="language-"] {
 		}
 	}
 
+	/* -------------------------------------------------- JSON */
+	&.language-json,
+	.language-json {
+		.hljs {
+			&-punctuation {
+				color: var(--neon-bunny-json-punctuation);
+			}
+		}
+	}
+
 	/* -------------------------------------------------- JavaScript */
 	&.language-javascript,
-	&.language-js {
+	&.language-js,
+	.language-javascript,
+	.language-js {
 		color: var(--neon-bunny-js);
 
 		.hljs {
@@ -872,7 +903,8 @@ pre[class*="language-"] {
 	}
 
 	/* -------------------------------------------------- PHP */
-	&.language-php {
+	&.language-php,
+	.language-php {
 		color: var(--neon-bunny-php);
 
 		.hljs {
