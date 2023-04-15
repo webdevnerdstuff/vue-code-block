@@ -9,7 +9,7 @@
 	"scripts": {
 		"dev": "vite",
 		"watch": "pnpm dev",
-		"play": "sh src/playground/configs/build.sh && vite",
+		"play": "sh src/playground/configs/build.sh && NODE_ENV=playground vite",
 		"bundle": "rollup -c --bundleConfigAsCjs",
 		"build": "vite build",
 		"predeploy": "npm run build",

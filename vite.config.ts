@@ -5,6 +5,9 @@ import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'node:url';
 import stylelint from 'vite-plugin-stylelint';
 
+const baseUrl = '/vue3-code-block/';
+const playgroundUrl = baseUrl + 'playground/';
+
 
 export default defineConfig({
 	base: '/vue3-code-block/',
@@ -43,7 +46,7 @@ export default defineConfig({
 		],
 	},
 	server: {
-		open: false,
+		open: process?.env?.NODE_ENV === 'playground' ? playgroundUrl : false,
 	},
 });
 
