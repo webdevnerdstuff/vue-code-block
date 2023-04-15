@@ -5,7 +5,7 @@
 	"private": false,
 	"main": "dist/vue3-code-block.js",
 	"module": "dist/vue3-code-block.es.js",
-	"types": "dist/types/index.d.ts",
+	"types": "dist/index.d.ts",
 	"scripts": {
 		"dev": "vite",
 		"watch": "pnpm dev",
