@@ -10,7 +10,7 @@ const playgroundUrl = baseUrl + 'playground/';
 
 
 export default defineConfig({
-	base: '/vue3-code-block/',
+	base: baseUrl,
 	build: {
 		outDir: 'docs',
 	},
