@@ -107,6 +107,7 @@
 <script setup>
 import { inject } from 'vue';
 
+import Prism from 'prismjs';
 import hljs from 'highlight.js/lib/core';
 import langJson from 'highlight.js/lib/languages/json';
 import langPhp from 'highlight.js/lib/languages/php';
