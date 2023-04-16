@@ -30,8 +30,6 @@
   --neon-bunny-yellow-light: #ffffa2;
   --neon-bunny-yellow-light-faded: #ffe3b8;
   --neon-bunny-yellow: #ffff00;
-  /* -------------------------------------------------- Standard */
-  /* ------------------------- General purpose */
   --neon-bunny-builtin: var(--neon-bunny-purple);
   --neon-bunny-char: var(--neon-bunny-pink);
   --neon-bunny-class: var(--neon-bunny-magenta);
@@ -57,19 +55,16 @@
   --neon-bunny-variable-constant: var(--neon-bunny-green-darker);
   --neon-bunny-variable-language: var(--neon-bunny-orange);
   --neon-bunny-variable: var(--neon-bunny-green-darker);
-  /* ------------------------- Meta */
   --neon-bunny-meta-keyword: var(--neon-bunny-purple-light);
   --neon-bunny-meta-prompt: var(--neon-bunny-orange);
   --neon-bunny-meta-string: var(--neon-bunny-orange);
   --neon-bunny-meta: var(--neon-bunny-orange);
-  /* ------------------------- Tags, attributes, configs */
   --neon-bunny-attr: var(--neon-bunny-orange);
   --neon-bunny-attribute: var(---neon-bunny-orange);
   --neon-bunny-name: var(--neon-bunny-orange);
   --neon-bunny-section: var(--neon-bunny-orange);
   --neon-bunny-tag-attr: var(--neon-bunny-orange-light);
   --neon-bunny-tag: var(--neon-bunny-orange);
-  /* ------------------------- Text Markup */
   --neon-bunny-bullet: var(--neon-bunny-white);
   --neon-bunny-code: var(--neon-bunny-white);
   --neon-bunny-emphasis: var(--neon-bunny-white);
@@ -77,7 +72,6 @@
   --neon-bunny-link: var(--neon-bunny-orange);
   --neon-bunny-quote: var(--neon-bunny-white);
   --neon-bunny-strong: var(--neon-bunny-white);
-  /* ------------------------- CSS */
   --neon-bunny-css-selector-id: var(--neon-bunny-green);
   --neon-bunny-selector-attr: var(--neon-bunny-orange);
   --neon-bunny-selector-class: var(--neon-bunny-yellow);
@@ -85,30 +79,19 @@
   --neon-bunny-selector-pseudo: var(--neon-bunny-orange);
   --neon-bunny-selector-tag: var(--neon-bunny-white);
   --neon-bunny-selector: var(--neon-bunny-lime);
-  /* ------------------------- Diff */
   --neon-bunny-addition: var(--neon-bunny-green-neon);
   --neon-bunny-deletion: var(--neon-bunny-red);
-  /* -------------------------------------------------- HTML */
   --neon-bunny-html-tag-attr: var(--neon-bunny-orange-light);
-  /* -------------------------------------------------- CSS */
   --neon-bunny-css: var(--neon-bunny-teal);
-  /* ------------------------- General purpose */
   --neon-bunny-css-builtin: var(--neon-bunny-orange);
-  /* ------------------------- Meta */
   --neon-bunny-css-meta: var(--neon-bunny-red);
-  /* ------------------------- Tags, attributes, configs */
   --neon-bunny-css-attribute: var(--neon-bunny-pink);
-  /* -------------------------------------------------- JSON */
   --neon-bunny-json-punctuation: var(--neon-bunny-white);
-  /* -------------------------------------------------- JavaScript */
   --neon-bunny-js: var(--neon-bunny-orange);
-  /* ------------------------- General purpose */
   --neon-bunny-js-params-variable-language: var(--neon-bunny-orange);
   --neon-bunny-js-title-class: var(--neon-bunny-orange-lighter);
   --neon-bunny-js-variable-language: var(--neon-bunny-yellow);
-  /* -------------------------------------------------- PHP */
   --neon-bunny-php: var(--neon-bunny-white);
-  /* ------------------------- General purpose */
   --neon-bunny-php-class-keyword: var(--neon-bunny-pink);
   --neon-bunny-php-class-title: var(--neon-bunny-yellow);
   --neon-bunny-php-function-title: var(--neon-bunny-orange-light);
@@ -120,13 +103,13 @@
   --neon-bunny-php-title-function-invoke: var(--neon-bunny-orange-light);
   --neon-bunny-php-title: var(--neon-bunny-white);
   --neon-bunny-php-variable: var(--neon-bunny-orange);
-  /* ------------------------- Meta */
   --neon-bunny-php-meta: var(--neon-bunny-pink);
 }
 
 pre code.hljs {
   display: block;
   overflow-x: auto;
+  padding: 1em;
 }
 
 code[class*=language-],
@@ -168,13 +151,11 @@ pre[class*=language-] ::selection {
     text-shadow: none;
   }
 }
-/* Code blocks */
 pre[class*=language-] {
   background: #000000;
   color: white;
   margin: 0.5em 0;
   overflow: auto;
-  padding: 1em;
 }
 
 :not(pre) > code[class*=language-] {
@@ -185,20 +166,6 @@ pre[class*=language-] {
   white-space: normal;
 }
 
-/* -------------------------------------------------- Standard */
-.hljs {
-  /* ------------------------- General purpose */
-  /* ------------------------- Meta */
-  /* ------------------------- Tags, attributes, configs */
-  /* ------------------------- Text Markup */
-  /* ------------------------- CSS */
-  /* ------------------------- DIff */
-  /* -------------------------------------------------- HTML */
-  /* -------------------------------------------------- CSS */
-  /* -------------------------------------------------- JSON */
-  /* -------------------------------------------------- JavaScript */
-  /* -------------------------------------------------- PHP */
-}
 .hljs-built_in {
   color: var(--neon-bunny-builtin);
 }
@@ -358,15 +325,6 @@ pre[class*=language-] {
 .hljs.language-css,
 .hljs .language-css {
   color: var(--neon-bunny-css);
-}
-.hljs.language-css .hljs,
-.hljs .language-css .hljs {
-  /* ------------------------- General purpose */
-  /* ------------------------- Meta */
-  /* ------------------------- Tags, attributes, configs */
-  /* ------------------------- Text Markup */
-  /* ------------------------- CSS */
-  /* ------------------------- DIff */
 }
 .hljs.language-css .hljs-built_in,
 .hljs .language-css .hljs-built_in {
@@ -571,16 +529,6 @@ pre[class*=language-] {
 .hljs .language-javascript,
 .hljs .language-js {
   color: var(--neon-bunny-js);
-}
-.hljs.language-javascript .hljs, .hljs.language-js .hljs,
-.hljs .language-javascript .hljs,
-.hljs .language-js .hljs {
-  /* ------------------------- General purpose */
-  /* ------------------------- Meta */
-  /* ------------------------- Tags, attributes, configs */
-  /* ------------------------- Text Markup */
-  /* ------------------------- CSS */
-  /* ------------------------- DIff */
 }
 .hljs.language-javascript .hljs-built_in, .hljs.language-js .hljs-built_in,
 .hljs .language-javascript .hljs-built_in,
@@ -833,15 +781,6 @@ pre[class*=language-] {
 .hljs.language-php,
 .hljs .language-php {
   color: var(--neon-bunny-php);
-}
-.hljs.language-php .hljs,
-.hljs .language-php .hljs {
-  /* ------------------------- General purpose */
-  /* ------------------------- Meta */
-  /* ------------------------- Tags, attributes, configs */
-  /* ------------------------- Text Markup */
-  /* ------------------------- CSS */
-  /* ------------------------- DIff */
 }
 .hljs.language-php .hljs-built_in,
 .hljs .language-php .hljs-built_in {

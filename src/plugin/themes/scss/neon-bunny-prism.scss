@@ -33,7 +33,7 @@
 	--neon-bunny-white: #fff;
 	--neon-bunny-yellow: #fef611;
 
-	/* Standard */
+	// Standard //
 	--neon-bunny-atrule: var(--neon-bunny-peach);
 	--neon-bunny-attr-name: var(--neon-bunny-purple-light-dim);
 	--neon-bunny-attr-value: var(--neon-bunny-peach);
@@ -63,12 +63,12 @@
 	--neon-bunny-url: var(--neon-bunny-orange);
 	--neon-bunny-variable: var(--neon-bunny-green-darker);
 
-	/* HTML */
+	// HTML //
 	--neon-bunny-html-attr-name: var(--neon-bunny-green);
 	--neon-bunny-html-attr-value-punctuation: var(--neon-bunny-peach-darker);
 	--neon-bunny-html-attr-value: var(--neon-bunny-peach-darker);
 
-	/* CSS */
+	// CSS //
 	--neon-bunny-css-atrule-rule: var(--neon-bunny-blue);
 	--neon-bunny-css-atrule: var(--neon-bunny-white);
 	--neon-bunny-css-function: var(--neon-bunny-orange);
@@ -78,7 +78,7 @@
 	--neon-bunny-css-string: var(--neon-bunny-green-light);
 	--neon-bunny-css: var(--neon-bunny-purple-light-dim);
 
-	/* JS */
+	// JS //
 	--neon-bunny-js-keyword: var(--neon-bunny-blue);
 	--neon-bunny-js-literal-property: var(--neon-bunny-neon-green);
 	--neon-bunny-js-operator: var(--neon-bunny-blue-light);
@@ -87,7 +87,7 @@
 	--neon-bunny-js-template-string-string: var(--neon-bunny-green-darker-darker);
 	--neon-bunny-js: var(--neon-bunny-green-darker);
 
-	/* PHP */
+	// PHP //
 	--neon-bunny-php-boolean: var(--neon-bunny-blue);
 	--neon-bunny-php-class-name-definition-class-name: var(--neon-bunny-magenta);
 	--neon-bunny-php-class-name-return-type: var(--neon-bunny-gray-lighter);
@@ -146,7 +146,7 @@ pre[class*="language-"] {
 	}
 }
 
-/* Code blocks */
+// Code blocks //
 pre[class*="language-"] {
 	background: #000000;
 	color: white;
@@ -163,7 +163,7 @@ pre[class*="language-"] {
 	white-space: normal;
 }
 
-/* -------------------------------------------------- Standard */
+// -------------------------------------------------- Standard //
 .token {
 	&.atrule {
 		color: var(--neon-bunny-atrule);
@@ -292,7 +292,7 @@ pre[class*="language-"] {
 }
 
 
-/* -------------------------------------------------- HTML */
+// -------------------------------------------------- HTML //
 .language-html {
 	.token {
 		&.attr-name {
@@ -309,7 +309,7 @@ pre[class*="language-"] {
 	}
 }
 
-/* -------------------------------------------------- CSS */
+// -------------------------------------------------- CSS //
 .language-css {
 	color: var(--neon-bunny-css) !important;
 
@@ -358,7 +358,7 @@ pre[class*="language-"] {
 	}
 }
 
-/* -------------------------------------------------- JavaScript */
+// -------------------------------------------------- JavaScript //
 .language-javascript,
 .language-js {
 	color: var(--neon-bunny-js) !important;
@@ -398,7 +398,7 @@ pre[class*="language-"] {
 }
 
 
-/* -------------------------------------------------- PHP */
+// -------------------------------------------------- PHP //
 .language-php {
 	.token {
 		&.boolean {

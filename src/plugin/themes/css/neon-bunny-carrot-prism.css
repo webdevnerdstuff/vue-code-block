@@ -28,7 +28,6 @@
   --neon-bunny-white: #fff;
   --neon-bunny-yellow-light: #ffffa2;
   --neon-bunny-yellow: #ffff00;
-  /* Standard */
   --neon-bunny-atrule: var(--neon-bunny-peach);
   --neon-bunny-attr-name: var(--neon-bunny-purple-light-dim);
   --neon-bunny-attr-value: var(--neon-bunny-peach);
@@ -57,11 +56,9 @@
   --neon-bunny-tag: var(--neon-bunny-orange);
   --neon-bunny-url: var(--neon-bunny-orange-darker);
   --neon-bunny-variable: var(--neon-bunny-orange);
-  /* HTML */
   --neon-bunny-html-attr-name: var(--neon-bunny-orange-light);
   --neon-bunny-html-attr-value-punctuation: var(--neon-bunny-green);
   --neon-bunny-html-attr-value: var(--neon-bunny-green);
-  /* CSS */
   --neon-bunny-css-atrule-rule: var(--neon-bunny-blue);
   --neon-bunny-css-atrule: var(--neon-bunny-white);
   --neon-bunny-css-function: var(--neon-bunny-orange-darker);
@@ -70,7 +67,6 @@
   --neon-bunny-css-selector: var(--neon-bunny-yellow);
   --neon-bunny-css-string: var(--neon-bunny-green-light);
   --neon-bunny-css: var(--neon-bunny-teal);
-  /* JS */
   --neon-bunny-js-keyword: var(--neon-bunny-magenta);
   --neon-bunny-js-literal-property: var(--neon-bunny-orange);
   --neon-bunny-js-operator: var(--neon-bunny-blue-light);
@@ -78,7 +74,6 @@
   --neon-bunny-js-string: var(--neon-bunny-green-darker-darker);
   --neon-bunny-js-template-string-string: var(--neon-bunny-green-darker-darker);
   --neon-bunny-js: var(--neon-bunny-orange);
-  /* PHP */
   --neon-bunny-php-boolean: var(--neon-bunny-purple-light);
   --neon-bunny-php-class-name-return-type: var(--neon-bunny-yellow);
   --neon-bunny-php-class-name: var(--neon-bunny-yellow);
@@ -135,7 +130,6 @@ pre[class*=language-] ::selection {
     text-shadow: none;
   }
 }
-/* Code blocks */
 pre[class*=language-] {
   background: #000000;
   color: white;
@@ -152,7 +146,6 @@ pre[class*=language-] {
   white-space: normal;
 }
 
-/* -------------------------------------------------- Standard */
 .token.atrule {
   color: var(--neon-bunny-atrule);
 }
@@ -250,7 +243,6 @@ pre[class*=language-] {
   color: var(--neon-bunny-namespace);
 }
 
-/* -------------------------------------------------- HTML */
 .language-html .token .attr-name {
   color: var(--neon-bunny-html-attr-name);
 }
@@ -261,7 +253,6 @@ pre[class*=language-] {
   color: var(--neon-bunny-html-attr-value-punctuation);
 }
 
-/* -------------------------------------------------- CSS */
 .language-css {
   color: var(--neon-bunny-css) !important;
 }
@@ -293,7 +284,6 @@ pre[class*=language-] {
   font-style: italic;
 }
 
-/* -------------------------------------------------- JavaScript */
 .language-javascript,
 .language-js {
   color: var(--neon-bunny-js) !important;
@@ -326,7 +316,6 @@ pre[class*=language-] {
   color: var(--neon-bunny-js-template-string-string);
 }
 
-/* -------------------------------------------------- PHP */
 .language-php .token.boolean {
   color: var(--neon-bunny-boolean);
 }
