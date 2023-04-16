@@ -1,0 +1,1146 @@
+/**
+ * MIT License
+ * Copyright (c) 2023 WebDevNerdStuff
+ * WebDevNerdStuff Neon Bunny Carrot
+ * VSCode Theme: https://marketplace.visualstudio.com/items?itemName=WebDevNerdStuff.neon-bunny
+ */
+
+:root {
+	--neon-bunny-blue-light: #2492ff;
+	--neon-bunny-blue: #0b93ff;
+	--neon-bunny-gray: #7f817e;
+	--neon-bunny-green-darker-darker: #008b05;
+	--neon-bunny-green-darker: #2bb71d;
+	--neon-bunny-green-light: #7cd47d;
+	--neon-bunny-green: #00d205;
+	--neon-bunny-lime: #c3e88d;
+	--neon-bunny-magenta: #dd00ff;
+	--neon-bunny-orange-darker: #e58100;
+	--neon-bunny-orange-light: #ffc266;
+	--neon-bunny-orange-lighter: #ff8d04;
+	--neon-bunny-orange: #ff9900;
+	--neon-bunny-peach-light: #ffe4a6;
+	--neon-bunny-peach: #ffcb6b;
+	--neon-bunny-pink: #ff1190;
+	--neon-bunny-purple-light-dim: #c792ea;
+	--neon-bunny-purple-light: #da96df;
+	--neon-bunny-purple: #ea03ff;
+	--neon-bunny-red: #ff5370;
+	--neon-bunny-teal: #00EEFF;
+	--neon-bunny-white: #fff;
+	--neon-bunny-yellow-light: #ffffa2;
+	--neon-bunny-yellow-light-faded: #ffe3b8;
+	--neon-bunny-yellow: #ffff00;
+
+	// -------------------------------------------------- Standard //
+
+	// ------------------------- General purpose //
+	--neon-bunny-builtin: var(--neon-bunny-purple);
+	--neon-bunny-char: var(--neon-bunny-pink);
+	--neon-bunny-class: var(--neon-bunny-magenta);
+	--neon-bunny-comment: var(--neon-bunny-gray);
+	--neon-bunny-doctag: var(--neon-bunny-blue-light);
+	--neon-bunny-keyword: var(--neon-bunny-magenta);
+	--neon-bunny-literal: var(--neon-bunny-purple-light);
+	--neon-bunny-number: var(--neon-bunny-white);
+	--neon-bunny-operator: var(--neon-bunny-blue-light);
+	--neon-bunny-params: var(--neon-bunny-orange);
+	--neon-bunny-property: var(--neon-bunny-yellow-light-faded);
+	--neon-bunny-punctuation: var(--neon-bunny-blue);
+	--neon-bunny-regex: var(--neon-bunny-peach-light);
+	--neon-bunny-string: var(--neon-bunny-green);
+	--neon-bunny-subst: var(--neon-bunny-green-darker);
+	--neon-bunny-symbol: var(--neon-bunny-pink);
+	--neon-bunny-title-class-inherited: var(--neon-bunny-orange);
+	--neon-bunny-title-class: var(--neon-bunny-green-neon);
+	--neon-bunny-title-function-invoke: var(--neon-bunny-orange);
+	--neon-bunny-title-function: var(--neon-bunny-orange-light);
+	--neon-bunny-title: var(--neon-bunny-orange);
+	--neon-bunny-type: var(--neon-bunny-pink);
+	--neon-bunny-variable-constant: var(--neon-bunny-green-darker);
+	--neon-bunny-variable-language: var(--neon-bunny-orange);
+	--neon-bunny-variable: var(--neon-bunny-green-darker);
+
+	// ------------------------- Meta //
+	--neon-bunny-meta-keyword: var(--neon-bunny-purple-light);
+	--neon-bunny-meta-prompt: var(--neon-bunny-orange);
+	--neon-bunny-meta-string: var(--neon-bunny-orange);
+	--neon-bunny-meta: var(--neon-bunny-orange);
+
+	// ------------------------- Tags, attributes, configs //
+	--neon-bunny-attr: var(--neon-bunny-orange);
+	--neon-bunny-attribute: var(---neon-bunny-orange);
+	--neon-bunny-name: var(--neon-bunny-orange);
+	--neon-bunny-section: var(--neon-bunny-orange);
+	--neon-bunny-tag-attr: var(--neon-bunny-orange-light);
+	--neon-bunny-tag: var(--neon-bunny-orange);
+
+	// ------------------------- Text Markup //
+	--neon-bunny-bullet: var(--neon-bunny-white);
+	--neon-bunny-code: var(--neon-bunny-white);
+	--neon-bunny-emphasis: var(--neon-bunny-white);
+	--neon-bunny-formula: var(--neon-bunny-white);
+	--neon-bunny-link: var(--neon-bunny-orange);
+	--neon-bunny-quote: var(--neon-bunny-white);
+	--neon-bunny-strong: var(--neon-bunny-white);
+
+	// ------------------------- CSS //
+	--neon-bunny-css-selector-id: var(--neon-bunny-green);
+	--neon-bunny-selector-attr: var(--neon-bunny-orange);
+	--neon-bunny-selector-class: var(--neon-bunny-yellow);
+	--neon-bunny-selector-id: var(--neon-bunny-selector);
+	--neon-bunny-selector-pseudo: var(--neon-bunny-orange);
+	--neon-bunny-selector-tag: var(--neon-bunny-white);
+	--neon-bunny-selector: var(--neon-bunny-lime);
+
+	// ------------------------- Diff //
+	--neon-bunny-addition: var(--neon-bunny-green-neon);
+	--neon-bunny-deletion: var(--neon-bunny-red);
+
+	// -------------------------------------------------- HTML //
+	--neon-bunny-html-tag-attr: var(--neon-bunny-orange-light);
+
+	// -------------------------------------------------- CSS //
+	--neon-bunny-css: var(--neon-bunny-teal);
+
+	// ------------------------- General purpose //
+	--neon-bunny-css-builtin: var(--neon-bunny-orange);
+
+	// ------------------------- Meta //
+	--neon-bunny-css-meta: var(--neon-bunny-red);
+
+	// ------------------------- Tags, attributes, configs //
+	--neon-bunny-css-attribute: var(--neon-bunny-pink);
+
+	// -------------------------------------------------- JSON //
+	--neon-bunny-json-punctuation: var(--neon-bunny-white);
+
+	// -------------------------------------------------- JavaScript //
+	--neon-bunny-js: var(--neon-bunny-orange);
+
+	// ------------------------- General purpose //
+	--neon-bunny-js-params-variable-language: var(--neon-bunny-orange);
+	--neon-bunny-js-title-class: var(--neon-bunny-orange-lighter);
+	--neon-bunny-js-variable-language: var(--neon-bunny-yellow);
+
+	// -------------------------------------------------- PHP //
+	--neon-bunny-php: var(--neon-bunny-white);
+
+	// ------------------------- General purpose //
+	--neon-bunny-php-class-keyword: var(--neon-bunny-pink);
+	--neon-bunny-php-class-title: var(--neon-bunny-yellow);
+	--neon-bunny-php-function-title: var(--neon-bunny-orange-light);
+	--neon-bunny-php-keyword: var(--neon-bunny-magenta);
+	--neon-bunny-php-params-variable: var(--neon-bunny-green-darker);
+	--neon-bunny-php-params: var(--neon-bunny-yellow);
+	--neon-bunny-php-string: var(--neon-bunny-green-light);
+	--neon-bunny-php-title-class: var(--neon-bunny-yellow);
+	--neon-bunny-php-title-function-invoke: var(--neon-bunny-orange-light);
+	--neon-bunny-php-title: var(--neon-bunny-white);
+	--neon-bunny-php-variable: var(--neon-bunny-orange);
+
+	// ------------------------- Meta //
+	--neon-bunny-php-meta: var(--neon-bunny-pink);
+}
+
+pre {
+	code {
+		&.hljs {
+			display: block;
+			overflow-x: auto;
+			padding: 1em;
+		}
+	}
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+	-moz-hyphens: none;
+	-moz-tab-size: 4;
+	-ms-hyphens: none;
+	-o-tab-size: 4;
+	-webkit-hyphens: none;
+
+	color: var(--neon-bunny-white);
+	font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+	hyphens: none;
+	line-height: 1.5;
+	tab-size: 4;
+	text-align: left;
+	white-space: pre;
+	word-break: normal;
+	word-spacing: normal;
+	word-wrap: normal;
+
+	&::-moz-selection,
+	::-moz-selection {
+		background: rgba(29, 59, 83, 0.99);
+		text-shadow: none;
+
+	}
+
+	&::selection,
+	::selection {
+		background: #ffffff15;
+		text-shadow: none;
+	}
+}
+
+@media print {
+
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+// Code blocks //
+pre[class*="language-"] {
+	background: #000000;
+	color: white;
+	margin: 0.5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"] {
+	background: #000000;
+	color: white;
+	border-radius: 0.3em;
+	padding: 0.1em;
+	white-space: normal;
+}
+
+// -------------------------------------------------- Standard //
+.hljs {
+
+	// ------------------------- General purpose //
+	&-built_in {
+		//
+		color: var(--neon-bunny-builtin);
+	}
+
+	&-char {
+		color: var(--neon-bunny-char);
+
+		&.escape {
+			//
+		}
+	}
+
+	&-comment {
+		color: var(--neon-bunny-comment);
+		font-style: italic;
+	}
+
+	&-doctag {
+		color: var(--neon-bunny-doctag);
+	}
+
+	&-keyword {
+		color: var(--neon-bunny-keyword);
+	}
+
+	&-literal {
+		color: var(--neon-bunny-literal);
+	}
+
+	&-number {
+		color: var(--neon-bunny-number);
+	}
+
+	&-operator {
+		color: var(--neon-bunny-operator);
+	}
+
+	&-params {
+		color: var(--neon-bunny-params);
+	}
+
+	&-property {
+		color: var(--neon-bunny-property);
+	}
+
+	&-punctuation {
+		color: var(--neon-bunny-punctuation);
+	}
+
+	&-regexp {
+		color: var(--neon-bunny-regex);
+	}
+
+	&-string {
+		color: var(--neon-bunny-string);
+	}
+
+	&-subst {
+		color: var(--neon-bunny-subst);
+	}
+
+	&-symbol {
+		color: var(--neon-bunny-symbol);
+	}
+
+	&-title {
+		color: var(--neon-bunny-title);
+
+		&.class_ {
+			color: var(--neon-bunny-title-class);
+
+			&.inherited__ {
+				color: var(--neon-bunny-title-class-inherited);
+				//
+			}
+		}
+
+		&.function_ {
+			color: var(--neon-bunny-title-function);
+			text-decoration: underline;
+
+			&.invoke__ {
+				color: var(--neon-bunny-title-function-invoke);
+				//
+			}
+		}
+	}
+
+	&-type {
+		color: var(--neon-bunny-type);
+	}
+
+	&-variable {
+		color: var(--neon-bunny-variable);
+
+		&.constant_ {
+			color: var(--neon-bunny-variable-constant);
+		}
+
+		&.language_ {
+			color: var(--neon-bunny-variable-language);
+			font-style: italic;
+		}
+	}
+
+	// ------------------------- Meta //
+	&-meta {
+		color: var(--neon-bunny-meta);
+
+		&.prompt_ {
+			color: var(--neon-bunny-meta-prompt);
+		}
+
+		&.keyword_ {
+			color: var(--neon-bunny-meta-keyword);
+		}
+
+
+		&.string_ {
+			color: var(--neon-bunny-meta-string);
+		}
+	}
+
+	// ------------------------- Tags, attributes, configs //
+	&-attr {
+		color: var(--neon-bunny-attr);
+	}
+
+	&-attribute {
+		color: var(--neon-bunny-attribute);
+	}
+
+	&-name {
+		color: var(--neon-bunny-name);
+	}
+
+	&-section {
+		color: var(--neon-bunny-section);
+	}
+
+	&-tag {
+		color: var(--neon-bunny-tag);
+
+		.hljs {
+			&-attr {
+				color: var(--neon-bunny-tag-attr);
+			}
+		}
+	}
+
+	// ------------------------- Text Markup //
+	&-bullet {
+		color: var(--neon-bunny-bullet);
+	}
+
+	&-code {
+		color: var(--neon-bunny-code);
+	}
+
+	&-emphasis {
+		color: var(--neon-bunny-emphasis);
+		font-style: italic;
+	}
+
+	&-formula {
+		color: var(--neon-bunny-formula);
+	}
+
+	&-link {
+		color: var(--neon-bunny-link);
+	}
+
+	&-quote {
+		color: var(--neon-bunny-quote);
+	}
+
+	&-strong {
+		color: var(--neon-bunny-strong);
+		font-weight: bold;
+	}
+
+	// ------------------------- CSS //
+	&-selector {
+		color: var(--neon-bunny-selector);
+
+		&-attr {
+			color: var(--neon-bunny-selector-attr);
+		}
+
+		&-class {
+			color: var(--neon-bunny-selector-class);
+		}
+
+		&-id {
+			color: var(--neon-bunny-selector-id);
+		}
+
+		&-pseudo {
+			color: var(--neon-bunny-selector-pseudo);
+		}
+
+		&-tag {
+			color: var(--neon-bunny-selector-tag);
+		}
+	}
+
+	// ------------------------- DIff //
+	&-addition {
+		color: var(--neon-bunny-addition);
+	}
+
+	&-deletion {
+		color: var(--neon-bunny-deletion);
+	}
+
+	// -------------------------------------------------- HTML //
+	&.language-html,
+	.language-html {
+		.hljs {
+			&-tag {
+				.hljs-attr {
+					color: var(--neon-bunny-html-tag-attr);
+				}
+			}
+		}
+	}
+
+	// -------------------------------------------------- CSS //
+	&.language-css,
+	.language-css {
+		color: var(--neon-bunny-css);
+
+		.hljs {
+
+			// ------------------------- General purpose //
+			&-built_in {
+				color: var(--neon-bunny-css-builtin);
+			}
+
+			&-char {
+				color: var(--neon-bunny-char);
+
+				&.escape {
+					//
+				}
+			}
+
+			&-class {
+				&.title_ {
+					//
+				}
+			}
+
+			&-comment {
+				color: var(--neon-bunny-comment);
+			}
+
+			&-doctag {
+				color: var(--neon-bunny-doctag);
+			}
+
+			&-keyword {
+				color: var(--neon-bunny-keyword);
+			}
+
+			&-literal {
+				color: var(--neon-bunny-literal);
+			}
+
+			&-number {
+				color: var(--neon-bunny-number);
+			}
+
+			&-operator {
+				color: var(--neon-bunny-operator);
+			}
+
+			&-params {
+				color: var(--neon-bunny-params);
+				font-style: italic;
+			}
+
+			&-property {
+				color: var(--neon-bunny-property);
+			}
+
+			&-punctuation {
+				color: var(--neon-bunny-punctuation);
+			}
+
+			&-regexp {
+				color: var(--neon-bunny-regex);
+			}
+
+			&-string {
+				color: var(--neon-bunny-string);
+			}
+
+			&-subst {
+				color: var(--neon-bunny-subst);
+			}
+
+			&-symbol {
+				color: var(--neon-bunny-symbol);
+			}
+
+			&-title {
+				color: var(--neon-bunny-title);
+
+				&.class_ {
+					color: var(--neon-bunny-title-class);
+
+					&.inherited__ {
+						color: var(--neon-bunny-title-class-inherited);
+						//
+					}
+				}
+
+				&.function_ {
+					color: var(--neon-bunny-title-function);
+
+					&.invoke__ {
+						color: var(--neon-bunny-title-function-invoke);
+						//
+					}
+				}
+			}
+
+			&-type {
+				color: var(--neon-bunny-type);
+			}
+
+			&-variable {
+				color: var(--neon-bunny-variable);
+
+				&.constant_ {
+					color: var(--neon-bunny-variable-constant);
+				}
+
+				&.language_ {
+					color: var(--neon-bunny-variable-language);
+				}
+			}
+
+			// ------------------------- Meta //
+			&-meta {
+				color: var(--neon-bunny-css-meta);
+
+				&.prompt_ {
+					color: var(--neon-bunny-meta-prompt);
+				}
+
+				&.keyword_ {
+					color: var(--neon-bunny-meta-keyword);
+				}
+
+
+				&.string_ {
+					color: var(--neon-bunny-meta-string);
+				}
+			}
+
+			// ------------------------- Tags, attributes, configs //
+			&-attr {
+				color: var(--neon-bunny-attr);
+			}
+
+			&-attribute {
+				color: var(--neon-bunny-css-attribute);
+			}
+
+			&-name {
+				color: var(--neon-bunny-name);
+			}
+
+			&-section {
+				color: var(--neon-bunny-section);
+			}
+
+			&-tag {
+				color: var(--neon-bunny-tag);
+			}
+
+			// ------------------------- Text Markup //
+			&-bullet {
+				color: var(--neon-bunny-bullet);
+			}
+
+			&-code {
+				color: var(--neon-bunny-code);
+			}
+
+			&-emphasis {
+				color: var(--neon-bunny-emphasis);
+				font-style: italic;
+			}
+
+			&-formula {
+				color: var(--neon-bunny-formula);
+			}
+
+			&-link {
+				color: var(--neon-bunny-link);
+			}
+
+			&-quote {
+				color: var(--neon-bunny-quote);
+			}
+
+			&-strong {
+				color: var(--neon-bunny-strong);
+				font-weight: bold;
+			}
+
+			// ------------------------- CSS //
+			&-selector {
+				color: var(--neon-bunny-selector);
+
+				&-attr {
+					color: var(--neon-bunny-selector-attr);
+				}
+
+				&-class {
+					color: var(--neon-bunny-selector-class);
+				}
+
+				&-id {
+					color: var(--neon-bunny-css-selector-id);
+				}
+
+				&-pseudo {
+					color: var(--neon-bunny-selector-pseudo);
+				}
+
+				&-tag {
+					color: var(--neon-bunny-selector-tag);
+				}
+			}
+
+			// ------------------------- DIff //
+			&-addition {
+				color: var(--neon-bunny-addition);
+			}
+
+			&-deletion {
+				color: var(--neon-bunny-deletion);
+			}
+		}
+	}
+
+	// -------------------------------------------------- JSON //
+	&.language-json,
+	.language-json {
+		.hljs {
+			&-punctuation {
+				color: var(--neon-bunny-json-punctuation);
+			}
+		}
+	}
+
+	// -------------------------------------------------- JavaScript //
+	&.language-javascript,
+	&.language-js,
+	.language-javascript,
+	.language-js {
+		color: var(--neon-bunny-js);
+
+		.hljs {
+
+			// ------------------------- General purpose //
+			&-built_in {
+				//
+				color: var(--neon-bunny-builtin);
+			}
+
+			&-char {
+				color: var(--neon-bunny-char);
+
+				&.escape {
+					//
+				}
+			}
+
+			&-comment {
+				color: var(--neon-bunny-comment);
+			}
+
+			&-doctag {
+				color: var(--neon-bunny-doctag);
+			}
+
+			&-keyword {
+				color: var(--neon-bunny-keyword);
+			}
+
+			&-literal {
+				color: var(--neon-bunny-literal);
+			}
+
+			&-number {
+				color: var(--neon-bunny-number);
+			}
+
+			&-operator {
+				color: var(--neon-bunny-operator);
+			}
+
+			&-params {
+				color: var(--neon-bunny-params);
+				font-style: italic;
+
+				.hljs {
+					&-variable {
+						&.language_ {
+							color: var(--neon-bunny-js-params-variable-language);
+						}
+					}
+				}
+			}
+
+			&-property {
+				color: var(--neon-bunny-property);
+			}
+
+			&-punctuation {
+				color: var(--neon-bunny-punctuation);
+			}
+
+			&-regexp {
+				color: var(--neon-bunny-regex);
+			}
+
+			&-string {
+				color: var(--neon-bunny-string);
+			}
+
+			&-subst {
+				color: var(--neon-bunny-subst);
+			}
+
+			&-symbol {
+				color: var(--neon-bunny-symbol);
+			}
+
+			&-title {
+				color: var(--neon-bunny-title);
+
+				&.class_ {
+					color: var(--neon-bunny-js-title-class);
+
+					&.inherited__ {
+						color: var(--neon-bunny-title-class-inherited);
+					}
+				}
+
+				&.function_ {
+					color: var(--neon-bunny-title-function);
+
+					&.invoke__ {
+						color: var(--neon-bunny-title-function-invoke);
+						//
+					}
+				}
+			}
+
+			&-type {
+				color: var(--neon-bunny-type);
+			}
+
+			&-variable {
+				color: var(--neon-bunny-variable);
+
+				&.constant_ {
+					color: var(--neon-bunny-variable-constant);
+				}
+
+				&.language_ {
+					color: var(--neon-bunny-js-variable-language);
+				}
+			}
+
+			// ------------------------- Meta //
+			&-meta {
+				color: var(--neon-bunny-meta);
+
+				&.prompt_ {
+					color: var(--neon-bunny-meta-prompt);
+				}
+
+				&.keyword_ {
+					color: var(--neon-bunny-meta-keyword);
+				}
+
+
+				&.string_ {
+					color: var(--neon-bunny-meta-string);
+				}
+			}
+
+			// ------------------------- Tags, attributes, configs //
+			&-attr {
+				color: var(--neon-bunny-attr);
+			}
+
+			&-attribute {
+				color: var(--neon-bunny-attribute);
+			}
+
+			&-name {
+				color: var(--neon-bunny-name);
+			}
+
+			&-section {
+				color: var(--neon-bunny-section);
+			}
+
+			&-tag {
+				color: var(--neon-bunny-tag);
+			}
+
+			// ------------------------- Text Markup //
+			&-bullet {
+				color: var(--neon-bunny-bullet);
+			}
+
+			&-code {
+				color: var(--neon-bunny-code);
+			}
+
+			&-emphasis {
+				color: var(--neon-bunny-emphasis);
+				font-style: italic;
+			}
+
+			&-formula {
+				color: var(--neon-bunny-formula);
+			}
+
+			&-link {
+				color: var(--neon-bunny-link);
+			}
+
+			&-quote {
+				color: var(--neon-bunny-quote);
+			}
+
+			&-strong {
+				color: var(--neon-bunny-strong);
+				font-weight: bold;
+			}
+
+			// ------------------------- CSS //
+			&-selector {
+				color: var(--neon-bunny-selector);
+
+				&-attr {
+					color: var(--neon-bunny-selector-attr);
+				}
+
+				&-class {
+					color: var(--neon-bunny-selector-class);
+				}
+
+				&-id {
+					color: var(--neon-bunny-selector-id);
+				}
+
+				&-pseudo {
+					color: var(--neon-bunny-selector-pseudo);
+				}
+
+				&-tag {
+					color: var(--neon-bunny-selector-tag);
+				}
+			}
+
+			// ------------------------- DIff //
+			&-addition {
+				color: var(--neon-bunny-addition);
+			}
+
+			&-deletion {
+				color: var(--neon-bunny-deletion);
+			}
+		}
+	}
+
+	// -------------------------------------------------- PHP //
+	&.language-php,
+	.language-php {
+		color: var(--neon-bunny-php);
+
+		.hljs {
+
+			// ------------------------- General purpose //
+			&-built_in {
+				//
+				color: var(--neon-bunny-builtin);
+			}
+
+			&-char {
+				color: var(--neon-bunny-char);
+
+				&.escape {
+					//
+				}
+			}
+
+			&-class {
+				.hljs {
+					&-title {
+						color: var(--neon-bunny-php-class-title) !important;
+					}
+
+					&-keyword {
+						color: var(--neon-bunny-php-class-keyword);
+					}
+				}
+			}
+
+			&-comment {
+				color: var(--neon-bunny-comment);
+			}
+
+			&-doctag {
+				color: var(--neon-bunny-doctag);
+			}
+
+			&-function {
+				.hljs {
+					&-title {
+						color: var(--neon-bunny-php-function-title);
+					}
+				}
+			}
+
+			&-keyword {
+				color: var(--neon-bunny-php-keyword);
+			}
+
+			&-literal {
+				color: var(--neon-bunny-literal);
+			}
+
+			&-number {
+				color: var(--neon-bunny-number);
+			}
+
+			&-operator {
+				color: var(--neon-bunny-operator);
+			}
+
+			&-params {
+				color: var(--neon-bunny-php-params);
+
+				.hljs {
+					&-variable {
+						color: var(--neon-bunny-php-params-variable);
+					}
+				}
+			}
+
+			&-property {
+				color: var(--neon-bunny-property);
+			}
+
+			&-punctuation {
+				color: var(--neon-bunny-punctuation);
+			}
+
+			&-regexp {
+				color: var(--neon-bunny-regex);
+			}
+
+			&-string {
+				color: var(--neon-bunny-php-string);
+			}
+
+			&-subst {
+				color: var(--neon-bunny-subst);
+			}
+
+			&-symbol {
+				color: var(--neon-bunny-symbol);
+			}
+
+			&-title {
+				color: var(--neon-bunny-php-title);
+
+				&.class_ {
+					color: var(--neon-bunny-php-title-class);
+
+					&.inherited__ {
+						color: var(--neon-bunny-title-class-inherited);
+						//
+					}
+				}
+
+				&.function_ {
+					color: var(--neon-bunny-title-function);
+
+					&.invoke__ {
+						color: var(--neon-bunny-php-title-function-invoke);
+					}
+				}
+			}
+
+			&-type {
+				color: var(--neon-bunny-type);
+			}
+
+			&-variable {
+				color: var(--neon-bunny-php-variable);
+
+				&.constant_ {
+					color: var(--neon-bunny-variable-constant);
+				}
+
+				&.language_ {
+					color: var(--neon-bunny-variable-language);
+				}
+			}
+
+			// ------------------------- Meta //
+			&-meta {
+				color: var(--neon-bunny-php-meta);
+
+				&.prompt_ {
+					color: var(--neon-bunny-meta-prompt);
+				}
+
+				&.keyword_ {
+					color: var(--neon-bunny-meta-keyword);
+				}
+
+
+				&.string_ {
+					color: var(--neon-bunny-meta-string);
+				}
+			}
+
+			// ------------------------- Tags, attributes, configs //
+			&-attr {
+				color: var(--neon-bunny-attr);
+			}
+
+			&-attribute {
+				color: var(--neon-bunny-attribute);
+			}
+
+			&-name {
+				color: var(--neon-bunny-name);
+			}
+
+			&-section {
+				color: var(--neon-bunny-section);
+			}
+
+			&-tag {
+				color: var(--neon-bunny-tag);
+			}
+
+			// ------------------------- Text Markup //
+			&-bullet {
+				color: var(--neon-bunny-bullet);
+			}
+
+			&-code {
+				color: var(--neon-bunny-code);
+			}
+
+			&-emphasis {
+				color: var(--neon-bunny-emphasis);
+				font-style: italic;
+			}
+
+			&-formula {
+				color: var(--neon-bunny-formula);
+			}
+
+			&-link {
+				color: var(--neon-bunny-link);
+			}
+
+			&-quote {
+				color: var(--neon-bunny-quote);
+			}
+
+			&-strong {
+				color: var(--neon-bunny-strong);
+				font-weight: bold;
+			}
+
+			// ------------------------- CSS //
+			&-selector {
+				color: var(--neon-bunny-selector);
+
+				&-attr {
+					color: var(--neon-bunny-selector-attr);
+				}
+
+				&-class {
+					color: var(--neon-bunny-selector-class);
+				}
+
+				&-id {
+					color: var(--neon-bunny-selector-id);
+				}
+
+				&-pseudo {
+					color: var(--neon-bunny-selector-pseudo);
+				}
+
+				&-tag {
+					color: var(--neon-bunny-selector-tag);
+				}
+			}
+
+			// ------------------------- DIff //
+			&-addition {
+				color: var(--neon-bunny-addition);
+			}
+
+			&-deletion {
+				color: var(--neon-bunny-deletion);
+			}
+		}
+	}
+}

@@ -5,7 +5,6 @@ import LangExamples from '@/components/Examples/LangExamples.vue';
 import OtherExamples from '@/components/Examples/OtherExamples.vue';
 import PluginExamples from '@/components/Examples/PluginExamples.vue';
 import TabExamples from '@/components/Examples/TabExamples.vue';
-import TestingExamples from '@/components/Examples/TestingExamples.vue';
 
 
 export {
@@ -16,5 +15,4 @@ export {
 	OtherExamples,
 	PluginExamples,
 	TabExamples,
-	TestingExamples,
 };

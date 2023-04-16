@@ -103,10 +103,10 @@ import UAParser from 'ua-parser-js';
 import { Props } from '@/types';
 import StatusIcons from '@/plugin/StatusIcons.vue';
 import {
-	neonBunnyCarrotTheme,
-	neonBunnyTheme,
-	neonBunnyCarrotHighlightTheme,
-	neonBunnyHighlightTheme
+	neonBunnyCarrotThemeMin,
+	neonBunnyThemeMin,
+	neonBunnyCarrotHighlightThemeMin,
+	neonBunnyHighlightThemeMin
 } from './themes';
 import langCss from 'highlight.js/lib/languages/css';
 import langJavascript from 'highlight.js/lib/languages/javascript';
@@ -501,21 +501,21 @@ function loadTheme(): void {
 
 	switch (useTheme.value) {
 		case 'neon-bunny':
-			selectedTheme = neonBunnyTheme;
+			selectedTheme = neonBunnyThemeMin;
 			isPrismTheme = false;
 			isHighlightTheme = false;
 
 			if (activeLibrary === 'highlightjs') {
-				selectedTheme = neonBunnyHighlightTheme;
+				selectedTheme = neonBunnyHighlightThemeMin;
 			}
 			break;
 		case 'neon-bunny-carrot':
-			selectedTheme = neonBunnyCarrotTheme;
+			selectedTheme = neonBunnyCarrotThemeMin;
 			isPrismTheme = false;
 			isHighlightTheme = false;
 
 			if (activeLibrary === 'highlightjs') {
-				selectedTheme = neonBunnyCarrotHighlightTheme;
+				selectedTheme = neonBunnyCarrotHighlightThemeMin;
 			}
 			break;
 		default:

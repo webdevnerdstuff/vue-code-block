@@ -107,6 +107,8 @@
 <script setup>
 import { inject } from 'vue';
 
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+import Prism from 'prismjs';
 import hljs from 'highlight.js/lib/core';
 import langJson from 'highlight.js/lib/languages/json';
 import langPhp from 'highlight.js/lib/languages/php';
