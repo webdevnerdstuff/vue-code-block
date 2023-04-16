@@ -1,81 +1,87 @@
 /**
  * MIT License
  * Copyright (c) 2023 WebDevNerdStuff
- * WebDevNerdStuff Neon Bunny Carrot
+ * WebDevNerdStuff Neon Bunny
  * VSCode Theme: https://marketplace.visualstudio.com/items?itemName=WebDevNerdStuff.neon-bunny
  */
 
 :root {
+	--neon-bunny-blue-darker: #276AFF;
+	--neon-bunny-blue-light-faded: #a5a8ff;
 	--neon-bunny-blue-light: #2492ff;
 	--neon-bunny-blue: #0b93ff;
+	--neon-bunny-gray-lighter: #aaa;
 	--neon-bunny-gray: #7f817e;
 	--neon-bunny-green-darker-darker: #008b05;
 	--neon-bunny-green-darker: #2bb71d;
-	--neon-bunny-green-light: #7cd47d;
+	--neon-bunny-green-light: #2bb71d;
+	--neon-bunny-green-neon: #0aff04;
 	--neon-bunny-green: #00d205;
-	--neon-bunny-lime: #c3e88d;
-	--neon-bunny-magenta: #dd00ff;
-	--neon-bunny-orange-darker: #e58100;
-	--neon-bunny-orange-light: #ffc266;
+	--neon-bunny-lime-lighter: #c3e88d;
+	--neon-bunny-lime: #b2ff02;
+	--neon-bunny-magenta-neon: #FF25D9;
+	--neon-bunny-magenta: #df00df;
+	--neon-bunny-neon-green: #00ff00;
 	--neon-bunny-orange-lighter: #ff8d04;
-	--neon-bunny-orange: #ff9900;
+	--neon-bunny-orange: #e58100;
+	--neon-bunny-peach-darker: #ffb46a;
 	--neon-bunny-peach-light: #ffe4a6;
 	--neon-bunny-peach: #ffcb6b;
 	--neon-bunny-pink: #ff1190;
 	--neon-bunny-purple-light-dim: #c792ea;
-	--neon-bunny-purple-light: #da96df;
+	--neon-bunny-purple-light: #d285cc;
 	--neon-bunny-purple: #ea03ff;
-	--neon-bunny-red: #ff5370;
-	--neon-bunny-teal: #00EEFF;
+	--neon-bunny-red: #ff3229;
+	--neon-bunny-salmon: #ff6f5b;
+	--neon-bunny-teal: #80fcff;
 	--neon-bunny-white: #fff;
-	--neon-bunny-yellow-light: #ffffa2;
 	--neon-bunny-yellow-light-faded: #ffe3b8;
-	--neon-bunny-yellow: #ffff00;
+	--neon-bunny-yellow: #fef611;
 
-	/* -------------------------------------------------- Standard */
+	// -------------------------------------------------- Standard //
 
-	/* ------------------------- General purpose */
+	// ------------------------- General purpose //
 	--neon-bunny-builtin: var(--neon-bunny-purple);
 	--neon-bunny-char: var(--neon-bunny-pink);
 	--neon-bunny-class: var(--neon-bunny-magenta);
 	--neon-bunny-comment: var(--neon-bunny-gray);
 	--neon-bunny-doctag: var(--neon-bunny-blue-light);
-	--neon-bunny-keyword: var(--neon-bunny-magenta);
-	--neon-bunny-literal: var(--neon-bunny-purple-light);
+	--neon-bunny-keyword: var(--neon-bunny-blue);
+	--neon-bunny-literal: var(--neon-bunny-blue-light);
 	--neon-bunny-number: var(--neon-bunny-white);
 	--neon-bunny-operator: var(--neon-bunny-blue-light);
-	--neon-bunny-params: var(--neon-bunny-orange);
-	--neon-bunny-property: var(--neon-bunny-yellow-light-faded);
+	--neon-bunny-params: var(--neon-bunny-green-darker);
+	--neon-bunny-property: var(--neon-bunny-blue-light-faded);
 	--neon-bunny-punctuation: var(--neon-bunny-blue);
 	--neon-bunny-regex: var(--neon-bunny-peach-light);
-	--neon-bunny-string: var(--neon-bunny-green);
+	--neon-bunny-string: var(--neon-bunny-peach-darker);
 	--neon-bunny-subst: var(--neon-bunny-green-darker);
 	--neon-bunny-symbol: var(--neon-bunny-pink);
-	--neon-bunny-title-class-inherited: var(--neon-bunny-orange);
+	--neon-bunny-title-class-inherited: var(--neon-bunny-green-darker);
 	--neon-bunny-title-class: var(--neon-bunny-green-neon);
-	--neon-bunny-title-function-invoke: var(--neon-bunny-orange);
-	--neon-bunny-title-function: var(--neon-bunny-orange-light);
-	--neon-bunny-title: var(--neon-bunny-orange);
+	--neon-bunny-title-function-invoke: var(--neon-bunny-green-darker);
+	--neon-bunny-title-function: var(--neon-bunny-green-neon);
+	--neon-bunny-title: var(--neon-bunny-green-darker);
 	--neon-bunny-type: var(--neon-bunny-pink);
 	--neon-bunny-variable-constant: var(--neon-bunny-green-darker);
-	--neon-bunny-variable-language: var(--neon-bunny-orange);
+	--neon-bunny-variable-language: var(--neon-bunny-blue-light);
 	--neon-bunny-variable: var(--neon-bunny-green-darker);
 
-	/* ------------------------- Meta */
-	--neon-bunny-meta-keyword: var(--neon-bunny-purple-light);
-	--neon-bunny-meta-prompt: var(--neon-bunny-orange);
-	--neon-bunny-meta-string: var(--neon-bunny-orange);
-	--neon-bunny-meta: var(--neon-bunny-orange);
+	// ------------------------- Meta //
+	--neon-bunny-meta-keyword: var(--neon-bunny-green);
+	--neon-bunny-meta-prompt: var(--neon-bunny-blue-light);
+	--neon-bunny-meta-string: var(--neon-bunny-blue-light);
+	--neon-bunny-meta: var(--neon-bunny-blue-light);
 
-	/* ------------------------- Tags, attributes, configs */
-	--neon-bunny-attr: var(--neon-bunny-orange);
-	--neon-bunny-attribute: var(---neon-bunny-orange);
-	--neon-bunny-name: var(--neon-bunny-orange);
-	--neon-bunny-section: var(--neon-bunny-orange);
-	--neon-bunny-tag-attr: var(--neon-bunny-orange-light);
-	--neon-bunny-tag: var(--neon-bunny-orange);
+	// ------------------------- Tags, attributes, configs //
+	--neon-bunny-attr: var(--neon-bunny-green);
+	--neon-bunny-attribute: var(--neon-bunny-green);
+	--neon-bunny-name: var(--neon-bunny-blue-light);
+	--neon-bunny-section: var(--neon-bunny-green);
+	--neon-bunny-tag-attr: var(--neon-bunny-blue-light);
+	--neon-bunny-tag: var(--neon-bunny-blue-light);
 
-	/* ------------------------- Text Markup */
+	// ------------------------- Text Markup //
 	--neon-bunny-bullet: var(--neon-bunny-white);
 	--neon-bunny-code: var(--neon-bunny-white);
 	--neon-bunny-emphasis: var(--neon-bunny-white);
@@ -84,63 +90,63 @@
 	--neon-bunny-quote: var(--neon-bunny-white);
 	--neon-bunny-strong: var(--neon-bunny-white);
 
-	/* ------------------------- CSS */
+	// ------------------------- CSS //
 	--neon-bunny-css-selector-id: var(--neon-bunny-green);
-	--neon-bunny-selector-attr: var(--neon-bunny-orange);
-	--neon-bunny-selector-class: var(--neon-bunny-yellow);
-	--neon-bunny-selector-id: var(--neon-bunny-selector);
-	--neon-bunny-selector-pseudo: var(--neon-bunny-orange);
+	--neon-bunny-selector-attr: var(--neon-bunny-purple-light-dim);
+	--neon-bunny-selector-class: var(--neon-bunny-lime);
+	--neon-bunny-selector-id: var(--neon-bunny-lime);
+	--neon-bunny-selector-pseudo: var(--neon-bunny-purple-light-dim);
 	--neon-bunny-selector-tag: var(--neon-bunny-white);
 	--neon-bunny-selector: var(--neon-bunny-lime);
 
-	/* ------------------------- Diff */
+	// ------------------------- Diff //
 	--neon-bunny-addition: var(--neon-bunny-green-neon);
 	--neon-bunny-deletion: var(--neon-bunny-red);
 
-	/* -------------------------------------------------- HTML */
-	--neon-bunny-html-tag-attr: var(--neon-bunny-orange-light);
+	// -------------------------------------------------- HTML //
+	--neon-bunny-html-tag-attr: var(--neon-bunny-green);
 
-	/* -------------------------------------------------- CSS */
-	--neon-bunny-css: var(--neon-bunny-teal);
+	// -------------------------------------------------- CSS //
+	--neon-bunny-css: var(--neon-bunny-purple-light-dim);
 
-	/* ------------------------- General purpose */
+	// ------------------------- General purpose //
 	--neon-bunny-css-builtin: var(--neon-bunny-orange);
 
-	/* ------------------------- Meta */
+	// ------------------------- Meta //
 	--neon-bunny-css-meta: var(--neon-bunny-red);
 
-	/* ------------------------- Tags, attributes, configs */
+	// ------------------------- Tags, attributes, configs //
 	--neon-bunny-css-attribute: var(--neon-bunny-pink);
 
-	/* -------------------------------------------------- JSON */
+	// -------------------------------------------------- JSON //
 	--neon-bunny-json-punctuation: var(--neon-bunny-white);
 
-	/* -------------------------------------------------- JavaScript */
-	--neon-bunny-js: var(--neon-bunny-orange);
+	// -------------------------------------------------- JavaScript //
+	--neon-bunny-js: var(--neon-bunny-green-darker);
 
-	/* ------------------------- General purpose */
-	--neon-bunny-js-params-variable-language: var(--neon-bunny-orange);
+	// ------------------------- General purpose //
+	--neon-bunny-js-params-variable-language: var(--neon-bunny-green-darker);
 	--neon-bunny-js-title-class: var(--neon-bunny-orange-lighter);
-	--neon-bunny-js-variable-language: var(--neon-bunny-yellow);
+	--neon-bunny-js-variable-language: var(--neon-bunny-pink);
 
-	/* -------------------------------------------------- PHP */
-	--neon-bunny-php: var(--neon-bunny-white);
+	// -------------------------------------------------- PHP //
+	--neon-bunny-php: var(--neon-bunny-blue-light);
 
-	/* ------------------------- General purpose */
-	--neon-bunny-php-class-keyword: var(--neon-bunny-pink);
-	--neon-bunny-php-class-title: var(--neon-bunny-yellow);
-	--neon-bunny-php-function-title: var(--neon-bunny-orange-light);
-	--neon-bunny-php-keyword: var(--neon-bunny-magenta);
+	// ------------------------- General purpose //
+	--neon-bunny-php-class-keyword: var(--neon-bunny-blue-darker);
+	--neon-bunny-php-class-title: var(--neon-bunny-magenta);
+	--neon-bunny-php-function-title: var(--neon-bunny-green-neon);
+	--neon-bunny-php-keyword: var(--neon-bunny-blue-darker);
 	--neon-bunny-php-params-variable: var(--neon-bunny-green-darker);
-	--neon-bunny-php-params: var(--neon-bunny-yellow);
-	--neon-bunny-php-string: var(--neon-bunny-green-light);
-	--neon-bunny-php-title-class: var(--neon-bunny-yellow);
-	--neon-bunny-php-title-function-invoke: var(--neon-bunny-orange-light);
-	--neon-bunny-php-title: var(--neon-bunny-white);
-	--neon-bunny-php-variable: var(--neon-bunny-orange);
+	--neon-bunny-php-params: var(--neon-bunny-gray-lighter);
+	--neon-bunny-php-string: var(--neon-bunny-yellow);
+	--neon-bunny-php-title-class: var(--neon-bunny-gray-lighter);
+	--neon-bunny-php-title-function-invoke: var(--neon-bunny-green-neon);
+	--neon-bunny-php-title: var(--neon-bunny-peach);
+	--neon-bunny-php-variable: var(--neon-bunny-purple-light);
 
-	/* ------------------------- Meta */
-	--neon-bunny-php-meta: var(--neon-bunny-pink);
+	// ------------------------- Meta //
+	--neon-bunny-php-meta: var(--neon-bunny-red);
 }
 
 pre {
@@ -148,6 +154,7 @@ pre {
 		&.hljs {
 			display: block;
 			overflow-x: auto;
+			padding: 1em;
 		}
 	}
 }
@@ -193,13 +200,12 @@ pre[class*="language-"] {
 	}
 }
 
-/* Code blocks */
+// Code blocks //
 pre[class*="language-"] {
 	background: #000000;
 	color: white;
 	margin: 0.5em 0;
 	overflow: auto;
-	padding: 1em;
 }
 
 :not(pre) > code[class*="language-"] {
@@ -210,10 +216,10 @@ pre[class*="language-"] {
 	white-space: normal;
 }
 
-/* -------------------------------------------------- Standard */
+// -------------------------------------------------- Standard //
 .hljs {
 
-	/* ------------------------- General purpose */
+	// ------------------------- General purpose //
 	&-built_in {
 		//
 		color: var(--neon-bunny-builtin);
@@ -254,6 +260,7 @@ pre[class*="language-"] {
 
 	&-params {
 		color: var(--neon-bunny-params);
+		font-style: italic;
 	}
 
 	&-property {
@@ -294,7 +301,6 @@ pre[class*="language-"] {
 
 		&.function_ {
 			color: var(--neon-bunny-title-function);
-			text-decoration: underline;
 
 			&.invoke__ {
 				color: var(--neon-bunny-title-function-invoke);
@@ -316,11 +322,10 @@ pre[class*="language-"] {
 
 		&.language_ {
 			color: var(--neon-bunny-variable-language);
-			font-style: italic;
 		}
 	}
 
-	/* ------------------------- Meta */
+	// ------------------------- Meta //
 	&-meta {
 		color: var(--neon-bunny-meta);
 
@@ -338,7 +343,7 @@ pre[class*="language-"] {
 		}
 	}
 
-	/* ------------------------- Tags, attributes, configs */
+	// ------------------------- Tags, attributes, configs //
 	&-attr {
 		color: var(--neon-bunny-attr);
 	}
@@ -365,7 +370,7 @@ pre[class*="language-"] {
 		}
 	}
 
-	/* ------------------------- Text Markup */
+	// ------------------------- Text Markup //
 	&-bullet {
 		color: var(--neon-bunny-bullet);
 	}
@@ -396,7 +401,7 @@ pre[class*="language-"] {
 		font-weight: bold;
 	}
 
-	/* ------------------------- CSS */
+	// ------------------------- CSS //
 	&-selector {
 		color: var(--neon-bunny-selector);
 
@@ -421,7 +426,7 @@ pre[class*="language-"] {
 		}
 	}
 
-	/* ------------------------- DIff */
+	// ------------------------- DIff //
 	&-addition {
 		color: var(--neon-bunny-addition);
 	}
@@ -430,7 +435,7 @@ pre[class*="language-"] {
 		color: var(--neon-bunny-deletion);
 	}
 
-	/* -------------------------------------------------- HTML */
+	// -------------------------------------------------- HTML //
 	&.language-html,
 	.language-html {
 		.hljs {
@@ -442,14 +447,14 @@ pre[class*="language-"] {
 		}
 	}
 
-	/* -------------------------------------------------- CSS */
+	// -------------------------------------------------- CSS //
 	&.language-css,
 	.language-css {
 		color: var(--neon-bunny-css);
 
 		.hljs {
 
-			/* ------------------------- General purpose */
+			// ------------------------- General purpose //
 			&-built_in {
 				color: var(--neon-bunny-css-builtin);
 			}
@@ -538,7 +543,6 @@ pre[class*="language-"] {
 
 					&.invoke__ {
 						color: var(--neon-bunny-title-function-invoke);
-						//
 					}
 				}
 			}
@@ -559,7 +563,7 @@ pre[class*="language-"] {
 				}
 			}
 
-			/* ------------------------- Meta */
+			// ------------------------- Meta //
 			&-meta {
 				color: var(--neon-bunny-css-meta);
 
@@ -577,7 +581,7 @@ pre[class*="language-"] {
 				}
 			}
 
-			/* ------------------------- Tags, attributes, configs */
+			// ------------------------- Tags, attributes, configs //
 			&-attr {
 				color: var(--neon-bunny-attr);
 			}
@@ -598,7 +602,7 @@ pre[class*="language-"] {
 				color: var(--neon-bunny-tag);
 			}
 
-			/* ------------------------- Text Markup */
+			// ------------------------- Text Markup //
 			&-bullet {
 				color: var(--neon-bunny-bullet);
 			}
@@ -629,7 +633,7 @@ pre[class*="language-"] {
 				font-weight: bold;
 			}
 
-			/* ------------------------- CSS */
+			// ------------------------- CSS //
 			&-selector {
 				color: var(--neon-bunny-selector);
 
@@ -654,7 +658,7 @@ pre[class*="language-"] {
 				}
 			}
 
-			/* ------------------------- DIff */
+			// ------------------------- DIff //
 			&-addition {
 				color: var(--neon-bunny-addition);
 			}
@@ -665,7 +669,7 @@ pre[class*="language-"] {
 		}
 	}
 
-	/* -------------------------------------------------- JSON */
+	// -------------------------------------------------- JSON //
 	&.language-json,
 	.language-json {
 		.hljs {
@@ -675,7 +679,7 @@ pre[class*="language-"] {
 		}
 	}
 
-	/* -------------------------------------------------- JavaScript */
+	// -------------------------------------------------- JavaScript //
 	&.language-javascript,
 	&.language-js,
 	.language-javascript,
@@ -684,7 +688,7 @@ pre[class*="language-"] {
 
 		.hljs {
 
-			/* ------------------------- General purpose */
+			// ------------------------- General purpose //
 			&-built_in {
 				//
 				color: var(--neon-bunny-builtin);
@@ -796,7 +800,7 @@ pre[class*="language-"] {
 				}
 			}
 
-			/* ------------------------- Meta */
+			// ------------------------- Meta //
 			&-meta {
 				color: var(--neon-bunny-meta);
 
@@ -814,7 +818,7 @@ pre[class*="language-"] {
 				}
 			}
 
-			/* ------------------------- Tags, attributes, configs */
+			// ------------------------- Tags, attributes, configs //
 			&-attr {
 				color: var(--neon-bunny-attr);
 			}
@@ -835,7 +839,7 @@ pre[class*="language-"] {
 				color: var(--neon-bunny-tag);
 			}
 
-			/* ------------------------- Text Markup */
+			// ------------------------- Text Markup //
 			&-bullet {
 				color: var(--neon-bunny-bullet);
 			}
@@ -866,7 +870,7 @@ pre[class*="language-"] {
 				font-weight: bold;
 			}
 
-			/* ------------------------- CSS */
+			// ------------------------- CSS //
 			&-selector {
 				color: var(--neon-bunny-selector);
 
@@ -891,7 +895,7 @@ pre[class*="language-"] {
 				}
 			}
 
-			/* ------------------------- DIff */
+			// ------------------------- DIff //
 			&-addition {
 				color: var(--neon-bunny-addition);
 			}
@@ -902,14 +906,14 @@ pre[class*="language-"] {
 		}
 	}
 
-	/* -------------------------------------------------- PHP */
+	// -------------------------------------------------- PHP //
 	&.language-php,
 	.language-php {
 		color: var(--neon-bunny-php);
 
 		.hljs {
 
-			/* ------------------------- General purpose */
+			// ------------------------- General purpose //
 			&-built_in {
 				//
 				color: var(--neon-bunny-builtin);
@@ -969,6 +973,7 @@ pre[class*="language-"] {
 
 			&-params {
 				color: var(--neon-bunny-php-params);
+				font-style: italic;
 
 				.hljs {
 					&-variable {
@@ -1006,6 +1011,7 @@ pre[class*="language-"] {
 
 				&.class_ {
 					color: var(--neon-bunny-php-title-class);
+					font-style: italic;
 
 					&.inherited__ {
 						color: var(--neon-bunny-title-class-inherited);
@@ -1038,7 +1044,7 @@ pre[class*="language-"] {
 				}
 			}
 
-			/* ------------------------- Meta */
+			// ------------------------- Meta //
 			&-meta {
 				color: var(--neon-bunny-php-meta);
 
@@ -1056,7 +1062,7 @@ pre[class*="language-"] {
 				}
 			}
 
-			/* ------------------------- Tags, attributes, configs */
+			// ------------------------- Tags, attributes, configs //
 			&-attr {
 				color: var(--neon-bunny-attr);
 			}
@@ -1077,7 +1083,7 @@ pre[class*="language-"] {
 				color: var(--neon-bunny-tag);
 			}
 
-			/* ------------------------- Text Markup */
+			// ------------------------- Text Markup //
 			&-bullet {
 				color: var(--neon-bunny-bullet);
 			}
@@ -1108,7 +1114,7 @@ pre[class*="language-"] {
 				font-weight: bold;
 			}
 
-			/* ------------------------- CSS */
+			// ------------------------- CSS //
 			&-selector {
 				color: var(--neon-bunny-selector);
 
@@ -1133,7 +1139,7 @@ pre[class*="language-"] {
 				}
 			}
 
-			/* ------------------------- DIff */
+			// ------------------------- DIff //
 			&-addition {
 				color: var(--neon-bunny-addition);
 			}
