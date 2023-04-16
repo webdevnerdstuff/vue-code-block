@@ -196,7 +196,7 @@
 
 	/* brown-paper */
 	--v-cb-tab-highlightjs-brown-paper-bkg: 35 22% 64%;
-	--v-cb-tab-highlightjs-brown-paper-bkg-img: url('./brown-papersq.png');
+	--v-cb-tab-highlightjs-brown-paper-bkg-img: url('brown-papersq.png');
 	--v-cb-tab-highlightjs-brown-paper-text: 233 32% 31%;
 	--v-cb-tab-highlightjs-brown-paper-icon: 207 100% 30%;
 	--v-cb-tab-highlightjs-brown-paper-icon-success: var(--v-cb-success);
@@ -486,7 +486,7 @@
 
 	/* pojoaque */
 	--v-cb-tab-highlightjs-pojoaque-bkg: 72 11% 9%;
-	--v-cb-tab-highlightjs-pojoaque-bkg-img: url('./pojoaque.jpg') left top;
+	--v-cb-tab-highlightjs-pojoaque-bkg-img: url('pojoaque.jpg') left top;
 	--v-cb-tab-highlightjs-pojoaque-text: 50 52% 71%;
 	--v-cb-tab-highlightjs-pojoaque-icon: 36 100% 62%;
 	--v-cb-tab-highlightjs-pojoaque-icon-success: 149 32% 41%;
