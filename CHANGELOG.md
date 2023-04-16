@@ -24,6 +24,7 @@ All notable changes to the "vue3-code-block" plugin will be documented in this f
 ## v2.1.0
 2023-04-16
 [main] (@webdevnerdstuff)
+* Changing component to use the min version of the default themes.
 * Reorganizing default themes to new location.
   * This is a breaking change if you are importing the default themes from the `node_modules` folder. You will need to update your import paths to the new location.
   * If you are using the default themes without using `import` then you will not be affected by this change.
