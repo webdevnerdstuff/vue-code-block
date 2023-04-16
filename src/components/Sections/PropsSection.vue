@@ -158,6 +158,12 @@ const componentProps = {
 		default: false,
 		description: 'To show the run tab.',
 	},
+	runText: {
+		type: 'String',
+		required: false,
+		default: 'Run',
+		description: 'The text to be displayed on the run tab.',
+	},
 	tabGap: {
 		type: 'String',
 		required: false,
