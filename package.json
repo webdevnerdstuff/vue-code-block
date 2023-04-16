@@ -10,6 +10,8 @@
 		"dev": "vite",
 		"watch": "pnpm dev",
 		"play": "sh src/playground/configs/build.sh && NODE_ENV=playground vite",
+		"sass": "sass --watch --no-source-map src/plugin/themes/scss/:src/plugin/themes/css",
+		"sass:min": "sass --style compressed --watch --no-source-map src/plugin/themes/scss/:src/plugin/themes/css/min",
 		"bundle": "rollup -c --bundleConfigAsCjs",
 		"build": "vite build",
 		"predeploy": "npm run build",
