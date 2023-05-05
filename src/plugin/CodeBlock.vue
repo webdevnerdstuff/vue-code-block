@@ -1,18 +1,27 @@
 <template>
-	<div class="v-code-block v-code-block--mb-5" :class="codeBlockClasses">
+	<div
+		class="v-code-block v-code-block--mb-5"
+		:class="codeBlockClasses"
+	>
 		<div
 			v-if="label || tabs || slots.label || slots.tabs"
 			class="v-code-block--header"
 			:style="headerStyles"
 		>
-			<div class="v-code-block--label v-code-block--pb-1" :class="labelClasses">
+			<div
+				class="v-code-block--label v-code-block--pb-1"
+				:class="labelClasses"
+			>
 				<template v-if="slots.label">
 					<slot name="label" />
 				</template>
 				<template v-else>{{ props.label }}</template>
 			</div>
 
-			<div class="v-code-block--tabs" :style="tabGroupStyle">
+			<div
+				class="v-code-block--tabs"
+				:style="tabGroupStyle"
+			>
 				<template v-if="slots.tabs">
 					<slot name="tabs" />
 				</template>
@@ -658,7 +667,7 @@ function runCode(): void {
 </script>
 
 <style lang="scss">
-@import './styles/utilities';
+@use './styles/utilities';
 
 .v-code-block {
 	&- {
@@ -676,5 +685,5 @@ function runCode(): void {
 </style>
 
 <style lang="scss" scoped>
-@import './styles/main';
+@use './styles/main';
 </style>
