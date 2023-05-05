@@ -16,7 +16,10 @@
 				(<code>neon-bunny</code>,
 				<code>neon-bunny-carrot</code>) built into the component that are based
 				off of my own VSCode
-				<a :href="links.neonBunnyTheme" target="_blank">Neon Bunny Theme</a>.
+				<a
+					:href="links.neonBunnyTheme"
+					target="_blank"
+				>Neon Bunny Theme</a>.
 			</p>
 
 			<CodeBlock
@@ -32,28 +35,24 @@
 			<p>
 				Another other is to use the main
 				<a
-					:href="
-						selectedLibrary.id === 'prism'
-							? prismLinks.homepage
-							: highlightJsLinks.homepage
-					"
+					:href="selectedLibrary.id === 'prism'
+						? prismLinks.homepage
+						: highlightJsLinks.homepage
+						"
 					target="_blank"
-					>{{ selectedLibrary.label }}</a
-				>
+				>{{ selectedLibrary.label }}</a>
 				themes. If you use the component to load the theme, you just need to set
 				the
 				<a href="#props-theme-option">theme</a> prop to the desired theme. When
 				you load it this way, the component will use a <code>fetch</code> call
 				to load them themes from the
 				<a
-					:href="
-						selectedLibrary.id === 'prism'
-							? prismLinks.cdn
-							: highlightJsLinks.cdn
-					"
+					:href="selectedLibrary.id === 'prism'
+						? prismLinks.cdn
+						: highlightJsLinks.cdn
+						"
 					target="_blank"
-					>jsDelivr CDN</a
-				>. Fetching the {{ selectedLibrary.label }} themes from a CDN was the
+				>jsDelivr CDN</a>. Fetching the {{ selectedLibrary.label }} themes from a CDN was the
 				best method I could figure out at this time to dynamically load the
 				themes, while making it easier for you to use them. You can also link to
 				another CDN of your choice.
@@ -92,7 +91,10 @@
 
 			<p v-if="selectedLibrary.id === 'prism'">
 				Themes from their
-				<a :href="prismLinks.themes" target="_blank">Prism themes</a>
+				<a
+					:href="prismLinks.themes"
+					target="_blank"
+				>Prism themes</a>
 				repository can be used this way as well.
 				<span v-html="tabIconCopy"></span>
 			</p>
@@ -115,11 +117,15 @@
 			<CodeBlock
 				:code="examples[selectedLibrary.id].importCss"
 				:highlightjs="selectedLibrary.id === 'highlightjs'"
-				label="Using import (css/sass/scss)"
+				label="Using <code>@use</code> (css/sass/scss)"
 				lang="html"
 				:prismjs="selectedLibrary.id === 'prism'"
 				:theme="selectedTheme"
-			/>
+			>
+				<template #label>
+					Using <code>@use</code> (css/sass/scss)
+				</template>
+			</CodeBlock>
 		</div>
 	</div>
 </template>
@@ -153,7 +159,7 @@ const examples = {
   theme="neon-bunny-carrot"
 />`,
 		importCss: `<style>
-  @import 'prismjs/themes/prism-coy.css';
+  @use 'prismjs/themes/prism-coy.css';
 <\/style>`,
 		importJs: `<script setup>
   import 'prismjs/themes/prism-coy.css';
@@ -190,7 +196,7 @@ const examples = {
   theme="neon-bunny-carrot"
 />`,
 		importCss: `<style>
-  @import 'highlight.js/styles/base16/onedark.css';
+  @use 'highlight.js/styles/base16/onedark.css';
 <\/style>`,
 		importJs: `<script setup>
   import 'highlight.js/styles/base16/onedark.css';
