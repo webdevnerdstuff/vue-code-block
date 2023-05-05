@@ -30,3 +30,8 @@ All notable changes to the "vue3-code-block" plugin will be documented in this f
   * If you are using the default themes without using `import` then you will not be affected by this change.
 * Fixing HighlightJS default theme style causing icon to appear over a scrollbar when present.
 * Adding sass scripts to package.json to compile scss files to css.
+
+## v2.1.1
+2023-04-16
+[main] (@webdevnerdstuff)
+* Changing importing of css/scss/sass to use @use instead of @import.
