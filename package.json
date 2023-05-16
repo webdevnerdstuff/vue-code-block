@@ -1,6 +1,6 @@
 {
 	"name": "vue3-code-block",
-	"version": "2.1.1",
+	"version": "2.1.2",
 	"description": "Vue 3 CodeBlock - Highlight your code with ease using this syntax highlighting component powered by PrismJS or Highlight.js.",
 	"private": false,
 	"main": "dist/vue3-code-block.js",
@@ -20,7 +20,7 @@
 		"lint": "eslint src/**/*.{ts,vue} --max-warnings 4"
 	},
 	"engines": {
-		"node": "19.0.1"
+		"node": "^19.0.1"
 	},
 	"packageManager": "pnpm@7.14.2",
 	"lint-staged": {
