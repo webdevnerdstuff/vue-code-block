@@ -51,5 +51,5 @@ defineProps({
 </script>
 
 <style lang="scss">
-@use './styles/themeStyles';
+@use '../styles/themeStyles';
 </style>

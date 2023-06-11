@@ -37,13 +37,13 @@ export interface UseCopyButtonClasses {
     (options: {
         copyStatus: MaybeRef<string>;
         isMobile: MaybeRef<boolean>;
-        persistentCopyButton: MaybeRef<boolean>;
+        persistentCopyButton: MaybeRef<Props['persistentCopyButton']>;
     }): object;
 }
 export interface UseIconClasses {
     (options: {
         copyStatus: MaybeRef<string>;
-        highlightjs: MaybeRef<boolean>;
+        highlightjs: MaybeRef<Props['highlightjs']>;
         useTheme: UseTheme;
     }): object;
 }
@@ -54,7 +54,7 @@ export interface UseLabelClasses {
 }
 export interface UseTabClasses {
     (options: {
-        highlightjs: MaybeRef<boolean>;
+        highlightjs: MaybeRef<Props['highlightjs']>;
         useTheme: UseTheme;
     }): object;
 }
