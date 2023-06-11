@@ -2,7 +2,7 @@ import { unref as o, defineComponent as vn, openBlock as N, createElementBlock a
 import Rn from "ua-parser-js";
 /**
  * @name vue3-code-block
- * @version 2.2.7
+ * @version 2.2.8
  * @description Vue 3 CodeBlock - Highlight your code with ease using this syntax highlighting component powered by PrismJS or Highlight.js.
  * @author WebDevNerdStuff & Bunnies... lots and lots of bunnies! <webdevnerdstuff@gmail.com> (https://webdevnerdstuff.com)
  * @copyright Copyright 2023, WebDevNerdStuff
@@ -232,7 +232,7 @@ const ne = { class: "v-code-block--button-copy" }, ee = { class: "v-code-block--
         const l = n.code.toString();
         g.value = JSON.stringify(JSON.parse(l), null, n.indent);
       }
-    })(), n.highlightjs && import("./core-bc78e1f8.mjs").then((l) => {
+    })(), n.highlightjs && import("./core-412bda10.mjs").then((l) => {
       t = l.default, t.registerLanguage("css", Fn), t.registerLanguage("html", Zn), t.registerLanguage("javascript", Vn), t.registerLanguage("php", Jn), t.registerLanguage("plain", Qn), t.registerLanguage("typescript", Yn), E.value = t.highlight(g.value, { language: n.lang }).value;
     }).catch((l) => {
       console.error("Highlight.js import:", { err: l });
