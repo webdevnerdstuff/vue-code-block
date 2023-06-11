@@ -14,6 +14,4 @@ const install = (app: App, options: Props) => {
 
 CodeBlock.install = install;
 
-export { CodeBlock };
-
 export default CodeBlock as unknown as Plugin;
