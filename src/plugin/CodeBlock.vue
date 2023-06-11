@@ -77,19 +77,19 @@
 				:class="`language-${props.lang}`"
 				:style="preTagStyles"
 			>
-												<code
-													v-if="prismPlugin"
-													:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
-													:style="codeTagStyles"
-													v-text="computedCode"
-												></code>
-												<code
-													v-else
-													:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
-													:style="codeTagStyles"
-													v-html="renderedCode"
-												></code>
-															</pre>
+													<code
+														v-if="prismPlugin"
+														:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
+														:style="codeTagStyles"
+														v-text="computedCode"
+													></code>
+													<code
+														v-else
+														:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
+														:style="codeTagStyles"
+														v-html="renderedCode"
+													></code>
+																</pre>
 		</div>
 	</div>
 </template>
@@ -114,7 +114,7 @@ import {
 	useTabGroupStyles,
 } from './composables/styles';
 
-import StatusIcons from '@/plugin/StatusIcons.vue';
+import StatusIcons from '@/plugin/components/StatusIcons.vue';
 import {
 	neonBunnyCarrotThemeMin,
 	neonBunnyThemeMin,
