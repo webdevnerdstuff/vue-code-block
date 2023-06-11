@@ -1,8 +1,5 @@
 <template>
-	<div
-		class="v-code-block v-code-block--mb-5"
-		:class="codeBlockClasses"
-	>
+	<div :class="codeBlockClasses">
 		<div
 			v-if="label || tabs || slots.label || slots.tabs"
 			class="v-code-block--header"
@@ -80,36 +77,43 @@
 				:class="`language-${props.lang}`"
 				:style="preTagStyles"
 			>
-<code
-	v-if="prismPlugin"
-  :class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
-  :style="codeTagStyles"
-	v-text="computedCode"
-></code>
-<code
-	v-else
-  :class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
-  :style="codeTagStyles"
-  v-html="renderedCode"
-></code>
-			</pre>
+												<code
+													v-if="prismPlugin"
+													:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
+													:style="codeTagStyles"
+													v-text="computedCode"
+												></code>
+												<code
+													v-else
+													:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
+													:style="codeTagStyles"
+													v-html="renderedCode"
+												></code>
+															</pre>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import {
-	computed,
-	inject,
-	onBeforeMount,
-	onMounted,
-	ref,
-	useSlots,
-	watch,
-	StyleValue,
-} from 'vue';
+import type { StyleValue } from 'vue';
 import UAParser from 'ua-parser-js';
 import { Props } from '@/types';
+
+import { AllProps } from './utils/props';
+import {
+	useCodeBlockClasses,
+	useCopyButtonClasses,
+	useIconClasses,
+	useLabelClasses,
+	useTabClasses,
+} from './composables/classes';
+import {
+	useCodeTagStyles,
+	useHeaderStyles,
+	usePreTagStyles,
+	useTabGroupStyles,
+} from './composables/styles';
+
 import StatusIcons from '@/plugin/StatusIcons.vue';
 import {
 	neonBunnyCarrotThemeMin,
@@ -117,6 +121,8 @@ import {
 	neonBunnyCarrotHighlightThemeMin,
 	neonBunnyHighlightThemeMin
 } from './themes';
+
+import hljs from 'highlight.js/lib/core';
 import langCss from 'highlight.js/lib/languages/css';
 import langJavascript from 'highlight.js/lib/languages/javascript';
 import langHtml from 'highlight.js/lib/languages/xml';
@@ -135,134 +141,15 @@ const codeBlockGlobalOptions = inject<Props>('codeBlockGlobalOptions');
 
 
 // -------------------------------------------------- Props //
-const props = defineProps({
-	browserWindow: {
-		type: Boolean,
-		required: false,
-		default: false,
-	},
-	code: {
-		type: [Object, Array, String, Number],
-		required: true,
-	},
-	codeBlockRadius: {
-		type: String,
-		required: false,
-		default: '0.5rem',
-	},
-	copyButton: {
-		type: Boolean,
-		required: false,
-		default: true,
-	},
-	copyIcons: {
-		type: Boolean,
-		required: false,
-		default: true,
-	},
-	copyTab: {
-		type: Boolean,
-		required: false,
-		default: true,
-	},
-	copyFailedText: {
-		type: String,
-		required: false,
-		default: 'Copy failed!',
-	},
-	copyText: {
-		type: String,
-		required: false,
-		default: 'Copy Code',
-	},
-	copySuccessText: {
-		type: String,
-		required: false,
-		default: 'Copied!',
-	},
-	floatingTabs: {
-		type: Boolean,
-		required: false,
-		default: true,
-	},
-	height: {
-		type: [String, Number],
-		required: false,
-		default: 'auto',
-	},
-	highlightjs: {
-		type: Boolean,
-		required: false,
-		default: false,
-	},
-	indent: {
-		type: Number,
-		required: false,
-		default: 2,
-	},
-	label: {
-		type: String,
-		required: false,
-		default: '',
-	},
-	lang: {
-		type: String,
-		required: false,
-		default: 'javascript',
-	},
-	maxHeight: {
-		type: [String, Number],
-		required: false,
-		default: 'auto',
-	},
-	persistentCopyButton: {
-		type: Boolean,
-		required: false,
-		default: false,
-	},
-	prismjs: {
-		type: Boolean,
-		required: false,
-		default: false,
-	},
-	prismPlugin: {
-		type: Boolean,
-		required: false,
-		default: false,
-	},
-	runTab: {
-		type: Boolean,
-		required: false,
-		default: false,
-	},
-	runText: {
-		type: String,
-		required: false,
-		default: 'Run',
-	},
-	tabGap: {
-		type: String,
-		required: false,
-		default: '0.25rem',
-	},
-	tabs: {
-		type: Boolean,
-		required: false,
-		default: false,
-	},
-	theme: {
-		type: [String, Boolean],
-		required: false,
-		default: 'neon-bunny',
-	},
-});
+const props = withDefaults(defineProps<Props>(), { ...AllProps });
 
 
 // -------------------------------------------------- Data //
-let hljs;
-let prismModule;
 
-const convertedCode = ref(null);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let prismModule: any;
+
+const convertedCode = ref<string | unknown>(null);
 const copyStatus = ref<string>('copy');
 const copyTextValue = ref<string>('');
 const copying = ref<boolean>(false);
@@ -287,91 +174,82 @@ const computedCode = computed<unknown>(() => {
 
 	// We need to compute the code for Prism plugins to work //
 	if (props.prismjs && props.prismPlugin) {
-		html = convertedCode.value;
+		html = convertedCode.value as string;
 	}
 
 	return html;
 });
 
-const codeBlockClasses = computed<string>(() => {
-	let classes = isMobile.value ? 'v-code-block--mobile' : '';
-	classes += props.prismjs ? ' v-code-block--prismjs' : ' v-code-block--highlightjs';
 
-	return classes;
-});
-
-const codeTagStyles = computed<StyleValue>(() => {
-	const width = useTheme.value === 'coy' && isLoading.value === false ? '100%' : '';
-	return { width };
+// -------------------------------------------------- Classes //
+const codeBlockClasses = computed<object>(() => {
+	return useCodeBlockClasses({
+		isMobile,
+		isPrism: props.prismjs,
+	});
 });
 
 const copyButtonClasses = computed<object>(() => {
-	return {
-		'v-code-block--code-copy-button': true,
-		'v-code-block--code-copy-button-mobile': isMobile.value,
-		[`v-code-block--code-copy-button-persist`]: props.persistentCopyButton,
-		[`v-code-block--code-copy-button-status-${copyStatus.value}`]: true,
-	};
-});
-
-const headerStyles = computed<StyleValue>(() => {
-	return {
-		bottom: props.floatingTabs ? '1px' : '0',
-		gap: convertToUnit(props.tabGap),
-	};
+	return useCopyButtonClasses({
+		copyStatus,
+		isMobile,
+		persistentCopyButton: props.persistentCopyButton,
+	});
 });
 
 const iconClasses = computed<object>(() => {
-	const activeLibrary = props.highlightjs ? 'highlightjs' : 'prism';
-	const theme = useTheme.value === '' || useTheme.value === 'prism' ? 'default' : useTheme.value;
-
-	const classes = {
-		'v-code-block--me-1': true,
-		[`v-code-block--tab-${activeLibrary}-${theme}-icon`]: true,
-		[`v-code-block--button-copy-icon-status-${copyStatus.value}`]: true,
-		[`v-code-block--tab-${activeLibrary}-${theme}-icon-status-${copyStatus.value}`]: true,
-	};
-	return classes;
+	return useIconClasses({
+		copyStatus,
+		highlightjs: props.highlightjs,
+		useTheme,
+	});
 });
 
-const labelClasses = computed<string>(() => {
-	return isMobile.value ? 'v-code-block--label-mobile' : '';
-});
-
-const preTagStyles = computed<StyleValue>(() => {
-	const radius = props.codeBlockRadius;
-	let borderRadius = `${radius} 0 ${radius} ${radius} !important`;
-
-	if (!props.tabs || (!props.copyTab && !props.runTab)) {
-		borderRadius = radius;
-	}
-
-	const display = useTheme.value !== 'funky' ? 'flex' : 'block';
-
-	return {
-		borderRadius,
-		display,
-		height: convertToUnit(props.height),
-		maxHeight: convertToUnit(props.maxHeight),
-		overflow: 'auto',
-	};
+const labelClasses = computed<object>(() => {
+	return useLabelClasses({
+		isMobile
+	});
 });
 
 const tabClasses = computed<object>(() => {
-	const activeLibrary = props.highlightjs ? 'highlightjs' : 'prism';
-	const theme = useTheme.value === '' || useTheme.value === 'prism' ? 'default' : useTheme.value;
+	return useTabClasses({
+		highlightjs: props.highlightjs,
+		useTheme,
+	});
+});
 
-	const classes = {
-		[`v-code-block--tab-${theme}`]: true,
-		[`v-code-block--tab-${activeLibrary}-${theme}`]: true,
-	};
-	return classes;
+
+// -------------------------------------------------- Styles //
+const codeTagStyles = computed<StyleValue>(() => {
+	return useCodeTagStyles({
+		isLoading,
+		useTheme,
+	});
+});
+
+const headerStyles = computed<StyleValue>(() => {
+	return useHeaderStyles({
+		floatingTabs: props.floatingTabs,
+		tabGap: props.tabGap
+	});
+});
+
+const preTagStyles = computed<StyleValue>(() => {
+	return usePreTagStyles({
+		copyTab: props.copyTab,
+		height: props.height,
+		maxHeight: props.maxHeight,
+		radius: props.codeBlockRadius,
+		runTab: props.runTab,
+		tabs: props.tabs,
+		useTheme,
+	});
 });
 
 const tabGroupStyle = computed<StyleValue>(() => {
-	return {
-		gap: convertToUnit(props.tabGap),
-	};
+	return useTabGroupStyles({
+		tabGap: props.tabGap,
+	});
 });
 
 
@@ -439,17 +317,6 @@ function convertCode(): void {
 	return;
 }
 
-function convertToUnit(str: string | number, unit = 'px'): string {
-	if (str == null || str === '') {
-		return undefined;
-	}
-	else if (!+str) {
-		return String(str);
-	}
-
-	return `${Number(str)}${unit}`;
-}
-
 function copyCode(): void {
 	if (copying.value) {
 		return;
@@ -457,7 +324,7 @@ function copyCode(): void {
 
 	copying.value = true;
 
-	navigator.clipboard.writeText(convertedCode.value).then(() => {
+	navigator.clipboard.writeText(convertedCode.value as string).then(() => {
 		copyTextValue.value = props.copySuccessText;
 		copyStatus.value = 'success';
 		emit('update:copy-status', copyStatus.value);
@@ -478,10 +345,10 @@ function copyCode(): void {
 }
 
 function loadTheme(): void {
-	let selectedTheme = null;
+	let selectedTheme = '';
 	const activeLibrary = props.highlightjs ? 'highlightjs' : 'prism';
 
-	const head = document.getElementsByTagName('head')[0];
+	const head = document.getElementsByTagName('head')[0] as HTMLHeadElement;
 	const themeStyles = document.createElement('style');
 	const loadedTheme = document.body.getAttribute('data-v-code-block-theme');
 	let themeId = `v-code-block--theme-${useTheme.value}-${activeLibrary}`;
@@ -629,20 +496,12 @@ function renderCode(): void {
 	convertCode();
 
 	if (props.highlightjs) {
-		import('highlight.js/lib/core')
-			.then((module) => {
-				hljs = module.default;
+		hljs.registerLanguage('javascript', langJavascript);
+		hljs.registerLanguage('css', langCss);
+		hljs.registerLanguage('html', langHtml);
+		hljs.registerLanguage('plain', langPlaintext);
 
-				hljs.registerLanguage('javascript', langJavascript);
-				hljs.registerLanguage('css', langCss);
-				hljs.registerLanguage('html', langHtml);
-				hljs.registerLanguage('plain', langPlaintext);
-
-				renderedCode.value = hljs.highlight(convertedCode.value, { language: props.lang }).value;
-			})
-			.catch((err) => {
-				console.error('Highlight.js import:', { err });
-			});
+		renderedCode.value = hljs.highlight(convertedCode.value as string, { language: props.lang }).value;
 	}
 
 	if (props.prismjs) {
