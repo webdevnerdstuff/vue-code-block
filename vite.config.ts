@@ -30,7 +30,7 @@ export default defineConfig({
 			],
 		}),
 		AutoImport({
-			dts: true,
+			dts: false,
 			imports: [
 				'vue',
 				{
