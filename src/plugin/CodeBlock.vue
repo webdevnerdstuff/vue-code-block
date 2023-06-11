@@ -77,19 +77,19 @@
 				:class="`language-${props.lang}`"
 				:style="preTagStyles"
 			>
-						<code
-							v-if="prismPlugin"
-							:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
-							:style="codeTagStyles"
-							v-text="computedCode"
-						></code>
-						<code
-							v-else
-							:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
-							:style="codeTagStyles"
-							v-html="renderedCode"
-						></code>
-					</pre>
+									<code
+										v-if="prismPlugin"
+										:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
+										:style="codeTagStyles"
+										v-text="computedCode"
+									></code>
+									<code
+										v-else
+										:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
+										:style="codeTagStyles"
+										v-html="renderedCode"
+									></code>
+								</pre>
 		</div>
 	</div>
 </template>
@@ -255,7 +255,7 @@ const tabGroupStyle = computed<StyleValue>(() => {
 
 
 // -------------------------------------------------- Watch //
-watch(props, () => {
+watch(props as Props, () => {
 	if (props.code) {
 		renderCode();
 	}
