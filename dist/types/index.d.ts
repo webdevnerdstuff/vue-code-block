@@ -1,6 +1,6 @@
 import { CSSProperties, MaybeRef } from 'vue';
 export type UseTheme = MaybeRef<string | boolean>;
-export type Props = {
+export interface Props {
     browserWindow?: boolean;
     code?: object | [] | string | number;
     codeBlockRadius?: string;
@@ -17,6 +17,7 @@ export type Props = {
     indent?: number;
     label?: string;
     lang?: string;
+    languages?: string[];
     maxHeight?: string | number;
     persistentCopyButton?: boolean;
     prismjs?: boolean;
@@ -26,7 +27,7 @@ export type Props = {
     tabGap?: string | number;
     tabs?: boolean;
     theme?: string | boolean;
-};
+}
 export interface UseCodeBlockClasses {
     (options: {
         isMobile: MaybeRef<boolean>;
