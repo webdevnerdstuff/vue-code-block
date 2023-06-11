@@ -3,7 +3,7 @@
 	"version": "2.2.0",
 	"description": "Vue 3 CodeBlock - Highlight your code with ease using this syntax highlighting component powered by PrismJS or Highlight.js.",
 	"private": false,
-	"main": "dist/vue3-code-block.js.cjs.js",
+	"main": "dist/vue3-code-block.cjs.js",
 	"module": "dist/vue3-code-block.es.js",
 	"types": "dist/types/index.d.ts",
 	"scripts": {
