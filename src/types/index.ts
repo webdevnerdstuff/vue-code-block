@@ -28,6 +28,7 @@ export type Props = {
 	indent?: number;
 	label?: string;
 	lang?: string;
+	languages?: string[];
 	maxHeight?: string | number;
 	persistentCopyButton?: boolean;
 	prismjs?: boolean;

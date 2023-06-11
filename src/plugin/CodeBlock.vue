@@ -77,19 +77,19 @@
 				:class="`language-${props.lang}`"
 				:style="preTagStyles"
 			>
-					<code
-						v-if="prismPlugin"
-						:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
-						:style="codeTagStyles"
-						v-text="computedCode"
-					></code>
-					<code
-						v-else
-						:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
-						:style="codeTagStyles"
-						v-html="renderedCode"
-					></code>
-				</pre>
+						<code
+							v-if="prismPlugin"
+							:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
+							:style="codeTagStyles"
+							v-text="computedCode"
+						></code>
+						<code
+							v-else
+							:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
+							:style="codeTagStyles"
+							v-html="renderedCode"
+						></code>
+					</pre>
 		</div>
 	</div>
 </template>
@@ -121,11 +121,13 @@ import {
 	neonBunnyHighlightThemeMin
 } from './themes';
 
-import hljs from 'highlight.js/lib/core';
 import langCss from 'highlight.js/lib/languages/css';
-import langJavascript from 'highlight.js/lib/languages/javascript';
 import langHtml from 'highlight.js/lib/languages/xml';
+import langJavascript from 'highlight.js/lib/languages/javascript';
+import langPhp from 'highlight.js/lib/languages/php';
 import langPlaintext from 'highlight.js/lib/languages/plaintext';
+import langTypescript from 'highlight.js/lib/languages/typescript';
+import { HLJSApi } from 'highlight.js';
 
 
 const highlightJsVersion = '11.8.0';
@@ -136,7 +138,6 @@ const prismThemesVersion = '1.9.0';
 // -------------------------------------------------- Emits & Slots & Injects //
 const emit = defineEmits(['run', 'update:copy-status']);
 const slots = useSlots();
-const codeBlockGlobalOptions = inject<Props>('codeBlockGlobalOptions');
 
 
 // -------------------------------------------------- Props //
@@ -145,6 +146,7 @@ const props = withDefaults(defineProps<Props>(), { ...AllProps });
 
 // -------------------------------------------------- Data //
 
+let hljs: HLJSApi;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let prismModule: any;
 
@@ -283,7 +285,7 @@ onBeforeMount(() => {
 });
 
 onMounted(() => {
-	useTheme.value = codeBlockGlobalOptions?.theme || props.theme;
+	useTheme.value = props.theme;
 	loadTheme();
 	mobileCheck();
 	renderCode();
@@ -495,12 +497,22 @@ function renderCode(): void {
 	convertCode();
 
 	if (props.highlightjs) {
-		hljs.registerLanguage('javascript', langJavascript);
-		hljs.registerLanguage('css', langCss);
-		hljs.registerLanguage('html', langHtml);
-		hljs.registerLanguage('plain', langPlaintext);
+		import('highlight.js/lib/core')
+			.then((module) => {
+				hljs = module.default;
 
-		renderedCode.value = hljs.highlight(convertedCode.value as string, { language: props.lang }).value;
+				hljs.registerLanguage('css', langCss);
+				hljs.registerLanguage('html', langHtml);
+				hljs.registerLanguage('javascript', langJavascript);
+				hljs.registerLanguage('php', langPhp);
+				hljs.registerLanguage('plain', langPlaintext);
+				hljs.registerLanguage('typescript', langTypescript);
+
+				renderedCode.value = hljs.highlight(convertedCode.value as string, { language: props.lang }).value;
+			})
+			.catch((err) => {
+				console.error('Highlight.js import:', { err });
+			});
 	}
 
 	if (props.prismjs) {
