@@ -31,6 +31,6 @@ const asPluginGlobalCode = `import { createApp } from 'vue';
 import CodeBlock from 'vue3-code-block';
 
 createApp()
-  .use(CodeBlock)
+  .component('CodeBlock', CodeBlock)
   .mount('#app');`;
 </script>
