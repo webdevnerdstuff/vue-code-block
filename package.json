@@ -70,13 +70,11 @@
 		"webdevnerdstuff",
 		"wdns"
 	],
-	"peerDependencies": {
-		"vue": "^3.2.47"
-	},
 	"dependencies": {
 		"highlight.js": "^11.8.0",
 		"prismjs": "^1.29.0",
-		"ua-parser-js": "^1.0.35"
+		"ua-parser-js": "^1.0.35",
+		"vue": "^3.3.4"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.22.5",
@@ -134,7 +132,6 @@
 		"vite-plugin-eslint": "^1.8.1",
 		"vite-plugin-static-copy": "^0.16.0",
 		"vite-plugin-stylelint": "^4.2.0",
-		"vue": "^3.3.4",
 		"vue-tsc": "^1.6.5"
 	}
 }
