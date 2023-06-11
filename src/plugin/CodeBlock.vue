@@ -77,19 +77,19 @@
 				:class="`language-${props.lang}`"
 				:style="preTagStyles"
 			>
-				<code
-					v-if="prismPlugin"
-					:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
-					:style="codeTagStyles"
-					v-text="computedCode"
-				></code>
-				<code
-					v-else
-					:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
-					:style="codeTagStyles"
-					v-html="renderedCode"
-				></code>
-			</pre>
+					<code
+						v-if="prismPlugin"
+						:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
+						:style="codeTagStyles"
+						v-text="computedCode"
+					></code>
+					<code
+						v-else
+						:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
+						:style="codeTagStyles"
+						v-html="renderedCode"
+					></code>
+				</pre>
 		</div>
 	</div>
 </template>
@@ -128,7 +128,7 @@ import langHtml from 'highlight.js/lib/languages/xml';
 import langPlaintext from 'highlight.js/lib/languages/plaintext';
 
 
-const highlightJsVersion = '11.7.0';
+const highlightJsVersion = '11.8.0';
 const prismVersion = '1.29.0';
 const prismThemesVersion = '1.9.0';
 
