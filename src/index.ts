@@ -11,4 +11,4 @@ export default {
 	}
 };
 
-export * from './plugin';
+export { CodeBlock } from './plugin';
