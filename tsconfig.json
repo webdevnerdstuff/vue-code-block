@@ -1,51 +1,61 @@
 {
 	"compilerOptions": {
-		"target": "ESNext",
-		"module": "ESNext",
-		"moduleResolution": "node",
-		"strict": false,
-		"importHelpers": true,
-		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
+		"baseUrl": "./",
 		"declaration": true,
 		"declarationDir": "./dist",
-		"baseUrl": ".",
-		"outDir": "./dist",
-		"rootDir": "src",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"importHelpers": true,
+		"jsx": "preserve",
 		"lib": [
 			"ESNext",
 			"DOM"
 		],
+		"module": "ESNext",
+		"moduleResolution": "Node",
+		"noEmit": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitAny": false,
+		"noUncheckedIndexedAccess": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"outDir": "./dist",
 		"paths": {
 			"@/*": [
 				"./src/*"
 			]
 		},
-		"typeRoots": [
-			"./ts"
-		],
-		"skipLibCheck": true,
-		"useDefineForClassFields": true,
-		"jsx": "preserve",
 		"resolveJsonModule": true,
-		"noEmit": true
+		"rootDir": "src",
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "ESNext",
+		"typeRoots": [
+			"./src/types",
+			"./node_modules/@types"
+		],
+		"types": [
+			"node"
+		],
+		"useDefineForClassFields": true
 	},
-	"types": [
-		"node"
-	],
 	"exclude": [
 		"playground",
-        "src/App.vue",
-        "src/main.ts",
+		"src/App.vue",
+		"src/main.ts",
 		"src/components/**/*.ts",
 		"src/components/**/*.vue",
 		"src/playground/**/*.ts",
 		"src/stores/**/*.ts",
 		"node_modules"
-    ],
+	],
 	"include": [
-		"src/**/*.ts",
-		"src/**/*.vue"
+		"src/types/auto-imports.d.ts",
+		"src/types/**/*.ts",
+		"src/types/**/*.d.ts",
+		"src/plugin/**/*.ts",
+		"src/plugin/**/*.vue"
 	],
 	"references": [
 		{
