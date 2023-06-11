@@ -1,0 +1,627 @@
+:root {
+
+	/* Blue */
+	--v-cb-blue: 206 80% 39%;
+	--v-cb-blue-hex: #146eb4;
+	--v-cb-blue-rgb: 20, 110, 180;
+	--v-cb-primary: var(--v-cb-blue);
+	--v-cb-primary-hex: var(--v-cb-blue-hex);
+	--v-cb-primary-rgb: var(--v-cb-blue-rgb);
+
+	/* Green */
+	--v-cb-green: 120 61% 34%;
+	--v-cb-green-hex: #228b22;
+	--v-cb-green-rgb: 34, 139, 34;
+	--v-cb-success: var(--v-cb-green);
+	--v-cb-success-hex: var(--v-cb-green-hex);
+	--v-cb-success-rgb: var(--v-cb-green-rgb);
+
+	/* Red */
+	--v-cb-red: 0 68% 42%;
+	--v-cb-red-hex: #b22222;
+	--v-cb-red-rgb: 178, 34, 34;
+	--v-cb-danger: var(--v-cb-red);
+	--v-cb-danger-hex: var(--v-cb-red-hex);
+	--v-cb-danger-rgb: var(--v-cb-red-rgb);
+
+	/* Neon Bunny Colors */
+
+	/* neon-bunny */
+	--v-cb-tab-neon-bunny-bkg: 0 0% 0%;
+	--v-cb-tab-neon-bunny-text: 0 0% 100%;
+	--v-cb-tab-neon-bunny-icon: 207 100% 52%;
+	--v-cb-tab-neon-bunny-icon-success: 119 100% 51%;
+	--v-cb-tab-neon-bunny-icon-failed: 3 100% 58%;
+
+	/* neon-bunny-carrot */
+	--v-cb-tab-neon-bunny-carrot-bkg: 0 0% 0%;
+	--v-cb-tab-neon-bunny-carrot-text: 0 0% 100%;
+	--v-cb-tab-neon-bunny-carrot-icon: 292 100% 50%;
+	--v-cb-tab-neon-bunny-carrot-icon-success: 119 100% 51%;
+	--v-cb-tab-neon-bunny-carrot-icon-failed: 3 100% 58%;
+
+	/* -------------------------------------------------- Prism Colors */
+
+	/* coy */
+	--v-cb-tab-prism-coy-bkg: 205 59% 50%;
+	--v-cb-tab-prism-coy-text: 0 0% 0%;
+	--v-cb-tab-prism-coy-icon: 195 76% 41%;
+	--v-cb-tab-prism-coy-icon-success: 80 100% 30%;
+	--v-cb-tab-prism-coy-icon-failed: 0 64% 48%;
+
+	/* dark */
+	--v-cb-tab-prism-dark-bkg: 30 20% 25%;
+	--v-cb-tab-prism-dark-text: 0 0% 100%;
+	--v-cb-tab-prism-dark-border: 30 20% 40%;
+	--v-cb-tab-prism-dark-icon: 40 90% 60%;
+	--v-cb-tab-prism-dark-icon-success: 75 70% 60%;
+	--v-cb-tab-prism-dark-icon-failed: 0 100% 50%;
+
+	/* default */
+	--v-cb-tab-prism-default-bkg: 24 20% 95%;
+	--v-cb-tab-prism-default-text: 0 0% 0%;
+	--v-cb-tab-prism-default-icon: 198 100% 33%;
+	--v-cb-tab-prism-default-icon-success: 80 100% 30%;
+	--v-cb-tab-prism-default-icon-failed: 348 68% 58%;
+
+	/* funky */
+	--v-cb-tab-prism-funky-bkg: 0 0% 80%;
+	--v-cb-tab-prism-funky-text: 0 0% 100%;
+	--v-cb-tab-prism-funky-dark: 0 0% 0%;
+	--v-cb-tab-prism-funky-icon: 328 100% 54%;
+	--v-cb-tab-prism-funky-icon-success: 80 61% 50%;
+	--v-cb-tab-prism-funky-icon-failed: 0 100% 50%;
+
+	/* okaidia */
+	--v-cb-tab-prism-okaidia-bkg: 70 8% 15%;
+	--v-cb-tab-prism-okaidia-text: 0 0% 100%;
+	--v-cb-tab-prism-okaidia-icon: 190 81% 67%;
+	--v-cb-tab-prism-okaidia-icon-success: 80 76% 53%;
+	--v-cb-tab-prism-okaidia-icon-failed: 338 95% 56%;
+
+	/* solarizedlight */
+	--v-cb-tab-prism-solarizedlight-bkg: 44 87% 94%;
+	--v-cb-tab-prism-solarizedlight-text: 196 13% 45%;
+	--v-cb-tab-prism-solarizedlight-icon: 175 59% 40%;
+	--v-cb-tab-prism-solarizedlight-icon-success: 68 100% 30%;
+	--v-cb-tab-prism-solarizedlight-icon-failed: 18 80% 44%;
+
+	/* tomorrow */
+	--v-cb-tab-prism-tomorrow-bkg: 0 0% 18%;
+	--v-cb-tab-prism-tomorrow-text: 0 0% 80%;
+	--v-cb-tab-prism-tomorrow-icon: 299 34% 70%;
+	--v-cb-tab-prism-tomorrow-icon-success: 143 39% 64%;
+	--v-cb-tab-prism-tomorrow-icon-failed: 358 65% 68%;
+
+	/* twilight */
+	--v-cb-tab-prism-twilight-bkg: 0 0% 8%;
+	--v-cb-tab-prism-twilight-text: 0 0% 80%;
+	--v-cb-tab-prism-twilight-border: 0 0% 33%;
+	--v-cb-tab-prism-twilight-icon: 53 89% 79%;
+	--v-cb-tab-prism-twilight-icon-success: 76 21% 52%;
+	--v-cb-tab-prism-twilight-icon-failed: 14 58% 55%;
+
+	/* night-owl */
+	--v-cb-tab-prism-themes-night-owl: 207 95% 8%;
+	--v-cb-tab-prism-themes-night-owl-text: 217 34% 88%;
+	--v-cb-tab-prism-themes-night-owl-icon: 169 56% 68%;
+	--v-cb-tab-prism-themes-night-owl-icon-success: 84 62% 63%;
+	--v-cb-tab-prism-themes-night-owl-icon-failed: 350 100% 67%;
+
+	/* -------------------------------------------------- Highlight.js Colors */
+
+	/* a11y-dark */
+	--v-cb-tab-highlightjs-a11y-dark-bkg: 0 0% 17%;
+	--v-cb-tab-highlightjs-a11y-dark-text: 60 30% 96%;
+	--v-cb-tab-highlightjs-a11y-dark-icon: 180 100% 44%;
+	--v-cb-tab-highlightjs-a11y-dark-icon-success: 80 75% 55%;
+	--v-cb-tab-highlightjs-a11y-dark-icon-failed: 17 100% 74%;
+
+	/* a11y-light */
+	--v-cb-tab-highlightjs-a11y-light-bkg: 0 0% 100%;
+	--v-cb-tab-highlightjs-a11y-light-text: 0 0% 33%;
+	--v-cb-tab-highlightjs-a11y-light-icon: 280 60% 39%;
+	--v-cb-tab-highlightjs-a11y-light-icon-success: 120 100% 25%;
+	--v-cb-tab-highlightjs-a11y-light-icon-failed: 2 80% 47%;
+
+	/* agate */
+	--v-cb-tab-highlightjs-agate-bkg: 0 0% 20%;
+	--v-cb-tab-highlightjs-agate-text: 0 0% 100%;
+	--v-cb-tab-highlightjs-agate-icon: 197 93% 83%;
+	--v-cb-tab-highlightjs-agate-icon-success: 136 53% 66%;
+	--v-cb-tab-highlightjs-agate-icon-failed: 0 56% 61%;
+
+	/* an-old-hope */
+	--v-cb-tab-highlightjs-an-old-hope-bkg: 228 8% 12%;
+	--v-cb-tab-highlightjs-an-old-hope-text: 219 13% 78%;
+	--v-cb-tab-highlightjs-an-old-hope-icon: 195 63% 58%;
+	--v-cb-tab-highlightjs-an-old-hope-icon-success: 116 75% 62%;
+	--v-cb-tab-highlightjs-an-old-hope-icon-failed: 352 81% 58%;
+
+	/* androidstudio */
+	--v-cb-tab-highlightjs-androidstudio-bkg: 210 7% 17%;
+	--v-cb-tab-highlightjs-androidstudio-text: 211 20% 72%;
+	--v-cb-tab-highlightjs-androidstudio-icon: 206 38% 57%;
+	--v-cb-tab-highlightjs-androidstudio-icon-success: 108 28% 46%;
+	--v-cb-tab-highlightjs-androidstudio-icon-failed: 27 61% 50%;
+
+	/* arduino-light */
+	--v-cb-tab-highlightjs-arduino-light-bkg: 0 0% 100%;
+	--v-cb-tab-highlightjs-arduino-light-text: 198 11% 30%;
+	--v-cb-tab-highlightjs-arduino-light-icon: 182 100% 31%;
+	--v-cb-tab-highlightjs-arduino-light-icon-success: 182 100% 19%;
+	--v-cb-tab-highlightjs-arduino-light-icon-failed: 24 100% 41%;
+
+	/* arta */
+	--v-cb-tab-highlightjs-arta-bkg: 0 0% 13%;
+	--v-cb-tab-highlightjs-arta-text: 0 0% 67%;
+	--v-cb-tab-highlightjs-arta-icon: 202 85% 56%;
+	--v-cb-tab-highlightjs-arta-icon-success: 150 100% 40%;
+	--v-cb-tab-highlightjs-arta-icon-failed: 330 83% 40%;
+
+	/* ascetic */
+	--v-cb-tab-highlightjs-ascetic-bkg: 0 0% 100%;
+	--v-cb-tab-highlightjs-ascetic-text: 0 0% 0%;
+	--v-cb-tab-highlightjs-ascetic-icon: 0 0% 53%;
+	--v-cb-tab-highlightjs-ascetic-icon-success: var(--v-cb-success);
+	--v-cb-tab-highlightjs-ascetic-icon-failed: var(--v-cb-failed);
+
+	/* atom-one-dark-reasonable */
+	--v-cb-tab-highlightjs-atom-one-dark-reasonable-bkg: 220 13% 18%;
+	--v-cb-tab-highlightjs-atom-one-dark-reasonable-text: 219 14% 71%;
+	--v-cb-tab-highlightjs-atom-one-dark-reasonable-icon: 29 54% 61%;
+	--v-cb-tab-highlightjs-atom-one-dark-reasonable-icon-success: 80 76% 53%;
+	--v-cb-tab-highlightjs-atom-one-dark-reasonable-icon-failed: 338 95% 56%;
+
+	/* atom-one-dark */
+	--v-cb-tab-highlightjs-atom-one-dark-bkg: 220 13% 18%;
+	--v-cb-tab-highlightjs-atom-one-dark-text: 219 14% 71%;
+	--v-cb-tab-highlightjs-atom-one-dark-icon: 29 54% 61%;
+	--v-cb-tab-highlightjs-atom-one-dark-icon-success: 95 38% 62%;
+	--v-cb-tab-highlightjs-atom-one-dark-icon-failed: 355 65% 65%;
+
+	/* atom-one-light */
+	--v-cb-tab-highlightjs-atom-one-light-bkg: 0 0% 98%;
+	--v-cb-tab-highlightjs-atom-one-light-text: 228 8% 24%;
+	--v-cb-tab-highlightjs-atom-one-light-icon: 41 99% 30%;
+	--v-cb-tab-highlightjs-atom-one-light-icon-success: 119 34% 47%;
+	--v-cb-tab-highlightjs-atom-one-light-icon-failed: 5 74% 59%;
+
+	/* base16-onedark */
+	--v-cb-tab-highlightjs-base16-onedark-bkg: 220 13% 18%;
+	--v-cb-tab-highlightjs-base16-onedark-text: 219 14% 71%;
+	--v-cb-tab-highlightjs-base16-onedark-icon: 207 82% 66%;
+	--v-cb-tab-highlightjs-base16-onedark-icon-success: 95 38% 62%;
+	--v-cb-tab-highlightjs-base16-onedark-icon-failed: 5 48% 51%;
+
+	/* brown-paper */
+	--v-cb-tab-highlightjs-brown-paper-bkg: 35 22% 64%;
+	--v-cb-tab-highlightjs-brown-paper-bkg-img: url('brown-papersq.png');
+	--v-cb-tab-highlightjs-brown-paper-text: 233 32% 31%;
+	--v-cb-tab-highlightjs-brown-paper-icon: 207 100% 30%;
+	--v-cb-tab-highlightjs-brown-paper-icon-success: var(--v-cb-success);
+	--v-cb-tab-highlightjs-brown-paper-icon-failed: 359 60% 31%;
+
+	/* codepen-embed */
+	--v-cb-tab-highlightjs-codepen-embed-bkg: 0 0% 13%;
+	--v-cb-tab-highlightjs-codepen-embed-text: 0 0% 100%;
+	--v-cb-tab-highlightjs-codepen-embed-icon: 300 10% 57%;
+	--v-cb-tab-highlightjs-codepen-embed-icon-success: 76 20% 52%;
+	--v-cb-tab-highlightjs-codepen-embed-icon-failed: var(--v-cb-failed);
+
+	/* color-brewer */
+	--v-cb-tab-highlightjs-color-brewer-bkg: 0 0% 100%;
+	--v-cb-tab-highlightjs-color-brewer-text: 0 0% 0%;
+	--v-cb-tab-highlightjs-color-brewer-icon: 205 59% 47%;
+	--v-cb-tab-highlightjs-color-brewer-icon-success: 138 54% 42%;
+	--v-cb-tab-highlightjs-color-brewer-icon-failed: 20 89% 48%;
+
+	/* dark */
+	--v-cb-tab-highlightjs-dark-bkg: 0 0% 19%;
+	--v-cb-tab-highlightjs-dark-text: 0 0% 87%;
+	--v-cb-tab-highlightjs-dark-icon: 0 56% 70%;
+	--v-cb-tab-highlightjs-dark-icon-success: var(--v-cb-success);
+	--v-cb-tab-highlightjs-dark-icon-failed: var(--v-cb-failed);
+
+	/* default */
+	--v-cb-tab-highlightjs-default-bkg: 0 0% 95%;
+	--v-cb-tab-highlightjs-default-text: 0 0% 27%;
+	--v-cb-tab-highlightjs-default-icon: 0 0% 27%;
+	--v-cb-tab-highlightjs-default-icon-success: 90 100% 23%;
+	--v-cb-tab-highlightjs-default-icon-failed: 0 100% 27%;
+
+	/* devibeans */
+	--v-cb-tab-highlightjs-devibeans-bkg: 0 0% 0%;
+	--v-cb-tab-highlightjs-devibeans-text: 23 4% 62%;
+	--v-cb-tab-highlightjs-devibeans-icon: 207 89% 68%;
+	--v-cb-tab-highlightjs-devibeans-icon-success: 95 49% 36%;
+	--v-cb-tab-highlightjs-devibeans-icon-failed: 1 83% 63%;
+
+	/* docco */
+	--v-cb-tab-highlightjs-docco-bkg: 240 100% 99%;
+	--v-cb-tab-highlightjs-docco-text: 0 0% 0%;
+	--v-cb-tab-highlightjs-docco-icon: 195 100% 35%;
+	--v-cb-tab-highlightjs-docco-icon-success: 150 43% 44%;
+	--v-cb-tab-highlightjs-docco-icon-failed: 17 64% 36%;
+
+	/* far */
+	--v-cb-tab-highlightjs-far-bkg: 240 100% 25%;
+	--v-cb-tab-highlightjs-far-text: 180 100% 50%;
+	--v-cb-tab-highlightjs-far-icon: 60 100% 50%;
+	--v-cb-tab-highlightjs-far-icon-success: 120 100% 50%;
+	--v-cb-tab-highlightjs-far-icon-failed: 0 100% 50%;
+
+	/* felipec */
+	--v-cb-tab-highlightjs-felipec-bkg: 240 6% 13%;
+	--v-cb-tab-highlightjs-felipec-text: 240 6% 87%;
+	--v-cb-tab-highlightjs-felipec-icon: 210 75% 75%;
+	--v-cb-tab-highlightjs-felipec-icon-success: 120 75% 75%;
+	--v-cb-tab-highlightjs-felipec-icon-failed: 0 75% 75%;
+
+	/* foundation */
+	--v-cb-tab-highlightjs-foundation-bkg: 0 0% 93%;
+	--v-cb-tab-highlightjs-foundation-text: 0 0% 0%;
+	--v-cb-tab-highlightjs-foundation-icon: 180 100% 30%;
+	--v-cb-tab-highlightjs-foundation-icon-success: 345 86% 47%;
+	--v-cb-tab-highlightjs-foundation-icon-failed: 120 100% 23%;
+
+	/* github-dark-dimmed */
+	--v-cb-tab-highlightjs-github-dark-dimmed-bkg: 215 15% 16%;
+	--v-cb-tab-highlightjs-github-dark-dimmed-text: 210 19% 73%;
+	--v-cb-tab-highlightjs-github-dark-dimmed-icon: 207 100% 79%;
+	--v-cb-tab-highlightjs-github-dark-dimmed-icon-success: 119 52% 70%;
+	--v-cb-tab-highlightjs-github-dark-dimmed-icon-failed: 359 66% 28%;
+
+	/* github-dark */
+	--v-cb-tab-highlightjs-github-dark-bkg: 216 28% 7%;
+	--v-cb-tab-highlightjs-github-dark-text: 210 17% 82%;
+	--v-cb-tab-highlightjs-github-dark-icon: 208 100% 74%;
+	--v-cb-tab-highlightjs-github-dark-icon-success: 125 69% 70%;
+	--v-cb-tab-highlightjs-github-dark-icon-failed: 4 100% 72%;
+
+	/* github */
+	--v-cb-tab-highlightjs-github-bkg: 0 0% 100%;
+	--v-cb-tab-highlightjs-github-text: 210 12% 16%;
+	--v-cb-tab-highlightjs-github-icon: 212 100% 39%;
+	--v-cb-tab-highlightjs-github-icon-success: 134 60% 33%;
+	--v-cb-tab-highlightjs-github-icon-failed: 354 66% 54%;
+
+	/* gml */
+	--v-cb-tab-highlightjs-gml-bkg: 0 0% 13%;
+	--v-cb-tab-highlightjs-gml-text: 0 0% 75%;
+	--v-cb-tab-highlightjs-gml-icon: 60 100% 50%;
+	--v-cb-tab-highlightjs-gml-icon-success: 121 73% 62%;
+	--v-cb-tab-highlightjs-gml-icon-failed: 0 100% 75%;
+
+	/* googlecode */
+	--v-cb-tab-highlightjs-googlecode-bkg: 0 0% 100%;
+	--v-cb-tab-highlightjs-googlecode-text: 0 0% 0%;
+	--v-cb-tab-highlightjs-googlecode-icon: 180 100% 20%;
+	--v-cb-tab-highlightjs-googlecode-icon-success: 120 100% 27%;
+	--v-cb-tab-highlightjs-googlecode-icon-failed: 0 100% 27%;
+
+	/* gradient-dark */
+	--v-cb-tab-highlightjs-gradient-dark-bkg: 279 58% 34%;
+	--v-cb-tab-highlightjs-gradient-dark-bkg-gradient: linear-gradient(160deg, #652487 0, #443ac3 35%, #0174b7 68%, #04988e 100%);
+	--v-cb-tab-highlightjs-gradient-dark-text: 266 15% 91%;
+	--v-cb-tab-highlightjs-gradient-dark-icon: 199 100% 61%;
+	--v-cb-tab-highlightjs-gradient-dark-icon-success: 75 100% 81%;
+	--v-cb-tab-highlightjs-gradient-dark-icon-failed: 29 100% 63%;
+
+	/* gradient-light */
+	--v-cb-tab-highlightjs-gradient-light-bkg: 293 100% 90%;
+	--v-cb-tab-highlightjs-gradient-light-bkg-gradient: linear-gradient(295deg, #f9ccff 0, #e6bbf9 11%, #9ec6f9 32%, #55e6ee 60%, #91f5d1 74%, #f9ffbf 98%);
+	--v-cb-tab-highlightjs-gradient-light-text: 256 94% 26%;
+	--v-cb-tab-highlightjs-gradient-light-icon: 199 64% 41%;
+	--v-cb-tab-highlightjs-gradient-light-icon-success: 149 93% 38%;
+	--v-cb-tab-highlightjs-gradient-light-icon-failed: 19 98% 25%;
+
+	/* grayscale */
+	--v-cb-tab-highlightjs-grayscale-bkg: 0 0% 100%;
+	--v-cb-tab-highlightjs-grayscale-text: 0 0% 20%;
+	--v-cb-tab-highlightjs-grayscale-icon: 0 0% 20%;
+	--v-cb-tab-highlightjs-grayscale-icon-success: 0 0% 20%;
+	--v-cb-tab-highlightjs-grayscale-icon-failed: 0 0% 20%;
+
+	/* hybrid */
+	--v-cb-tab-highlightjs-hybrid-bkg: 210 6% 12%;
+	--v-cb-tab-highlightjs-hybrid-text: 140 3% 78%;
+	--v-cb-tab-highlightjs-hybrid-icon: 208 32% 63%;
+	--v-cb-tab-highlightjs-hybrid-icon-success: 66 39% 57%;
+	--v-cb-tab-highlightjs-hybrid-icon-failed: 0 50% 60%;
+
+	/* idea */
+	--v-cb-tab-highlightjs-idea-bkg: 0 0% 100%;
+	--v-cb-tab-highlightjs-idea-text: 0 0% 0%;
+	--v-cb-tab-highlightjs-idea-icon: 240 100% 25%;
+	--v-cb-tab-highlightjs-idea-icon-success: 120 60% 83%;
+	--v-cb-tab-highlightjs-idea-icon-failed: 10 100% 87%;
+
+	/* intellij-light */
+	--v-cb-tab-highlightjs-intellij-light-bkg: 0 0% 100%;
+	--v-cb-tab-highlightjs-intellij-light-text: 223 100% 35%;
+	--v-cb-tab-highlightjs-intellij-light-icon: 294 80% 32%;
+	--v-cb-tab-highlightjs-intellij-light-icon-success: 129 91% 26%;
+	--v-cb-tab-highlightjs-intellij-light-icon-failed: var(--v-cb-failed);
+
+	/* ir-black */
+	--v-cb-tab-highlightjs-ir-black-bkg: 0 0% 0%;
+	--v-cb-tab-highlightjs-ir-black-text: 0 0% 97%;
+	--v-cb-tab-highlightjs-ir-black-icon: 209 98% 79%;
+	--v-cb-tab-highlightjs-ir-black-icon-success: 93 100% 69%;
+	--v-cb-tab-highlightjs-ir-black-icon-failed: 301 100% 73%;
+
+	/* isbl-editor-dark */
+	--v-cb-tab-highlightjs-isbl-editor-dark-bkg: 0 0% 25%;
+	--v-cb-tab-highlightjs-isbl-editor-dark-text: 0 0% 94%;
+	--v-cb-tab-highlightjs-isbl-editor-dark-icon: 0 0% 94%;
+	--v-cb-tab-highlightjs-isbl-editor-dark-icon-success: 90 100% 23%;
+	--v-cb-tab-highlightjs-isbl-editor-dark-icon-failed: 13 76% 50%;
+
+	/* isbl-editor-light */
+	--v-cb-tab-highlightjs-isbl-editor-light-bkg: 0 0% 100%;
+	--v-cb-tab-highlightjs-isbl-editor-light-text: 0 0% 0%;
+	--v-cb-tab-highlightjs-isbl-editor-light-icon: 240 100% 25%;
+	--v-cb-tab-highlightjs-isbl-editor-light-icon-success: 90 100% 23%;
+	--v-cb-tab-highlightjs-isbl-editor-light-icon-failed: 11 100% 49%;
+
+	/* kimbie-dark */
+	--v-cb-tab-highlightjs-kimbie-dark-bkg: 35 39% 10%;
+	--v-cb-tab-highlightjs-kimbie-dark-text: 32 47% 68%;
+	--v-cb-tab-highlightjs-kimbie-dark-icon: 356 19% 50%;
+	--v-cb-tab-highlightjs-kimbie-dark-icon-success: 74 35% 45%;
+	--v-cb-tab-highlightjs-kimbie-dark-icon-failed: 349 70% 54%;
+
+	/* kimbie-light */
+	--v-cb-tab-highlightjs-kimbie-light-bkg: 35 83% 91%;
+	--v-cb-tab-highlightjs-kimbie-light-text: 30 37% 38%;
+	--v-cb-tab-highlightjs-kimbie-light-icon: 32 92% 58%;
+	--v-cb-tab-highlightjs-kimbie-light-icon-success: 74 35% 45%;
+	--v-cb-tab-highlightjs-kimbie-light-icon-failed: 349 70% 54%;
+
+	/* lightfair */
+	--v-cb-tab-highlightjs-lightfair-bkg: 0 0% 100%;
+	--v-cb-tab-highlightjs-lightfair-text: 0 0% 27%;
+	--v-cb-tab-highlightjs-lightfair-icon: 217 89% 61%;
+	--v-cb-tab-highlightjs-lightfair-icon-success: 180 69% 46%;
+	--v-cb-tab-highlightjs-lightfair-icon-failed: 0 41% 56%;
+
+	/* lioshi */
+	--v-cb-tab-highlightjs-lioshi-bkg: 0 0% 19%;
+	--v-cb-tab-highlightjs-lioshi-text: 140 3% 78%;
+	--v-cb-tab-highlightjs-lioshi-icon: 304 24% 66%;
+	--v-cb-tab-highlightjs-lioshi-icon-success: 66 39% 57%;
+	--v-cb-tab-highlightjs-lioshi-icon-failed: 0 50% 60%;
+
+	/* magula */
+	--v-cb-tab-highlightjs-magula-bkg: 0 0% 96%;
+	--v-cb-tab-highlightjs-magula-text: 0 0% 0%;
+	--v-cb-tab-highlightjs-magula-icon: 240 100% 25%;
+	--v-cb-tab-highlightjs-magula-icon-success: 120 100% 17%;
+	--v-cb-tab-highlightjs-magula-icon-failed: 0 100% 27%;
+
+	/* mono-blue */
+	--v-cb-tab-highlightjs-mono-blue-bkg: 213 27% 94%;
+	--v-cb-tab-highlightjs-mono-blue-text: 214 100% 11%;
+	--v-cb-tab-highlightjs-mono-blue-icon: 215 100% 34%;
+	--v-cb-tab-highlightjs-mono-blue-icon-success: var(--v-cb-success);
+	--v-cb-tab-highlightjs-mono-blue-icon-failed: var(--v-cb-failed);
+
+	/* monokai-sublime */
+	--v-cb-tab-highlightjs-monokai-sublime-bkg: 72 7% 13%;
+	--v-cb-tab-highlightjs-monokai-sublime-text: 60 30% 96%;
+	--v-cb-tab-highlightjs-monokai-sublime-icon: 54 70% 68%;
+	--v-cb-tab-highlightjs-monokai-sublime-icon-success: 80 76% 53%;
+	--v-cb-tab-highlightjs-monokai-sublime-icon-failed: 338 95% 56%;
+
+	/* monokai */
+	--v-cb-tab-highlightjs-monokai-bkg: 70 8% 15%;
+	--v-cb-tab-highlightjs-monokai-text: 0 0% 87%;
+	--v-cb-tab-highlightjs-monokai-icon: 0 0% 87%;
+	--v-cb-tab-highlightjs-monokai-icon-success: 80 76% 53%;
+	--v-cb-tab-highlightjs-monokai-icon-failed: 338 95% 56%;
+
+	/* night-owl */
+	--v-cb-tab-highlightjs-night-owl-bkg: 207 95% 8%;
+	--v-cb-tab-highlightjs-night-owl-text: 217 34% 88%;
+	--v-cb-tab-highlightjs-night-owl-icon: 276 68% 75%;
+	--v-cb-tab-highlightjs-night-owl-icon-success: 84 62% 63%;
+	--v-cb-tab-highlightjs-night-owl-icon-failed: 350 100% 67%;
+
+	/* nnfx-dark */
+	--v-cb-tab-highlightjs-nnfx-dark-bkg: 0 0% 20%;
+	--v-cb-tab-highlightjs-nnfx-dark-text: 0 0% 100%;
+	--v-cb-tab-highlightjs-nnfx-dark-icon: 270 50% 60%;
+	--v-cb-tab-highlightjs-nnfx-dark-icon-success: 90 50% 60%;
+	--v-cb-tab-highlightjs-nnfx-dark-icon-failed: 18 100% 43%;
+
+	/* nnfx-light */
+	--v-cb-tab-highlightjs-nnfx-light-bkg: 0 0% 100%;
+	--v-cb-tab-highlightjs-nnfx-light-text: 0 0% 0%;
+	--v-cb-tab-highlightjs-nnfx-light-icon: 240 100% 50%;
+	--v-cb-tab-highlightjs-nnfx-light-icon-success: 120 100% 23%;
+	--v-cb-tab-highlightjs-nnfx-light-icon-failed: 120 100% 48%;
+
+	/* nord */
+	--v-cb-tab-highlightjs-nord-bkg: 220 16% 22%;
+	--v-cb-tab-highlightjs-nord-text: 210 34% 63%;
+	--v-cb-tab-highlightjs-nord-icon: 179 25% 65%;
+	--v-cb-tab-highlightjs-nord-icon-success: 92 28% 65%;
+	--v-cb-tab-highlightjs-nord-icon-failed: 14 51% 63%;
+
+	/* obsidian */
+	--v-cb-tab-highlightjs-obsidian-bkg: 210 7% 17%;
+	--v-cb-tab-highlightjs-obsidian-text: 210 7% 89%;
+	--v-cb-tab-highlightjs-obsidian-icon: 210 32% 55%;
+	--v-cb-tab-highlightjs-obsidian-icon-success: 162 26% 64%;
+	--v-cb-tab-highlightjs-obsidian-icon-failed: 30 100% 46%;
+
+	/* panda-syntax-dark */
+	--v-cb-tab-highlightjs-panda-syntax-dark-bkg: 200 3% 17%;
+	--v-cb-tab-highlightjs-panda-syntax-dark-text: 0 0% 90%;
+	--v-cb-tab-highlightjs-panda-syntax-dark-icon: 207 94% 62%;
+	--v-cb-tab-highlightjs-panda-syntax-dark-icon-success: 171 95% 54%;
+	--v-cb-tab-highlightjs-panda-syntax-dark-icon-failed: 342 100% 65%;
+
+	/* panda-syntax-light */
+	--v-cb-tab-highlightjs-panda-syntax-light-bkg: 0 0% 90%;
+	--v-cb-tab-highlightjs-panda-syntax-light-text: 200 3% 17%;
+	--v-cb-tab-highlightjs-panda-syntax-light-icon: 207 57% 50%;
+	--v-cb-tab-highlightjs-panda-syntax-light-icon-success: 171 81% 27%;
+	--v-cb-tab-highlightjs-panda-syntax-light-icon-failed: 324 70% 50%;
+
+	/* paraiso-dark */
+	--v-cb-tab-highlightjs-paraiso-dark-bkg: 304 22% 15%;
+	--v-cb-tab-highlightjs-paraiso-dark-text: 23 4% 62%;
+	--v-cb-tab-highlightjs-paraiso-dark-icon: 45 99% 55%;
+	--v-cb-tab-highlightjs-paraiso-dark-icon-success: 153 43% 50%;
+	--v-cb-tab-highlightjs-paraiso-dark-icon-failed: 5 83% 64%;
+
+	/* paraiso-light */
+	--v-cb-tab-highlightjs-paraiso-light-bkg: 69 24% 89%;
+	--v-cb-tab-highlightjs-paraiso-light-text: 314 9% 28%;
+	--v-cb-tab-highlightjs-paraiso-light-icon: 45 99% 55%;
+	--v-cb-tab-highlightjs-paraiso-light-icon-success: 153 43% 50%;
+	--v-cb-tab-highlightjs-paraiso-light-icon-failed: 5 83% 64%;
+
+	/* pojoaque */
+	--v-cb-tab-highlightjs-pojoaque-bkg: 72 11% 9%;
+	--v-cb-tab-highlightjs-pojoaque-bkg-img: url('pojoaque.jpg') left top;
+	--v-cb-tab-highlightjs-pojoaque-text: 50 52% 71%;
+	--v-cb-tab-highlightjs-pojoaque-icon: 36 100% 62%;
+	--v-cb-tab-highlightjs-pojoaque-icon-success: 149 32% 41%;
+	--v-cb-tab-highlightjs-pojoaque-icon-failed: 1 71% 52%;
+
+	/* purebasic */
+	--v-cb-tab-highlightjs-purebasic-bkg: 60 100% 94%;
+	--v-cb-tab-highlightjs-purebasic-text: 0 0% 0%;
+	--v-cb-tab-highlightjs-purebasic-icon: 210 100% 50%;
+	--v-cb-tab-highlightjs-purebasic-icon-success: 180 100% 33%;
+	--v-cb-tab-highlightjs-purebasic-icon-failed: 327 32% 43%;
+
+	/* qtcreator-dark */
+	--v-cb-tab-highlightjs-qtcreator-dark-bkg: 0 0% 0%;
+	--v-cb-tab-highlightjs-qtcreator-dark-text: 0 0% 67%;
+	--v-cb-tab-highlightjs-qtcreator-dark-icon: 240 100% 77%;
+	--v-cb-tab-highlightjs-qtcreator-dark-icon-success: var(--v-cb-success);
+	--v-cb-tab-highlightjs-qtcreator-dark-icon-failed: 0 100% 67%;
+
+	/* qtcreator-light */
+	--v-cb-tab-highlightjs-qtcreator-light-bkg: 0 0% 100%;
+	--v-cb-tab-highlightjs-qtcreator-light-text: 0 0% 0%;
+	--v-cb-tab-highlightjs-qtcreator-light-icon: 240 100% 25%;
+	--v-cb-tab-highlightjs-qtcreator-light-icon-success: 60 100% 25%;
+	--v-cb-tab-highlightjs-qtcreator-light-icon-failed: 0 100% 25%;
+
+	/* rainbow */
+	--v-cb-tab-highlightjs-rainbow-bkg: 180 1% 28%;
+	--v-cb-tab-highlightjs-rainbow-text: 210 21% 85%;
+	--v-cb-tab-highlightjs-rainbow-icon: 208 32% 63%;
+	--v-cb-tab-highlightjs-rainbow-icon-success: 66 39% 57%;
+	--v-cb-tab-highlightjs-rainbow-icon-failed: 1 71% 52%;
+
+	/* routeros */
+	--v-cb-tab-highlightjs-routeros-bkg: 0 0% 94%;
+	--v-cb-tab-highlightjs-routeros-text: 0 0% 27%;
+	--v-cb-tab-highlightjs-routeros-icon: 200 66% 36%;
+	--v-cb-tab-highlightjs-routeros-icon-success: 115 100% 30%;
+	--v-cb-tab-highlightjs-routeros-icon-failed: 0 100% 27%;
+
+	/* school-book */
+	--v-cb-tab-highlightjs-school-book-bkg: 59 79% 83%;
+	--v-cb-tab-highlightjs-school-book-text: 84 62% 22%;
+	--v-cb-tab-highlightjs-school-book-icon: 207 100% 30%;
+	--v-cb-tab-highlightjs-school-book-icon-success: var(--v-cb-success);
+	--v-cb-tab-highlightjs-school-book-icon-failed: 355 97% 46%;
+
+	/* shades-of-purple */
+	--v-cb-tab-highlightjs-shades-of-purple-bkg: 243 34% 25%;
+	--v-cb-tab-highlightjs-shades-of-purple-text: 248 100% 94%;
+	--v-cb-tab-highlightjs-shades-of-purple-icon: 38 100% 49%;
+	--v-cb-tab-highlightjs-shades-of-purple-icon-success: 102 83% 45%;
+	--v-cb-tab-highlightjs-shades-of-purple-icon-failed: 344 94% 69%;
+
+	/* srcery */
+	--v-cb-tab-highlightjs-srcery-bkg: 40 6% 10%;
+	--v-cb-tab-highlightjs-srcery-text: 39 90% 88%;
+	--v-cb-tab-highlightjs-srcery-icon: 41 96% 57%;
+	--v-cb-tab-highlightjs-srcery-icon-success: 76 55% 48%;
+	--v-cb-tab-highlightjs-srcery-icon-failed: 2 86% 55%;
+
+	/* stackoverflow-dark */
+	--v-cb-tab-highlightjs-stackoverflow-dark-bkg: 0 2% 11%;
+	--v-cb-tab-highlightjs-stackoverflow-dark-text: 0 0% 100%;
+	--v-cb-tab-highlightjs-stackoverflow-dark-icon: 207 42% 67%;
+	--v-cb-tab-highlightjs-stackoverflow-dark-icon-success: 66 39% 57%;
+	--v-cb-tab-highlightjs-stackoverflow-dark-icon-failed: 357 62% 66%;
+
+	/* stackoverflow-light */
+	--v-cb-tab-highlightjs-stackoverflow-light-bkg: 0 0% 96%;
+	--v-cb-tab-highlightjs-stackoverflow-light-text: 210 8% 20%;
+	--v-cb-tab-highlightjs-stackoverflow-light-icon: 205 99% 29%;
+	--v-cb-tab-highlightjs-stackoverflow-light-icon-success: 140 41% 31%;
+	--v-cb-tab-highlightjs-stackoverflow-light-icon-failed: 360 62% 46%;
+
+	/* sunburst */
+	--v-cb-tab-highlightjs-sunburst-bkg: 0 0% 0%;
+	--v-cb-tab-highlightjs-sunburst-text: 0 0% 97%;
+	--v-cb-tab-highlightjs-sunburst-icon: 214 100% 77%;
+	--v-cb-tab-highlightjs-sunburst-icon-success: 101 45% 47%;
+	--v-cb-tab-highlightjs-sunburst-icon-failed: 18 68% 64%;
+
+	/* tokyo-night-dark */
+	--v-cb-tab-highlightjs-tokyo-night-dark-bkg: 235 19% 13%;
+	--v-cb-tab-highlightjs-tokyo-night-dark-text: 227 35% 71%;
+	--v-cb-tab-highlightjs-tokyo-night-dark-icon: 261 85% 79%;
+	--v-cb-tab-highlightjs-tokyo-night-dark-icon-success: 89 51% 61%;
+	--v-cb-tab-highlightjs-tokyo-night-dark-icon-failed: 349 89% 72%;
+
+	/* tokyo-night-light */
+	--v-cb-tab-highlightjs-tokyo-night-light-bkg: 230 8% 85%;
+	--v-cb-tab-highlightjs-tokyo-night-light-text: 230 12% 38%;
+	--v-cb-tab-highlightjs-tokyo-night-light-icon: 218 45% 37%;
+	--v-cb-tab-highlightjs-tokyo-night-light-icon-success: 89 32% 28%;
+	--v-cb-tab-highlightjs-tokyo-night-light-icon-failed: 348 35% 41%;
+
+	/* tomorrow-night-blue */
+	--v-cb-tab-highlightjs-tomorrow-night-blue-bkg: 213 100% 16%;
+	--v-cb-tab-highlightjs-tomorrow-night-blue-text: 0 0% 100%;
+	--v-cb-tab-highlightjs-tomorrow-night-blue-icon: 282 100% 87%;
+	--v-cb-tab-highlightjs-tomorrow-night-blue-icon-success: 87 72% 80%;
+	--v-cb-tab-highlightjs-tomorrow-night-blue-icon-failed: 356 100% 81%;
+
+	/* tomorrow-night-bright */
+	--v-cb-tab-highlightjs-tomorrow-night-bright-bkg: 0 0% 0%;
+	--v-cb-tab-highlightjs-tomorrow-night-bright-text: 0 0% 92%;
+	--v-cb-tab-highlightjs-tomorrow-night-bright-icon: 281 45% 72%;
+	--v-cb-tab-highlightjs-tomorrow-night-bright-icon-success: 68 55% 54%;
+	--v-cb-tab-highlightjs-tomorrow-night-bright-icon-failed: 358 62% 57%;
+
+	/* vs */
+	--v-cb-tab-highlightjs-vs-bkg: 0 0% 100%;
+	--v-cb-tab-highlightjs-vs-text: 0 0% 0%;
+	--v-cb-tab-highlightjs-vs-icon: 240 100% 50%;
+	--v-cb-tab-highlightjs-vs-icon-success: 120 100% 25%;
+	--v-cb-tab-highlightjs-vs-icon-failed: 0 100% 50%;
+
+	/* vs2015 */
+	--v-cb-tab-highlightjs-vs2015-bkg: 0 0% 12%;
+	--v-cb-tab-highlightjs-vs2015-text: 0 0% 86%;
+	--v-cb-tab-highlightjs-vs2015-icon: 207 61% 59%;
+	--v-cb-tab-highlightjs-vs2015-icon-success: 112 38% 47%;
+	--v-cb-tab-highlightjs-vs2015-icon-failed: 0 0% 0%;
+
+	/* xcode */
+	--v-cb-tab-highlightjs-xcode-bkg: 0 0% 100%;
+	--v-cb-tab-highlightjs-xcode-text: 0 0% 0%;
+	--v-cb-tab-highlightjs-xcode-icon: 240 100% 53%;
+	--v-cb-tab-highlightjs-xcode-icon-success: 120 100% 23%;
+	--v-cb-tab-highlightjs-xcode-icon-failed: 1 80% 43%;
+
+	/* xt256 */
+	--v-cb-tab-highlightjs-xt256-bkg: 0 0% 0%;
+	--v-cb-tab-highlightjs-xt256-text: 0 0% 92%;
+	--v-cb-tab-highlightjs-xt256-icon: 240 100% 50%;
+	--v-cb-tab-highlightjs-xt256-icon-success: 120 100% 50%;
+	--v-cb-tab-highlightjs-xt256-icon-failed: 0 100% 50%;
+}
