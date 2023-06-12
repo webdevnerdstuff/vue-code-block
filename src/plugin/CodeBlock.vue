@@ -77,19 +77,19 @@
 				:class="`language-${props.lang}`"
 				:style="preTagStyles"
 			>
-									<code
-										v-if="prismPlugin"
-										:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
-										:style="codeTagStyles"
-										v-text="computedCode"
-									></code>
-									<code
-										v-else
-										:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
-										:style="codeTagStyles"
-										v-html="renderedCode"
-									></code>
-								</pre>
+				<code
+					v-if="prismPlugin"
+					:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
+					:style="codeTagStyles"
+					v-text="computedCode"
+				></code>
+				<code
+					v-else
+					:class="`language-${props.lang} ${browserWindow ? 'v-code-block--code-browser' : ''} ${highlightjs ? 'hljs' : ''}`"
+					:style="codeTagStyles"
+					v-html="renderedCode"
+				></code>
+			</pre>
 		</div>
 	</div>
 </template>
@@ -121,13 +121,8 @@ import {
 	neonBunnyHighlightThemeMin
 } from './themes';
 
-import langCss from 'highlight.js/lib/languages/css';
-import langHtml from 'highlight.js/lib/languages/xml';
-import langJavascript from 'highlight.js/lib/languages/javascript';
-import langPhp from 'highlight.js/lib/languages/php';
-import langPlaintext from 'highlight.js/lib/languages/plaintext';
-import langTypescript from 'highlight.js/lib/languages/typescript';
 import { HLJSApi } from 'highlight.js';
+import langPlaintext from 'highlight.js/lib/languages/plaintext';
 
 
 const highlightJsVersion = '11.8.0';
@@ -145,7 +140,6 @@ const props = withDefaults(defineProps<Props>(), { ...AllProps });
 
 
 // -------------------------------------------------- Data //
-
 let hljs: HLJSApi;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let prismModule: any;
@@ -497,17 +491,10 @@ function renderCode(): void {
 	convertCode();
 
 	if (props.highlightjs) {
-		import('highlight.js/lib/core')
+		import('highlight.js')
 			.then((module) => {
 				hljs = module.default;
-
-				hljs.registerLanguage('css', langCss);
-				hljs.registerLanguage('html', langHtml);
-				hljs.registerLanguage('javascript', langJavascript);
-				hljs.registerLanguage('php', langPhp);
 				hljs.registerLanguage('plain', langPlaintext);
-				hljs.registerLanguage('typescript', langTypescript);
-
 				renderedCode.value = hljs.highlight(convertedCode.value as string, { language: props.lang }).value;
 			})
 			.catch((err) => {
