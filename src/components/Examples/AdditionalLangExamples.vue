@@ -6,7 +6,25 @@
 			</div>
 		</div>
 
-		<div id="additional-languages-json-usage-example" class="row mb-4">
+		<div
+			v-if="selectedLibrary.id === 'highlightjs'"
+			id="additional-languages-json-usage-example"
+			class="row mb-4"
+		>
+			<div class="col-12">
+				<p>
+					{{ selectedLibrary.label }} does not load all languages by default, but this component does. It was the best
+					solution I could come up with as importing additional languages the Highlight.js way, was not working as I had
+					hoped/intended.
+				</p>
+			</div>
+		</div>
+
+		<div
+			v-else
+			id="additional-languages-json-usage-example"
+			class="row mb-4"
+		>
 			<div class="col-12">
 				<p>
 					{{ selectedLibrary.label }} does not load all languages by default. In
@@ -17,7 +35,11 @@
 		</div>
 
 		<!-- ======================= Typescript Example -->
-		<div id="additional-languages-ts-usage-example" class="row mb-4">
+		<div
+			v-if="selectedLibrary.id === 'prism'"
+			id="additional-languages-ts-usage-example"
+			class="row mb-4"
+		>
 			<div class="col-12">
 				<CodeBlock
 					:code="usageExamples[selectedLibrary.id].typescript"
@@ -31,7 +53,10 @@
 			</div>
 		</div>
 
-		<div id="additional-languages-ts-example" class="row mb-4">
+		<div
+			id="additional-languages-ts-example"
+			class="row mb-4"
+		>
 			<div class="col-12">
 				<CodeBlock
 					:code="typescriptExample"
@@ -45,7 +70,12 @@
 			</div>
 		</div>
 
-		<div id="additional-languages-json-example" class="row mb-4">
+		<!-- ======================= JSON Example -->
+		<div
+			v-if="selectedLibrary.id === 'prism'"
+			id="additional-languages-json-usage-example"
+			class="row mb-4"
+		>
 			<div class="col-12">
 				<CodeBlock
 					:code="usageExamples[selectedLibrary.id].json"
@@ -57,6 +87,12 @@
 					:theme="selectedTheme"
 				/>
 			</div>
+		</div>
+
+		<div
+			id="additional-languages-json-example"
+			class="row mb-4"
+		>
 			<div class="col-12">
 				<CodeBlock
 					:code="jsonExample"
@@ -72,7 +108,10 @@
 		</div>
 
 		<!-- ======================= PHP Example -->
-		<div id="additional-languages-php-usage-example" class="row mb-4">
+		<div
+			id="additional-languages-php-usage-example"
+			class="row mb-4"
+		>
 			<div class="col-12">
 				<CodeBlock
 					:code="usageExamples[selectedLibrary.id].php"
@@ -86,7 +125,10 @@
 			</div>
 		</div>
 
-		<div id="additional-languages-php-example" class="row mb-4">
+		<div
+			id="additional-languages-php-example"
+			class="row mb-4"
+		>
 			<div class="col-12">
 				<CodeBlock
 					:code="phpExample"
