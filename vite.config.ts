@@ -1,9 +1,10 @@
 import vue from '@vitejs/plugin-vue';
+import AutoImport from 'unplugin-auto-import/vite';
 import babel from 'vite-plugin-babel';
 import eslint from 'vite-plugin-eslint';
+import stylelint from 'vite-plugin-stylelint';
 import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'node:url';
-import stylelint from 'vite-plugin-stylelint';
 
 const baseUrl = '/vue3-code-block/';
 const playgroundUrl = baseUrl + 'playground/';
@@ -28,7 +29,21 @@ export default defineConfig({
 				'./src/plugin/styles/*.{css,scss,sass}'
 			],
 		}),
-		vue(),
+		AutoImport({
+			dts: false,
+			imports: [
+				'vue',
+				{
+					vue: ['CSSProperties'],
+				}
+			],
+			vueTemplate: true,
+		}),
+		vue({
+			script: {
+				defineModel: true,
+			},
+		}),
 	],
 	resolve: {
 		alias: {
@@ -46,6 +61,9 @@ export default defineConfig({
 		],
 	},
 	server: {
+		hmr: {
+			protocol: 'ws',
+		},
 		open: process?.env?.NODE_ENV === 'playground' ? playgroundUrl : false,
 	},
 });

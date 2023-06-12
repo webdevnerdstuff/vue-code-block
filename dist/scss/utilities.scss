@@ -1,0 +1,39 @@
+// Utilities //
+.v-code-block {
+	@for $i from 1 through 5 {
+
+		// ----------------------------- MARGIN //
+		&--mt-#{$i} {
+			margin-top: $i * 0.25rem !important;
+		}
+
+		&--me-#{$i} {
+			margin-right: $i * 0.25rem !important;
+		}
+
+		&--mb-#{$i} {
+			margin-bottom: $i * 0.25rem !important;
+		}
+
+		&--ms-#{$i} {
+			margin-left: $i * 0.25rem !important;
+		}
+
+		// ----------------------------- PADDING //
+		&--pt-#{$i} {
+			padding-top: $i * 0.25rem !important;
+		}
+
+		&--pe-#{$i} {
+			padding-right: $i * 0.25rem !important;
+		}
+
+		&--pb-#{$i} {
+			padding-bottom: $i * 0.25rem !important;
+		}
+
+		&--ps-#{$i} {
+			padding-left: $i * 0.25rem !important;
+		}
+	}
+}
