@@ -1,4 +1,4 @@
-declare const _sfc_main: import("vue").DefineComponent<{
+declare const _default: import("vue").DefineComponent<{
     icon: {
         type: StringConstructor;
         required: true;
@@ -9,4 +9,4 @@ declare const _sfc_main: import("vue").DefineComponent<{
         required: true;
     };
 }>>, {}, {}>;
-export default _sfc_main;
+export default _default;
