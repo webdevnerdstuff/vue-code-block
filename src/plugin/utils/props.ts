@@ -1,6 +1,7 @@
 
 export const AllProps = {
 	browserWindow: false,
+	cssPath: undefined,
 	code: '',
 	codeBlockRadius: '0.5rem',
 	copyButton: true,

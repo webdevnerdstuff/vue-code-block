@@ -1,5 +1,6 @@
 export declare const AllProps: {
     browserWindow: boolean;
+    cssPath: undefined;
     code: string;
     codeBlockRadius: string;
     copyButton: boolean;

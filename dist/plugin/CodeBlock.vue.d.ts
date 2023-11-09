@@ -1,210 +1,60 @@
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
-    persistentCopyButton: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    highlightjs: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    floatingTabs: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    tabGap: {
-        type: globalThis.PropType<string | number>;
-        default: string;
-    };
-    copyTab: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    height: {
-        type: globalThis.PropType<string | number>;
-        default: string;
-    };
-    maxHeight: {
-        type: globalThis.PropType<string | number>;
-        default: string;
-    };
-    codeBlockRadius: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    runTab: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    tabs: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    code: {
-        type: globalThis.PropType<string | number | object | []>;
-        default: string;
-    };
-    label: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    lang: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    browserWindow: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    copyButton: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    copyIcons: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    copyFailedText: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    copyText: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    copySuccessText: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    globalOptions: {
-        type: globalThis.PropType<boolean>;
-    };
-    indent: {
-        type: globalThis.PropType<number>;
-        default: number;
-    };
-    languages: {
-        type: globalThis.PropType<string[]>;
-    };
-    prismjs: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    prismPlugin: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    runText: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    theme: {
-        type: globalThis.PropType<string | boolean>;
-        default: string;
-    };
-}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("run" | "update:copy-status")[], "run" | "update:copy-status", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
-    persistentCopyButton: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    highlightjs: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    floatingTabs: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    tabGap: {
-        type: globalThis.PropType<string | number>;
-        default: string;
-    };
-    copyTab: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    height: {
-        type: globalThis.PropType<string | number>;
-        default: string;
-    };
-    maxHeight: {
-        type: globalThis.PropType<string | number>;
-        default: string;
-    };
-    codeBlockRadius: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    runTab: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    tabs: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    code: {
-        type: globalThis.PropType<string | number | object | []>;
-        default: string;
-    };
-    label: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    lang: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    browserWindow: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    copyButton: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    copyIcons: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    copyFailedText: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    copyText: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    copySuccessText: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    globalOptions: {
-        type: globalThis.PropType<boolean>;
-    };
-    indent: {
-        type: globalThis.PropType<number>;
-        default: number;
-    };
-    languages: {
-        type: globalThis.PropType<string[]>;
-    };
-    prismjs: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    prismPlugin: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    runText: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    theme: {
-        type: globalThis.PropType<string | boolean>;
-        default: string;
-    };
-}>> & {
+import { Props } from '../types';
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
+    browserWindow: boolean;
+    cssPath: undefined;
+    code: string;
+    codeBlockRadius: string;
+    copyButton: boolean;
+    copyIcons: boolean;
+    copyTab: boolean;
+    copyFailedText: string;
+    copyText: string;
+    copySuccessText: string;
+    floatingTabs: boolean;
+    height: string;
+    highlightjs: boolean;
+    indent: number;
+    label: string;
+    lang: string;
+    maxHeight: string;
+    persistentCopyButton: boolean;
+    prismjs: boolean;
+    prismPlugin: boolean;
+    runTab: boolean;
+    runText: string;
+    tabGap: string;
+    tabs: boolean;
+    theme: string;
+}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+    run: (...args: any[]) => void;
+    "update:copy-status": (...args: any[]) => void;
+}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
+    browserWindow: boolean;
+    cssPath: undefined;
+    code: string;
+    codeBlockRadius: string;
+    copyButton: boolean;
+    copyIcons: boolean;
+    copyTab: boolean;
+    copyFailedText: string;
+    copyText: string;
+    copySuccessText: string;
+    floatingTabs: boolean;
+    height: string;
+    highlightjs: boolean;
+    indent: number;
+    label: string;
+    lang: string;
+    maxHeight: string;
+    persistentCopyButton: boolean;
+    prismjs: boolean;
+    prismPlugin: boolean;
+    runTab: boolean;
+    runText: string;
+    tabGap: string;
+    tabs: boolean;
+    theme: string;
+}>>> & {
     onRun?: ((...args: any[]) => any) | undefined;
     "onUpdate:copy-status"?: ((...args: any[]) => any) | undefined;
 }, {
@@ -220,14 +70,15 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     tabs: boolean;
     code: string | number | object | [];
     label: string;
-    lang: string;
     browserWindow: boolean;
+    cssPath: string;
     copyButton: boolean;
     copyIcons: boolean;
     copyFailedText: string;
     copyText: string;
     copySuccessText: string;
     indent: number;
+    lang: string;
     prismjs: boolean;
     prismPlugin: boolean;
     runText: string;
@@ -238,6 +89,23 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     copyButton?(_: {}): any;
 }>;
 export default _default;
+type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
+type __VLS_TypePropsToRuntimeProps<T> = {
+    [K in keyof T]-?: {} extends Pick<T, K> ? {
+        type: import('vue').PropType<__VLS_NonUndefinedable<T[K]>>;
+    } : {
+        type: import('vue').PropType<T[K]>;
+        required: true;
+    };
+};
+type __VLS_WithDefaults<P, D> = {
+    [K in keyof Pick<P, keyof P>]: K extends keyof D ? __VLS_Prettify<P[K] & {
+        default: D[K];
+    }> : P[K];
+};
+type __VLS_Prettify<T> = {
+    [K in keyof T]: T[K];
+} & {};
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {
         $slots: S;

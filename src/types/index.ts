@@ -13,6 +13,7 @@ export type UseTheme = MaybeRef<string | boolean>;
 // -------------------------------------------------- Props //
 export interface Props {
 	browserWindow?: boolean;
+	cssPath?: string | undefined;
 	code?: object | [] | string | number;
 	codeBlockRadius?: string;
 	copyButton?: boolean;
