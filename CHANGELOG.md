@@ -1,8 +1,14 @@
 # Change Log
 All notable changes to the "vue3-code-block" plugin will be documented in this file.
 
+## v2.2.13
+11-09-2023
+[main] (@webdevnerdstuff)
+* Add `cssPath` prop to component to allow for custom css file path to be used.
+* Update packages.
+
 ## v2.2.11
-2023-06-11
+06-11-2023
 [main] (@webdevnerdstuff)
 * Changing Highlight.js to include all languages by default.
   * Unfortunately, adding additional languages was not working as expected, so this is the best solution I can think of for now.
@@ -10,12 +16,12 @@ All notable changes to the "vue3-code-block" plugin will be documented in this f
 * Changing compiling to use a Vite config instead of rollup so d.ts file aliases resolve correctly.
 
 ## v2.1.1
-2023-04-16
+04-16-2023
 [main] (@webdevnerdstuff)
 * Changing importing of css/scss/sass to use @use instead of @import.
 
 ## v2.1.0
-2023-04-16
+04-16-2023
 [main] (@webdevnerdstuff)
 * Changing component to use the min version of the default themes.
 * Reorganizing default themes to new location.
@@ -25,21 +31,21 @@ All notable changes to the "vue3-code-block" plugin will be documented in this f
 * Adding sass scripts to package.json to compile scss files to css.
 
 ## v2.0.1 - v2.0.6
-2023-04-15
+04-15-2023
 [main] (@webdevnerdstuff)
 * Minor changes to fix issues after testing npm packaging.
 
 ## v2.0.0
-2023-04-15
+04-15-2023
 [main] (@webdevnerdstuff)
 * Major release update. Added in support to use either PrismJS or HighlightJS.
 
 ## v1.0.15
-2023-04-02
+04-02-2023
 [main] (@webdevnerdstuff)
 * Minor changes to fix issues after testing npm packaging.
 
 ## v1.0.0
-2023-03-16
+03-16-2023
 [main] (@webdevnerdstuff)
 * Initial release
