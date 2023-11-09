@@ -39,6 +39,6 @@ const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 const styleData = inject('styleData');
 
-const pnpmCode = 'pnpm add @wdns/vue3-code-block';
-const npmCode = 'npm i @wdns/vue3-code-block';
+const pnpmCode = 'pnpm add @wdns/vue-code-block';
+const npmCode = 'npm i @wdns/vue-code-block';
 </script>

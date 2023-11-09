@@ -7,7 +7,10 @@
 		</div>
 
 		<!-- ======================= Javascript Example -->
-		<div id="lang-js-examples" class="row mb-4">
+		<div
+			id="lang-js-examples"
+			class="row mb-4"
+		>
 			<div class="col-12">
 				<CodeBlock
 					:code="jsExample2"
@@ -23,7 +26,10 @@
 		</div>
 
 		<!-- ======================= Vue Example -->
-		<div id="lang-vue-examples" class="row mb-4">
+		<div
+			id="lang-vue-examples"
+			class="row mb-4"
+		>
 			<div class="col-12">
 				<CodeBlock
 					:code="vueExample"
@@ -39,7 +45,10 @@
 		</div>
 
 		<!-- ======================= CSS Example -->
-		<div id="lang-css-examples" class="row mb-4">
+		<div
+			id="lang-css-examples"
+			class="row mb-4"
+		>
 			<div class="col-12">
 				<CodeBlock
 					:code="cssExample"
@@ -55,7 +64,10 @@
 		</div>
 
 		<!-- ======================= HTML Example -->
-		<div id="lang-html-examples" class="row mb-4">
+		<div
+			id="lang-html-examples"
+			class="row mb-4"
+		>
 			<div class="col-12">
 				<CodeBlock
 					:code="htmlExample"
@@ -71,7 +83,10 @@
 		</div>
 
 		<!-- ======================= SVG Example -->
-		<div id="lang-svg-examples" class="row mb-4">
+		<div
+			id="lang-svg-examples"
+			class="row mb-4"
+		>
 			<div class="col-12">
 				<CodeBlock
 					:code="svgExample"
@@ -153,7 +168,7 @@ const htmlExample = `<!DOCTYPE html>
 		content="Vue 3 CodeBlock - Highlight your code with ease using this
 		syntax highlighting component powered by PrismJS or Highlight.js." />
 	<meta name="keywords"
-		content="vue3-code-block, code, pre, highlight, syntax, vue, vue3,
+		content="vue-code-block, code, pre, highlight, syntax, vue, vue3,
 		component, javascript, neon bunny, webdevnerdstuff, wdns" />
 	<meta name="author" content="WebDevNerdStuff & Bunnies... lots and lots
 	of bunnies!" />
@@ -167,8 +182,8 @@ const htmlExample = `<!DOCTYPE html>
 	<meta property="og:description"
 		content="Vue 3 CodeBlock - Highlight your code with ease using this
 		syntax highlighting component powered by PrismJS or Highlight.js.">
-	<meta property="og:url" content="https://webdevnerdstuff.github.io/vue3-code-block/">
-	<meta property="og:image" content="https://webdevnerdstuff.github.io/vue3-code-block/vue3-code-block-social.jpg">
+	<meta property="og:url" content="https://webdevnerdstuff.github.io/vue-code-block/">
+	<meta property="og:image" content="https://webdevnerdstuff.github.io/vue-code-block/vue-code-block-social.jpg">
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 

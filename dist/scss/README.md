@@ -5,22 +5,22 @@ If you would like to contribute any missing theme tab styles please follow the i
 _I am not currently accepting any custom themes to be integrated into the plugin at this time._
 
 ## 🚀 Getting Started
-Before you get started, please read the [Contributing](https://github.com/webdevnerdstuff/vue3-code-block/blob/main/.github/CONTRIBUTING.md) and [Contributor Covenant Code of Conduct](https://github.com/webdevnerdstuff/vue3-code-block/blob/main/.github/CODE_OF_CONDUCT.md) pages.
+Before you get started, please read the [Contributing](https://github.com/webdevnerdstuff/vue-code-block/blob/main/.github/CONTRIBUTING.md) and [Contributor Covenant Code of Conduct](https://github.com/webdevnerdstuff/vue-code-block/blob/main/.github/CODE_OF_CONDUCT.md) pages.
 
 1. Fork the repository.
 2. Clone the forked repository to your local machine.
 3. Create a new branch for your changes.
 4. Install the node packages `pnpm i`. Please do not use `npm` or `yarn`.
 5. Run the development server with the developer playground `pnpm play`.
-6. You can view the demo site at the link provided by vite that will display in the console. Ex. `http://localhost:5173/vue3-code-block/`
-7. The playground page will open automatically or can be viewed by adding `playground/` to the demo site link provided by vite that will display in the console. Ex. `http://localhost:5173/vue3-code-block/playground/`. The base site link will also be working.
+6. You can view the demo site at the link provided by vite that will display in the console. Ex. `http://localhost:5173/vue-code-block/`
+7. The playground page will open automatically or can be viewed by adding `playground/` to the demo site link provided by vite that will display in the console. Ex. `http://localhost:5173/vue-code-block/playground/`. The base site link will also be working.
 
 ## 📋 Additional notes
 Make sure you are not adding a theme that already exists.  
 
 When selecting colors for the tabs, use colors from the themes stylesheet. Generally a green color for `success`, red color for `failed`. If the theme does not have a color for `success` or `failed`, use the default variables `--v-cb-success` and `--v-cb-failed`.  
 
-Do not change other variable colors. Please stick to the theme you are adding. If you have a suggestion for changing a variable color already defined, please open a [discussion](https://github.com/webdevnerdstuff/vue3-code-block/discussions). The reason we have the variables is to allow users to customize the colors to their liking if they do not like the defaults already created.  
+Do not change other variable colors. Please stick to the theme you are adding. If you have a suggestion for changing a variable color already defined, please open a [discussion](https://github.com/webdevnerdstuff/vue-code-block/discussions). The reason we have the variables is to allow users to customize the colors to their liking if they do not like the defaults already created.  
 
 Make sure your `css` and `scss` files are using tabbed spacing. When adding themes, do not change or alter any other files than the ones mentioned below. If you have a bug fix please make your changes in a separate branch and create a separate pull request.  
 

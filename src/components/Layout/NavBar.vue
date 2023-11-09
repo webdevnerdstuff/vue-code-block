@@ -1,7 +1,10 @@
 <template>
 	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-black mb-5">
 		<div class="container">
-			<a class="navbar-brand" href="/vue3-code-block/">Vue 3 CodeBlock</a>
+			<a
+				class="navbar-brand"
+				href="/vue-code-block/"
+			>Vue 3 CodeBlock</a>
 			<button
 				aria-controls="navbarSupportedContent"
 				aria-expanded="false"
@@ -13,18 +16,24 @@
 			>
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div id="navbarSupportedContent" class="collapse navbar-collapse">
+			<div
+				id="navbarSupportedContent"
+				class="collapse navbar-collapse"
+			>
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
 						<a
 							aria-current="page"
 							class="nav-link active"
-							href="/vue3-code-block/"
+							href="/vue-code-block/"
 						>
 							<fa-icon icon="fa-solid fa-house" />
 						</a>
 					</li>
-					<li v-if="!isPlayground" class="nav-item dropdown">
+					<li
+						v-if="!isPlayground"
+						class="nav-item dropdown"
+					>
 						<a
 							id="docs-dropdown"
 							aria-expanded="false"
@@ -40,53 +49,91 @@
 							class="dropdown-menu dropdown-menu-dark"
 						>
 							<li>
-								<a class="dropdown-item" href="#ul-installation">
+								<a
+									class="dropdown-item"
+									href="#ul-installation"
+								>
 									Installation
 								</a>
 							</li>
 							<li>
-								<a class="dropdown-item" href="#ul-register-plugin"
-									>Register Component</a
+								<a
+									class="dropdown-item"
+									href="#ul-register-plugin"
+								>Register Component</a>
+							</li>
+							<li>
+								<a
+									class="dropdown-item"
+									href="#ul-props"
+								>Props</a>
+							</li>
+							<li>
+								<a
+									class="dropdown-item"
+									href="#ul-themes"
+								>Themes</a>
+							</li>
+							<li>
+								<a
+									class="dropdown-item"
+									href="#ul-events"
+								>Events</a>
+							</li>
+							<li>
+								<a
+									class="dropdown-item"
+									href="#ul-slots"
+								>Slots</a>
+							</li>
+							<li>
+								<a
+									class="dropdown-item"
+									href="#ul-examples"
+								>Examples</a>
+							</li>
+							<li>
+								<a
+									class="dropdown-item"
+									href="#ul-css-vars"
+								>CSS Variables</a>
+							</li>
+
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+
+							<li>
+								<h6 class="dropdown-header">Info</h6>
+							</li>
+							<li>
+								<a
+									class="dropdown-item"
+									href="#ul-dependencies"
 								>
-							</li>
-							<li>
-								<a class="dropdown-item" href="#ul-props">Props</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="#ul-themes">Themes</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="#ul-events">Events</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="#ul-slots">Slots</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="#ul-examples">Examples</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="#ul-css-vars">CSS Variables</a>
-							</li>
-
-							<li><hr class="dropdown-divider" /></li>
-
-							<li><h6 class="dropdown-header">Info</h6></li>
-							<li>
-								<a class="dropdown-item" href="#ul-dependencies">
 									Dependencies
 								</a>
 							</li>
 							<li>
-								<a class="dropdown-item" href="#ul-change-log">Change Log</a>
+								<a
+									class="dropdown-item"
+									href="#ul-change-log"
+								>Change Log</a>
 							</li>
 							<li>
-								<a class="dropdown-item" href="#ul-license">License</a>
+								<a
+									class="dropdown-item"
+									href="#ul-license"
+								>License</a>
 							</li>
 						</ul>
 					</li>
 
 					<!-- Examples -->
-					<li v-if="!isPlayground" class="nav-item dropdown">
+					<li
+						v-if="!isPlayground"
+						class="nav-item dropdown"
+					>
 						<a
 							id="examples-dropdown"
 							aria-expanded="false"
@@ -102,31 +149,52 @@
 							class="dropdown-menu dropdown-menu-dark"
 						>
 							<li>
-								<a class="dropdown-item" href="#lang-examples">Languages</a>
+								<a
+									class="dropdown-item"
+									href="#lang-examples"
+								>Languages</a>
 							</li>
 							<li>
-								<a class="dropdown-item" href="#add-lang-examples">
+								<a
+									class="dropdown-item"
+									href="#add-lang-examples"
+								>
 									Additional Languages
 								</a>
 							</li>
 							<li>
-								<a class="dropdown-item" href="#plugin-examples">Plugins</a>
+								<a
+									class="dropdown-item"
+									href="#plugin-examples"
+								>Plugins</a>
 							</li>
 							<li>
-								<a class="dropdown-item" href="#tab-examples">Tabs</a>
+								<a
+									class="dropdown-item"
+									href="#tab-examples"
+								>Tabs</a>
 							</li>
 							<li>
-								<a class="dropdown-item" href="#copy-button-examples">
+								<a
+									class="dropdown-item"
+									href="#copy-button-examples"
+								>
 									Copy Button
 								</a>
 							</li>
 							<li>
-								<a class="dropdown-item" href="#browser-window-examples">
+								<a
+									class="dropdown-item"
+									href="#browser-window-examples"
+								>
 									Browser Window
 								</a>
 							</li>
 							<li>
-								<a class="dropdown-item" href="#other-prop-examples">
+								<a
+									class="dropdown-item"
+									href="#other-prop-examples"
+								>
 									Other Props
 								</a>
 							</li>
@@ -135,33 +203,38 @@
 				</ul>
 				<div class="d-flex my-2 me-2">
 					<a
-						:href="
-							selectedLibrary.id === 'prism'
+						:href="selectedLibrary.id === 'prism'
 								? prismLinks.homepage
 								: highlightJsLinks.homepage
-						"
+							"
 						target="_blank"
 					>
 						<span
 							class="badge"
-							:class="
-								selectedLibrary.id === 'prism'
+							:class="selectedLibrary.id === 'prism'
 									? 'badge-prism'
 									: 'badge-highlightjs'
-							"
-							>{{ selectedLibrary.label }} Active</span
-						>
+								"
+						>{{ selectedLibrary.label }} Active</span>
 					</a>
 				</div>
 				<div class="d-flex">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<a class="nav-link" :href="links.github" target="_blank">
+							<a
+								class="nav-link"
+								:href="links.github"
+								target="_blank"
+							>
 								<fa-icon icon="fa-brands fa-github" /> GitHub
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" :href="links.npm" target="_blank">
+							<a
+								class="nav-link"
+								:href="links.npm"
+								target="_blank"
+							>
 								<fa-icon icon="fa-brands fa-npm" /> Package
 							</a>
 						</li>
@@ -175,10 +248,9 @@
 						</li>
 					</ul>
 				</div>
-			</div>
 		</div>
-	</nav>
-</template>
+	</div>
+</nav></template>
 
 <script setup>
 import { inject, ref } from 'vue';
@@ -211,15 +283,14 @@ const getPreferredTheme = () => {
 	return 'dark';
 };
 
-const setTheme = function(theme) {
+const setTheme = function (theme) {
 	pageTheme.value = store.setTheme(theme, pageTheme.value);
 };
 
 setTheme(getPreferredTheme());
 </script>
 
-<style lang="scss">
-.navbar {
+<style lang="scss">.navbar {
 	box-shadow: 2px 0 5px #fff;
 }
 

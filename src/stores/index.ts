@@ -439,7 +439,7 @@ export const useCoreStore = defineStore('core', {
 			package: packageJson,
 			prismLinks,
 			prismThemes,
-			storageName: 'vue3-code-block-library',
+			storageName: 'vue-code-block-library',
 		};
 	},
 });
