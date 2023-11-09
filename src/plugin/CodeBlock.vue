@@ -158,6 +158,8 @@ const renderedCode = ref('');
 const runTextValue = ref<string>('');
 const useTheme = ref<boolean | string>('');
 
+const { cssPath } = toRefs(props);
+
 
 // -------------------------------------------------- Computed //
 const computedCode = computed<unknown>(() => {
@@ -267,6 +269,10 @@ watch(props as Props, () => {
 	if (props.runText) {
 		runTextValue.value = props.runText;
 	}
+});
+
+watch(() => cssPath.value, () => {
+	loadTheme();
 });
 
 
@@ -404,29 +410,35 @@ function loadTheme(): void {
 
 	const adjustCssFilename = themeNameAdjustments(activeLibrary, useTheme.value);
 
-	switch (activeLibrary) {
-		case 'highlightjs':
-			cssFilename = `${adjustCssFilename}.min.css`;
-			fetchUrl = `${highlightCdn.value}/${cssFilename}`;
-			break;
-		case 'prism':
-			cssFilename = `${adjustCssFilename}.css`;
-
-			if (useTheme.value === 'default') {
-				fetchUrl = `${prismCdn.value}/prism.css`;
-			}
-			else if (useTheme.value.includes('themes-')) {
-				fetchUrl = `${prismThemesCdn.value}/${cssFilename}`;
-			}
-			else {
-				fetchUrl = `${prismCdn.value}/prism-${cssFilename}`;
-			}
-
-			break;
-		default:
-			cssFilename = '';
-			break;
+	if (typeof cssPath.value !== 'undefined') {
+		fetchUrl = cssPath.value;
 	}
+	else {
+		switch (activeLibrary) {
+			case 'highlightjs':
+				cssFilename = `${adjustCssFilename}.min.css`;
+				fetchUrl = `${highlightCdn.value}/${cssFilename}`;
+				break;
+			case 'prism':
+				cssFilename = `${adjustCssFilename}.css`;
+
+				if (useTheme.value === 'default') {
+					fetchUrl = `${prismCdn.value}/prism.css`;
+				}
+				else if (useTheme.value.includes('themes-')) {
+					fetchUrl = `${prismThemesCdn.value}/${cssFilename}`;
+				}
+				else {
+					fetchUrl = `${prismCdn.value}/prism-${cssFilename}`;
+				}
+
+				break;
+			default:
+				cssFilename = '';
+				break;
+		}
+	}
+
 
 	isLoading.value = true;
 
