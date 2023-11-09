@@ -1,7 +1,7 @@
 import { unref as a, defineComponent as tn, openBlock as u, createElementBlock as i, mergeProps as H, createCommentVNode as w, createElementVNode as v, mergeDefaults as kn, useSlots as fn, ref as c, toRefs as _n, computed as y, watch as en, onBeforeMount as wn, onMounted as xn, normalizeClass as d, normalizeStyle as S, renderSlot as F, Fragment as I, createTextVNode as M, toDisplayString as N, createBlock as an } from "vue";
 import Tn from "ua-parser-js";
 /**
- * @name vue3-code-block
+ * @name @wdns/vue3-code-block
  * @version 2.2.13
  * @description Vue 3 CodeBlock - Highlight your code with ease using this syntax highlighting component powered by PrismJS or Highlight.js.
  * @author WebDevNerdStuff & Bunnies... lots and lots of bunnies! <webdevnerdstuff@gmail.com> (https://webdevnerdstuff.com)
