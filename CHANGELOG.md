@@ -1,5 +1,5 @@
 # Change Log
-All notable changes to the "vue3-code-block" plugin will be documented in this file.
+All notable changes to the "vue-code-block" plugin will be documented in this file.
 
 ## v2.2.13
 11-09-2023

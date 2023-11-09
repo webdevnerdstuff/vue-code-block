@@ -4,11 +4,11 @@
 
 Before you begin:
 - Have you read the [code of conduct](CODE_OF_CONDUCT.md)?
-- Check out the [existing issues](https://github.com/webdevnerdstuff/vue3-code-block/issues).
+- Check out the [existing issues](https://github.com/webdevnerdstuff/vue-code-block/issues).
 
 ### Don't see your issue? Open one
 
-If you spot something new, open an issue using a [template](https://github.com/webdevnerdstuff/vue3-code-block/issues/new/choose). We'll use the issue to have a conversation about the problem you want to fix.
+If you spot something new, open an issue using a [template](https://github.com/webdevnerdstuff/vue-code-block/issues/new/choose). We'll use the issue to have a conversation about the problem you want to fix.
 
 ### Ready to make a change? Fork the repo
 
@@ -31,7 +31,7 @@ When you're done making changes and you'd like to propose them for review, open 
 ### Your PR is merged!
 Congratulations! The whole GitHub community thanks you. :sparkles:
 
-Once your PR is merged, you will be proudly listed as a contributor in the [contributor chart](https://github.com/webdevnerdstuff/vue3-code-block/graphs/contributors).
+Once your PR is merged, you will be proudly listed as a contributor in the [contributor chart](https://github.com/webdevnerdstuff/vue-code-block/graphs/contributors).
 
 ### Keep contributing as you use Vue3 CodeBlock
 
@@ -43,12 +43,12 @@ You can contribute to the Vue3 CodeBlock content and site in several ways. This 
 ### :mega: Discussions
 Discussions are where we have conversations.
 
-If you'd like help troubleshooting a Vue3 CodeBlock PR you're working on, have a great new idea, or want to share something amazing you've learned, join us in [discussions](https://github.com/webdevnerdstuff/vue3-code-block/discussions).
+If you'd like help troubleshooting a Vue3 CodeBlock PR you're working on, have a great new idea, or want to share something amazing you've learned, join us in [discussions](https://github.com/webdevnerdstuff/vue-code-block/discussions).
 
 ### :beetle: Issues
 [Issues](https://docs.github.com/en/github/managing-your-work-on-github/about-issues) are used to track tasks that contributors can help with.
 
-If you've found something in the content or the website that should be updated, search open issues to see if someone else has reported the same thing. If it's something new, open an issue using a [template](https://github.com/webdevnerdstuff/vue3-code-block/issues/new/choose). We'll use the issue to have a conversation about the problem you want to fix.
+If you've found something in the content or the website that should be updated, search open issues to see if someone else has reported the same thing. If it's something new, open an issue using a [template](https://github.com/webdevnerdstuff/vue-code-block/issues/new/choose). We'll use the issue to have a conversation about the problem you want to fix.
 
 ### :hammer_and_wrench: Pull requests
 A [pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) is a way to suggest changes in our repository.
@@ -66,10 +66,10 @@ You can browse existing issues to find something that needs help!
 ### Labels
 Labels can help you find an issue you'd like to help with.
 
-- The [`help wanted` label](https://github.com/webdevnerdstuff/vue3-code-block/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement) is for problems or updates that anyone in the community can start working on.
-- The [`documentation` label](https://github.com/webdevnerdstuff/vue3-code-block/issues?q=is%3Aopen+is%3Aissue+label%3Adocumentation) is for problems or updates relating to the README.MD documentation.
-- The [`bug` label](https://github.com/webdevnerdstuff/vue3-code-block/issues?q=is%3Aopen+is%3Aissue+label%3Abug) is for problems with the code and bugs.
-- The [`enhancement` label](https://github.com/webdevnerdstuff/vue3-code-block/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement) is for 
+- The [`help wanted` label](https://github.com/webdevnerdstuff/vue-code-block/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement) is for problems or updates that anyone in the community can start working on.
+- The [`documentation` label](https://github.com/webdevnerdstuff/vue-code-block/issues?q=is%3Aopen+is%3Aissue+label%3Adocumentation) is for problems or updates relating to the README.MD documentation.
+- The [`bug` label](https://github.com/webdevnerdstuff/vue-code-block/issues?q=is%3Aopen+is%3Aissue+label%3Abug) is for problems with the code and bugs.
+- The [`enhancement` label](https://github.com/webdevnerdstuff/vue-code-block/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement) is for 
 suggestions to improve the code or adding of additional features.
 
 ## Opening a pull request

@@ -6,7 +6,7 @@ import stylelint from 'vite-plugin-stylelint';
 import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'node:url';
 
-const baseUrl = '/vue3-code-block/';
+const baseUrl = '/vue-code-block/';
 const playgroundUrl = baseUrl + 'playground/';
 
 

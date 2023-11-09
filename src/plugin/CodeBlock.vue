@@ -295,15 +295,15 @@ onMounted(() => {
 // -------------------------------------------------- Methods //
 function checkLibrary(): void {
 	if (!props.prismjs && !props.highlightjs) {
-		throw new Error('[vue3-code-block]: You must set either the prismjs or highlightjs props.');
+		throw new Error('[vue-code-block]: You must set either the prismjs or highlightjs props.');
 	}
 
 	if (props.prismjs && props.highlightjs) {
-		throw new Error('[vue3-code-block]: You cannot have both prismjs and highlightjs props set at the same time.');
+		throw new Error('[vue-code-block]: You cannot have both prismjs and highlightjs props set at the same time.');
 	}
 
 	if (props.highlightjs && props.prismPlugin) {
-		console.warn('[vue3-code-block]: Highlight.js does not support PrismJS plugins. Unexpected results may occur. Remove the `prism-plugin` prop from the vue3-code-block component.');
+		console.warn('[vue-code-block]: Highlight.js does not support PrismJS plugins. Unexpected results may occur. Remove the `prism-plugin` prop from the vue-code-block component.');
 	}
 }
 

@@ -28,7 +28,7 @@ const selectedTheme = inject('selectedTheme');
 const styleData = inject('styleData');
 
 const asPluginGlobalCode = `import { createApp } from 'vue';
-import CodeBlock from 'vue3-code-block';
+import CodeBlock from 'vue-code-block';
 
 createApp()
   .component('CodeBlock', CodeBlock)

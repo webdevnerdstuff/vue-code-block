@@ -1,13 +1,13 @@
 {
-	"name": "@wdns/vue3-code-block",
+	"name": "@wdns/vue-code-block",
 	"version": "2.2.14",
 	"description": "Vue 3 CodeBlock - Highlight your code with ease using this syntax highlighting component powered by PrismJS or Highlight.js.",
 	"private": false,
 	"publishConfig": {
 		"access": "public"
 	},
-	"main": "dist/vue3-code-block.cjs.js",
-	"module": "dist/vue3-code-block.es.js",
+	"main": "dist/vue-code-block.cjs.js",
+	"module": "dist/vue-code-block.es.js",
 	"types": "dist/types/index.d.ts",
 	"scripts": {
 		"dev": "vite",
@@ -46,13 +46,13 @@
 		"LICENSE.md",
 		"README.md"
 	],
-	"repository": "https://github.com/webdevnerdstuff/vue3-code-block",
+	"repository": "https://github.com/webdevnerdstuff/vue-code-block",
 	"bugs": {
-		"url": "https://github.com/webdevnerdstuff/vue3-code-block/issues"
+		"url": "https://github.com/webdevnerdstuff/vue-code-block/issues"
 	},
-	"homepage": "https://webdevnerdstuff.github.io/vue3-code-block/",
+	"homepage": "https://webdevnerdstuff.github.io/vue-code-block/",
 	"keywords": [
-		"vue3-code-block",
+		"vue-code-block",
 		"code",
 		"pre",
 		"highlight",
