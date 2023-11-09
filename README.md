@@ -7,8 +7,8 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/vue3-code-block">
-    <img src="https://img.shields.io/npm/v/vue3-code-block?color=1867c0&logo=npm" alt="NPM Package">
+  <a href="https://www.npmjs.com/package/@wdns/vue3-code-block">
+    <img src="https://img.shields.io/npm/v/@wdns/vue3-code-block?color=1867c0&logo=npm" alt="NPM Package">
   </a>
   &nbsp;
   <a href="https://github.com/webdevnerdstuff/vue3-code-block">
@@ -26,12 +26,12 @@ The Vue 3 CodeBlock component leverages the power of [PrismJS](https://prismjs.c
  
 Using [pnpm](https://pnpm.io/):
 ```
-pnpm add vue3-code-block
+pnpm add @wdns/vue3-code-block
 ```
 
 Using npm:
 ```
-npm i vue3-code-block
+npm i @wdns/vue3-code-block
 ```
  
 ## Documentation
