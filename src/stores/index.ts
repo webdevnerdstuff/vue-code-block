@@ -337,7 +337,8 @@ const highlightThemes = [
 
 // ! Do not edit below this line //
 const dependencies = packageJson.dependencies;
-const packageName = packageJson.name;
+const scopedPackageName = packageJson.name;
+const packageName = scopedPackageName.split('/')[1];
 const prismVersion = dependencies.prismjs.replace('^', '');
 const highlightJsVersion = dependencies['highlight.js'].replace('^', '');
 
@@ -350,7 +351,7 @@ const links = {
 	githubProfile: 'https://github.com/webdevnerdstuff',
 	license: `${repoBaseUrl}/blob/main/LICENSE.md`,
 	neonBunnyTheme: 'https://marketplace.visualstudio.com/items?itemName=WebDevNerdStuff.neon-bunny',
-	npm: `https://www.npmjs.com/package/${packageName}`,
+	npm: `https://www.npmjs.com/package/${scopedPackageName}`,
 	uaParser: 'https://www.npmjs.com/package/ua-parser-js',
 	vueJs: 'https://vuejs.org/',
 };
