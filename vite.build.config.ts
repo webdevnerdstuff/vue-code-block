@@ -11,11 +11,10 @@ import typescript from 'rollup-plugin-typescript2';
 import vue from '@vitejs/plugin-vue';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
-const scopedPackageName = pkg.name;
-const packageName = scopedPackageName.split('/')[1];
+const packageName = pkg.name;
 
 const banner = `/**
- * @name ${scopedPackageName}
+ * @name ${packageName}
  * @version ${pkg.version}
  * @description ${pkg.description}
  * @author ${pkg.author}
