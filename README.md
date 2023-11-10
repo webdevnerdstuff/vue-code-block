@@ -7,8 +7,8 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/vue3-code-block">
-    <img src="https://img.shields.io/npm/v/vue3-code-block?color=1867c0&logo=npm" alt="NPM Package">
+  <a href="https://www.npmjs.com/package/@wdns/vue-code-block">
+    <img src="https://img.shields.io/npm/v/@wdns/vue-code-block?color=1867c0&logo=npm" alt="NPM Package">
   </a>
   &nbsp;
   <a href="https://github.com/webdevnerdstuff/vue3-code-block">
@@ -16,40 +16,12 @@
   </a>
 </p>
 
+## Important Information
 
-## Description
+This repository and npm package has been depreciated. 
 
-The Vue 3 CodeBlock component leverages the power of [PrismJS](https://prismjs.com/) or [Highlight.js](https://highlightjs.org/) to provide syntax highlighting for code blocks within your application. The component takes a prop, which is the code to be highlighted, and uses PrismJS or Highlight.js to render the code with syntax highlighting. The component supports a variety of programming languages and can be customized with different themes to match your application's design. With this component, your users can display their code snippets with ease and clarity, making it easier to share and collaborate on code within your application.
-
-
-## Installation
- 
-Using [pnpm](https://pnpm.io/):
-```
-pnpm add vue3-code-block
-```
-
-Using npm:
-```
-npm i vue3-code-block
-```
- 
-## Documentation
- 
-[Documentation & Demo](https://webdevnerdstuff.github.io/vue3-code-block/)
-
-## Dependencies
- 
-[PrismJS](https://prismjs.com/)  
-[Highlight.js](https://highlightjs.org/)  
-[Vue 3](https://vuejs.org/)  
-[UAParser.js](https://www.npmjs.com/package/ua-parser-js)
-
-
-## Change Log
- 
-[CHANGELOG](https://github.com/webdevnerdstuff/vue3-code-block/blob/main/CHANGELOG.md)
-
+You can find the new repository [here](https://github.com/webdevnerdstuff/vue-code-block)  
+You can find the new NPM package [here](https://www.npmjs.com/package/@wdns/vue-code-block)
 
 ## License
 
