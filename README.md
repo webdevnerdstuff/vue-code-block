@@ -24,7 +24,7 @@ You can find the new repository here:
 [https://github.com/webdevnerdstuff/vue-code-block](https://github.com/webdevnerdstuff/vue-code-block)  
   
 You can find the new NPM package here:  
-[https://github.com/webdevnerdstuff/vue-code-block](https://www.npmjs.com/package/@wdns/vue-code-block)
+[https://www.npmjs.com/package/@wdns/vue-code-block](https://www.npmjs.com/package/@wdns/vue-code-block)
 
 ## License
 
