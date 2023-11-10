@@ -1,6 +1,6 @@
 "use strict";var sn=Object.create;var I=Object.defineProperty;var rn=Object.getOwnPropertyDescriptor;var tn=Object.getOwnPropertyNames;var un=Object.getPrototypeOf,gn=Object.prototype.hasOwnProperty;var hn=(l,r,a,j)=>{if(r&&typeof r=="object"||typeof r=="function")for(let c of tn(r))!gn.call(l,c)&&c!==a&&I(l,c,{get:()=>r[c],enumerable:!(j=rn(r,c))||j.enumerable});return l};var G=(l,r,a)=>(a=l!=null?sn(un(l)):{},hn(r||!l||!l.__esModule?I(a,"default",{value:l,enumerable:!0}):a,l));/**
  * @name vue3-code-block
- * @version 2.2.12
+ * @version 2.2.13
  * @description Vue 3 CodeBlock - Highlight your code with ease using this syntax highlighting component powered by PrismJS or Highlight.js.
  * @author WebDevNerdStuff & Bunnies... lots and lots of bunnies! <webdevnerdstuff@gmail.com> (https://webdevnerdstuff.com)
  * @copyright Copyright 2023, WebDevNerdStuff
