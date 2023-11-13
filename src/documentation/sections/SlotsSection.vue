@@ -45,17 +45,17 @@
 								Slot for the copy button inside the code block of the component.
 							</td>
 						</tr>
-						<!-- <tr>
+						<tr>
 							<td colspan="2">
 								<VCodeBlock
 									:code="copyButtonSlotsCode"
-									:highlightjs="codeBlockSettings.plugin === 'highlightjs'"
+									:highlightjs="selectedLibrary.id === 'highlightjs'"
 									lang="typescript"
-									:prismjs="codeBlockSettings.plugin === 'prismjs'"
-									:theme="codeBlockSettings.theme"
+									:prismjs="selectedLibrary.id === 'prismjs'"
+									:theme="selectedTheme"
 								/>
 							</td>
-						</tr> -->
+						</tr>
 
 						<!-- ================================================== Label -->
 						<tr
@@ -76,17 +76,17 @@
 								Slot for the label of the component.
 							</td>
 						</tr>
-						<!-- <tr>
+						<tr>
 							<td colspan="2">
 								<VCodeBlock
 									:code="labelSlotsCode"
-									:highlightjs="codeBlockSettings.plugin === 'highlightjs'"
+									:highlightjs="selectedLibrary.id === 'highlightjs'"
 									lang="typescript"
-									:prismjs="codeBlockSettings.plugin === 'prismjs'"
-									:theme="codeBlockSettings.theme"
+									:prismjs="selectedLibrary.id === 'prismjs'"
+									:theme="selectedTheme"
 								/>
 							</td>
-						</tr> -->
+						</tr>
 
 						<!-- ================================================== Tabs -->
 						<tr
@@ -107,17 +107,17 @@
 								Slot for the tabs of the component.
 							</td>
 						</tr>
-						<!-- <tr>
+						<tr>
 							<td colspan="2">
 								<VCodeBlock
 									:code="tabsSlotsCode"
-									:highlightjs="codeBlockSettings.plugin === 'highlightjs'"
+									:highlightjs="selectedLibrary.id === 'highlightjs'"
 									lang="typescript"
-									:prismjs="codeBlockSettings.plugin === 'prismjs'"
-									:theme="codeBlockSettings.theme"
+									:prismjs="selectedLibrary.id === 'prismjs'"
+									:theme="selectedTheme"
 								/>
 							</td>
-						</tr> -->
+						</tr>
 					</tbody>
 				</v-table>
 			</v-card>
@@ -127,17 +127,11 @@
 
 <script setup>
 import { useTheme } from 'vuetify';
-// import { useCoreStore } from '@/stores/index';
 
-// const props = defineProps({
-// 	codeBlockOptions: {
-// 		required: true,
-// 		type: Object,
-// 	},
-// });
 
-// const codeBlockSettings = computed(() => props.codeBlockOptions);
-// const store = useCoreStore();
+const selectedLibrary = inject('selectedLibrary');
+const selectedTheme = inject('selectedTheme');
+
 const classes = inject('classes');
 const theme = useTheme();
 const isDark = ref(true);
@@ -151,15 +145,20 @@ const rowClass = computed(() => {
 	return isDark.value ? 'bg-grey-darken-3' : 'bg-grey-lighten-3';
 });
 
-// const copyButtonSlotsCode = `{
-
-// }`;
-// const labelSlotsCode = `{
-
-// }`;
-// const tabsSlotsCode = `{
-
-// }`;
+const copyButtonSlotsCode = `{
+  copyCode: () => void,
+  copyStatus: Ref<string>,
+  runCode: () => void,
+}`;
+const labelSlotsCode = `{
+  copyCode: () => void,
+  copyStatus: Ref<string>,
+}`;
+const tabsSlotsCode = `{
+  copyCode: () => void,
+  copyStatus: Ref<string>,
+  runCode: () => void,
+}`;
 
 
 </script>
