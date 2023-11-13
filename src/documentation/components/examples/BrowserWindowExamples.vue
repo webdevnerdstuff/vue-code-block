@@ -13,7 +13,6 @@
 				:highlightjs="selectedLibrary.id === 'highlightjs'"
 				lang="html"
 				:prismjs="selectedLibrary.id === 'prismjs'"
-				:tabs="false"
 				:theme="selectedTheme"
 			/>
 		</v-col>
@@ -28,19 +27,17 @@ const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
 const examples = {
-	prismjs: `<CodeBlock
+	prismjs: `<VCodeBlock
   :browser-window="true"
   :code="myCode"
   lang="javascript"
   prismjs
-  :tabs="false"
 />`,
-	highlightjs: `<CodeBlock
+	highlightjs: `<VCodeBlock
   :browser-window="true"
   :code="myCode"
   highlightjs
   lang="javascript"
-  :tabs="false"
 />`
 };
 </script>

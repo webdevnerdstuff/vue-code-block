@@ -153,32 +153,6 @@ provide('classes', classes);
 </script>
 
 <style lang="scss" scoped>
-body {
-	font-family: 'Open Sans', sans-serif;
-}
-
-h1,
-h2,
-h5 {
-	font-family: 'Encode Sans Expanded', sans-serif !important;
-}
-
-h1 {
-	font-size: 3rem;
-	font-weight: 700;
-}
-
-h2 {
-	border-bottom: 1px solid #ccc;
-	font-size: 2rem;
-	font-weight: 400;
-	padding-bottom: 0.5rem;
-}
-
-h5 {
-	font-weight: 600;
-}
-
 :deep(pre),
 :deep(code) {
 	&.ic {

@@ -81,6 +81,34 @@ html {
 	scroll-padding-top: 70px;
 }
 
+body {
+	font-family: 'Open Sans', sans-serif;
+
+}
+
+.v-row {
+	h1,
+	h2,
+	h5 {
+		font-family: 'Encode Sans Expanded', sans-serif !important;
+	}
+
+	h1 {
+		font-size: 3rem;
+		font-weight: 700;
+	}
+
+	h2 {
+		font-size: 2rem;
+		font-weight: 400;
+		padding-bottom: 0.5rem;
+	}
+
+	h5 {
+		font-weight: 600;
+	}
+}
+
 .top-app-bar {
 	z-index: 99 !important;
 

@@ -121,7 +121,6 @@
 				:highlightjs="selectedLibrary.id === 'highlightjs'"
 				lang="html"
 				:prismjs="selectedLibrary.id === 'prismjs'"
-				:tabs="false"
 				:theme="selectedTheme"
 			>
 				<template #label>
@@ -173,7 +172,6 @@
 				:indent="Number(indent)"
 				lang="json"
 				:prismjs="selectedLibrary.id === 'prismjs'"
-				:tabs="false"
 				:theme="selectedTheme"
 			>
 				<template #label>
@@ -206,7 +204,7 @@ const tabGap = ref('0.25rem');
 
 const examples = {
 	prismjs: {
-		copyBlockRadius: `<CodeBlock
+		copyBlockRadius: `<VCodeBlock
   :code="myCode"
   :code-block-radius="codeBlockRadius"
   lang="html"
@@ -216,8 +214,8 @@ const examples = {
     codeBlockRadius:
     <input v-model="codeBlockRadius" type="text" />
   </template>
-</CodeBlock>`,
-		copyText: `<CodeBlock
+</VCodeBlock>`,
+		copyText: `<VCodeBlock
   :code="myCode"
   copy-tab
   :copyText="copyText"
@@ -229,8 +227,8 @@ const examples = {
     copyText:
     <input v-model="copyText" type="text" />
   </template>
-</CodeBlock>`,
-		runText: `<CodeBlock
+</VCodeBlock>`,
+		runText: `<VCodeBlock
   :code="runTextExample"
   :copy-tab="false"
   lang="html"
@@ -245,8 +243,8 @@ const examples = {
     runText:
     <input v-model="runText" type="text" />
   </template>
-</CodeBlock>`,
-		floatingTabs: `<CodeBlock
+</VCodeBlock>`,
+		floatingTabs: `<VCodeBlock
   :code="exampleCode"
   :floating-tabs="floatingTabs"
   lang="html"
@@ -264,20 +262,19 @@ const examples = {
       <span class="boolean-style">{{ floatingTabs }}</span>
     </label>
   </template>
-</CodeBlock>`,
-		height: `<CodeBlock
+</VCodeBlock>`,
+		height: `<VCodeBlock
   :code="myCode"
   :height="height"
   lang="html"
   prismjs
-  :tabs="false"
 >
   <template #label>
     height:
     <input v-model="height" type="number" />
   </template>
-</CodeBlock>`,
-		tabGap: `<CodeBlock
+</VCodeBlock>`,
+		tabGap: `<VCodeBlock
   :code="myCode"
   lang="html"
   :run-tab="true"
@@ -289,10 +286,10 @@ const examples = {
     tabGap:
     <input v-model="tabGap" type="text" />
   </template>
-</CodeBlock>`,
+</VCodeBlock>`,
 	},
 	highlightjs: {
-		copyBlockRadius: `<CodeBlock
+		copyBlockRadius: `<VCodeBlock
   :code="myCode"
   :code-block-radius="codeBlockRadius"
   highlightjs
@@ -302,8 +299,8 @@ const examples = {
     codeBlockRadius:
     <input v-model="codeBlockRadius" type="text" />
   </template>
-</CodeBlock>`,
-		copyText: `<CodeBlock
+</VCodeBlock>`,
+		copyText: `<VCodeBlock
   :code="myCode"
   copy-tab
   :copyText="copyText"
@@ -315,8 +312,8 @@ const examples = {
     copyText:
     <input v-model="copyText" type="text" />
   </template>
-</CodeBlock>`,
-		runText: `<CodeBlock
+</VCodeBlock>`,
+		runText: `<VCodeBlock
   :code="runTextExample"
   :copy-tab="false"
   highlightjs
@@ -331,8 +328,8 @@ const examples = {
     runText:
     <input v-model="runText" type="text" />
   </template>
-</CodeBlock>`,
-		floatingTabs: `<CodeBlock
+</VCodeBlock>`,
+		floatingTabs: `<VCodeBlock
   :code="exampleCode"
   :floating-tabs="floatingTabs"
   highlightjs
@@ -350,20 +347,19 @@ const examples = {
       <span class="boolean-style">{{ floatingTabs }}</span>
     </label>
   </template>
-</CodeBlock>`,
-		height: `<CodeBlock
+</VCodeBlock>`,
+		height: `<VCodeBlock
   :code="myCode"
   :height="height"
   highlightjs
   lang="html"
-  :tabs="false"
 >
   <template #label>
     height:
     <input v-model="height" type="number" />
   </template>
-</CodeBlock>`,
-		tabGap: `<CodeBlock
+</VCodeBlock>`,
+		tabGap: `<VCodeBlock
   :code="myCode"
   highlightjs
   lang="html"
@@ -375,7 +371,7 @@ const examples = {
     tabGap:
     <input v-model="tabGap" type="text" />
   </template>
-</CodeBlock>`,
+</VCodeBlock>`,
 	}
 };
 const indentJsonExample = `{

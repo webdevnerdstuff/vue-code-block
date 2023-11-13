@@ -14,7 +14,6 @@
 				label="Visible on hover"
 				lang="html"
 				:prismjs="selectedLibrary.id === 'prismjs'"
-				:tabs="false"
 				:theme="selectedTheme"
 			/>
 		</v-col>
@@ -30,7 +29,6 @@
 				lang="html"
 				persistent-copy-button
 				:prismjs="selectedLibrary.id === 'prismjs'"
-				:tabs="false"
 				:theme="selectedTheme"
 			/>
 		</v-col>
@@ -45,37 +43,33 @@ const selectedTheme = inject('selectedTheme');
 
 const examples = {
 	prismjs: {
-		btn: `<CodeBlock
+		btn: `<VCodeBlock
   :code="myCode"
   label="Visible on hover"
   lang="html"
   prismjs
-  :tabs="false"
 />`,
-		btnPersist: `<CodeBlock
+		btnPersist: `<VCodeBlock
   :code="myCode"
   label="Persistent Copy Button"
   lang="html"
   persistent-copy-button
   prismjs
-  :tabs="false"
 />`,
 	},
 	highlightjs: {
-		btn: `<CodeBlock
+		btn: `<VCodeBlock
   :code="myCode"
   highlightjs
   label="Visible on hover"
   lang="html"
-  :tabs="false"
 />`,
-		btnPersist: `<CodeBlock
+		btnPersist: `<VCodeBlock
   :code="myCode"
   highlightjs
   label="Persistent Copy Button"
   lang="html"
   persistent-copy-button
-  :tabs="false"
 />`,
 	}
 };

@@ -135,7 +135,7 @@ const selectedTheme = inject('selectedTheme');
 
 const examples = {
 	prismjs: {
-		copy: `<CodeBlock
+		copy: `<VCodeBlock
   :code="myCode"
   copy-tab
   label="Copy Code Tab"
@@ -145,7 +145,7 @@ const examples = {
   tabs
 />`,
 		run: `<template>
-  <CodeBlock
+  <VCodeBlock
     :code="myCode"
     :copy-tab="false"
     label="Run Code Tab"
@@ -164,7 +164,7 @@ const examples = {
   }
 <\/script>`,
 		both: `<template>
-  <CodeBlock
+  <VCodeBlock
     :code="myCode"
     label="Copy &amp; Run Code Tabs"
     lang="javascript"
@@ -183,7 +183,7 @@ const examples = {
 <\/script>`,
 	},
 	highlightjs: {
-		copy: `<CodeBlock
+		copy: `<VCodeBlock
   :code="myCode"
   copy-tab
   highlightjs
@@ -193,7 +193,7 @@ const examples = {
   tabs
 />`,
 		run: `<template>
-  <CodeBlock
+  <VCodeBlock
     :code="myCode"
     :copy-tab="false"
     highlightjs
@@ -212,7 +212,7 @@ const examples = {
   }
 <\/script>`,
 		both: `<template>
-  <CodeBlock
+  <VCodeBlock
     :code="myCode"
     highlightjs
     label="Copy &amp; Run Code Tabs"

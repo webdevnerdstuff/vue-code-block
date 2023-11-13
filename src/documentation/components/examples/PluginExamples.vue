@@ -31,7 +31,6 @@
 				lang="html"
 				prism-plugin
 				prismjs
-				:tabs="false"
 				:theme="selectedTheme"
 			>
 				<template #label>
@@ -88,14 +87,13 @@ const plugins = ref([
 ]);
 
 const pluginExample = `<template>
-  <CodeBlock
+  <VCodeBlock
     class="line-numbers"
     :code="pluginExample"
     label="line-numbers"
     lang="html"
     prism-plugin
     prismjs
-    :tabs="false"
   />
 <\/template>
 
