@@ -1,10 +1,10 @@
 import vue from '@vitejs/plugin-vue';
-import AutoImport from 'unplugin-auto-import/vite';
-import babel from 'vite-plugin-babel';
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
 import eslint from 'vite-plugin-eslint';
 import stylelint from 'vite-plugin-stylelint';
 import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'node:url';
+import AutoImport from 'unplugin-auto-import/vite';
 
 const baseUrl = '/vue-code-block/';
 const playgroundUrl = baseUrl + 'playground/';
@@ -19,7 +19,6 @@ export default defineConfig({
 		eslint({
 			fix: true,
 		}),
-		babel(),
 		stylelint({
 			cache: false,
 			fix: true,
@@ -40,9 +39,10 @@ export default defineConfig({
 			vueTemplate: true,
 		}),
 		vue({
-			script: {
-				defineModel: true,
-			},
+			template: { transformAssetUrls },
+		}),
+		vuetify({
+			autoImport: true,
 		}),
 	],
 	resolve: {
