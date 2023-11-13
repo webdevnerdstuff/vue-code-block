@@ -1,1 +1,6 @@
-PlaygroundPage.vue
+*
+
+!.gitignore
+
+!configs/
+!configs/**/*

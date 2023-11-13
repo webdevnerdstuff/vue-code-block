@@ -1,30 +1,19 @@
-import { createApp } from 'vue';
+import '@/libraries/fontawesome';
 import PlaygroundApp from './PlaygroundApp.vue';
-import CodeBlock from '../../index';
-import { createPinia } from "pinia";
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import { registerPlugins } from '../../plugins';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import {
-	faCircleInfo,
-	faCopyright,
-	faHouse,
-	faMoon,
-	faSun,
-} from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faNpm } from '@fortawesome/free-brands-svg-icons';
+import VCodeBlock from '../../index';
 
-library.add({
-	faCircleInfo,
-	faCopyright,
-	faGithub,
-	faHouse,
-	faMoon,
-	faNpm,
-	faSun,
-});
+const app = createApp(PlaygroundApp);
+app.use(createPinia());
+app.component('font-awesome-icon', FontAwesomeIcon);
+app.component('FaIcon', FontAwesomeIcon);
+app.component('VCodeBlock', VCodeBlock);
 
-createApp(PlaygroundApp)
-	.use(CodeBlock, {})
-	.use(createPinia())
-	.component('fa-icon', FontAwesomeIcon)
-	.mount('#app');
+registerPlugins(app);
+
+app.mount('#app');
+
+
