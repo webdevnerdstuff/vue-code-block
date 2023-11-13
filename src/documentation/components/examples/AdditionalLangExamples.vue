@@ -87,16 +87,6 @@
 				:tabs="false"
 				:theme="selectedTheme"
 			/>
-			<!-- <VCodeBlock
-				:code="jsonExample"
-				:highlightjs="selectedLibrary.id === 'highlightjs'"
-				:indent="2"
-				label="JSON"
-				lang="json"
-				:prismjs="selectedLibrary.id === 'prismjs'"
-				:tabs="false"
-				:theme="selectedTheme"
-			/> -->
 		</v-col>
 	</v-row>
 

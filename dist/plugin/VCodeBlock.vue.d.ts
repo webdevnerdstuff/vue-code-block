@@ -1,4 +1,6 @@
 import { Props } from '../types';
+declare function copyCode(): void;
+declare function runCode(): void;
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
     browserWindow: boolean;
     cssPath: undefined;
@@ -84,9 +86,19 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     runText: string;
     theme: string | boolean;
 }, {}>, {
-    label?(_: {}): any;
-    tabs?(_: {}): any;
-    copyButton?(_: {}): any;
+    label?(_: {
+        copyCode: typeof copyCode;
+        copyStatus: string;
+        runCode: typeof runCode;
+    }): any;
+    tabs?(_: {
+        copyCode: typeof copyCode;
+        copyStatus: string;
+        runCode: typeof runCode;
+    }): any;
+    copyButton?(_: {
+        copyStatus: string;
+    }): any;
 }>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

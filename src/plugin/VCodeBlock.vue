@@ -10,7 +10,14 @@
 				:class="labelClasses"
 			>
 				<template v-if="slots.label">
-					<slot name="label" />
+					<slot
+						name="label"
+						v-bind="{
+							copyCode,
+							copyStatus,
+							runCode,
+						}"
+					/>
 				</template>
 				<template v-else>{{ props.label }}</template>
 			</div>
@@ -20,7 +27,14 @@
 				:style="tabGroupStyle"
 			>
 				<template v-if="slots.tabs">
-					<slot name="tabs" />
+					<slot
+						name="tabs"
+						v-bind="{
+							copyCode,
+							copyStatus,
+							runCode,
+						}"
+					/>
 				</template>
 				<template v-else>
 					<!-- ======================================== Copy Code Tab/Button -->
@@ -60,7 +74,12 @@
 				@click="copyCode"
 			>
 				<template v-if="slots.copyButton">
-					<slot name="copyButton" />
+					<slot
+						name="copyButton"
+						v-bind="{
+							copyStatus,
+						}"
+					/>
 				</template>
 				<template v-else>
 					<StatusIcons

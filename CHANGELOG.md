@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to the "vue-code-block" plugin will be documented in this file.
 
+## v2.2.15
+11-13-2023
+[main] (@webdevnerdstuff)
+* Add binding props to slots
+* Update docs
+
 ## v2.2.13
 11-09-2023
 [main] (@webdevnerdstuff)
