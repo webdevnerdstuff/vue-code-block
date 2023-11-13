@@ -20,7 +20,14 @@
 				:style="tabGroupStyle"
 			>
 				<template v-if="slots.tabs">
-					<slot name="tabs" />
+					<slot
+						name="tabs"
+						v-bind="{
+							copyCode,
+							copyStatus,
+							runCode,
+						}"
+					/>
 				</template>
 				<template v-else>
 					<!-- ======================================== Copy Code Tab/Button -->
