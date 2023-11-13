@@ -193,6 +193,11 @@ function toggleDrawer() {
 	}
 }
 
+.site-title {
+	font-family: 'Encode Sans Expanded', sans-serif !important;
+	font-weight: 700;
+}
+
 .v-list-item__prepend {
 	.v-list-item__spacer {
 		width: 32px;

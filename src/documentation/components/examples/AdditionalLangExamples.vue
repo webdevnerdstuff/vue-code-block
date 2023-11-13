@@ -36,7 +36,6 @@
 				:label="`Example of using ${selectedLibrary.title} to highlight TypeScript`"
 				lang="html"
 				:prismjs="selectedLibrary.id === 'prismjs'"
-				:tabs="false"
 				:theme="selectedTheme"
 			/>
 		</v-col>
@@ -51,7 +50,6 @@
 				label="TypeScript"
 				lang="typescript"
 				:prismjs="selectedLibrary.id === 'prismjs'"
-				:tabs="false"
 				:theme="selectedTheme"
 			/>
 		</v-col>
@@ -69,7 +67,6 @@
 				:label="`Example of using ${selectedLibrary.label} to highlight JSON`"
 				lang="html"
 				:prismjs="selectedLibrary.id === 'prismjs'"
-				:tabs="false"
 				:theme="selectedTheme"
 			/>
 		</v-col>
@@ -84,7 +81,6 @@
 				label="JSON"
 				lang="json"
 				:prismjs="selectedLibrary.id === 'prismjs'"
-				:tabs="false"
 				:theme="selectedTheme"
 			/>
 		</v-col>
@@ -102,7 +98,6 @@
 				:label="`Example of using ${selectedLibrary.label} to highlight PHP`"
 				lang="html"
 				:prismjs="selectedLibrary.id === 'prismjs'"
-				:tabs="false"
 				:theme="selectedTheme"
 			/>
 		</v-col>
@@ -119,7 +114,6 @@
 				label="PHP"
 				lang="php"
 				:prismjs="selectedLibrary.id === 'prismjs'"
-				:tabs="false"
 				:theme="selectedTheme"
 			/>
 		</v-col>
@@ -144,12 +138,11 @@ const selectedTheme = inject('selectedTheme');
 const usageExamples = {
 	prismjs: {
 		json: `<template>
-  <CodeBlock
+  <VCodeBlock
     :code="myCode"
     :indent="2"
     lang="json"
     prismjs
-    :tabs="false"
   /\>
 <\/template>
 
@@ -158,11 +151,10 @@ const usageExamples = {
   import 'prismjs/components/prism-json';
 <\/script>`,
 		typescript: `<template>
-  <CodeBlock
+  <VCodeBlock
     :code="myCode"
     lang="typescript"
     prismjs
-    :tabs="false"
   /\>
 <\/template>
 
@@ -171,11 +163,10 @@ const usageExamples = {
   import 'prismjs/components/prism-typescript';
 <\/script>`,
 		php: `<template>
-  <CodeBlock
+  <VCodeBlock
     :code="myCode"
     lang="php"
     prismjs
-    :tabs="false"
   /\>
 <\/template>
 
@@ -187,12 +178,11 @@ const usageExamples = {
 	},
 	highlightjs: {
 		json: `<template>
-  <CodeBlock
+  <VCodeBlock
     :code="myCode"
     highlightjs
     :indent="2"
     lang="json"
-    :tabs="false"
   /\>
 <\/template>
 
@@ -203,11 +193,10 @@ const usageExamples = {
   hljs.registerLanguage('json', langJson);
 <\/script>`,
 		typescript: `<template>
-  <CodeBlock
+  <VCodeBlock
     :code="myCode"
     highlightjs
     lang="typescript"
-    :tabs="false"
   /\>
 <\/template>
 
@@ -218,11 +207,10 @@ const usageExamples = {
   hljs.registerLanguage('typescript', langTypescript);
 <\/script>`,
 		php: `<template>
-  <CodeBlock
+  <VCodeBlock
     :code="myCode"
     highlightjs
     lang="php"
-    :tabs="false"
   /\>
 <\/template>
 

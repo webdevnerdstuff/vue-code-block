@@ -15,7 +15,6 @@
 				lang="javascript"
 				:max-height="codeBlockOptions.preHeight"
 				:prismjs="selectedLibrary.id === 'prismjs'"
-				:tabs="false"
 				:theme="selectedTheme"
 			/>
 		</v-col>
@@ -31,7 +30,6 @@
 				lang="html"
 				:max-height="codeBlockOptions.preHeight"
 				:prismjs="selectedLibrary.id === 'prismjs'"
-				:tabs="false"
 				:theme="selectedTheme"
 			/>
 		</v-col>
@@ -47,7 +45,6 @@
 				lang="css"
 				:max-height="codeBlockOptions.preHeight"
 				:prismjs="selectedLibrary.id === 'prismjs'"
-				:tabs="false"
 				:theme="selectedTheme"
 			/>
 		</v-col>
@@ -63,7 +60,6 @@
 				lang="html"
 				:max-height="codeBlockOptions.preHeight"
 				:prismjs="selectedLibrary.id === 'prismjs'"
-				:tabs="false"
 				:theme="selectedTheme"
 			/>
 		</v-col>
@@ -78,7 +74,6 @@
 				label="SVG"
 				lang="svg"
 				:prismjs="selectedLibrary.id === 'prismjs'"
-				:tabs="false"
 				:theme="selectedTheme"
 			/>
 		</v-col>
