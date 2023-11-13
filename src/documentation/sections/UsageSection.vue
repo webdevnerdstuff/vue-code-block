@@ -20,7 +20,6 @@
 						label="Global Registration"
 						lang="javascript"
 						:prismjs="selectedLibrary.id === 'prismjs'"
-						:show-run="false"
 						:theme="selectedTheme"
 					/>
 				</v-col>
@@ -34,7 +33,6 @@
 						label="Local Registration"
 						lang="html"
 						:prismjs="selectedLibrary.id === 'prismjs'"
-						:show-run="false"
 						:theme="selectedTheme"
 					/>
 				</v-col>
