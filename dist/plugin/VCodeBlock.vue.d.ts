@@ -86,13 +86,19 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     runText: string;
     theme: string | boolean;
 }, {}>, {
-    label?(_: {}): any;
+    label?(_: {
+        copyCode: typeof copyCode;
+        copyStatus: string;
+        runCode: typeof runCode;
+    }): any;
     tabs?(_: {
         copyCode: typeof copyCode;
         copyStatus: string;
         runCode: typeof runCode;
     }): any;
-    copyButton?(_: {}): any;
+    copyButton?(_: {
+        copyStatus: string;
+    }): any;
 }>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
