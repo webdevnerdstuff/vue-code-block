@@ -14,6 +14,7 @@
 		>
 			<v-icon icon="mdi:mdi-menu"></v-icon>
 		</v-app-bar-nav-icon>
+
 		<v-app-bar-nav-icon
 			v-else
 			class="nav-drawer-btn me-2 ms-3"
@@ -64,6 +65,7 @@
 		</v-select>
 
 		<v-chip
+			v-if="isSmAndUp"
 			class="me-2 d-flex justify-center"
 			:class="`badge-${selectedLibrary.id}`"
 			:href="selectedLibrary.id === 'prismjs'
@@ -122,7 +124,7 @@
 import { onMounted, ref } from 'vue';
 import { useCoreStore } from '@/stores/index';
 import { useMenuStore } from '@/stores/menu';
-import { useTheme } from 'vuetify';
+import { useDisplay, useTheme } from 'vuetify';
 
 const emit = defineEmits(['changedTheme', 'updatedDrawer']);
 
@@ -147,11 +149,13 @@ onMounted(() => {
 const menuStore = useMenuStore();
 const store = useCoreStore();
 const theme = useTheme();
+const { smAndUp } = useDisplay();
 
 
 const links = store.links;
 const themeName = ref('dark');
 const drawer = ref(true);
+const isSmAndUp = computed(() => smAndUp.value);
 
 const menuItems = [...menuStore.libraryItems];
 
