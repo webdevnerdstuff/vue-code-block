@@ -1,40 +1,56 @@
 <template>
-	<NavBar is-playground :selected-library="selectedLibrary" />
-	<PlaygroundDemoPage @changedLibrary="updateLibrary" />
+	<v-app id="home">
+		<!-- ====================================================== App Bar -->
+		<AppBar
+			is-playground
+			:selectedLibrary="selectedLibrary"
+		/>
+
+		<!-- ====================================================== Main Container -->
+		<v-main class="main-container pb-10">
+			<v-responsive>
+				<v-container class="px-10">
+					<v-row>
+						<v-col class="v-col-12 text-center">
+							<h1>Vue Code Block</h1>
+						</v-col>
+						<v-col class="v-col-12 text-center">
+							<v-chip color="primary">
+								Playground v{{ store.pluginVersion }}
+							</v-chip>
+						</v-col>
+					</v-row>
+
+					<ThemeSelectComponent
+						playground
+						@changedLibrary="selectedLibrary = $event"
+						@changedTheme="selectedTheme = $event"
+					/>
+
+					<v-row>
+						<PlaygroundPage />
+					</v-row>
+				</v-container>
+			</v-responsive>
+		</v-main>
+	</v-app>
 </template>
 
-<script setup lang="ts">
-import { ref, provide } from 'vue';
+
+<script setup>
 import { useCoreStore } from '@/stores/index';
-import PlaygroundDemoPage from './PlaygroundDemoPage.vue';
-import NavBar from '@/components/Layout/NavBar.vue';
-
-
-provide('styleData', {
-	h2ColClass: 'col-12 mb-4',
-	fieldWidth: {
-		maxWidth: '100%',
-		width: '300px',
-	},
-});
+import PlaygroundPage from '@/playground/PlaygroundPage.vue';
+import ThemeSelectComponent from '@/documentation/components/ThemeSelectComponent.vue';
+import AppBar from '@/documentation/layout/AppBar.vue';
 
 const store = useCoreStore();
-const selectedLibrary = ref({});
-
 provide('links', store.links);
-provide('highlightJsLinks', store.highlightJsLinks);
-provide('prismLinks', store.prismLinks);
 
-const codeBlockOptions = ref({
-	browserWindow: false,
-	preHeight: '30em',
-});
+const selectedLibrary = ref(store.libraries[0]);
+const selectedTheme = ref('neon-bunny');
 
-provide('codeBlockOptions', codeBlockOptions);
-
-function updateLibrary(library) {
-	selectedLibrary.value = library.value;
-}
+provide('selectedLibrary', selectedLibrary);
+provide('selectedTheme', selectedTheme);
 </script>
 
 
