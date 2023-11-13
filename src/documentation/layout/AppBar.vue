@@ -25,7 +25,7 @@
 			<v-icon icon="mdi:mdi-home"></v-icon>
 		</v-app-bar-nav-icon>
 
-		<div class="site-title">Vue Code Block</div>
+		<div class="site-title">Vue CodeBlock</div>
 
 		<v-spacer></v-spacer>
 
