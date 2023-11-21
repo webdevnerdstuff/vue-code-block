@@ -67,7 +67,7 @@ const usageIndividual = `<template>
 </template>
 
 \<script setup\>
-  import { VCodeBlock } from '@wdns/vue-code-block';
+  import VCodeBlock from '@wdns/vue-code-block';
 
   const code = ref(\`const foo = 'bar';\`);
 \</script\>`;
