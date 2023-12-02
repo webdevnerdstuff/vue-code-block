@@ -1,9 +1,4 @@
-import {
-	defineAsyncComponent,
-} from 'vue';
-import type {
-	App,
-} from 'vue';
+import type { App } from 'vue';
 import type { Props } from './types';
 import './styles/cssVariables.css';
 import './styles/utilities.scss';
@@ -17,8 +12,8 @@ export const codeBlockOptions = Symbol();
 export function createVCodeBlock(options: Props = {}) {
 	return (app: App) => {
 		app.provide(codeBlockOptions, options);
-		app.component('CodeBlock', defineAsyncComponent(() => import('./VCodeBlock.vue')));
-		app.component('VCodeBlock', defineAsyncComponent(() => import('./VCodeBlock.vue')));
+		app.component('CodeBlock', VCodeBlock);
+		app.component('VCodeBlock', VCodeBlock);
 	};
 }
 
