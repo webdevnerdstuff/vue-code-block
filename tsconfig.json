@@ -45,7 +45,13 @@
 		"src/App.vue",
 		"src/components/**/*.ts",
 		"src/components/**/*.vue",
+		"src/documentation/**/*.ts",
+		"src/documentation/**/*.vue",
+		"src/libraries/**/*.ts",
+		"src/main.ts",
 		"src/playground/**/*.ts",
+		"src/playground/**/*.vue",
+		"src/plugins/**/*.ts",
 		"src/stores/**/*.ts",
 		"node_modules"
 	],

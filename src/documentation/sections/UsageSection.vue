@@ -15,12 +15,29 @@
 			<v-row>
 				<v-col cols="12">
 					<VCodeBlock
-						:code="usageGlobal"
+						:code="usageGlobalPlugin"
 						:highlightjs="selectedLibrary.id === 'highlightjs'"
-						label="Global Registration"
 						lang="javascript"
 						:prismjs="selectedLibrary.id === 'prismjs'"
 						:theme="selectedTheme"
+					>
+						<template #label>
+							Global Plugin Registration
+							<br>
+							<i>Global options have a higher precedence and will override local props</i>
+						</template>
+					</VCodeBlock>
+				</v-col>
+			</v-row>
+
+			<v-row>
+				<v-col cols="12">
+					<VCodeBlock
+						:code="usageGlobalComponent"
+						:highlightjs="selectedLibrary.id === 'highlightjs'"
+						label="Global Component Registration"
+						lang="javascript"
+						:prismjs="selectedLibrary.id === 'prismjs'"
 					/>
 				</v-col>
 			</v-row>
@@ -33,7 +50,6 @@
 						label="Local Registration"
 						lang="html"
 						:prismjs="selectedLibrary.id === 'prismjs'"
-						:theme="selectedTheme"
 					/>
 				</v-col>
 			</v-row>
@@ -46,7 +62,21 @@ const classes = inject('classes');
 const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
-const usageGlobal = `import { createApp } from 'vue';
+const usageGlobalPlugin = `import { createApp } from 'vue';
+import App from './App.vue';
+import { createVCodeBlock } from '@wdns/vue-code-block';
+
+const VCodeBlock = createVCodeBlock({
+  // options
+});
+
+const app = createApp(App);
+
+app.plugin(VCodeBlock);
+
+app.mount('#app');`;
+
+const usageGlobalComponent = `import { createApp } from 'vue';
 import App from './App.vue';
 import { VCodeBlock } from '@wdns/vue-code-block';
 

@@ -5,7 +5,7 @@ import {
 	UseIconClasses,
 	UseLabelClasses,
 	UseTabClasses,
-} from '@/types';
+} from '@/plugin/types';
 
 
 
