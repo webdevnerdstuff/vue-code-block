@@ -9,9 +9,9 @@
 					:label="options.label"
 					:lang="options.lang"
 					:prismjs="options.prismjs"
-					:tabs="options.tabs"
 					:theme="options.theme"
-				/>
+				>
+				</VCodeBlock>
 			</v-container>
 		</v-card>
 	</v-col>

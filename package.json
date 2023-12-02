@@ -1,6 +1,6 @@
 {
 	"name": "@wdns/vue-code-block",
-	"version": "2.2.15",
+	"version": "2.3.0",
 	"description": "Vue 3 CodeBlock - Highlight your code with ease using this syntax highlighting component powered by PrismJS or Highlight.js.",
 	"private": false,
 	"publishConfig": {
@@ -8,7 +8,7 @@
 	},
 	"main": "dist/vue-code-block.cjs.js",
 	"module": "dist/vue-code-block.es.js",
-	"types": "dist/types/index.d.ts",
+	"types": "dist/plugin/types/index.d.ts",
 	"scripts": {
 		"dev": "vite",
 		"watch": "pnpm dev",

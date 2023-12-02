@@ -1,4 +1,4 @@
-import { Props } from '../types';
+import { Props } from '../plugin/types';
 declare function copyCode(): void;
 declare function runCode(): void;
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
@@ -70,16 +70,16 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     codeBlockRadius: string;
     runTab: boolean;
     tabs: boolean;
-    code: string | number | object | [];
-    label: string;
     browserWindow: boolean;
     cssPath: string;
+    code: string | number | object | [];
     copyButton: boolean;
     copyIcons: boolean;
     copyFailedText: string;
     copyText: string;
     copySuccessText: string;
     indent: number;
+    label: string;
     lang: string;
     prismjs: boolean;
     prismPlugin: boolean;

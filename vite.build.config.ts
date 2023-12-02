@@ -36,7 +36,7 @@ export default defineConfig({
 		},
 		rollupOptions: {
 			input: {
-				main: path.resolve(__dirname, './src/index.ts')
+				main: path.resolve(__dirname, './src/plugin/index.ts')
 			},
 			external: [
 				...Object.keys(pkg.dependencies || {}),

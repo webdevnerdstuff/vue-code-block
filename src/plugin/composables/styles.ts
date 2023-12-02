@@ -5,7 +5,7 @@ import {
 	UseHeaderStyles,
 	UsePreTagStyles,
 	UseTabGroupStyles,
-} from '@/types';
+} from '@/plugin/types';
 
 
 export const useCodeTagStyles: UseCodeTagStyles = (options) => {

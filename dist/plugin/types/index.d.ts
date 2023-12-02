@@ -1,4 +1,6 @@
 import { CSSProperties, MaybeRef } from 'vue';
+import VCodeBlock from '../VCodeBlock.vue';
+export * from '../index';
 export type UseTheme = MaybeRef<string | boolean>;
 export interface Props {
     browserWindow?: boolean;
@@ -87,4 +89,11 @@ export interface UseTabGroupStyles {
     (options: {
         tabGap: MaybeRef<Props['tabGap']>;
     }): CSSProperties;
+}
+declare module "vue" {
+    interface ComponentCustomProperties {
+    }
+    interface GlobalComponents {
+        VCodeBlock: typeof VCodeBlock;
+    }
 }

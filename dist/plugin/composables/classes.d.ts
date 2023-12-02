@@ -1,4 +1,4 @@
-import { UseCodeBlockClasses, UseCopyButtonClasses, UseIconClasses, UseLabelClasses, UseTabClasses } from '../../types';
+import { UseCodeBlockClasses, UseCopyButtonClasses, UseIconClasses, UseLabelClasses, UseTabClasses } from '../../plugin/types';
 export declare const useCodeBlockClasses: UseCodeBlockClasses;
 export declare const useCopyButtonClasses: UseCopyButtonClasses;
 export declare const useIconClasses: UseIconClasses;

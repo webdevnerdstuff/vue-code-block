@@ -4,6 +4,9 @@ import {
 	CSSProperties,
 	MaybeRef,
 } from 'vue';
+import VCodeBlock from '../VCodeBlock.vue';
+
+export * from '../index';
 
 
 // -------------------------------------------------- Types //
@@ -129,4 +132,15 @@ export interface UseTabGroupStyles {
 			tabGap: MaybeRef<Props['tabGap']>;
 		}
 	): CSSProperties;
+}
+
+
+declare module "vue" {
+	interface ComponentCustomProperties {
+
+	}
+
+	interface GlobalComponents {
+		VCodeBlock: typeof VCodeBlock;
+	}
 }
