@@ -3,4 +3,5 @@ import type { Props } from './types';
 import VCodeBlock from './VCodeBlock.vue';
 export declare const codeBlockOptions: unique symbol;
 export declare function createVCodeBlock(options?: Props): (app: App) => void;
+export default VCodeBlock;
 export { VCodeBlock, };
