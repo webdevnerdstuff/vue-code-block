@@ -43,7 +43,6 @@
 	"exclude": [
 		"playground",
 		"src/App.vue",
-		"src/main.ts",
 		"src/components/**/*.ts",
 		"src/components/**/*.vue",
 		"src/playground/**/*.ts",
@@ -51,11 +50,9 @@
 		"node_modules"
 	],
 	"include": [
-		"src/types/auto-imports.d.ts",
-		"src/types/**/*.ts",
-		"src/types/**/*.d.ts",
-		"src/plugin/**/*.ts",
-		"src/plugin/**/*.vue"
+		"src/**/*.ts",
+		"src/**/*.tsx",
+		"src/**/*.vue"
 	],
 	"references": [
 		{
