@@ -17,6 +17,8 @@ export function createVCodeBlock(options: Props = {}) {
 	};
 }
 
+export default VCodeBlock;
+
 export {
 	VCodeBlock,
 };
