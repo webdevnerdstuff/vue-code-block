@@ -32,7 +32,7 @@
 		"strict": true,
 		"target": "ESNext",
 		"typeRoots": [
-			"./src/types",
+			"./src/plugin/types",
 			"./node_modules/@types"
 		],
 		"types": [

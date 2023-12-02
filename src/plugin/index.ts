@@ -9,7 +9,7 @@ import './styles/cssVariables.css';
 import './styles/utilities.scss';
 import './styles/main.scss';
 import './styles/themeStyles.scss';
-import VCodeBlock from '@/plugin/VCodeBlock.vue';
+import VCodeBlock from './VCodeBlock.vue';
 
 
 export const codeBlockOptions = Symbol();
