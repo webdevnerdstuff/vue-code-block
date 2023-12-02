@@ -8,7 +8,7 @@
 	},
 	"main": "dist/vue-code-block.cjs.js",
 	"module": "dist/vue-code-block.es.js",
-	"types": "dist/types/index.d.ts",
+	"types": "dist/plugin/types/index.d.ts",
 	"scripts": {
 		"dev": "vite",
 		"watch": "pnpm dev",
