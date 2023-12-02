@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "vue-code-block" plugin will be documented in this file.
 
+## v2.3.0
+12-02-2023
+[main] (@webdevnerdstuff)
+* Improve/Fix TypeScript support
+
 ## v2.2.15
 11-13-2023
 [main] (@webdevnerdstuff)
