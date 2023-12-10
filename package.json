@@ -15,7 +15,7 @@
 		"play": "sh src/playground/configs/build.sh && NODE_ENV=playground vite",
 		"sass": "sass --watch --no-source-map src/plugin/themes/scss/:src/plugin/themes/css",
 		"sass:min": "sass --style compressed --watch --no-source-map src/plugin/themes/scss/:src/plugin/themes/css/min",
-		"build": "vue-tsc -p tsconfig.dist.json && npm run test:build && vite build --config vite.build.config.ts",
+		"build": "vue-tsc -p tsconfig.dist.json && npm run test:build && vite build --config vite.build.config.mts",
 		"build:docs": "vite build",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d docs",
