@@ -41,21 +41,14 @@
 		"useDefineForClassFields": true
 	},
 	"exclude": [
-		"playground",
 		"src/**/*.spec.ts",
 		"src/**/*.test.ts",
-		"src/App.vue",
-		"src/documentation/**/*.ts",
-		"src/documentation/**/*.vue",
-		"src/libraries/**/*.ts",
-		"src/main.ts",
-		"src/playground/**/*.ts",
-		"src/plugins/**/*.ts",
-		"src/stores/**/*.ts",
+		"src/**/*.test.ts.snap",
 		"node_modules"
 	],
 	"include": [
-		"src/playground/PlaygroundPage.vue",
+		"src/playground/configs/templates/PlaygroundPage.ts.vue",
+		"src/playground/PlaygroundPage.ts.vue",
 		"src/plugin/**/*.ts",
 		"src/plugin/**/*.tsx",
 		"src/plugin/**/*.vue"
