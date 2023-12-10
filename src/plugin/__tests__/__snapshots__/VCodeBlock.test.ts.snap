@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`VCodeBlock Component > should mount the component 1`] = `
+exports[`VCodeBlock Component > Component > should ... 1`] = `
 {
   "browserWindow": false,
   "code": "",
@@ -15,7 +15,7 @@ exports[`VCodeBlock Component > should mount the component 1`] = `
   "floatingTabs": true,
   "globalOptions": false,
   "height": "auto",
-  "highlightjs": false,
+  "highlightjs": true,
   "indent": 2,
   "label": "",
   "lang": "javascript",
@@ -23,7 +23,7 @@ exports[`VCodeBlock Component > should mount the component 1`] = `
   "maxHeight": "auto",
   "persistentCopyButton": false,
   "prismPlugin": false,
-  "prismjs": true,
+  "prismjs": false,
   "runTab": false,
   "runText": "Run",
   "tabGap": "0.25rem",
@@ -31,3 +31,41 @@ exports[`VCodeBlock Component > should mount the component 1`] = `
   "theme": "neon-bunny",
 }
 `;
+
+exports[`VCodeBlock Component > Component > should mount the component 1`] = `
+{
+  "browserWindow": false,
+  "code": "",
+  "codeBlockRadius": "0.5rem",
+  "copyButton": true,
+  "copyFailedText": "Copy failed!",
+  "copyIcons": true,
+  "copySuccessText": "Copied!",
+  "copyTab": true,
+  "copyText": "Copy Code",
+  "cssPath": undefined,
+  "floatingTabs": true,
+  "globalOptions": false,
+  "height": "auto",
+  "highlightjs": true,
+  "indent": 2,
+  "label": "",
+  "lang": "javascript",
+  "languages": undefined,
+  "maxHeight": "auto",
+  "persistentCopyButton": false,
+  "prismPlugin": false,
+  "prismjs": false,
+  "runTab": false,
+  "runText": "Run",
+  "tabGap": "0.25rem",
+  "tabs": false,
+  "theme": "neon-bunny",
+}
+`;
+
+exports[`VCodeBlock Component > Slots > should use copyButton slot 1`] = `"<div class="using-copy-button-slot">This is the copy button slot</div>"`;
+
+exports[`VCodeBlock Component > Slots > should use label slot 1`] = `"<div class="using-label-slot">Hello World</div>"`;
+
+exports[`VCodeBlock Component > Slots > should use tabs slot 1`] = `"<div class="using-tabs-slot">This is the tabs slot</div>"`;
