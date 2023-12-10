@@ -58,7 +58,7 @@
 					<!-- ======================================== Run Tab/Button -->
 					<div
 						v-if="runTab && tabs && !isMobile"
-						class="v-code-block--tab"
+						class="v-code-block--tab v-code-block--tab-run"
 						:class="tabClasses"
 						@click="runCode"
 					>
