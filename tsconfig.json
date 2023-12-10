@@ -42,9 +42,9 @@
 	},
 	"exclude": [
 		"playground",
+		"src/**/*.spec.ts",
+		"src/**/*.test.ts",
 		"src/App.vue",
-		"src/components/**/*.ts",
-		"src/components/**/*.vue",
 		"src/documentation/**/*.ts",
 		"src/documentation/**/*.vue",
 		"src/libraries/**/*.ts",
@@ -56,9 +56,9 @@
 	],
 	"include": [
 		"src/playground/PlaygroundPage.vue",
-		"src/**/*.ts",
-		"src/**/*.tsx",
-		"src/**/*.vue"
+		"src/plugin/**/*.ts",
+		"src/plugin/**/*.tsx",
+		"src/plugin/**/*.vue"
 	],
 	"references": [
 		{
