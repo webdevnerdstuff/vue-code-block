@@ -2,6 +2,7 @@ import { CSSProperties, MaybeRef } from 'vue';
 import VCodeBlock from '../VCodeBlock.vue';
 export * from '../index';
 export type UseTheme = MaybeRef<string | boolean>;
+export type CopyStatus = MaybeRef<'copy' | 'success' | 'failed'>;
 export interface Props {
     browserWindow?: boolean;
     cssPath?: string | undefined;
@@ -31,6 +32,12 @@ export interface Props {
     tabs?: boolean;
     theme?: string | boolean;
 }
+export interface UseConvertToUnit {
+    (options: {
+        str: string | number | undefined | null;
+        unit?: string;
+    }): string | void;
+}
 export interface UseCodeBlockClasses {
     (options: {
         isMobile: MaybeRef<boolean>;
@@ -39,14 +46,14 @@ export interface UseCodeBlockClasses {
 }
 export interface UseCopyButtonClasses {
     (options: {
-        copyStatus: MaybeRef<string>;
+        copyStatus: CopyStatus;
         isMobile: MaybeRef<boolean>;
         persistentCopyButton: MaybeRef<Props['persistentCopyButton']>;
     }): object;
 }
 export interface UseIconClasses {
     (options: {
-        copyStatus: MaybeRef<string>;
+        copyStatus: CopyStatus;
         highlightjs: MaybeRef<Props['highlightjs']>;
         useTheme: UseTheme;
     }): object;

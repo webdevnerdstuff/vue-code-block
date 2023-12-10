@@ -60,44 +60,44 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     onRun?: ((...args: any[]) => any) | undefined;
     "onUpdate:copy-status"?: ((...args: any[]) => any) | undefined;
 }, {
-    persistentCopyButton: boolean;
     highlightjs: boolean;
-    floatingTabs: boolean;
-    tabGap: string | number;
-    copyTab: boolean;
-    height: string | number;
-    maxHeight: string | number;
-    codeBlockRadius: string;
-    runTab: boolean;
-    tabs: boolean;
+    prismjs: boolean;
     browserWindow: boolean;
     cssPath: string;
     code: string | number | object | [];
+    codeBlockRadius: string;
     copyButton: boolean;
     copyIcons: boolean;
+    copyTab: boolean;
     copyFailedText: string;
     copyText: string;
     copySuccessText: string;
+    floatingTabs: boolean;
+    height: string | number;
     indent: number;
     label: string;
     lang: string;
-    prismjs: boolean;
+    maxHeight: string | number;
+    persistentCopyButton: boolean;
     prismPlugin: boolean;
+    runTab: boolean;
     runText: string;
+    tabGap: string | number;
+    tabs: boolean;
     theme: string | boolean;
 }, {}>, {
     label?(_: {
         copyCode: typeof copyCode;
-        copyStatus: string;
+        copyStatus: "copy" | "success" | "failed";
         runCode: typeof runCode;
     }): any;
     tabs?(_: {
         copyCode: typeof copyCode;
-        copyStatus: string;
+        copyStatus: "copy" | "success" | "failed";
         runCode: typeof runCode;
     }): any;
     copyButton?(_: {
-        copyStatus: string;
+        copyStatus: "copy" | "success" | "failed";
     }): any;
 }>;
 export default _default;
