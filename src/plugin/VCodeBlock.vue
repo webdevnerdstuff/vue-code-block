@@ -184,7 +184,7 @@ const renderedCode = ref('');
 const runTextValue = ref<string>('');
 const useTheme = ref<boolean | string>('');
 
-const { cssPath, label, tabs } = toRefs(settings.value);
+const { copyButton, copyIcons, copyTab, cssPath, label, runTab, tabs } = toRefs(settings.value);
 
 
 // -------------------------------------------------- Computed //
@@ -259,11 +259,11 @@ const headerStyles = computed<StyleValue>(() => {
 
 const preTagStyles = computed<StyleValue>(() => {
 	return usePreTagStyles({
-		copyTab: settings.value.copyTab,
+		copyTab: copyTab.value,
 		height: settings.value.height,
 		maxHeight: settings.value.maxHeight,
 		radius: settings.value.codeBlockRadius,
-		runTab: settings.value.runTab,
+		runTab: runTab.value,
 		tabs: tabs.value,
 		useTheme,
 	});
