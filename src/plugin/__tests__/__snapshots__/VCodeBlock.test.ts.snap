@@ -1,0 +1,33 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`VCodeBlock Component > should mount the component 1`] = `
+{
+  "browserWindow": false,
+  "code": "",
+  "codeBlockRadius": "0.5rem",
+  "copyButton": true,
+  "copyFailedText": "Copy failed!",
+  "copyIcons": true,
+  "copySuccessText": "Copied!",
+  "copyTab": true,
+  "copyText": "Copy Code",
+  "cssPath": undefined,
+  "floatingTabs": true,
+  "globalOptions": false,
+  "height": "auto",
+  "highlightjs": false,
+  "indent": 2,
+  "label": "",
+  "lang": "javascript",
+  "languages": undefined,
+  "maxHeight": "auto",
+  "persistentCopyButton": false,
+  "prismPlugin": false,
+  "prismjs": true,
+  "runTab": false,
+  "runText": "Run",
+  "tabGap": "0.25rem",
+  "tabs": false,
+  "theme": "neon-bunny",
+}
+`;

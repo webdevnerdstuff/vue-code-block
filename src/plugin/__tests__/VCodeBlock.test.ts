@@ -1,6 +1,7 @@
 import VCodeBlock from '../VCodeBlock.vue';
 import { describe, it, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
+import { pluginName } from '../utils/globals';
 
 
 describe('VCodeBlock Component', () => {
@@ -11,40 +12,26 @@ describe('VCodeBlock Component', () => {
 				prismjs: true,
 			}
 		});
+
 		const returnedProps = wrapper.getComponent(VCodeBlock).props();
 
-		expect(returnedProps).toMatchInlineSnapshot(`
-			{
-			  "browserWindow": false,
-			  "code": "",
-			  "codeBlockRadius": "0.5rem",
-			  "copyButton": true,
-			  "copyFailedText": "Copy failed!",
-			  "copyIcons": true,
-			  "copySuccessText": "Copied!",
-			  "copyTab": true,
-			  "copyText": "Copy Code",
-			  "cssPath": undefined,
-			  "floatingTabs": true,
-			  "globalOptions": false,
-			  "height": "auto",
-			  "highlightjs": false,
-			  "indent": 2,
-			  "label": "",
-			  "lang": "javascript",
-			  "languages": undefined,
-			  "maxHeight": "auto",
-			  "persistentCopyButton": false,
-			  "prismPlugin": false,
-			  "prismjs": true,
-			  "runTab": false,
-			  "runText": "Run",
-			  "tabGap": "0.25rem",
-			  "tabs": false,
-			  "theme": "neon-bunny",
-			}
-		`);
+		expect(returnedProps).toMatchSnapshot();
 	});
+
+	it('should emit run event', () => {
+		const wrapper = mount(VCodeBlock, {
+			props: {
+				prismjs: true,
+				runTab: true,
+				tabs: true,
+			}
+		});
+
+		wrapper.find(`.${pluginName}--tab-run`).trigger('click');
+
+		expect(wrapper.emitted()).toHaveProperty('run');
+	});
+
 
 	// -------------------------------------------------- Errors //
 	const throwErrors = {
