@@ -22,8 +22,9 @@
 		"prepublishOnly": "npm run build",
 		"lint": "eslint src/**/*.{ts,vue} --max-warnings 4",
 		"prepare": "husky install",
-		"test": "vitest",
-		"test:build": "vitest --run --bail 1"
+		"test": "vitest --reporter verbose",
+		"test:commit": "vitest --run --bail 1",
+		"test:build": "vitest --run --bail 1 --reporter dot"
 	},
 	"lint-staged": {
 		"src/**/*.{js,ts,vue}": [
