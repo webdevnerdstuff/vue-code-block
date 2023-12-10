@@ -50,12 +50,12 @@
 		"src/libraries/**/*.ts",
 		"src/main.ts",
 		"src/playground/**/*.ts",
-		"src/playground/**/*.vue",
 		"src/plugins/**/*.ts",
 		"src/stores/**/*.ts",
 		"node_modules"
 	],
 	"include": [
+		"src/playground/PlaygroundPage.vue",
 		"src/**/*.ts",
 		"src/**/*.tsx",
 		"src/**/*.vue"

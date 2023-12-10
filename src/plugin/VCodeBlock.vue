@@ -118,7 +118,7 @@
 import type { StyleValue } from 'vue';
 import { codeBlockOptions } from './';
 import UAParser from 'ua-parser-js';
-import { Props } from '@/plugin/types';
+import { CopyStatus, Props } from '@/plugin/types';
 import { AllProps } from './utils/props';
 import {
 	useCodeBlockClasses,
@@ -171,7 +171,7 @@ let hljs: HLJSApi;
 let prismModule: any;
 
 const convertedCode = ref<string | unknown>(null);
-const copyStatus = ref<string>('copy');
+const copyStatus = ref<CopyStatus>('copy');
 const copyTextValue = ref<string>('');
 const copying = ref<boolean>(false);
 const isLoading = ref<boolean>(false);
@@ -331,7 +331,7 @@ function checkLibrary(): void {
 	}
 
 	if (settings.value.highlightjs && settings.value.prismPlugin) {
-		console.warn('[vue-code-block]: Highlight.js does not support PrismJS plugins. Unexpected results may occur. Remove the `prism-plugin` prop from the vue-code-block component.');
+		throw new Error('[vue-code-block]: Highlight.js does not support PrismJS plugins. Unexpected results may occur. Remove the `prism-plugin` prop from the vue-code-block component.');
 	}
 }
 
