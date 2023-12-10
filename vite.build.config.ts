@@ -43,6 +43,7 @@ export default defineConfig({
 			],
 			output: {
 				banner,
+				exports: 'named',
 			},
 		},
 	},
