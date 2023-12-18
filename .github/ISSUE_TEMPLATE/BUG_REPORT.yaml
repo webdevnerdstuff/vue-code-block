@@ -9,6 +9,12 @@ body:
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!
+  - type: input
+    id: contact
+    attributes:
+      label: Vue Code Block Version
+    validations:
+      required: true
   - type: textarea
     id: bug-description
     attributes:
