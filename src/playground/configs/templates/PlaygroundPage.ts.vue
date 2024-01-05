@@ -17,11 +17,11 @@
 	</v-col>
 </template>
 
-<script setup>
+<script setup lang="ts">
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-const selectedLibrary = inject('selectedLibrary');
-const selectedTheme = inject('selectedTheme');
+const selectedLibrary = inject<Ref<{ id: string; }>>('selectedLibrary');
+const selectedTheme = inject<Ref<string>>('selectedTheme');
 
 let code = `.foo {
   display: block;
@@ -36,11 +36,11 @@ code = `const foo = 'bar';`;
 const options = computed(() => ({
 	code,
 	copyButton: true,
-	highlightjs: selectedLibrary.value?.id === 'highlightjs',
+	highlightjs: selectedLibrary?.value?.id === 'highlightjs',
 	label: 'Playground Example',
 	lang: 'javascript',
-	prismjs: selectedLibrary.value?.id === 'prismjs',
+	prismjs: selectedLibrary?.value?.id === 'prismjs',
 	tabs: true,
-	theme: selectedTheme.value,
+	theme: selectedTheme?.value,
 }));
 </script>
