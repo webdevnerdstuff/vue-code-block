@@ -9,6 +9,18 @@ body:
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!
+  - type: input
+    id: vue-codeblock-version
+    attributes:
+      label: Vue Code Block Version
+    validations:
+      required: true
+  - type: input
+    id: vue-version
+    attributes:
+      label: Vue Version
+    validations:
+      required: true
   - type: textarea
     id: bug-description
     attributes:
