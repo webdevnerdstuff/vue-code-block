@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-unused-vars */
-import {
+import type{
 	CSSProperties,
 	MaybeRef,
 } from 'vue';
