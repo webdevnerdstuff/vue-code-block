@@ -73,7 +73,7 @@
 				: links.highlightjs
 				"
 			size="small"
-			style="min-width: 117px"
+			style="min-width: 117px;"
 			target="_blank"
 		>
 			{{ selectedLibrary.title }} Active
