@@ -400,7 +400,7 @@ function runTextCodeExampleFunction() {
 }
 
 .boolean-style {
-	color: hsl(240 100% 50%) !important;
+	color: hsl(240deg 100% 50%) !important;
 	font-weight: 500;
 }
 </style>
