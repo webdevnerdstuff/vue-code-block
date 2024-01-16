@@ -9,6 +9,7 @@ export CHECKMARK="$(printf '\e[1;32m\xE2\x9C\x94\e[0m')"
 PLAYGROUND_VUE_DIR=src/playground
 
 PLAYGROUND_VUE_FILE=PlaygroundPage.vue
+PLAYGROUND_TS_VUE_FILE=PlaygroundPage.ts.vue
 
 
 # Check if Playground.vue file exists before trying to create it #
@@ -17,6 +18,15 @@ if [ ! -f "$PLAYGROUND_VUE_DIR/$PLAYGROUND_VUE_FILE" ]; then
 
 	echo ""
 	echo "  ${BOLD_GREEN}${CHECKMARK}${BOLD_WHITE} $PLAYGROUND_VUE_FILE file has been created.${WHITE}"
+	echo ""
+fi
+
+# Check if PlaygroundPage.ts.vue file exists before trying to create it #
+if [ ! -f "$PLAYGROUND_VUE_DIR/$PLAYGROUND_TS_VUE_FILE" ]; then
+	cp "$PLAYGROUND_VUE_DIR/configs/templates/$PLAYGROUND_TS_VUE_FILE" "$PLAYGROUND_VUE_DIR/$PLAYGROUND_TS_VUE_FILE"
+
+	echo ""
+	echo "  ${BOLD_GREEN}${CHECKMARK}${BOLD_WHITE} $PLAYGROUND_TS_VUE_FILE file has been created.${WHITE}"
 	echo ""
 fi
 

@@ -39,7 +39,7 @@
 
 <script setup>
 import { useCoreStore } from '@/stores/index';
-import PlaygroundPage from '@/playground/PlaygroundPage.vue';
+import PlaygroundPage from '@/playground/PlaygroundPage.ts.vue';
 import ThemeSelectComponent from '@/documentation/components/ThemeSelectComponent.vue';
 import AppBar from '@/documentation/layout/AppBar.vue';
 

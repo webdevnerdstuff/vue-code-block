@@ -10,11 +10,15 @@ import {
 
 export const useCodeTagStyles: UseCodeTagStyles = (options) => {
 	const { isLoading, useTheme } = options;
-	const width = unref(useTheme) === 'coy' && isLoading === false ? '100%' : '';
+	const width = unref(useTheme) === 'coy' && unref(isLoading) === false ? '100%' : '';
 
-	const styles = {
+	const styles: { width: string, padding?: string; } = {
 		width,
 	};
+
+	if (unref(useTheme) === 'coy') {
+		styles.padding = '1em';
+	}
 
 	return styles as CSSProperties;
 };
@@ -24,18 +28,20 @@ export const useHeaderStyles: UseHeaderStyles = (options) => {
 
 	const styles = {
 		bottom: floatingTabs ? '1px' : '0',
-		gap: useConvertToUnit(unref(tabGap)),
+		gap: useConvertToUnit({ str: unref(tabGap) }) || '0px',
 	};
 
 	return styles as CSSProperties;
 };
 
+// TODO (fix): The border radius is not set correctly if using multiple units with tabs //
 export const usePreTagStyles: UsePreTagStyles = (options) => {
 	const { copyTab, height, maxHeight, radius, runTab, tabs, useTheme } = options;
-	let borderRadius = `${radius} 0 ${radius} ${radius} !important`;
+	const unrefRadius = unref(radius);
+	let borderRadius = `${unrefRadius} 0 ${unrefRadius} ${unrefRadius} !important`;
 
 	if (!unref(tabs) || (!unref(copyTab) && !unref(runTab))) {
-		borderRadius = radius as string;
+		borderRadius = unrefRadius as string;
 	}
 
 	const display = unref(useTheme) !== 'funky' ? 'flex' : 'block';
@@ -43,8 +49,8 @@ export const usePreTagStyles: UsePreTagStyles = (options) => {
 	const styles = {
 		borderRadius,
 		display,
-		height: useConvertToUnit(unref(height)),
-		maxHeight: useConvertToUnit(unref(maxHeight)),
+		height: useConvertToUnit({ str: unref(height) }),
+		maxHeight: useConvertToUnit({ str: unref(maxHeight) }),
 		overflow: 'auto',
 	};
 
@@ -55,7 +61,7 @@ export const useTabGroupStyles: UseTabGroupStyles = (options) => {
 	const { tabGap } = options;
 
 	const styles = {
-		gap: useConvertToUnit(unref(tabGap)),
+		gap: useConvertToUnit({ str: unref(tabGap) }) || '0px',
 	};
 
 	return styles as CSSProperties;

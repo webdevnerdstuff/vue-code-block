@@ -9,6 +9,13 @@ module.exports = {
 		"@vue/typescript/recommended",
 		"prettier",
 	],
+	ignorePatterns: [
+		'.eslintrc.js',
+		'stylelint.config.js',
+		'vite.build.config.mts',
+		'vite.config.mts',
+		'*.bk.vue',
+	],
 	overrides: [
 		{
 			files: [
@@ -25,7 +32,7 @@ module.exports = {
 		Prism: true,
 	},
 	parserOptions: {
-		parser: "@typescript-eslint/parser",
+		parser: '@typescript-eslint/parser',
 	},
 	plugins: [
 		'@typescript-eslint',

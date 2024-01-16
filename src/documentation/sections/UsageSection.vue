@@ -72,7 +72,7 @@ const VCodeBlock = createVCodeBlock({
 
 const app = createApp(App);
 
-app.plugin(VCodeBlock);
+app.use(VCodeBlock);
 
 app.mount('#app');`;
 

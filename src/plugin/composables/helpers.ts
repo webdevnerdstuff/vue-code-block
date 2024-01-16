@@ -1,7 +1,12 @@
+import { UseConvertToUnit } from '@/plugin/types';
+
+
 /**
 * Converts a string to a number with a unit.
 */
-export function useConvertToUnit(str: string | number | undefined | null, unit = 'px'): string | void {
+export const useConvertToUnit: UseConvertToUnit = (options) => {
+	const { str, unit = 'px' } = options;
+
 	if (str == null || str === '' || typeof str === 'undefined') {
 		return undefined;
 	}
@@ -11,4 +16,4 @@ export function useConvertToUnit(str: string | number | undefined | null, unit =
 	}
 
 	return `${Number(str)}${unit}`;
-}
+};

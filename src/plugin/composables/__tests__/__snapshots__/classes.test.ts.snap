@@ -1,0 +1,43 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Classes Composable > useCodeBlockClasses > should return the codeblock class defaults 1`] = `
+{
+  "v-code-block": true,
+  "v-code-block--highlightjs": true,
+  "v-code-block--mobile": false,
+  "v-code-block--prismjs": false,
+  "v-code-block-mb-5": true,
+}
+`;
+
+exports[`Classes Composable > useCopyButtonClasses > should return copy button class defaults 1`] = `
+{
+  "v-code-block--code-copy-button": true,
+  "v-code-block--code-copy-button-mobile": false,
+  "v-code-block--code-copy-button-persist": false,
+  "v-code-block--code-copy-button-status-copy": true,
+}
+`;
+
+exports[`Classes Composable > useIconClasses > should return icon class defaults 1`] = `
+{
+  "v-code-block--button-copy-icon-status-copy": true,
+  "v-code-block--me-1": true,
+  "v-code-block--tab-prism-neon-bunny-icon": true,
+  "v-code-block--tab-prism-neon-bunny-icon-status-copy": true,
+}
+`;
+
+exports[`Classes Composable > useLabelClasses > should return icon class defaults 1`] = `
+{
+  "v-code-block--label": true,
+  "v-code-block--label-mobile": false,
+}
+`;
+
+exports[`Classes Composable > useTabClasses > should return icon class defaults 1`] = `
+{
+  "v-code-block--tab-neon-bunny": true,
+  "v-code-block--tab-prism-neon-bunny": true,
+}
+`;
