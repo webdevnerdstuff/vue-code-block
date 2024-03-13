@@ -23,6 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
+.history
+
 .stylelintcache
 src/plugin/themes/scss/highlight-template.scss
 dist/themes/scss/highlight-template.scss

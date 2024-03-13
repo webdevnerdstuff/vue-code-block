@@ -1,6 +1,6 @@
 {
 	"name": "@wdns/vue-code-block",
-	"version": "2.3.1",
+	"version": "2.3.2",
 	"description": "Vue 3 CodeBlock - Highlight your code with ease using this syntax highlighting component powered by PrismJS or Highlight.js.",
 	"private": false,
 	"publishConfig": {

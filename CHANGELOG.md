@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "vue-code-block" plugin will be documented in this file.
 
+## v2.3.2
+13-03-2024
+[main] (@webdevnerdstuff)
+* Change component to use `defineAsyncComponent`
+
 ## v2.3.1
 12-02-2023
 [main] (@webdevnerdstuff)
