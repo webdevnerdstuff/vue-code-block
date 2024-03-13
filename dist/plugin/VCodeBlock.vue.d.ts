@@ -1,4 +1,4 @@
-import { Props } from '../plugin/types';
+import { Props } from './types';
 declare function copyCode(): void;
 declare function runCode(): void;
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
@@ -30,7 +30,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     run: (...args: any[]) => void;
     "update:copy-status": (...args: any[]) => void;
-}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
+}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
     browserWindow: boolean;
     cssPath: undefined;
     code: string;

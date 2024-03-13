@@ -1,4 +1,4 @@
-import { UseCodeTagStyles, UseHeaderStyles, UsePreTagStyles, UseTabGroupStyles } from '../../plugin/types';
+import { UseCodeTagStyles, UseHeaderStyles, UsePreTagStyles, UseTabGroupStyles } from '../types';
 export declare const useCodeTagStyles: UseCodeTagStyles;
 export declare const useHeaderStyles: UseHeaderStyles;
 export declare const usePreTagStyles: UsePreTagStyles;

@@ -1,4 +1,4 @@
-import { CSSProperties, MaybeRef } from 'vue';
+import type { CSSProperties, MaybeRef } from 'vue';
 import VCodeBlock from '../VCodeBlock.vue';
 export * from '../index';
 export type UseTheme = MaybeRef<string | boolean>;
