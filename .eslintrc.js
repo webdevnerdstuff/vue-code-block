@@ -15,6 +15,7 @@ module.exports = {
 		'vite.build.config.mts',
 		'vite.config.mts',
 		'*.bk.vue',
+		'cypress/**/*',
 	],
 	overrides: [
 		{
