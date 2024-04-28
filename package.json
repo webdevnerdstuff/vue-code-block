@@ -24,7 +24,8 @@
 		"prepare": "husky install",
 		"test:dev": "NODE_OPTIONS='--no-warnings' vitest",
 		"test:commit": "vitest --run --bail 1",
-		"test:build": "vitest --run --bail 1 --reporter dot"
+		"test:build": "vitest --run --bail 1 --reporter dot",
+		"cy:open": "cypress open"
 	},
 	"lint-staged": {
 		"src/**/*.{js,ts,vue}": [
@@ -100,6 +101,7 @@
 		"@vue/eslint-config-typescript": "^12.0.0",
 		"@vue/test-utils": "^2.4.3",
 		"autoprefixer": "^10.4.16",
+		"cypress": "^13.8.1",
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-import": "^2.29.1",
