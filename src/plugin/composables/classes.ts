@@ -1,3 +1,4 @@
+import { unref } from 'vue';
 import { pluginName } from '../utils/globals';
 import {
 	UseCodeBlockClasses,

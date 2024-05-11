@@ -1,4 +1,3 @@
-import { describe, it, expect } from 'vitest';
 import { ref } from 'vue';
 import {
 	useCodeTagStyles,
@@ -24,13 +23,19 @@ describe('Styles Composable', () => {
 		it('should return the code tag style defaults', () => {
 			expect(
 				useCodeTagStyles({ isLoading: false, useTheme: theme })
-			).toMatchSnapshot();
+			).to.deep.equal({
+				"padding": "1em",
+				"width": "100%",
+			});
 		});
 
 		it('should return the code tag style defaults if loading', () => {
 			expect(
 				useCodeTagStyles({ isLoading: true, useTheme: theme })
-			).toMatchSnapshot();
+			).to.deep.equal({
+				"padding": "1em",
+				"width": "",
+			});
 		});
 	});
 
@@ -42,29 +47,44 @@ describe('Styles Composable', () => {
 		it('should return the header style defaults', () => {
 			expect(
 				useHeaderStyles({ floatingTabs, tabGap })
-			).toMatchSnapshot();
+			).to.deep.equal({
+				"bottom": "1px",
+				"gap": "0.25rem",
+			});
 		});
 
 		it('should return the header style with floatingTabs as false', () => {
 			expect(
 				useHeaderStyles({ floatingTabs: false, tabGap })
-			).toMatchSnapshot();
+			).to.deep.equal({
+				"bottom": "0",
+				"gap": "0.25rem",
+			});
 		});
 
 		it('should return gap as undefined', () => {
 			expect(
 				useHeaderStyles({ floatingTabs: false, tabGap: '' })
-			).toMatchSnapshot();
+			).to.deep.equal({
+				"bottom": "0",
+				"gap": "0px",
+			});
 		});
 
 		it('should return tabGap as 0px', () => {
 			expect(
 				useHeaderStyles({ floatingTabs: false, tabGap: undefined })
-			).toMatchSnapshot();
+			).to.deep.equal({
+				"bottom": "0",
+				"gap": "0px",
+			});
 
 			expect(
 				useHeaderStyles({ floatingTabs: false, tabGap: '' })
-			).toMatchSnapshot();
+			).to.deep.equal({
+				"bottom": "0",
+				"gap": "0px",
+			});
 		});
 	});
 
@@ -80,34 +100,49 @@ describe('Styles Composable', () => {
 		it('should return the pre tag style defaults', () => {
 			expect(
 				usePreTagStyles({ copyTab, height, maxHeight, radius, runTab, tabs, useTheme: defaultTheme })
-			).toMatchSnapshot();
+			).to.deep.equal({
+				"borderRadius": "0.5rem",
+				"display": "flex",
+				"height": "auto",
+				"maxHeight": "auto",
+				"overflow": "auto",
+			});
 		});
 
 		it('should return the set radius if no tabs', () => {
 			expect(
 				usePreTagStyles({ copyTab, height, maxHeight, radius, runTab, tabs, useTheme: defaultTheme })
-			).toMatchSnapshot();
+			).to.deep.equal({
+				"borderRadius": "0.5rem",
+				"display": "flex",
+				"height": "auto",
+				"maxHeight": "auto",
+				"overflow": "auto",
+			});
 		});
 
 		it('should return the set radius with tabs', () => {
 			expect(
 				usePreTagStyles({ copyTab, height, maxHeight, radius, runTab, tabs: true, useTheme: defaultTheme })
-			).toMatchSnapshot();
+			).to.deep.equal({
+				"borderRadius": "0.5rem 0 0.5rem 0.5rem !important",
+				"display": "flex",
+				"height": "auto",
+				"maxHeight": "auto",
+				"overflow": "auto",
+			});
 		});
 
-		// TODO (fix): The border radius is not set correctly if using multiple units with tabs //
 		it('should return the set radius', () => {
 			expect(
 				usePreTagStyles({ copyTab, height, maxHeight, radius: '0 1em', runTab, tabs: true, useTheme: defaultTheme })
-			).toMatchInlineSnapshot(`
-				{
-				  "borderRadius": "0 1em 0 0 1em 0 1em !important",
-				  "display": "flex",
-				  "height": "auto",
-				  "maxHeight": "auto",
-				  "overflow": "auto",
-				}
-			`);
+			).to.deep.equal({
+				"borderRadius": "0 1em 0 0 1em 0 1em !important",
+				"display": "flex",
+				"height": "auto",
+				"maxHeight": "auto",
+				"overflow": "auto",
+			});
 		});
 
 	});
@@ -118,17 +153,23 @@ describe('Styles Composable', () => {
 		it('should return the tab group style defaults', () => {
 			expect(
 				useTabGroupStyles({ tabGap })
-			).toMatchSnapshot();
+			).to.deep.equal({
+				"gap": "0.25rem",
+			});
 		});
 
 		it('should return tabGap as 0px', () => {
 			expect(
 				useTabGroupStyles({ tabGap: undefined })
-			).toMatchSnapshot();
+			).to.deep.equal({
+				"gap": "0px",
+			});
 
 			expect(
 				useTabGroupStyles({ tabGap: '' })
-			).toMatchSnapshot();
+			).to.deep.equal({
+				"gap": "0px",
+			});
 		});
 	});
 

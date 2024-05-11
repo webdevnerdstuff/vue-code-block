@@ -1,4 +1,5 @@
-import { CSSProperties } from 'vue';
+import { unref } from 'vue';
+import type { CSSProperties, } from 'vue';
 import { useConvertToUnit } from './helpers';
 import {
 	UseCodeTagStyles,
