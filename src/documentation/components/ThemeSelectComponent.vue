@@ -10,6 +10,7 @@
 		>
 			<v-select
 				v-model="library"
+				data-cy="library-select"
 				density="comfortable"
 				item-value="id"
 				:items="libraries"
@@ -28,6 +29,7 @@
 		>
 			<v-select
 				v-model="theme"
+				data-cy="theme-select"
 				density="comfortable"
 				item-value="id"
 				:items="items"
