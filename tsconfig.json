@@ -27,7 +27,7 @@
 			]
 		},
 		"resolveJsonModule": true,
-		"rootDir": "src",
+		"rootDir": "./",
 		"skipLibCheck": true,
 		"strict": true,
 		"target": "ESNext",
@@ -47,6 +47,7 @@
 		"node_modules"
 	],
 	"include": [
+		"cypress",
 		"src/playground/configs/templates/PlaygroundPage.ts.vue",
 		"src/playground/PlaygroundPage.ts.vue",
 		"src/plugin/**/*.ts",
