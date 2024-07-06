@@ -1,5 +1,6 @@
-import type { CSSProperties, MaybeRef } from 'vue';
-import VCodeBlock from '../VCodeBlock.vue';
+import { CSSProperties, MaybeRef } from 'vue';
+import { default as VCodeBlock } from '../VCodeBlock.vue';
+
 export * from '../index';
 export type UseTheme = MaybeRef<string | boolean>;
 export type CopyStatus = MaybeRef<'copy' | 'success' | 'failed'>;
