@@ -2,7 +2,7 @@
 All notable changes to the "vue-code-block" plugin will be documented in this file.
 
 ## v2.3.3
-03-13-2024
+03-13-2024  
 [main] (@kymtwyf)
 * Fix cssPath prop not being reactive. Fixes [#49](https://github.com/webdevnerdstuff/vue-code-block/issues/49)
 
@@ -10,34 +10,34 @@ All notable changes to the "vue-code-block" plugin will be documented in this fi
 * Update packages.
 
 ## v2.3.2
-03-13-2024
+03-13-2024  
 [main] (@webdevnerdstuff)
 * Change component to use `defineAsyncComponent`
 
 ## v2.3.1
-12-02-2023
+12-02-2023  
 [main] (@webdevnerdstuff)
 * Add default export
 
 ## v2.3.0
-12-02-2023
+12-02-2023  
 [main] (@webdevnerdstuff)
 * Improve/Fix TypeScript support
 
 ## v2.2.15
-11-13-2023
+11-13-2023  
 [main] (@webdevnerdstuff)
 * Add binding props to slots
 * Update docs
 
 ## v2.2.13
-11-09-2023
+11-09-2023  
 [main] (@webdevnerdstuff)
 * Add `cssPath` prop to component to allow for custom css file path to be used.
 * Update packages.
 
 ## v2.2.11
-06-11-2023
+06-11-2023  
 [main] (@webdevnerdstuff)
 * Changing Highlight.js to include all languages by default.
   * Unfortunately, adding additional languages was not working as expected, so this is the best solution I can think of for now.
@@ -45,7 +45,7 @@ All notable changes to the "vue-code-block" plugin will be documented in this fi
 * Changing compiling to use a Vite config instead of rollup so d.ts file aliases resolve correctly.
 
 ## v2.1.1
-04-16-2023
+04-16-2023  
 [main] (@webdevnerdstuff)
 * Changing importing of css/scss/sass to use @use instead of @import.
 
@@ -60,21 +60,21 @@ All notable changes to the "vue-code-block" plugin will be documented in this fi
 * Adding sass scripts to package.json to compile scss files to css.
 
 ## v2.0.1 - v2.0.6
-04-15-2023
+04-15-2023  
 [main] (@webdevnerdstuff)
 * Minor changes to fix issues after testing npm packaging.
 
 ## v2.0.0
-04-15-2023
+04-15-2023  
 [main] (@webdevnerdstuff)
 * Major release update. Added in support to use either PrismJS or HighlightJS.
 
 ## v1.0.15
-04-02-2023
+04-02-2023  
 [main] (@webdevnerdstuff)
 * Minor changes to fix issues after testing npm packaging.
 
 ## v1.0.0
-03-16-2023
+03-16-2023  
 [main] (@webdevnerdstuff)
 * Initial release
