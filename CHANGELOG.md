@@ -6,6 +6,9 @@ All notable changes to the "vue-code-block" plugin will be documented in this fi
 [main] (@kymtwyf)
 * Fix cssPath prop not being reactive. Fixes [#49](https://github.com/webdevnerdstuff/vue-code-block/issues/49)
 
+[main] (@webdevnerdstuff)
+* Update packages.
+
 ## v2.3.2
 03-13-2024
 [main] (@webdevnerdstuff)
