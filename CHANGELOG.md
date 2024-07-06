@@ -1,8 +1,13 @@
 # Change Log
 All notable changes to the "vue-code-block" plugin will be documented in this file.
 
+## v2.3.3
+03-13-2024
+[main] (@kymtwyf)
+* Fix cssPath prop not being reactive. Fixes [#49](https://github.com/webdevnerdstuff/vue-code-block/issues/49)
+
 ## v2.3.2
-13-03-2024
+03-13-2024
 [main] (@webdevnerdstuff)
 * Change component to use `defineAsyncComponent`
 
