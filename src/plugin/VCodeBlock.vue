@@ -184,7 +184,7 @@ const renderedCode = ref('');
 const runTextValue = ref<string>('');
 const useTheme = ref<boolean | string>('');
 
-const { copyButton, copyIcons, copyTab, cssPath, label, runTab, tabs } = toRefs(settings.value);
+const { copyButton, copyIcons, copyTab, label, runTab, tabs } = toRefs(settings.value);
 
 
 // -------------------------------------------------- Computed //
@@ -297,10 +297,6 @@ watch(props as Props, () => {
 	if (settings.value.runText) {
 		runTextValue.value = settings.value.runText;
 	}
-});
-
-watch(() => cssPath, () => {
-	loadTheme();
 });
 
 
@@ -438,8 +434,8 @@ function loadTheme(): void {
 
 	const adjustCssFilename = themeNameAdjustments(activeLibrary, useTheme.value);
 
-	if (typeof cssPath.value !== 'undefined') {
-		fetchUrl = cssPath.value;
+	if (typeof settings.value.cssPath !== 'undefined') {
+		fetchUrl = settings.value.cssPath;
 	}
 	else {
 		switch (activeLibrary) {
