@@ -2,7 +2,22 @@ import { Props } from './types';
 
 declare function copyCode(): void;
 declare function runCode(): void;
-declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
+declare function __VLS_template(): {
+    label?(_: {
+        copyCode: typeof copyCode;
+        copyStatus: "copy" | "success" | "failed";
+        runCode: typeof runCode;
+    }): any;
+    tabs?(_: {
+        copyCode: typeof copyCode;
+        copyStatus: "copy" | "success" | "failed";
+        runCode: typeof runCode;
+    }): any;
+    copyButton?(_: {
+        copyStatus: "copy" | "success" | "failed";
+    }): any;
+};
+declare const __VLS_component: import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
     browserWindow: boolean;
     cssPath: undefined;
     code: string;
@@ -63,44 +78,31 @@ declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__
 }, {
     highlightjs: boolean;
     prismjs: boolean;
+    persistentCopyButton: boolean;
+    floatingTabs: boolean;
+    tabGap: string | number;
+    copyTab: boolean;
+    height: string | number;
+    maxHeight: string | number;
+    codeBlockRadius: string;
+    runTab: boolean;
+    tabs: boolean;
     browserWindow: boolean;
     cssPath: string;
-    code: string | number | object | [];
-    codeBlockRadius: string;
+    code: object | [] | string | number;
     copyButton: boolean;
     copyIcons: boolean;
-    copyTab: boolean;
     copyFailedText: string;
     copyText: string;
     copySuccessText: string;
-    floatingTabs: boolean;
-    height: string | number;
     indent: number;
     label: string;
     lang: string;
-    maxHeight: string | number;
-    persistentCopyButton: boolean;
     prismPlugin: boolean;
-    runTab: boolean;
     runText: string;
-    tabGap: string | number;
-    tabs: boolean;
     theme: string | boolean;
-}, {}>, {
-    label?(_: {
-        copyCode: typeof copyCode;
-        copyStatus: "copy" | "success" | "failed";
-        runCode: typeof runCode;
-    }): any;
-    tabs?(_: {
-        copyCode: typeof copyCode;
-        copyStatus: "copy" | "success" | "failed";
-        runCode: typeof runCode;
-    }): any;
-    copyButton?(_: {
-        copyStatus: "copy" | "success" | "failed";
-    }): any;
-}>;
+}, {}>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
 type __VLS_TypePropsToRuntimeProps<T> = {
