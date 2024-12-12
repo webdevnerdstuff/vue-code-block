@@ -96,19 +96,13 @@
 				:class="`language-${settings.lang}`"
 				:style="preTagStyles"
 			>
-				<code
-					v-if="prismPlugin"
-					:class="`language-${settings.lang} ${settings.browserWindow ? 'v-code-block--code-browser' : ''} ${settings.highlightjs ? 'hljs' : ''}`"
-					:style="codeTagStyles"
-					v-text="computedCode"
-				></code>
-				<code
-					v-else
-					:class="`language-${settings.lang} ${settings.browserWindow ? 'v-code-block--code-browser' : ''} ${settings.highlightjs ? 'hljs' : ''}`"
-					:style="codeTagStyles"
-					v-html="renderedCode"
-				></code>
-			</pre>
+		<code v-if="prismPlugin"
+			:class="`language-${settings.lang} ${settings.browserWindow ? 'v-code-block--code-browser' : ''} ${settings.highlightjs ? 'hljs' : ''}`"
+			:style="codeTagStyles" v-text="computedCode"></code>
+		<code v-else
+			:class="`language-${settings.lang} ${settings.browserWindow ? 'v-code-block--code-browser' : ''} ${settings.highlightjs ? 'hljs' : ''}`"
+			:style="codeTagStyles" v-html="renderedCode"></code>
+	</pre>
 		</div>
 	</div>
 </template>
@@ -332,10 +326,29 @@ function checkLibrary(): void {
 	}
 }
 
+function isValidJSON(str: string): boolean {
+	try {
+		JSON.parse(str);
+		return true;
+	}
+	catch (e) {
+		return false;
+	}
+}
+
 function convertCode(): void {
 	if (settings.value.lang === 'json') {
 		const propsCode = settings.value.code.toString();
-		convertedCode.value = JSON.stringify(JSON.parse(propsCode), null, settings.value.indent);
+
+		// Check if the code is valid JSON //
+		if (isValidJSON(propsCode)) {
+			convertedCode.value = JSON.stringify(JSON.parse(propsCode), null, settings.value.indent);
+			return;
+		}
+
+		// Change lang to text if not valid JSON to prevent errors //
+		settings.value.lang = 'text';
+		convertedCode.value = propsCode;
 		return;
 	}
 
