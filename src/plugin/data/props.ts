@@ -1,15 +1,15 @@
 
 export const AllProps = {
 	browserWindow: false,
-	cssPath: undefined,
 	code: '',
 	codeBlockRadius: '0.5rem',
 	copyButton: true,
-	copyIcons: true,
-	copyTab: true,
 	copyFailedText: 'Copy failed!',
-	copyText: 'Copy Code',
+	copyIcons: true,
 	copySuccessText: 'Copied!',
+	copyTab: true,
+	copyText: 'Copy Code',
+	cssPath: undefined,
 	floatingTabs: true,
 	height: 'auto',
 	highlightjs: false,
@@ -18,11 +18,16 @@ export const AllProps = {
 	lang: 'javascript',
 	maxHeight: 'auto',
 	persistentCopyButton: false,
-	prismjs: false,
 	prismPlugin: false,
+	prismjs: false,
 	runTab: false,
 	runText: 'Run',
 	tabGap: '0.25rem',
 	tabs: false,
 	theme: 'neon-bunny',
 };
+
+// Used as the component prop defaults so unset props can fall back to the global plugin options //
+export const UndefinedProps = Object.fromEntries(
+	Object.keys(AllProps).map((key) => [key, undefined]),
+) as { [K in keyof typeof AllProps]: undefined };
