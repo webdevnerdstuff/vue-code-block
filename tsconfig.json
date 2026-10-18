@@ -1,61 +1,14 @@
 {
-	"compilerOptions": {
-		"allowSyntheticDefaultImports": true,
-		"baseUrl": "./",
-		"declaration": true,
-		"declarationDir": "./dist",
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"importHelpers": true,
-		"jsx": "preserve",
-		"lib": [
-			"ESNext",
-			"DOM"
-		],
-		"module": "ESNext",
-		"moduleResolution": "Node",
-		"noEmit": true,
-		"noFallthroughCasesInSwitch": true,
-		"noImplicitAny": false,
-		"noUncheckedIndexedAccess": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"outDir": "./dist",
-		"paths": {
-			"@/*": [
-				"./src/*"
-			]
-		},
-		"resolveJsonModule": true,
-		"rootDir": "src",
-		"skipLibCheck": true,
-		"strict": true,
-		"target": "ESNext",
-		"typeRoots": [
-			"./src/plugin/types",
-			"./node_modules/@types"
-		],
-		"types": [
-			"node"
-		],
-		"useDefineForClassFields": true
-	},
-	"exclude": [
-		"src/**/*.spec.ts",
-		"src/**/*.test.ts",
-		"src/**/*.test.ts.snap",
-		"node_modules"
-	],
-	"include": [
-		"src/playground/configs/templates/PlaygroundPage.ts.vue",
-		"src/playground/PlaygroundPage.ts.vue",
-		"src/plugin/**/*.ts",
-		"src/plugin/**/*.tsx",
-		"src/plugin/**/*.vue"
-	],
+	"files": [],
 	"references": [
 		{
 			"path": "./tsconfig.node.json"
+		},
+		{
+			"path": "./tsconfig.app.json"
 		}
-	]
+	],
+	"compilerOptions": {
+		"module": "ESNext"
+	}
 }

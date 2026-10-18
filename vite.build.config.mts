@@ -8,7 +8,9 @@ import pkg from './package.json';
 import terser from '@rollup/plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
 import vue from '@vitejs/plugin-vue';
+
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+
 
 const scopedPackageName = pkg.name;
 const packageName = scopedPackageName.split('/')[1];
@@ -40,6 +42,7 @@ export default defineConfig({
 			},
 			external: [
 				...Object.keys(pkg.dependencies || {}),
+				/^vuetify($|\/.+)/,
 			],
 			output: {
 				banner,
@@ -54,22 +57,20 @@ export default defineConfig({
 			imports: [
 				'vue',
 				{
-					vue: ['CSSProperties']
+					vue: ['CSSProperties'],
 				}
 			],
 			vueTemplate: true,
 		}),
-		vue({
-			script: {
-				defineModel: true,
-			},
-		}),
+		vue(),
 		dts({
 			insertTypesEntry: true,
+			tsconfigPath: 'tsconfig.build.json',
 		}),
 		typescript({
 			check: true,
 			include: ['./src/plugin/**/*.vue'],
+			tsconfig: 'tsconfig.build.json',
 		}),
 		cssInjectedByJsPlugin({ topExecutionPriority: false }),
 		viteStaticCopy({

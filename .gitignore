@@ -14,6 +14,7 @@ dist-ssr
 
 # Editor directories and files
 .vscode/*
+.history/*
 !.vscode/extensions.json
 .idea
 .DS_Store
@@ -23,8 +24,15 @@ dist-ssr
 *.sln
 *.sw?
 
-.history
-
 .stylelintcache
 src/plugin/themes/scss/highlight-template.scss
 dist/themes/scss/highlight-template.scss
+
+
+.eslintcache
+
+src/plugin/**/*.bk.*
+
+# Temp files and directories
+*__TEMP.*
+*__TEMP/
