@@ -1,7 +1,7 @@
 <template>
 	<div :class="codeBlockClasses">
 		<div
-			v-if="label || tabs || slots.label || slots.tabs"
+			v-if="settings.label || settings.tabs || slots.label || slots.tabs"
 			class="v-code-block--header"
 			:style="headerStyles"
 		>
@@ -19,7 +19,7 @@
 						}"
 					/>
 				</template>
-				<template v-else>{{ label }}</template>
+				<template v-else>{{ settings.label }}</template>
 			</div>
 
 			<div
@@ -39,14 +39,14 @@
 				<template v-else>
 					<!-- ======================================== Copy Code Tab/Button -->
 					<div
-						v-if="copyTab && tabs"
+						v-if="settings.copyTab && settings.tabs"
 						class="v-code-block--tab"
 						:class="tabClasses"
 						@click="copyCode"
 					>
 						<div class="v-code-block--button-copy">
 							<StatusIcons
-								v-if="copyIcons"
+								v-if="settings.copyIcons"
 								class="v-code-block--button-copy-icon"
 								:class="iconClasses"
 								:icon="copyStatus"
@@ -57,7 +57,7 @@
 
 					<!-- ======================================== Run Tab/Button -->
 					<div
-						v-if="runTab && tabs && !isMobile"
+						v-if="settings.runTab && settings.tabs && !isMobile"
 						class="v-code-block--tab v-code-block--tab-run"
 						:class="tabClasses"
 						@click="runCode"
@@ -83,7 +83,7 @@
 				</template>
 				<template v-else>
 					<StatusIcons
-						v-if="copyButton"
+						v-if="settings.copyButton"
 						class="v-code-block--button-copy-icon"
 						:class="iconClasses"
 						:icon="copyStatus"
@@ -96,11 +96,12 @@
 				:class="`language-${settings.lang}`"
 				:style="preTagStyles"
 			>
-		<code v-if="prismPlugin"
-			:class="`language-${settings.lang} ${settings.browserWindow ? 'v-code-block--code-browser' : ''} ${settings.highlightjs ? 'hljs' : ''}`"
-			:style="codeTagStyles" v-text="computedCode"></code>
+		<code v-if="usePrismPlugin"
+			ref="prismPluginCodeRef"
+			:class="codeTagClasses"
+			:style="codeTagStyles"></code>
 		<code v-else
-			:class="`language-${settings.lang} ${settings.browserWindow ? 'v-code-block--code-browser' : ''} ${settings.highlightjs ? 'hljs' : ''}`"
+			:class="codeTagClasses"
 			:style="codeTagStyles" v-html="renderedCode"></code>
 	</pre>
 		</div>
@@ -109,11 +110,11 @@
 
 
 <script setup lang="ts">
+import { HLJSApi } from 'highlight.js';
+import langPlaintext from 'highlight.js/lib/languages/plaintext';
+import { UAParser } from 'ua-parser-js';
+import type { CopyStatus, Props } from '@/plugin/types';
 import type { StyleValue } from 'vue';
-import { codeBlockOptions } from './';
-import UAParser from 'ua-parser-js';
-import { CopyStatus, Props } from '@/plugin/types';
-import { AllProps } from './utils/props';
 import {
 	useCodeBlockClasses,
 	useCopyButtonClasses,
@@ -127,21 +128,20 @@ import {
 	usePreTagStyles,
 	useTabGroupStyles,
 } from './composables/styles';
+import { pluginOptionsInjectionKey } from './data/globals';
 
-import StatusIcons from '@/plugin/components/StatusIcons.vue';
+import { AllProps, UndefinedProps } from './data/props';
 import {
-	neonBunnyCarrotThemeMin,
-	neonBunnyThemeMin,
 	neonBunnyCarrotHighlightThemeMin,
-	neonBunnyHighlightThemeMin
+	neonBunnyCarrotThemeMin,
+	neonBunnyHighlightThemeMin,
+	neonBunnyThemeMin,
 } from './themes';
-
-import { HLJSApi } from 'highlight.js';
-import langPlaintext from 'highlight.js/lib/languages/plaintext';
+import StatusIcons from '@/plugin/components/StatusIcons.vue';
 
 
-const highlightJsVersion = '11.8.0';
-const prismVersion = '1.29.0';
+const highlightJsVersion = '11.12.0';
+const prismVersion = '1.30.0';
 const prismThemesVersion = '1.9.0';
 
 
@@ -150,23 +150,32 @@ const emit = defineEmits(['run', 'update:copy-status']);
 const slots = useSlots();
 
 
-const injectedOptions = inject(codeBlockOptions, {});
-
-
 // -------------------------------------------------- Props //
-const props = withDefaults(defineProps<Props>(), { ...AllProps });
+// Props default to undefined so we can tell which ones were actually passed. //
+// Priority: component props > global plugin options > default values //
+const props = withDefaults(defineProps<Props>(), { ...UndefinedProps });
 
-const settings = ref({ ...props, ...injectedOptions });
+const injectedPluginOptions = inject<PluginOptions>(pluginOptionsInjectionKey, {});
+
+function getSettings(): Settings {
+	const passedProps = Object.fromEntries(
+		Object.entries(props).filter(([, value]) => typeof value !== 'undefined'),
+	);
+
+	return { ...AllProps, ...injectedPluginOptions, ...passedProps };
+}
+
+const settings: Ref<Settings> = ref(getSettings());
 
 
 // -------------------------------------------------- Data //
 let hljs: HLJSApi;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 let prismModule: any;
 
 const convertedCode = ref<string | unknown>(null);
 const copyStatus = ref<CopyStatus>('copy');
-const copyTextValue = ref<string>('');
+const copyTextValue = ref<Settings['copyText']>('');
 const copying = ref<boolean>(false);
 const isLoading = ref<boolean>(false);
 const isMobile = ref<boolean>(false);
@@ -174,28 +183,15 @@ const highlightCdn = ref(`https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@${
 const prismCdn = ref(`https://cdn.jsdelivr.net/gh/PrismJS/prism@${prismVersion}/themes`);
 const prismThemesCdn = ref(`https://cdn.jsdelivr.net/gh/PrismJS/prism-themes@${prismThemesVersion}/themes`);
 
+const prismPluginCodeRef = ref<HTMLElement | null>(null);
 const renderedCode = ref('');
-const runTextValue = ref<string>('');
-const useTheme = ref<boolean | string>('');
-
-const { copyButton, copyIcons, copyTab, label, runTab, tabs } = toRefs(settings.value);
+const runTextValue = ref<Settings['runText']>('');
+const useTheme = ref<Settings['theme']>('');
 
 
 // -------------------------------------------------- Computed //
-const computedCode = computed<unknown>(() => {
-	let html = '';
-
-	if (settings.value.highlightjs) {
-		html = renderedCode.value;
-	}
-
-	// We need to compute the code for Prism plugins to work //
-	if (settings.value.prismjs && settings.value.prismPlugin) {
-		html = convertedCode.value as string;
-	}
-
-	return html;
-});
+// Prism plugins (line-numbers, etc.) only run when Prism highlights the element itself //
+const usePrismPlugin = computed<boolean>(() => !!(settings.value.prismjs && settings.value.prismPlugin));
 
 
 // -------------------------------------------------- Classes //
@@ -224,8 +220,16 @@ const iconClasses = computed<object>(() => {
 
 const labelClasses = computed<object>(() => {
 	return useLabelClasses({
-		isMobile
+		isMobile,
 	});
+});
+
+const codeTagClasses = computed<string>(() => {
+	return [
+		`language-${settings.value.lang}`,
+		settings.value.browserWindow ? 'v-code-block--code-browser' : '',
+		settings.value.highlightjs ? 'hljs' : '',
+	].filter(Boolean).join(' ');
 });
 
 const tabClasses = computed<object>(() => {
@@ -247,18 +251,18 @@ const codeTagStyles = computed<StyleValue>(() => {
 const headerStyles = computed<StyleValue>(() => {
 	return useHeaderStyles({
 		floatingTabs: settings.value.floatingTabs,
-		tabGap: settings.value.tabGap
+		tabGap: settings.value.tabGap,
 	});
 });
 
 const preTagStyles = computed<StyleValue>(() => {
 	return usePreTagStyles({
-		copyTab: copyTab.value,
+		copyTab: settings.value.copyTab,
 		height: settings.value.height,
 		maxHeight: settings.value.maxHeight,
 		radius: settings.value.codeBlockRadius,
-		runTab: runTab.value,
-		tabs: tabs.value,
+		runTab: settings.value.runTab,
+		tabs: settings.value.tabs,
 		useTheme,
 	});
 });
@@ -272,11 +276,9 @@ const tabGroupStyle = computed<StyleValue>(() => {
 
 // -------------------------------------------------- Watch //
 watch(props as Props, () => {
-	settings.value = { ...props, ...injectedOptions };
+	settings.value = getSettings();
 
-	if (settings.value.code) {
-		renderCode();
-	}
+	renderCode();
 
 	if (settings.value.theme || settings.value.prismjs || settings.value.highlightjs) {
 		checkLibrary();
@@ -308,6 +310,12 @@ onMounted(() => {
 	loadTheme();
 	mobileCheck();
 	renderCode();
+
+	window.addEventListener('orientationchange', mobileCheck);
+});
+
+onBeforeUnmount(() => {
+	window.removeEventListener('orientationchange', mobileCheck);
 });
 
 
@@ -331,15 +339,24 @@ function isValidJSON(str: string): boolean {
 		JSON.parse(str);
 		return true;
 	}
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	catch (e) {
 		return false;
 	}
 }
 
 function convertCode(): void {
-	if (settings.value.lang === 'json') {
-		const propsCode = settings.value.code.toString();
+	const code = settings.value.code;
 
+	// Objects & arrays are stringified so they can be highlighted //
+	if (typeof code === 'object' && code !== null) {
+		convertedCode.value = JSON.stringify(code, null, settings.value.indent);
+		return;
+	}
+
+	const propsCode = code != null ? String(code) : '';
+
+	if (settings.value.lang === 'json') {
 		// Check if the code is valid JSON //
 		if (isValidJSON(propsCode)) {
 			convertedCode.value = JSON.stringify(JSON.parse(propsCode), null, settings.value.indent);
@@ -348,12 +365,9 @@ function convertCode(): void {
 
 		// Change lang to text if not valid JSON to prevent errors //
 		settings.value.lang = 'text';
-		convertedCode.value = propsCode;
-		return;
 	}
 
-	convertedCode.value = settings.value.code;
-	return;
+	convertedCode.value = propsCode;
 }
 
 function copyCode(): void {
@@ -396,7 +410,7 @@ function loadTheme(): void {
 	let cssFilename = '';
 	let fetchUrl = '';
 
-	themeId = themeNameAdjustments(activeLibrary, themeId);
+	themeId = themeNameAdjustments(activeLibrary, themeId) as string;
 
 	// If theme is loaded or false, do not keep trying to add it again //
 	if (loadedTheme === useTheme.value || loadedTheme === themeId) {
@@ -463,7 +477,7 @@ function loadTheme(): void {
 				if (useTheme.value === 'default') {
 					fetchUrl = `${prismCdn.value}/prism.css`;
 				}
-				else if (useTheme.value.includes('themes-')) {
+				else if ((useTheme.value as string).includes('themes-')) {
 					fetchUrl = `${prismThemesCdn.value}/${cssFilename}`;
 				}
 				else {
@@ -480,6 +494,10 @@ function loadTheme(): void {
 	isLoading.value = true;
 
 	fetch(fetchUrl).then((response) => {
+		if (!response.ok) {
+			throw new Error(`${response.status} ${response.statusText} (${fetchUrl})`);
+		}
+
 		return response.text();
 	})
 		.then((data) => {
@@ -491,6 +509,7 @@ function loadTheme(): void {
 		})
 		.catch((error) => {
 			const activeLibrary = settings.value.highlightjs ? 'Highlight.js' : 'PrismJS';
+			isLoading.value = false;
 			console.error(`${activeLibrary} CDN Error:`, error);
 		});
 }
@@ -501,12 +520,8 @@ function mobileCheck(): void {
 	isMobile.value = device.type === 'mobile';
 }
 
-window.addEventListener('orientationchange', () => {
-	mobileCheck();
-});
-
-function themeNameAdjustments(lib: string, name: string, clean = false): string {
-	let newName = name;
+function themeNameAdjustments(lib: string, name: Settings['theme'], clean = false): Settings['theme'] {
+	let newName = name as string;
 
 	if (lib === 'prism') {
 		newName = newName.replace('themes-', 'prism-');
@@ -544,7 +559,15 @@ function renderCode(): void {
 			.then((module) => {
 				hljs = module.default;
 				hljs.registerLanguage('plain', langPlaintext);
-				renderedCode.value = hljs.highlight(convertedCode.value as string, { language: settings.value.lang }).value;
+
+				let language = settings.value.lang as string;
+
+				if (!hljs.getLanguage(language)) {
+					console.warn(`[vue-code-block]: Highlight.js language "${language}" is not registered. Falling back to plaintext.`);
+					language = 'plaintext';
+				}
+
+				renderedCode.value = hljs.highlight(convertedCode.value as string, { language }).value;
 			})
 			.catch((err) => {
 				console.error('Highlight.js import:', { err });
@@ -555,9 +578,22 @@ function renderCode(): void {
 		import('prismjs').then((module) => {
 			prismModule = module.default;
 
+			if (usePrismPlugin.value) {
+				highlightPrismElement();
+				return;
+			}
+
+			const grammar = prismModule.languages[settings.value.lang as string];
+
+			if (!grammar) {
+				console.warn(`[vue-code-block]: PrismJS language "${settings.value.lang}" is not loaded. Import it from "prismjs/components/prism-${settings.value.lang}". Falling back to plain text.`);
+				renderedCode.value = prismModule.util.encode(convertedCode.value) as string;
+				return;
+			}
+
 			renderedCode.value = prismModule.highlight(
 				convertedCode.value,
-				prismModule.languages[settings.value.lang],
+				grammar,
 				settings.value.lang,
 			);
 		})
@@ -565,6 +601,23 @@ function renderCode(): void {
 				console.error('PrismJS import:', { err });
 			});
 	}
+}
+
+/**
+ * Lets Prism highlight the <code> element directly so its hooks run,
+ * which is what Prism plugins such as line-numbers rely on.
+ */
+function highlightPrismElement(): void {
+	nextTick(() => {
+		const codeEl = prismPluginCodeRef.value;
+
+		if (!codeEl || !prismModule) {
+			return;
+		}
+
+		codeEl.textContent = convertedCode.value as string;
+		prismModule.highlightElement(codeEl);
+	});
 }
 
 function runCode(): void {
