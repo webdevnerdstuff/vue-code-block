@@ -1,6 +1,5 @@
 import packageJson from '@root/package.json';
 import { defineStore } from 'pinia';
-// @ts-expect-error @ts-ignore
 
 const dependencies = packageJson.dependencies;
 const prismVersion = dependencies.prismjs.replace('^', '');
@@ -19,7 +18,7 @@ const prismLinks = {
 };
 
 
-const propsHeaders = [
+const propsHeaders: Docs.TableHeader[] = [
 	{
 		align: 'start',
 		filterable: true,
@@ -53,7 +52,7 @@ const propsHeaders = [
 	},
 ];
 
-const componentProps = [
+const componentProps: Docs.PropItem[] = [
 	{
 		default: 'false',
 		desc: 'To give the code block a browser window look.',
@@ -247,34 +246,6 @@ const componentProps = [
 		type: 'string | boolean',
 	},
 ];
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const componentProps2 = {
-	// theme: {
-	// 	type: 'string | boolean',
-	// 	required: false,
-	// 	id: 'props-theme-option',
-	// 	default: 'neon-bunny',
-	// 	description: `<p>The theme to be used for the code block. Available options include:</p>
-	// 	<p>
-	// 		<code>false</code> - When you are loading the theme's styles yourself.
-	// 	</p>
-	// 	<p>
-	// 		<strong>Neon Bunny Themes</strong>
-	// 		<br />
-	// 		<code>neon-bunny</code>
-	// 		<br />
-	// 		<code>neon-bunny-carrot</code>
-	// 	</p>
-	// 	<p>
-	// 		<a href="${prismLinks.prismThemes}" target="_blank">PrismJS Themes</a>
-	// 	</p>
-	// 	<p>
-	// 		<a href="${highlightJsLinks.themes}" target="_blank">Highlight.js Themes</a>
-	// 	</p>
-	// 	`,
-	// }
-};
 
 
 export const usePropsStore = defineStore('props', {

@@ -71,7 +71,6 @@
 						<v-window-item value="template">
 							<v-theme-provider>
 								<VCodeBlock
-									:key="codeKey"
 									:code="code.template"
 									:highlightjs="codeBlockSettings.plugin.id === 'highlightjs'"
 									lang="html"
@@ -84,7 +83,6 @@
 						<v-window-item value="script">
 							<v-theme-provider>
 								<VCodeBlock
-									:key="codeKey"
 									:code="code.script"
 									:highlightjs="codeBlockSettings.plugin.id === 'highlightjs'"
 									lang="html"
@@ -113,48 +111,31 @@
 </template>
 
 <script setup lang="ts">
-const emit = defineEmits(['closePicker']);
+defineOptions({ inheritAttrs: false });
 
-export interface ExampleCode {
-	desc?: string;
-	name?: string;
-	script?: string;
-	template?: string;
-}
+const props = defineProps<{ code: Docs.ExampleCode; }>();
 
 const codeBlockSettings = inject<Docs.CodeBlockSettings>('codeBlockSettings')!;
-const props = defineProps<{ code: ExampleCode; codeUpdatedAt?: string; updatedCode?: ExampleCode; }>();
-
-const { code, updatedCode } = toRefs(props);
-const codeKey = ref('scriptKey');
-
-watch(() => props.codeUpdatedAt, () => {
-	code.value.script = updatedCode.value?.script;
-	code.value.template = updatedCode.value?.template;
-}, { deep: true });
 
 const hasRendered = ref(true);
 const showCode = ref(false);
 const template = ref('template');
 
-function showCodeBlocks() {
+function showCodeBlocks(): void {
 	showCode.value = !showCode.value;
-	emit('closePicker', showCode.value);
 }
 
 const getHrefId = computed(() => {
-	const id = code.value.name?.toLowerCase().replace(/\s+/g, '-');
+	const id = props.code.name?.toLowerCase().replace(/\s+/g, '-');
 
 	return `examples-${id}`;
 });
-
 </script>
 
-<style lang="scss">
-.v-code-block {
-	pre {
-		border-radius: 0 !important;
-		margin: 0 !important;
-	}
+<style lang="scss" scoped>
+// Only the Template/Script code blocks sit flush in the toolbar. The example's own code blocks keep their styling.
+.v-window :deep(.v-code-block pre) {
+	border-radius: 0 !important;
+	margin: 0 !important;
 }
 </style>

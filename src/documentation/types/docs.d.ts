@@ -30,13 +30,18 @@ declare namespace Docs {
 		title: string;
 	}
 
-	export interface CodeBlockSettings {
-		plugin: Library;
-		preHeight: number;
-		theme: string;
+	export interface ExampleCode {
+		desc?: string;
+		name?: string;
+		script?: string;
+		template?: string;
 	}
 
-	export type SelectedTheme = string;
+	export interface CodeBlockSettings {
+		plugin: Library;
+		preHeight: number | string;
+		theme: string;
+	}
 
 	export interface GlobalClasses extends KeyStringAny<string> {
 		appLink: string;
@@ -44,6 +49,23 @@ declare namespace Docs {
 		h3: string;
 		h4: string;
 		headerA: string;
+	}
+
+	export interface TableHeader {
+		align?: 'center' | 'end' | 'start';
+		filterable?: boolean;
+		key: string;
+		sortable?: boolean;
+		title: string;
+		width?: string;
+	}
+
+	export interface PropItem {
+		default: string;
+		desc: string;
+		name: string;
+		required: boolean;
+		type: string;
 	}
 
 	export interface MenuItem {

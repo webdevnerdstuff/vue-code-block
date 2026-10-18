@@ -78,7 +78,7 @@ const store = useCoreStore();
 
 const highlightThemes = store.highlightThemes;
 const libraries = ref(store.libraries);
-const library = ref(libraries.value[1]);
+const library = ref<string>('prismjs');
 const neonBunnyThemes = store.neonBunnyThemes;
 const prismThemes = store.prismThemes;
 const theme = ref('neon-bunny');
@@ -87,7 +87,7 @@ const theme = ref('neon-bunny');
 onMounted(() => {
 	const storedValue = store.getLocalStorage() ?? store.setLocalStorage('prismjs');
 
-	changeLibrary(storedValue ?? library.value.id);
+	changeLibrary(storedValue ?? library.value);
 });
 
 

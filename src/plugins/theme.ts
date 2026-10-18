@@ -1,4 +1,4 @@
-import colors from 'vuetify/lib/util/colors.mjs';
+import colors from 'vuetify/util/colors';
 
 export const dark = {
 	colors: {

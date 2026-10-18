@@ -32,6 +32,15 @@
 			"@composables/*": [
 				"./src/plugin/composables/*"
 			],
+			"@data/*": [
+				"./src/plugin/data/*"
+			],
+			"@plugin/*": [
+				"./src/plugin/*"
+			],
+			"@root/*": [
+				"./*"
+			],
 			"@slots/*": [
 				"./src/plugin/slots/*"
 			],
@@ -75,8 +84,6 @@
 	"exclude": [
 		"src/**/__tests__/*",
 		"playground",
-		"src/playground/configs/templates/PlaygroundPage.vue",
-		"src/plugins/**/*.ts",
-		"src/stores/**/*.ts"
+		"src/playground/configs/templates/PlaygroundPage.vue"
 	],
 }
