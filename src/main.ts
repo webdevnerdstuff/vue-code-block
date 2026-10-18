@@ -1,10 +1,10 @@
 import '@/libraries/fontawesome';
-import App from './App.vue';
-import { createApp } from 'vue';
-import { createPinia } from 'pinia';
-import { registerPlugins } from './plugins';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { createPinia } from 'pinia';
+import { createApp } from 'vue';
+import App from './App.vue';
 import { createVCodeBlock } from './plugin';
+import { registerPlugins } from './plugins';
 
 
 const app = createApp(App);

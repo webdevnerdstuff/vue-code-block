@@ -87,18 +87,18 @@
 	</v-row>
 
 	<!-- ======================= PHP Example -->
-	<v-row>
+	<!-- <v-row>
 		<v-col
 			id="additional-languages-php-usage-example"
 			cols="12"
 		>
 			<VCodeBlock
-				:code="usageExamples[selectedLibrary.id].php"
-				:highlightjs="selectedLibrary.id === 'highlightjs'"
+				:code="usageExamples[codeBlockSettings.plugin].php"
+				:highlightjs="codeBlockSettings.plugin === 'highlightjs'"
 				:label="`Example of using ${selectedLibrary.label} to highlight PHP`"
 				lang="html"
-				:prismjs="selectedLibrary.id === 'prismjs'"
-				:theme="selectedTheme"
+				:prismjs="codeBlockSettings.plugin === 'prismjs'"
+				:theme="codeBlockSettings.theme"
 			/>
 		</v-col>
 
@@ -114,19 +114,20 @@
 				label="PHP"
 				lang="php"
 				:prismjs="selectedLibrary.id === 'prismjs'"
-				:theme="selectedTheme"
+				:theme="codeBlockSettings.theme"
 			/>
 		</v-col>
-	</v-row>
+	</v-row> -->
 </template>
 
-<script setup>
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-import Prism from 'prismjs';
+<script setup lang="ts">
+/* eslint-disable vue/sort-keys */
 import hljs from 'highlight.js/lib/core';
 import langJson from 'highlight.js/lib/languages/json';
 import langPhp from 'highlight.js/lib/languages/php';
 import langTypescript from 'highlight.js/lib/languages/typescript';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- used by the commented-out examples
+import Prism from 'prismjs';
 
 hljs.registerLanguage('json', langJson);
 hljs.registerLanguage('php', langPhp);
@@ -135,47 +136,10 @@ hljs.registerLanguage('typescript', langTypescript);
 const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- used by the commented-out examples
+const codeBlockSettings = inject<Docs.CodeBlockSettings>('codeBlockSettings')!;
+
 const usageExamples = {
-	prismjs: {
-		json: `<template>
-  <VCodeBlock
-    :code="myCode"
-    :indent="2"
-    lang="json"
-    prismjs
-  /\>
-<\/template>
-
-<script setup>
-  import Prism from 'prismjs';
-  import 'prismjs/components/prism-json';
-<\/script>`,
-		typescript: `<template>
-  <VCodeBlock
-    :code="myCode"
-    lang="typescript"
-    prismjs
-  /\>
-<\/template>
-
-<script setup>
-  import Prism from 'prismjs';
-  import 'prismjs/components/prism-typescript';
-<\/script>`,
-		php: `<template>
-  <VCodeBlock
-    :code="myCode"
-    lang="php"
-    prismjs
-  /\>
-<\/template>
-
-<script setup>
-  import Prism from 'prismjs';
-  import 'prismjs/components/prism-markup-templating';
-  import 'prismjs/components/prism-php';
-<\/script>`,
-	},
 	highlightjs: {
 		json: `<template>
   <VCodeBlock
@@ -221,6 +185,46 @@ const usageExamples = {
   hljs.registerLanguage('php', langPhp);
 <\/script>`,
 	},
+	prismjs: {
+		json: `<template>
+  <VCodeBlock
+    :code="myCode"
+    :indent="2"
+    lang="json"
+    prismjs
+  /\>
+<\/template>
+
+<script setup>
+  import Prism from 'prismjs';
+  import 'prismjs/components/prism-json';
+<\/script>`,
+		typescript: `<template>
+  <VCodeBlock
+    :code="myCode"
+    lang="typescript"
+    prismjs
+  /\>
+<\/template>
+
+<script setup>
+  import Prism from 'prismjs';
+  import 'prismjs/components/prism-typescript';
+<\/script>`,
+		php: `<template>
+  <VCodeBlock
+    :code="myCode"
+    lang="php"
+    prismjs
+  /\>
+<\/template>
+
+<script setup>
+  import Prism from 'prismjs';
+  import 'prismjs/components/prism-markup-templating';
+  import 'prismjs/components/prism-php';
+<\/script>`,
+	},
 };
 
 const typescriptExample = `class Person {
@@ -252,6 +256,7 @@ const jsonExample = `{
   }
 }
 `;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- used by the commented-out examples
 const phpExample = `<?php
 
 namespace App\\Http\\Controllers;

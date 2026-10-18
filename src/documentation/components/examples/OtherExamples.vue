@@ -112,7 +112,7 @@
 		</v-col>
 	</v-row>
 
-	<!-- ======================= Height-->
+	<!-- ======================= Height -->
 	<v-row id="height-example">
 		<v-col cols="12">
 			<VCodeBlock
@@ -163,7 +163,7 @@
 		</v-col>
 	</v-row>
 
-	<!-- ======================= Indent-->
+	<!-- ======================= Indent -->
 	<v-row id="indent-example">
 		<v-col cols="12">
 			<VCodeBlock
@@ -189,7 +189,8 @@
 	</v-row>
 </template>
 
-<script setup>
+<script setup lang="ts">
+/* eslint-disable vue/sort-keys */
 const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
@@ -203,6 +204,91 @@ const runText = ref('Run');
 const tabGap = ref('0.25rem');
 
 const examples = {
+	highlightjs: {
+		copyBlockRadius: `<VCodeBlock
+  :code="myCode"
+  :code-block-radius="codeBlockRadius"
+  highlightjs
+  lang="html"
+>
+  <template #label>
+    codeBlockRadius:
+    <input v-model="codeBlockRadius" type="text" />
+  </template>
+</VCodeBlock>`,
+		copyText: `<VCodeBlock
+  :code="myCode"
+  copy-tab
+  :copyText="copyText"
+  highlightjs
+  lang="html"
+  tabs
+>
+  <template #label>
+    copyText:
+    <input v-model="copyText" type="text" />
+  </template>
+</VCodeBlock>`,
+		runText: `<VCodeBlock
+  :code="runTextExample"
+  :copy-tab="false"
+  highlightjs
+  lang="html"
+  run-tab
+  :runText="runText"
+  tabs
+  :theme="selectedTheme"
+  @run="runTextCodeExampleFunction"
+>
+  <template #label>
+    runText:
+    <input v-model="runText" type="text" />
+  </template>
+</VCodeBlock>`,
+		floatingTabs: `<VCodeBlock
+  :code="exampleCode"
+  :floating-tabs="floatingTabs"
+  highlightjs
+  lang="html"
+  tabs
+>
+  <template #label>
+    <input
+      v-model="floatingTabs"
+      checked
+      type="checkbox"
+    />
+    <label>
+      floatingTabs =
+      <span class="boolean-style">{{ floatingTabs }}</span>
+    </label>
+  </template>
+</VCodeBlock>`,
+		height: `<VCodeBlock
+  :code="myCode"
+  :height="height"
+  highlightjs
+  lang="html"
+>
+  <template #label>
+    height:
+    <input v-model="height" type="number" />
+  </template>
+</VCodeBlock>`,
+		tabGap: `<VCodeBlock
+  :code="myCode"
+  highlightjs
+  lang="html"
+  :run-tab="true"
+  :tab-gap="tabGap"
+  tabs
+>
+  <template #label>
+    tabGap:
+    <input v-model="tabGap" type="text" />
+  </template>
+</VCodeBlock>`,
+	},
 	prismjs: {
 		copyBlockRadius: `<VCodeBlock
   :code="myCode"
@@ -288,91 +374,6 @@ const examples = {
   </template>
 </VCodeBlock>`,
 	},
-	highlightjs: {
-		copyBlockRadius: `<VCodeBlock
-  :code="myCode"
-  :code-block-radius="codeBlockRadius"
-  highlightjs
-  lang="html"
->
-  <template #label>
-    codeBlockRadius:
-    <input v-model="codeBlockRadius" type="text" />
-  </template>
-</VCodeBlock>`,
-		copyText: `<VCodeBlock
-  :code="myCode"
-  copy-tab
-  :copyText="copyText"
-  highlightjs
-  lang="html"
-  tabs
->
-  <template #label>
-    copyText:
-    <input v-model="copyText" type="text" />
-  </template>
-</VCodeBlock>`,
-		runText: `<VCodeBlock
-  :code="runTextExample"
-  :copy-tab="false"
-  highlightjs
-  lang="html"
-  run-tab
-  :runText="runText"
-  tabs
-  :theme="selectedTheme"
-  @run="runTextCodeExampleFunction"
->
-  <template #label>
-    runText:
-    <input v-model="runText" type="text" />
-  </template>
-</VCodeBlock>`,
-		floatingTabs: `<VCodeBlock
-  :code="exampleCode"
-  :floating-tabs="floatingTabs"
-  highlightjs
-  lang="html"
-  tabs
->
-  <template #label>
-    <input
-      v-model="floatingTabs"
-      checked
-      type="checkbox"
-    />
-    <label>
-      floatingTabs =
-      <span class="boolean-style">{{ floatingTabs }}</span>
-    </label>
-  </template>
-</VCodeBlock>`,
-		height: `<VCodeBlock
-  :code="myCode"
-  :height="height"
-  highlightjs
-  lang="html"
->
-  <template #label>
-    height:
-    <input v-model="height" type="number" />
-  </template>
-</VCodeBlock>`,
-		tabGap: `<VCodeBlock
-  :code="myCode"
-  highlightjs
-  lang="html"
-  :run-tab="true"
-  :tab-gap="tabGap"
-  tabs
->
-  <template #label>
-    tabGap:
-    <input v-model="tabGap" type="text" />
-  </template>
-</VCodeBlock>`,
-	}
 };
 const indentJsonExample = `{
   "name": "John Doe",

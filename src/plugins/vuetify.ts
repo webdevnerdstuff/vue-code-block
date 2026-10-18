@@ -1,11 +1,11 @@
 import 'vuetify/styles';
 import '@mdi/font/css/materialdesignicons.css';
+import { createVuetify } from 'vuetify';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
-import defaultThemes from './theme';
-import { createVuetify } from 'vuetify';
-import { aliases, mdi } from 'vuetify/iconsets/mdi';
 import { fa } from 'vuetify/iconsets/fa-svg';
+import { aliases, mdi } from 'vuetify/iconsets/mdi';
+import defaultThemes from './theme';
 
 
 export default createVuetify({

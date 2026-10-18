@@ -126,7 +126,8 @@
 	<!-- </div> -->
 </template>
 
-<script setup>
+<script setup lang="ts">
+/* eslint-disable vue/sort-keys */
 import { inject } from 'vue';
 
 const codeBlockOptions = inject('codeBlockOptions');
@@ -134,6 +135,54 @@ const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
 const examples = {
+	highlightjs: {
+		copy: `<VCodeBlock
+  :code="myCode"
+  copy-tab
+  highlightjs
+  label="Copy Code Tab"
+  lang="javascript"
+  :run-tab="false"
+  tabs
+/>`,
+		run: `<template>
+  <VCodeBlock
+    :code="myCode"
+    :copy-tab="false"
+    highlightjs
+    label="Run Code Tab"
+    lang="javascript"
+    run-tab
+    tabs
+    @run="runMyCodeFunction"
+  />
+<\/template>
+
+<script setup>
+  function runMyCodeFunction() {
+    const message = 'Run Code Tab';
+    alert(message);
+  }
+<\/script>`,
+		both: `<template>
+  <VCodeBlock
+    :code="myCode"
+    highlightjs
+    label="Copy &amp; Run Code Tabs"
+    lang="javascript"
+    :run-tab="true"
+    tabs
+    @run="runMyOtherCodeFunction"
+  />
+<\/template>
+
+<script setup>
+  function runMyCodeFunction() {
+    const message = 'bar';
+    alert(message);
+  }
+<\/script>`,
+	},
 	prismjs: {
 		copy: `<VCodeBlock
   :code="myCode"
@@ -182,54 +231,6 @@ const examples = {
   }
 <\/script>`,
 	},
-	highlightjs: {
-		copy: `<VCodeBlock
-  :code="myCode"
-  copy-tab
-  highlightjs
-  label="Copy Code Tab"
-  lang="javascript"
-  :run-tab="false"
-  tabs
-/>`,
-		run: `<template>
-  <VCodeBlock
-    :code="myCode"
-    :copy-tab="false"
-    highlightjs
-    label="Run Code Tab"
-    lang="javascript"
-    run-tab
-    tabs
-    @run="runMyCodeFunction"
-  />
-<\/template>
-
-<script setup>
-  function runMyCodeFunction() {
-    const message = 'Run Code Tab';
-    alert(message);
-  }
-<\/script>`,
-		both: `<template>
-  <VCodeBlock
-    :code="myCode"
-    highlightjs
-    label="Copy &amp; Run Code Tabs"
-    lang="javascript"
-    :run-tab="true"
-    tabs
-    @run="runMyOtherCodeFunction"
-  />
-<\/template>
-
-<script setup>
-  function runMyCodeFunction() {
-    const message = 'bar';
-    alert(message);
-  }
-<\/script>`,
-	}
 };
 
 function runMyCodeFunction() {

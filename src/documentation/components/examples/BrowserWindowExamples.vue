@@ -19,7 +19,7 @@
 	</v-row>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { inject } from 'vue';
 
 
@@ -27,17 +27,17 @@ const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
 const examples = {
+	highlightjs: `<VCodeBlock
+  :browser-window="true"
+  :code="myCode"
+  highlightjs
+  lang="javascript"
+/>`,
 	prismjs: `<VCodeBlock
   :browser-window="true"
   :code="myCode"
   lang="javascript"
   prismjs
 />`,
-	highlightjs: `<VCodeBlock
-  :browser-window="true"
-  :code="myCode"
-  highlightjs
-  lang="javascript"
-/>`
 };
 </script>

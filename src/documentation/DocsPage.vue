@@ -25,8 +25,8 @@
 	</v-row>
 
 	<ThemeSelectComponent
-		@changedLibrary="selectedLibrary = $event; emit('changedLibrary', $event)"
-		@changedTheme="selectedTheme = $event; emit('changedTheme', $event)"
+		@changedLibrary="codeBlockSettings.plugin = $event; emit('changedLibrary', $event)"
+		@changedTheme="codeBlockSettings.theme = $event; emit('changedTheme', $event)"
 	/>
 
 	<!-- Installation -->
@@ -47,10 +47,10 @@
 				<v-col cols="12">
 					<VCodeBlock
 						code="pnpm add @wdns/vue-code-block"
-						:highlightjs="selectedLibrary.id === 'highlightjs'"
+						:highlightjs="codeBlockSettings.plugin.id === 'highlightjs'"
 						lang="plain"
-						:prismjs="selectedLibrary.id === 'prismjs'"
-						:theme="selectedTheme"
+						:prismjs="codeBlockSettings.plugin.id === 'prismjs'"
+						:theme="codeBlockSettings.theme"
 					>
 						<template #label>
 							Using <a
@@ -63,10 +63,10 @@
 				<v-col cols="12">
 					<VCodeBlock
 						code="npm i @wdns/vue-code-block"
-						:highlightjs="selectedLibrary.id === 'highlightjs'"
+						:highlightjs="codeBlockSettings.plugin.id === 'highlightjs'"
 						lang="plain"
-						:prismjs="selectedLibrary.id === 'prismjs'"
-						:theme="selectedTheme"
+						:prismjs="codeBlockSettings.plugin.id === 'prismjs'"
+						:theme="codeBlockSettings.theme"
 					>
 						<template #label>Using npm:</template>
 					</VCodeBlock>
@@ -76,51 +76,40 @@
 	</v-row>
 
 	<!-- Description -->
-	<DescriptionSection />
+	<Section.DescriptionSection />
 
 	<!-- Usage -->
-	<UsageSection />
+	<Section.UsageSection />
 
 	<!-- Props -->
-	<PropsSection />
+	<Section.PropsSection />
 
 	<!-- Events -->
-	<EventsSection />
+	<Section.EventsSection />
 
 	<!-- Slots -->
-	<SlotsSection />
+	<Section.SlotsSection />
 
-	<!-- Example -->
-	<ExampleSection />
+	<!-- Examples -->
+	<Section.ExampleSection />
 
 	<!-- Playground -->
-	<PlaygroundSection />
+	<Section.PlaygroundSection />
 
 	<!-- Dependencies -->
-	<DependenciesSection />
+	<Section.DependenciesSection />
 
 	<!-- License -->
-	<LicenseSection />
+	<Section.LicenseSection />
 </template>
 
-<script setup>
-import { useCoreStore } from '@/stores/index';
-import ThemeSelectComponent from '@/documentation/components/ThemeSelectComponent.vue';
+<script setup lang="ts">
 import packageInfo from '../../package.json';
-import {
-	DependenciesSection,
-	DescriptionSection,
-	EventsSection,
-	ExampleSection,
-	LicenseSection,
-	PlaygroundSection,
-	PropsSection,
-	SlotsSection,
-	UsageSection,
-} from '@/documentation/sections';
+import ThemeSelectComponent from '@/documentation/components/ThemeSelectComponent.vue';
+import * as Section from '@/documentation/sections';
+import { useCoreStore } from '@/stores/index';
 
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-import Prism from 'prismjs';
+
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-markup-templating';
@@ -137,41 +126,22 @@ const selectedLibrary = ref(store.libraries[0]);
 const selectedTheme = ref('neon-bunny');
 
 provide('selectedLibrary', selectedLibrary);
-provide('selectedTheme', selectedTheme);
 
-const links = inject('links');
 
-const classes = reactive({
+const codeBlockSettings = inject<Docs.CodeBlockSettings>('codeBlockSettings')!;
+const links = inject<Docs.Links>('links')!;
+
+const classes = reactive<Docs.GlobalClasses>({
 	appLink: 'app-link text-decoration-none primary--text font-weight-medium d-inline-block font-weight-bold',
 	h2: 'text-primary v-heading text-h4 text-sm-h4 mb-2',
 	h3: 'text-blue-darken-2 v-heading text-h5 text-sm-h5 mb-0',
+	h4: 'text-secondary v-heading text-h6 text-sm-h6 mb-0',
 	headerA: 'text-decoration-none text-right text-md-left d-none d-sm-flex',
 });
-const componentVersion = ref(packageInfo.version);
+const componentVersion = ref<string | number>(packageInfo.version);
 
-provide('classes', classes);
+provide<Docs.GlobalClasses>('classes', classes);
+provide<Docs.SelectedTheme>('selectedTheme', selectedTheme.value);
 </script>
 
-<style lang="scss" scoped>
-:deep(pre),
-:deep(code) {
-	&.ic {
-		background-color: rgb(255 255 255 / 10%) !important;
-		border-radius: 3px;
-		font-size: 85%;
-		font-weight: normal;
-		padding: 0.2em 0.4em;
-	}
-}
-</style>
-
-<style lang="scss">
-.v-theme--light {
-	pre,
-	code {
-		&.ic {
-			background-color: rgb(0 0 0 / 10%) !important;
-		}
-	}
-}
-</style>
+<style lang="scss" scoped></style>

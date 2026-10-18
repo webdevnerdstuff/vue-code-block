@@ -16,10 +16,10 @@
 				<v-col cols="12">
 					<VCodeBlock
 						:code="usageGlobalPlugin"
-						:highlightjs="selectedLibrary.id === 'highlightjs'"
+						:highlightjs="codeBlockSettings.plugin.id === 'highlightjs'"
 						lang="javascript"
-						:prismjs="selectedLibrary.id === 'prismjs'"
-						:theme="selectedTheme"
+						:prismjs="codeBlockSettings.plugin.id === 'prismjs'"
+						:theme="codeBlockSettings.theme"
 					>
 						<template #label>
 							Global Plugin Registration
@@ -34,10 +34,11 @@
 				<v-col cols="12">
 					<VCodeBlock
 						:code="usageGlobalComponent"
-						:highlightjs="selectedLibrary.id === 'highlightjs'"
+						:highlightjs="codeBlockSettings.plugin.id === 'highlightjs'"
 						label="Global Component Registration"
 						lang="javascript"
-						:prismjs="selectedLibrary.id === 'prismjs'"
+						:prismjs="codeBlockSettings.plugin.id === 'prismjs'"
+						:theme="codeBlockSettings.theme"
 					/>
 				</v-col>
 			</v-row>
@@ -46,10 +47,11 @@
 				<v-col cols="12">
 					<VCodeBlock
 						:code="usageIndividual"
-						:highlightjs="selectedLibrary.id === 'highlightjs'"
+						:highlightjs="codeBlockSettings.plugin.id === 'highlightjs'"
 						label="Local Registration"
 						lang="html"
-						:prismjs="selectedLibrary.id === 'prismjs'"
+						:prismjs="codeBlockSettings.plugin.id === 'prismjs'"
+						:theme="codeBlockSettings.theme"
 					/>
 				</v-col>
 			</v-row>
@@ -57,10 +59,9 @@
 	</v-row>
 </template>
 
-<script setup>
-const classes = inject('classes');
-const selectedLibrary = inject('selectedLibrary');
-const selectedTheme = inject('selectedTheme');
+<script setup lang="ts">
+const classes = inject<Docs.GlobalClasses>('classes')!;
+const codeBlockSettings = inject<Docs.CodeBlockSettings>('codeBlockSettings')!;
 
 const usageGlobalPlugin = `import { createApp } from 'vue';
 import App from './App.vue';

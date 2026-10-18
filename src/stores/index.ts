@@ -1,6 +1,7 @@
+/* eslint-disable vue/sort-keys */
+import packageJson from '@root/package.json';
 import { defineStore } from 'pinia';
 // @ts-expect-error @ts-ignore
-import packageJson from '@root/package.json';
 
 
 export const useCoreStore = defineStore('core', () => {
@@ -428,9 +429,9 @@ export const useCoreStore = defineStore('core', () => {
 	return {
 		...actions,
 		...getters,
-		highlightThemes,
 		highlightJsLinks,
 		highlightJsVersion,
+		highlightThemes,
 		libraries,
 		links,
 		neonBunnyThemes,

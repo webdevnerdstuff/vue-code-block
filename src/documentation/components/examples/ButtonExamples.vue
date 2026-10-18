@@ -35,13 +35,28 @@
 	</v-row>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { inject } from 'vue';
 
 const selectedLibrary = inject('selectedLibrary');
 const selectedTheme = inject('selectedTheme');
 
 const examples = {
+	highlightjs: {
+		btn: `<VCodeBlock
+  :code="myCode"
+  highlightjs
+  label="Visible on hover"
+  lang="html"
+/>`,
+		btnPersist: `<VCodeBlock
+  :code="myCode"
+  highlightjs
+  label="Persistent Copy Button"
+  lang="html"
+  persistent-copy-button
+/>`,
+	},
 	prismjs: {
 		btn: `<VCodeBlock
   :code="myCode"
@@ -57,20 +72,5 @@ const examples = {
   prismjs
 />`,
 	},
-	highlightjs: {
-		btn: `<VCodeBlock
-  :code="myCode"
-  highlightjs
-  label="Visible on hover"
-  lang="html"
-/>`,
-		btnPersist: `<VCodeBlock
-  :code="myCode"
-  highlightjs
-  label="Persistent Copy Button"
-  lang="html"
-  persistent-copy-button
-/>`,
-	}
 };
 </script>

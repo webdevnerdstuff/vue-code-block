@@ -14,7 +14,6 @@
 		>
 			<v-icon icon="mdi:mdi-menu"></v-icon>
 		</v-app-bar-nav-icon>
-
 		<v-app-bar-nav-icon
 			v-else
 			class="nav-drawer-btn me-2 ms-3"
@@ -43,23 +42,13 @@
 		>
 			<template #item="{ item }">
 				<v-list-item
-					:key="item.key"
+					:key="item.raw.key"
 					density="compact"
 					:href="item.raw.link"
+					:prepend-icon="item.raw.icon ? item.raw.icon : '$vuetify'"
 					target="_blank"
 					:title="item.raw?.topTitle || item.title"
 				>
-					<template #prepend>
-						<v-icon
-							v-if="!item.raw.src"
-							:icon="item.raw.icon"
-						/>
-						<v-img
-							v-else
-							:src="item.raw.src"
-							width="24"
-						/>
-					</template>
 				</v-list-item>
 			</template>
 		</v-select>
@@ -67,8 +56,8 @@
 		<v-chip
 			v-if="isSmAndUp"
 			class="me-2 d-flex justify-center"
-			:class="`badge-${selectedLibrary.id}`"
-			:href="selectedLibrary.id === 'prismjs'
+			:class="`badge-${codeBlockSettings.plugin.id}`"
+			:href="codeBlockSettings.theme === 'prismjs'
 				? links.prismjs
 				: links.highlightjs
 				"
@@ -76,7 +65,7 @@
 			style="min-width: 117px;"
 			target="_blank"
 		>
-			{{ selectedLibrary.title }} Active
+			{{ codeBlockSettings.plugin.title }} Active
 		</v-chip>
 
 		<v-btn
@@ -120,27 +109,20 @@
 	</v-app-bar>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import { useDisplay, useTheme } from 'vuetify';
 import { useCoreStore } from '@/stores/index';
 import { useMenuStore } from '@/stores/menu';
-import { useDisplay, useTheme } from 'vuetify';
 
 const emit = defineEmits(['changedTheme', 'updatedDrawer']);
 
-const props = defineProps({
+defineProps({
 	isPlayground: {
 		default: false,
 		type: Boolean,
 	},
-	selectedLibrary: {
-		required: true,
-		type: Object,
-	},
 });
-
-const { selectedLibrary } = toRefs(props);
-
 
 onMounted(() => {
 	getTheme();
@@ -151,36 +133,38 @@ const store = useCoreStore();
 const theme = useTheme();
 const { smAndUp } = useDisplay();
 
+const codeBlockSettings = inject<Docs.CodeBlockSettings>('codeBlockSettings')!;
 
-const links = store.links;
-const themeName = ref('dark');
-const drawer = ref(true);
+const links: Docs.Links = store.links;
+const themeName = ref<string | null>('dark');
+const drawer = ref<boolean>(true);
 const isSmAndUp = computed(() => smAndUp.value);
 
-const menuItems = [...menuStore.libraryItems];
+const menuItems: Docs.MenuItem[] = [...menuStore.libraryItems] as Docs.MenuItem[];
 
-const iconSize = ref({
+const iconSize = ref<{ height: number, width: number; }>({
 	height: 32,
 	width: 32,
 });
 
-function getTheme() {
-	themeName.value = store.getTheme();
+function getTheme(): void {
+	themeName.value = store.getTheme() as string;
+
 	if (!themeName.value) {
 		setTheme();
-		return false;
+		return;
 	}
 
 	theme.global.name.value = themeName.value;
 	emit('changedTheme', themeName.value);
 }
 
-function setTheme() {
-	themeName.value = store.setTheme(themeName.value);
+function setTheme(): void {
+	themeName.value = store.setTheme(themeName.value as string);
 	theme.global.name.value = themeName.value;
 }
 
-function toggleDrawer() {
+function toggleDrawer(): void {
 	emit('updatedDrawer', drawer.value);
 }
 </script>

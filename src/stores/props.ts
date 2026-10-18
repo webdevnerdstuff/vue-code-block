@@ -1,6 +1,6 @@
+import packageJson from '@root/package.json';
 import { defineStore } from 'pinia';
 // @ts-expect-error @ts-ignore
-import packageJson from '@root/package.json';
 
 const dependencies = packageJson.dependencies;
 const prismVersion = dependencies.prismjs.replace('^', '');
@@ -248,7 +248,7 @@ const componentProps = [
 	},
 ];
 
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const componentProps2 = {
 	// theme: {
 	// 	type: 'string | boolean',

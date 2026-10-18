@@ -23,11 +23,11 @@
 	</v-row>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { inject } from 'vue';
-import { usePropsStore } from '@/stores/props';
 import PropsTable from '@/documentation/components/PropsTable.vue';
+import { usePropsStore } from '@/stores/props';
 
-const classes = inject('classes');
+const classes = inject<Docs.GlobalClasses>('classes')!;
 const propsStore = usePropsStore();
 </script>

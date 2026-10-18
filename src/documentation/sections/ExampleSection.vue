@@ -17,25 +17,24 @@
 	</v-row>
 
 	<LangExamples />
-	<AdditionalLangExamples />
 	<PluginExamples />
+	<!-- <AdditionalLangExamples />
 	<TabExamples />
 	<ButtonExamples />
 	<BrowserWindowExamples />
-	<OtherExamples />
+	<OtherExamples /> -->
 </template>
 
-<script setup>
-import { inject } from 'vue';
+<script setup lang="ts">
 import {
-	AdditionalLangExamples,
-	BrowserWindowExamples,
-	ButtonExamples,
+	// AdditionalLangExamples,
+	// BrowserWindowExamples,
+	// ButtonExamples,
 	LangExamples,
-	OtherExamples,
+	// OtherExamples,
 	PluginExamples,
-	TabExamples,
+	// TabExamples,
 } from '@/documentation/components/examples';
 
-const classes = inject('classes');
+const classes = inject<Docs.GlobalClasses>('classes')!;
 </script>

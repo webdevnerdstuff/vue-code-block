@@ -1,73 +1,102 @@
 <template>
 	<v-app id="home">
 		<!-- ====================================================== App Bar -->
-		<AppBar
+		<!-- <AppBar
 			:selectedLibrary="selectedLibrary"
+			@changed-theme="updateCodeBlockTheme"
+			@updated-drawer="toggleDrawer"
+		/>
+
+		<v-main class="pb-10">
+			<v-container
+				class="px-7"
+				style="max-width: 1368px;"
+			>
+				<DocsPage
+					:codeBlockOptions="codeBlockSettings"
+					@changedLibrary="selectedLibrary = $event"
+					@changedTheme="selectedTheme = $event"
+				/>
+			</v-container>
+		</v-main> -->
+
+		<AppBar
+			@changed-theme="updateCodeBlockTheme"
 			@updated-drawer="toggleDrawer"
 		/>
 
 		<!-- ====================================================== Navigation Drawer -->
-		<v-navigation-drawer
-			v-model="drawer"
-			:absolute="drawerOptions.absolute"
-			:color="drawerOptions.color"
-			:elevation="drawerOptions.elevation"
-		>
-			<MenuComponent :drawerOptions="drawerOptions" />
-		</v-navigation-drawer>
+		<MenuComponent v-model="drawer" />
 
 		<!-- ====================================================== Main Container -->
 		<v-main class="pb-10">
 			<v-container
 				class="px-7"
-				style="max-width: 90%;"
+				style="max-width: 1368px;"
 			>
 				<DocsPage
-					@changedLibrary="selectedLibrary = $event"
-					@changedTheme="selectedTheme = $event"
+					:codeBlockOptions="codeBlockSettings"
+					@changedLibrary="updateCodeBlockLibrary"
+					@changedTheme="codeBlockSettings.theme = $event"
 				/>
 			</v-container>
 		</v-main>
 	</v-app>
 </template>
 
-<script setup>
-import { provide, ref } from 'vue';
+<script setup lang="ts">
+import Prism from 'prismjs';
 import { useDisplay } from 'vuetify';
-import AppBar from './documentation/layout/AppBar.vue';
 import MenuComponent from './documentation/components/MenuComponent.vue';
 import DocsPage from './documentation/DocsPage.vue';
+import AppBar from './documentation/layout/AppBar.vue';
 import { useCoreStore } from './stores/index';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
-import Prism from 'prismjs';
 import 'prismjs/components/prism-typescript.js';
 
 
-const { smAndUp } = useDisplay();
+onMounted(() => {
+	Prism.highlightAll();
+});
 
-const isSmAndUp = computed(() => smAndUp.value);
+
+const { smAndUp } = useDisplay();
+const isSmAndUp = computed<boolean>(() => smAndUp.value);
 const store = useCoreStore();
 const drawer = ref(isSmAndUp.value);
-const drawerOptions = ref({
+const drawerOptions: Ref<Docs.DrawerOptions> = ref<Docs.DrawerOptions>({
 	absolute: false,
 	color: '',
 	elevation: 10,
 });
 
-const selectedLibrary = ref(store.libraries[1]);
-const selectedTheme = ref('neon-bunny');
+const codeBlockPlugin: Docs.Library = {
+	id: 'prismjs',
+	title: 'PrismJS',
+};
+const codeBlockLightTheme: string = 'neon-bunny';
+const codeBlockDarkTheme: string = 'neon-bunny';
 
-provide('selectedLibrary', selectedLibrary);
-provide('selectedTheme', selectedTheme);
-
-const codeBlockOptions = ref({
-	browserWindow: false,
+const codeBlockSettings: Ref<Docs.CodeBlockSettings> = ref<Docs.CodeBlockSettings>({
+	plugin: codeBlockPlugin,
 	preHeight: '30em',
+	theme: codeBlockDarkTheme,
 });
 
-provide('codeBlockOptions', codeBlockOptions.value);
-provide('drawerOptions', drawerOptions);
-provide('links', store.links);
+function updateCodeBlockTheme(val: string): void {
+	codeBlockSettings.value.theme = codeBlockLightTheme;
+
+	if (val === 'dark') {
+		codeBlockSettings.value.theme = codeBlockDarkTheme;
+	}
+}
+
+function updateCodeBlockLibrary(library: Docs.Library): void {
+	codeBlockSettings.value.plugin = library;
+}
+
+provide<Docs.CodeBlockSettings>('codeBlockSettings', codeBlockSettings.value);
+provide<Docs.DrawerOptions>('drawerOptions', drawerOptions.value);
+provide<Docs.Links>('links', store.links);
 
 function toggleDrawer() {
 	drawer.value = !drawer.value;
@@ -76,13 +105,14 @@ function toggleDrawer() {
 
 
 <style lang="scss">
+:root {
+	--list-item-padding-left: 50px;
+	--list-item-level-3-padding-left: 26px;
+}
+
 html {
 	scroll-behavior: smooth;
 	scroll-padding-top: 70px;
-}
-
-body {
-	font-family: 'Open Sans', sans-serif;
 }
 
 a {
@@ -107,29 +137,6 @@ a {
 	}
 }
 
-.v-row {
-	h1,
-	h2,
-	h5 {
-		font-family: 'Encode Sans Expanded', sans-serif !important;
-	}
-
-	h1 {
-		font-size: 3rem;
-		font-weight: 700;
-	}
-
-	h2 {
-		font-size: 2rem;
-		font-weight: 400;
-		padding-bottom: 0.5rem;
-	}
-
-	h5 {
-		font-weight: 600;
-	}
-}
-
 .top-app-bar {
 	z-index: 99 !important;
 
@@ -151,8 +158,18 @@ a {
 		margin: 0 -0.7em;
 		position: absolute;
 
+		&:hover {
+			color: rgb(var(--v-theme-primary));
+		}
+
 		&:not(:hover, :focus) {
 			opacity: 0;
+		}
+	}
+
+	&.text-secondary {
+		> a {
+			color: rgb(var(--v-theme-secondary));
 		}
 	}
 }
@@ -166,4 +183,24 @@ a {
 }
 </style>
 
+<style lang="scss" scoped>
+:deep(pre),
+:deep(code) {
+	&.ic {
+		background-color: rgb(255 255 255 / 10%) !important;
+		border-radius: 3px;
+		font-size: 85%;
+		font-weight: normal;
+		padding: 0.2em 0.4em;
+	}
+}
 
+.v-theme--light {
+	:deep(pre),
+	:deep(code) {
+		&.ic {
+			background-color: rgb(0 0 0 / 10%) !important;
+		}
+	}
+}
+</style>

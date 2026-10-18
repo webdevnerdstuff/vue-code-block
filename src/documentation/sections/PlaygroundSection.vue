@@ -17,14 +17,14 @@
 			<VCodeBlock
 				class="mb-6"
 				code="git clone git@github.com:webdevnerdstuff/vue-code-block.git"
-				:highlightjs="selectedLibrary.id === 'highlightjs'"
+				:highlightjs="codeBlockSettings.plugin.id === 'highlightjs'"
 				lang="plain"
-				:prismjs="selectedLibrary.id === 'prismjs'"
-				:theme="selectedTheme"
+				:prismjs="codeBlockSettings.plugin.id === 'prismjs'"
+				:theme="codeBlockSettings.theme"
 			>
 				<template #label>
 					First clone the <a
-						:href="store.links.github"
+						:href="links.github"
 						target="blank"
 					>repository:</a>
 				</template>
@@ -32,10 +32,10 @@
 
 			<VCodeBlock
 				code="pnpm i && pnpm play"
-				:highlightjs="selectedLibrary.id === 'highlightjs'"
+				:highlightjs="codeBlockSettings.plugin.id === 'highlightjs'"
 				lang="plain"
-				:prismjs="selectedLibrary.id === 'prismjs'"
-				:theme="selectedTheme"
+				:prismjs="codeBlockSettings.plugin.id === 'prismjs'"
+				:theme="codeBlockSettings.theme"
 			>
 				<template #label>
 					Next run the following command to setup the Playground:
@@ -51,12 +51,8 @@
 	</v-row>
 </template>
 
-<script setup>
-import { useCoreStore } from '@/stores/index';
-
-
-const store = useCoreStore();
-const selectedLibrary = inject('selectedLibrary');
-const selectedTheme = inject('selectedTheme');
-const classes = inject('classes');
+<script setup lang="ts">
+const codeBlockSettings = inject<Docs.CodeBlockSettings>('codeBlockSettings')!;
+const links = inject<Docs.Links>('links')!;
+const classes = inject<Docs.GlobalClasses>('classes')!;
 </script>
