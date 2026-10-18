@@ -1,12 +1,11 @@
 /* eslint-disable vue/sort-keys */
 import packageJson from '@root/package.json';
 import { defineStore } from 'pinia';
-// @ts-expect-error @ts-ignore
 
 
 export const useCoreStore = defineStore('core', () => {
 	const scopedPackageName = packageJson.name;
-	const packageName = scopedPackageName.split('/')[1];
+	const packageName = scopedPackageName.split('/')[1] ?? scopedPackageName;
 
 	const dependencies = packageJson.dependencies;
 	const prismVersion = dependencies.prismjs.replace('^', '');
@@ -379,6 +378,7 @@ export const useCoreStore = defineStore('core', () => {
 		license: `${repoBaseUrl}/blob/main/LICENSE.md`,
 		neonBunnyTheme: 'https://marketplace.visualstudio.com/items?itemName=WebDevNerdStuff.neon-bunny',
 		npm: `https://www.npmjs.com/package/${scopedPackageName}`,
+		pnpm: 'https://pnpm.io/',
 		prismjs: 'https://prismjs.com/',
 		uaParser: 'https://www.npmjs.com/package/ua-parser-js',
 		vue: 'https://vuejs.org/',

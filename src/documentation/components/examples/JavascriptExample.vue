@@ -1,9 +1,7 @@
 <template>
-	foo
 	<VCodeBlock
-		:code="scriptCode"
+		:code="code"
 		:highlightjs="codeBlockSettings.plugin.id === 'highlightjs'"
-		label="JavaScript"
 		lang="javascript"
 		:max-height="codeBlockSettings.preHeight"
 		:prismjs="codeBlockSettings.plugin.id === 'prismjs'"
@@ -12,26 +10,11 @@
 </template>
 
 <script setup lang="ts">
+import { buildScriptCode, buildTemplateCode } from './helpers';
+
 const codeBlockSettings = inject<Docs.CodeBlockSettings>('codeBlockSettings')!;
 
-const templateCode = `<template>
-  <VCodeBlock
-    :code="scriptCode"
-    :highlightjs="codeBlockSettings.plugin.id === 'highlightjs'"
-    label="JavaScript"
-    lang="javascript"
-    :max-height="codeBlockSettings.preHeight"
-    :prismjs="codeBlockSettings.plugin.id === 'prismjs'"
-    :theme="codeBlockSettings.theme"
-  />
-</template>
-`;
-
-const scriptCode = `\<script setup\>
-import { ref } from 'vue';
-
-
-// Example 1: Creating an array of numbers and finding the sum
+const code = `// Example 1: Creating an array of numbers and finding the sum
 const numbers = [1, 2, 3, 4, 5];
 const sum = numbers.reduce((total, num) => total + num);
 console.log(sum); // Output: 15
@@ -58,18 +41,22 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(error => console.error(error));
-// Output: The JSON data for the TODO with ID 1 from the API
-\</script\>`;
+// Output: The JSON data for the TODO with ID 1 from the API`;
 
-defineExpose({
-	exampleCode: {
-		desc: 'A simple example of the <code class="ic">VStepperForm</code> component.',
-		name: 'Simple Form',
-		script: scriptCode,
-		template: templateCode,
-	},
-});
+const exampleCode = computed<Docs.ExampleCode>(() => ({
+	desc: 'Highlight JavaScript using <code class="ic">lang="javascript"</code>.',
+	name: 'JavaScript',
+	script: buildScriptCode({
+		code,
+	}),
+	template: buildTemplateCode({
+		attrs: [
+			':code="code"',
+			'lang="javascript"',
+		],
+		library: codeBlockSettings.plugin.id,
+	}),
+}));
+
+defineExpose({ exampleCode });
 </script>
-
-
-<style lang="scss" scoped></style>

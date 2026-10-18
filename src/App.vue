@@ -1,25 +1,6 @@
 <template>
 	<v-app id="home">
 		<!-- ====================================================== App Bar -->
-		<!-- <AppBar
-			:selectedLibrary="selectedLibrary"
-			@changed-theme="updateCodeBlockTheme"
-			@updated-drawer="toggleDrawer"
-		/>
-
-		<v-main class="pb-10">
-			<v-container
-				class="px-7"
-				style="max-width: 1368px;"
-			>
-				<DocsPage
-					:codeBlockOptions="codeBlockSettings"
-					@changedLibrary="selectedLibrary = $event"
-					@changedTheme="selectedTheme = $event"
-				/>
-			</v-container>
-		</v-main> -->
-
 		<AppBar
 			@changed-theme="updateCodeBlockTheme"
 			@updated-drawer="toggleDrawer"
@@ -35,7 +16,6 @@
 				style="max-width: 1368px;"
 			>
 				<DocsPage
-					:codeBlockOptions="codeBlockSettings"
 					@changedLibrary="updateCodeBlockLibrary"
 					@changedTheme="codeBlockSettings.theme = $event"
 				/>

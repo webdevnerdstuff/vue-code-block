@@ -122,11 +122,6 @@ const emit = defineEmits(['changedLibrary', 'changedTheme']);
 const store = useCoreStore();
 provide('links', store.links);
 
-const selectedLibrary = ref(store.libraries[0]);
-const selectedTheme = ref('neon-bunny');
-
-provide('selectedLibrary', selectedLibrary);
-
 
 const codeBlockSettings = inject<Docs.CodeBlockSettings>('codeBlockSettings')!;
 const links = inject<Docs.Links>('links')!;
@@ -141,7 +136,6 @@ const classes = reactive<Docs.GlobalClasses>({
 const componentVersion = ref<string | number>(packageInfo.version);
 
 provide<Docs.GlobalClasses>('classes', classes);
-provide<Docs.SelectedTheme>('selectedTheme', selectedTheme.value);
 </script>
 
 <style lang="scss" scoped></style>
