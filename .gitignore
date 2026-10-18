@@ -36,3 +36,6 @@ src/plugin/**/*.bk.*
 # Temp files and directories
 *__TEMP.*
 *__TEMP/
+
+# Claude Code
+.claude/
