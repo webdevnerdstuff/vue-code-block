@@ -10,7 +10,7 @@ import {
 	Props,
 	UseTheme,
 } from '../../types';
-import { AllProps } from '../../utils/props';
+import { AllProps } from '../../data/props';
 
 
 const defaultProps: Props = { ...AllProps };

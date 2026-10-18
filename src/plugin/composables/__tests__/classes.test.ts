@@ -12,8 +12,8 @@ import {
 	Props,
 	UseTheme,
 } from '../../types';
-import { AllProps } from '../../utils/props';
-import { pluginName } from '../../utils/globals';
+import { AllProps } from '../../data/props';
+import { pluginName } from '../../data/globals';
 
 
 const defaultProps: Props = { ...AllProps };
