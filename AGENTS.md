@@ -74,7 +74,7 @@ pnpm build
 - `tsconfig.build.json` type-checks the shippable plugin source (excludes docs, tests, playground).
 - `vite.build.config.mts` builds ES + CJS; runtime `dependencies` and Vuetify are external.
 - Types entry: `dist/plugin/types/index.d.ts`.
-- `dist/` is committed. Rebuild it when plugin source changes.
+- `dist/` is git-ignored; `prepublishOnly` rebuilds it before `npm publish`.
 
 ## Testing
 

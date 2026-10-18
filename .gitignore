@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 docs
+dist
 dist-ssr
 *.local
 
@@ -26,7 +27,6 @@ dist-ssr
 
 .stylelintcache
 src/plugin/themes/scss/highlight-template.scss
-dist/themes/scss/highlight-template.scss
 
 
 .eslintcache
