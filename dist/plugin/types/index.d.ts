@@ -1,8 +1,12 @@
 import { CSSProperties, MaybeRef } from 'vue';
 import { default as VCodeBlock } from '../VCodeBlock.vue';
-
 export * from '../index';
-export type UseTheme = MaybeRef<string | boolean>;
+declare global {
+    interface KeyStringAny<T = any> {
+        [key: string]: T;
+    }
+}
+export type UseTheme = MaybeRef<Settings['theme']>;
 export type CopyStatus = MaybeRef<'copy' | 'success' | 'failed'>;
 export interface Props {
     browserWindow?: boolean;
@@ -33,6 +37,12 @@ export interface Props {
     tabs?: boolean;
     theme?: string | boolean;
 }
+declare global {
+    export interface PluginOptions extends Partial<Props> {
+    }
+    export interface Settings extends PluginOptions {
+    }
+}
 export interface UseConvertToUnit {
     (options: {
         str: string | number | undefined | null;
@@ -42,7 +52,7 @@ export interface UseConvertToUnit {
 export interface UseCodeBlockClasses {
     (options: {
         isMobile: MaybeRef<boolean>;
-        isPrism: MaybeRef<boolean>;
+        isPrism: MaybeRef<Settings['prismjs']>;
     }): object;
 }
 export interface UseCopyButtonClasses {
@@ -98,7 +108,7 @@ export interface UseTabGroupStyles {
         tabGap: MaybeRef<Props['tabGap']>;
     }): CSSProperties;
 }
-declare module "vue" {
+declare module 'vue' {
     interface ComponentCustomProperties {
     }
     interface GlobalComponents {

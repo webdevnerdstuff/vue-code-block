@@ -1,14 +1,14 @@
 export declare const AllProps: {
     browserWindow: boolean;
-    cssPath: undefined;
     code: string;
     codeBlockRadius: string;
     copyButton: boolean;
-    copyIcons: boolean;
-    copyTab: boolean;
     copyFailedText: string;
-    copyText: string;
+    copyIcons: boolean;
     copySuccessText: string;
+    copyTab: boolean;
+    copyText: string;
+    cssPath: undefined;
     floatingTabs: boolean;
     height: string;
     highlightjs: boolean;
@@ -17,11 +17,12 @@ export declare const AllProps: {
     lang: string;
     maxHeight: string;
     persistentCopyButton: boolean;
-    prismjs: boolean;
     prismPlugin: boolean;
+    prismjs: boolean;
     runTab: boolean;
     runText: string;
     tabGap: string;
     tabs: boolean;
     theme: string;
 };
+export declare const UndefinedProps: { [K in keyof typeof AllProps]: undefined; };
