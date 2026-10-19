@@ -90,6 +90,65 @@ describe('VCodeBlock Component', () => {
 	});
 
 
+	// -------------------------------------------------- Attributes //
+	describe('Attributes', () => {
+		it('should put the class on both the wrapper and the pre', () => {
+			const wrapper = mount(VCodeBlock, {
+				attrs: { class: 'foo' },
+				props: { highlightjs: true }
+			});
+
+			expect(wrapper.classes()).toContain('foo');
+			expect(wrapper.classes()).toContain('v-code-block');
+			expect(wrapper.find('pre').classes()).toContain('foo');
+			expect(wrapper.find('pre').classes()).toContain('language-javascript');
+		});
+
+		it('should put the style on the wrapper only', () => {
+			const wrapper = mount(VCodeBlock, {
+				attrs: { style: 'margin: 10px;' },
+				props: { highlightjs: true }
+			});
+
+			expect(wrapper.attributes('style')).toContain('margin: 10px');
+			expect(wrapper.find('pre').attributes('style')).not.toContain('margin');
+		});
+
+		it('should put the id, data and aria attributes on the pre only', () => {
+			const wrapper = mount(VCodeBlock, {
+				attrs: {
+					'aria-label': 'Example code',
+					'data-line': '2',
+					id: 'example',
+				},
+				props: { highlightjs: true }
+			});
+
+			const pre = wrapper.find('pre');
+
+			expect(wrapper.findAll('#example')).toHaveLength(1);
+			expect(pre.attributes('id')).toBe('example');
+			expect(pre.attributes('data-line')).toBe('2');
+			expect(pre.attributes('aria-label')).toBe('Example code');
+			expect(wrapper.attributes('id')).toBeUndefined();
+			expect(wrapper.attributes('data-line')).toBeUndefined();
+			expect(wrapper.attributes('aria-label')).toBeUndefined();
+		});
+
+		it('should only call a click listener once', async () => {
+			const onClick = vi.fn();
+			const wrapper = mount(VCodeBlock, {
+				attrs: { onClick },
+				props: { highlightjs: true }
+			});
+
+			await wrapper.find('pre').trigger('click');
+
+			expect(onClick).toHaveBeenCalledTimes(1);
+		});
+	});
+
+
 	// -------------------------------------------------- Prism Plugins //
 	describe('Prism Plugins', () => {
 		it('should render line numbers when using the prism line-numbers plugin', async () => {
