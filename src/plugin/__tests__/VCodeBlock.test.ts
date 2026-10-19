@@ -90,6 +90,130 @@ describe('VCodeBlock Component', () => {
 	});
 
 
+	// -------------------------------------------------- Rendering //
+	describe('Rendering', () => {
+		it('should use the indent prop when stringifying json', async () => {
+			const wrapper = mount(VCodeBlock, {
+				props: {
+					code: { foo: 'bar' },
+					indent: 4,
+					lang: 'json',
+					prismjs: true,
+				}
+			});
+
+			await vi.waitFor(() => {
+				expect(wrapper.find('code').text()).toBe('{\n    "foo": "bar"\n}');
+			});
+		});
+
+		it('should add the browser window class to the code tag', () => {
+			const wrapper = mount(VCodeBlock, {
+				props: { browserWindow: true, prismjs: true }
+			});
+
+			expect(wrapper.find('code').classes()).toContain(`${pluginName}--code-browser`);
+		});
+
+		it('should render both the copy and run tabs', () => {
+			const wrapper = mount(VCodeBlock, {
+				props: {
+					copyTab: true,
+					prismjs: true,
+					runTab: true,
+					tabs: true,
+				}
+			});
+
+			expect(wrapper.findAll(`.${pluginName}--tab`)).toHaveLength(2);
+			expect(wrapper.find(`.${pluginName}--button-copy`).exists()).toBe(true);
+			expect(wrapper.find(`.${pluginName}--button-run`).exists()).toBe(true);
+		});
+
+		it('should render only the run tab when copyTab is false', () => {
+			const wrapper = mount(VCodeBlock, {
+				props: {
+					copyTab: false,
+					prismjs: true,
+					runTab: true,
+					tabs: true,
+				}
+			});
+
+			expect(wrapper.findAll(`.${pluginName}--tab`)).toHaveLength(1);
+			expect(wrapper.find(`.${pluginName}--button-copy`).exists()).toBe(false);
+			expect(wrapper.find(`.${pluginName}--button-run`).text()).toBe('Run');
+		});
+
+		it('should not render tabs when tabs is false', () => {
+			const wrapper = mount(VCodeBlock, {
+				props: {
+					copyTab: true,
+					prismjs: true,
+					runTab: true,
+				}
+			});
+
+			expect(wrapper.find(`.${pluginName}--tab`).exists()).toBe(false);
+		});
+
+		it('should set the height and max height on the pre tag', () => {
+			const wrapper = mount(VCodeBlock, {
+				props: {
+					height: 200,
+					maxHeight: '50vh',
+					prismjs: true,
+				}
+			});
+
+			const style = wrapper.find('pre').attributes('style');
+
+			expect(style).toContain('height: 200px');
+			expect(style).toContain('max-height: 50vh');
+		});
+
+		it('should fall back to plaintext for an unknown highlightjs language', async () => {
+			const consoleWarn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+			const wrapper = mount(VCodeBlock, {
+				props: {
+					code: '<b>not a language</b>',
+					highlightjs: true,
+					lang: 'not-a-language',
+				}
+			});
+
+			await vi.waitFor(() => {
+				expect(wrapper.find('code').text()).toBe('<b>not a language</b>');
+			});
+
+			expect(wrapper.find('code b').exists()).toBe(false);
+			expect(consoleWarn).toHaveBeenCalledWith('[vue-code-block]: Highlight.js language "not-a-language" is not registered. Falling back to plaintext.');
+
+			consoleWarn.mockRestore();
+		});
+
+		it('should fall back to plain text for an unknown prismjs language', async () => {
+			const consoleWarn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+			const wrapper = mount(VCodeBlock, {
+				props: {
+					code: '<b>not a language</b>',
+					lang: 'not-a-language',
+					prismjs: true,
+				}
+			});
+
+			await vi.waitFor(() => {
+				expect(wrapper.find('code').text()).toBe('<b>not a language</b>');
+			});
+
+			expect(wrapper.find('code b').exists()).toBe(false);
+			expect(consoleWarn).toHaveBeenCalledWith(expect.stringContaining('PrismJS language "not-a-language" is not loaded.'));
+
+			consoleWarn.mockRestore();
+		});
+	});
+
+
 	// -------------------------------------------------- Attributes //
 	describe('Attributes', () => {
 		it('should put the class on both the wrapper and the pre', () => {

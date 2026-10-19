@@ -4,7 +4,7 @@ import AutoImport from 'unplugin-auto-import/vite';
 import commonjs from '@rollup/plugin-commonjs';
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 import dts from 'vite-plugin-dts';
-import pkg from './package.json';
+import pkg from './package.json' with { type: 'json' };
 import terser from '@rollup/plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
 import vue from '@vitejs/plugin-vue';
@@ -38,7 +38,7 @@ export default defineConfig({
 		},
 		rollupOptions: {
 			input: {
-				main: path.resolve(__dirname, './src/plugin/index.ts')
+				main: path.resolve(import.meta.dirname, './src/plugin/index.ts')
 			},
 			external: [
 				...Object.keys(pkg.dependencies || {}),
@@ -64,7 +64,6 @@ export default defineConfig({
 		}),
 		vue(),
 		dts({
-			insertTypesEntry: true,
 			tsconfigPath: 'tsconfig.build.json',
 		}),
 		typescript({
@@ -78,6 +77,7 @@ export default defineConfig({
 				{
 					src: 'src/plugin/styles/*',
 					dest: 'scss',
+					rename: { stripBase: true },
 				},
 			]
 		}),
@@ -85,8 +85,8 @@ export default defineConfig({
 	],
 	resolve: {
 		alias: {
-			'@': path.resolve(__dirname, './src'),
-			'@root': path.resolve(__dirname, './')
+			'@': path.resolve(import.meta.dirname, './src'),
+			'@root': path.resolve(import.meta.dirname, './')
 		},
 		extensions: [
 			'.js',

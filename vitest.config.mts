@@ -9,6 +9,8 @@ export default mergeConfig(
 			environment: 'jsdom',
 			exclude: [
 				...configDefaults.exclude,
+				'.claude/**',
+				'tests/package/**',
 			],
 			root: fileURLToPath(new URL('./', import.meta.url)),
 			server: {

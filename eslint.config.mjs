@@ -3,9 +3,10 @@ import eslint from '@eslint/js';
 import wdnsConfig from '@wdns/eslint-config-wdns';
 import tseslint from 'typescript-eslint';
 import AutoImportJson from './.eslintrc-auto-import.json' with { type: 'json' };
+import { defineConfig } from 'eslint/config';
 
 
-export default tseslint.config(
+export default defineConfig(
 	eslint.configs.recommended,
 	...tseslint.configs.recommended,
 	...wdnsConfig,
@@ -35,21 +36,12 @@ export default tseslint.config(
 			sourceType: 'module',
 			parserOptions: {
 				parser: tseslint.parser,
-				project: ['./tsconfig.json', './tsconfig.node.json', 'tsconfig.app.json'],
 				extraFileExtensions: ['.vue'],
 				sourceType: 'module',
 			},
 		},
 		plugins: {
 			'typescript-eslint': tseslint.plugin,
-		},
-		settings: {
-			'import/resolver': {
-				typescript: {
-					alwaysTryTypes: true,
-					project: './tsconfig.json',
-				},
-			},
 		},
 	},
 );
