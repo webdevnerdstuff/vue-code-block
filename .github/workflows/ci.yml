@@ -1,0 +1,43 @@
+# Lint, type-check, test and build on pull requests and pushes to dev
+name: CI
+
+on:
+  pull_request:
+    branches: [ main, dev ]
+  push:
+    branches: [ dev ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 10.33.0
+
+    - name: Use Node.js from .nvmrc
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: .nvmrc
+        cache: pnpm
+
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+
+    - name: Lint
+      run: pnpm lint
+
+    # Type-check, unit tests (Vitest) and library build
+    - name: Build & Test
+      run: pnpm build
