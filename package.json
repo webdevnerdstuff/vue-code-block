@@ -13,7 +13,7 @@
 		"dev": "NODE_OPTIONS='--no-warnings' vite",
 		"watch": "pnpm dev",
 		"play": "sh src/playground/configs/build.sh && NODE_ENV=playground pnpm dev",
-		"build": "tsc -p tsconfig.build.json && pnpm test:build && vite build --config vite.build.config.mts",
+		"build": "tsc -p tsconfig.build.json && pnpm test:build && vite build --config vite.build.config.mts && pnpm test:dist",
 		"build:docs": "vite build",
 		"predeploy": "pnpm build",
 		"deploy": "gh-pages -d docs",
@@ -23,6 +23,7 @@
 		"test:dev": "vitest",
 		"test:all": "vitest --run",
 		"test:build": "vitest --run --bail 1",
+		"test:dist": "vitest --run --config vitest.dist.config.mts",
 		"sass": "sass --watch --no-source-map src/plugin/themes/scss/:src/plugin/themes/css",
 		"sass:min": "sass --style compressed --watch --no-source-map src/plugin/themes/scss/:src/plugin/themes/css/min"
 	},
