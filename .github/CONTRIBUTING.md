@@ -19,7 +19,6 @@ Fork using the command line:
 ### Make your update:
 
 Make your changes to the file(s) you'd like to update.
-Update the CHANGELOG.md with the updates you made, please include the date and Github username.
 
 ### Open a pull request
 When you're done making changes and you'd like to propose them for review, open your PR (pull request).
