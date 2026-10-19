@@ -75,13 +75,15 @@ Prism plugins need it on the `<pre>`.
 
 ```bash
 pnpm build
-# Runs: tsc -p tsconfig.build.json && pnpm test:build && vite build --config vite.build.config.mts
+# Runs: tsc -p tsconfig.build.json && pnpm test:build && vite build --config vite.build.config.mts && pnpm test:dist
 ```
 
 - `tsconfig.build.json` type-checks the shippable plugin source (excludes docs, tests, playground).
 - `vite.build.config.mts` builds ES + CJS; runtime `dependencies` and Vuetify are external.
 - Types entry: `dist/plugin/types/index.d.ts`.
 - `dist/` is git-ignored; `prepublishOnly` rebuilds it before `npm publish`.
+- `pnpm test:dist` checks the built package, so `pnpm build`, `prepublishOnly` and CI fail on a
+  broken `dist/` (see Testing).
 
 ## Testing
 
@@ -89,11 +91,33 @@ pnpm build
 pnpm test:all            # Vitest, run once
 pnpm test:dev            # Vitest, watch mode
 pnpm test:build          # Vitest with --bail 1 (used by build and the pre-commit hook)
+pnpm test:dist           # Shipped-package check against dist/ (run after vite build)
 ```
 
 Tests live in `src/plugin/__tests__/`, `src/plugin/components/__tests__/`, and
 `src/plugin/composables/__tests__/`. Update snapshots with `pnpm vitest --run -u` only when the
 change is intended.
+
+### Shipped-package check
+
+`tests/package/dist.test.ts` runs in Node with its own config (`vitest.dist.config.mts`), not in
+the jsdom unit suite. It needs a fresh `dist/`, so run it after
+`vite build --config vite.build.config.mts` (`pnpm build` does both). It checks that:
+
+- the ES and CJS bundles export `VCodeBlock`, `createVCodeBlock`, `codeBlockOptions` and `default`;
+- the `types` entry (`dist/plugin/types/index.d.ts`) declares `Props` and is not a re-export stub;
+- `dist/scss/` holds the files from `src/plugin/styles/` directly, not nested.
+
+These guard against build-plugin upgrades (`vite-plugin-dts`, `vite-plugin-static-copy`) silently
+changing the output. Keep the folder name `tests/package/`: `.gitignore` ignores any `dist`
+directory, so a `tests/dist/` folder would never be committed.
+
+### Excluded paths
+
+`vitest.config.mts` excludes `tests/package/**` (Node-only, needs `dist/`) and `.claude/**`. Agent
+git worktrees live under `.claude/worktrees/` with their own `node_modules`; running Vitest in the
+main checkout would otherwise pick up their tests and load a second copy of Vue, which breaks slots
+and rendering.
 
 ### Test in the playground
 
