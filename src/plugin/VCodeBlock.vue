@@ -1,5 +1,8 @@
 <template>
-	<div :class="codeBlockClasses">
+	<div
+		v-bind="wrapperAttrs()"
+		:class="codeBlockClasses"
+	>
 		<div
 			v-if="settings.label || settings.tabs || slots.label || slots.tabs"
 			class="v-code-block--header"
@@ -92,7 +95,7 @@
 			</div>
 
 			<pre
-				v-bind="$attrs"
+				v-bind="preAttrs()"
 				:class="`language-${settings.lang}`"
 				:style="preTagStyles"
 			>
@@ -146,8 +149,12 @@ const prismThemesVersion = '1.9.0';
 
 
 // -------------------------------------------------- Emits & Slots & Injects //
+// Attributes are placed manually so they are not duplicated on the wrapper and the <pre> //
+defineOptions({ inheritAttrs: false });
+
 const emit = defineEmits(['run', 'update:copy-status']);
 const slots = useSlots();
+const attrs = useAttrs();
 
 
 // -------------------------------------------------- Props //
@@ -187,6 +194,22 @@ const prismPluginCodeRef = ref<HTMLElement | null>(null);
 const renderedCode = ref('');
 const runTextValue = ref<Settings['runText']>('');
 const useTheme = ref<Settings['theme']>('');
+
+
+// -------------------------------------------------- Attributes //
+// class goes on both elements (wrapper styling + Prism plugin classes like line-numbers), //
+// style goes on the wrapper, everything else (id, data-*, aria-*, listeners) goes on the <pre> //
+// These are functions, not computed, because attrs is not reactive //
+function wrapperAttrs(): Record<string, unknown> {
+	return {
+		class: attrs.class,
+		style: attrs.style,
+	};
+}
+
+function preAttrs(): Record<string, unknown> {
+	return Object.fromEntries(Object.entries(attrs).filter(([key]) => key !== 'style'));
+}
 
 
 // -------------------------------------------------- Computed //

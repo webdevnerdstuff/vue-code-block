@@ -64,6 +64,13 @@ like `line-numbers` depend on. Without `prism-plugin`, code is rendered via `Pri
 `hljs.highlight` into `v-html`. Users import plugin JS/CSS themselves and add the plugin class
 (e.g. `class="line-numbers"`), which is passed through to the `<pre>`.
 
+## Attributes
+
+The component sets `inheritAttrs: false` and places attributes itself: `class` goes on both the
+wrapper and the `<pre>` (wrapper styling plus Prism plugin classes), `style` on the wrapper only, and
+everything else (`id`, `data-*`, `aria-*`, listeners) on the `<pre>` only. Keep `class` duplicated;
+Prism plugins need it on the `<pre>`.
+
 ## Build Process
 
 ```bash
@@ -87,6 +94,18 @@ pnpm test:build          # Vitest with --bail 1 (used by build and the pre-commi
 Tests live in `src/plugin/__tests__/`, `src/plugin/components/__tests__/`, and
 `src/plugin/composables/__tests__/`. Update snapshots with `pnpm vitest --run -u` only when the
 change is intended.
+
+### Test in the playground
+
+Unit tests run in jsdom, which does not cover real rendering, theme CSS, or Prism plugins well.
+After any change to the component's rendering, attributes, styles, themes, or plugins, also check
+it in the browser playground at http://127.0.0.1:3000/vue-code-block/playground/ (served by
+`pnpm dev` / `pnpm play`).
+
+- The playground page is `src/playground/PlaygroundPage.ts.vue`. It is gitignored scratch space
+  (created from `src/playground/configs/templates/` if missing), so edit it freely to set up the
+  case being tested, and restore it afterwards.
+- Check the rendered DOM and the browser console, not just that the page loads.
 
 ## Linting
 
