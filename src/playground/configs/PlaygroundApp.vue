@@ -51,6 +51,12 @@ const selectedTheme = ref('neon-bunny');
 
 provide('selectedLibrary', selectedLibrary);
 provide('selectedTheme', selectedTheme);
+
+// AppBar reads the active library from codeBlockSettings //
+provide('codeBlockSettings', reactive({
+	plugin: selectedLibrary,
+	theme: selectedTheme,
+}));
 </script>
 
 

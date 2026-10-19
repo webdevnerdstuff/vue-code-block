@@ -57,7 +57,7 @@
 			v-if="isSmAndUp"
 			class="me-2 d-flex justify-center"
 			:class="`badge-${codeBlockSettings.plugin.id}`"
-			:href="codeBlockSettings.theme === 'prismjs'
+			:href="codeBlockSettings.plugin.id === 'prismjs'
 				? links.prismjs
 				: links.highlightjs
 				"
@@ -155,13 +155,13 @@ function getTheme(): void {
 		return;
 	}
 
-	theme.global.name.value = themeName.value;
+	theme.change(themeName.value as string);
 	emit('changedTheme', themeName.value);
 }
 
 function setTheme(): void {
 	themeName.value = store.setTheme(themeName.value as string);
-	theme.global.name.value = themeName.value;
+	theme.change(themeName.value as string);
 }
 
 function toggleDrawer(): void {
