@@ -371,7 +371,7 @@ export const useCoreStore = defineStore('core', () => {
 	// Links //
 	const repoBaseUrl = `https://github.com/webdevnerdstuff/${packageName}`;
 	const links = {
-		changeLog: `${repoBaseUrl}/blob/main/CHANGELOG.md`,
+		changeLog: `${repoBaseUrl}/releases`,
 		github: repoBaseUrl,
 		githubProfile: 'https://github.com/webdevnerdstuff',
 		highlightjs: 'https://highlightjs.org/',

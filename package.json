@@ -48,7 +48,10 @@
 		"LICENSE.md",
 		"README.md"
 	],
-	"repository": "https://github.com/webdevnerdstuff/vue-code-block",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/webdevnerdstuff/vue-code-block.git"
+	},
 	"bugs": {
 		"url": "https://github.com/webdevnerdstuff/vue-code-block/issues"
 	},

@@ -48,7 +48,7 @@ npm i @wdns/vue-code-block
 
 ## Change Log
  
-[CHANGELOG](https://github.com/webdevnerdstuff/vue-code-block/blob/main/CHANGELOG.md)
+[Releases](https://github.com/webdevnerdstuff/vue-code-block/releases)
 
 
 ## License
