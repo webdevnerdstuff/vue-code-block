@@ -130,7 +130,6 @@ function smoothScroll(): void {
 
 			&-group--prepend {
 				padding: 0 !important;
-				padding-left: 0 !important;
 			}
 
 			&-item__prepend {

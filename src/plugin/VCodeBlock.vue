@@ -430,7 +430,7 @@ function loadTheme(): void {
 	let themeId = `v-code-block--theme-${useTheme.value}-${activeLibrary}`;
 	let isHighlightTheme = true;
 	let isPrismTheme = true;
-	let cssFilename = '';
+	let cssFilename: string;
 	let fetchUrl = '';
 
 	themeId = themeNameAdjustments(activeLibrary, themeId) as string;
@@ -509,7 +509,6 @@ function loadTheme(): void {
 
 				break;
 			default:
-				cssFilename = '';
 				break;
 		}
 	}

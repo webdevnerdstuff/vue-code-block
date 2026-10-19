@@ -19,7 +19,7 @@ PrismJS plugins such as `line-numbers` via the `prism-plugin` prop.
 - **Docs app**: Vuetify 3 + Pinia (dev dependencies only, never shipped)
 - **Git Hooks**: Husky + lint-staged
 - **Releases**: release-it (`.release-it.json`)
-- **Node**: pinned to 22.11.0 (`.nvmrc`, `.npmrc`)
+- **Node**: pinned to 24.18.0 (`.nvmrc`, `.npmrc`)
 
 ## Key File Locations
 
