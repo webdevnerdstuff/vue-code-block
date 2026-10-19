@@ -95,19 +95,71 @@ describe('Styles Composable', () => {
 			).toMatchSnapshot();
 		});
 
-		// TODO (fix): The border radius is not set correctly if using multiple units with tabs //
-		it('should return the set radius', () => {
-			expect(
-				usePreTagStyles({ copyTab, height, maxHeight, radius: '0 1em', runTab, tabs: true, useTheme: defaultTheme })
-			).toMatchInlineSnapshot(`
-				{
-				  "borderRadius": "0 1em 0 0 1em 0 1em !important",
-				  "display": "flex",
-				  "height": "auto",
-				  "maxHeight": "auto",
-				  "overflow": "auto",
-				}
-			`);
+		describe('border radius', () => {
+			const getRadius = (value: string | undefined, withTabs: boolean) => usePreTagStyles({
+				copyTab: true,
+				height,
+				maxHeight,
+				radius: value,
+				runTab: false,
+				tabs: withTabs,
+				useTheme: defaultTheme,
+			}).borderRadius;
+
+			it.each([
+				['0.5rem', '0.5rem 0 0.5rem 0.5rem !important'],
+				['0 1em', '0 0 0 1em !important'],
+				['1px 2px 3px', '1px 0 3px 2px !important'],
+				['8px 4px 2px 1px', '8px 0 2px 1px !important'],
+				['10px 5px / 20px', '10px 0 10px 5px / 20px 0 20px 20px !important'],
+				['8', '8px 0 8px 8px !important'],
+				['  0   1em  ', '0 0 0 1em !important'],
+			])('should square only the top right corner with tabs (%s)', (value, expected) => {
+				expect(getRadius(value, true)).toBe(expected);
+			});
+
+			it.each([
+				['0.5rem', '0.5rem'],
+				['0 1em', '0 1em'],
+				['8px 4px 2px 1px', '8px 4px 2px 1px'],
+				['10px 5px / 20px', '10px 5px / 20px'],
+				['8', '8px'],
+			])('should keep the radius without tabs (%s)', (value, expected) => {
+				expect(getRadius(value, false)).toBe(expected);
+			});
+
+			it('should keep the radius when tabs are on but there is no copy or run tab', () => {
+				expect(usePreTagStyles({
+					copyTab: false,
+					height,
+					maxHeight,
+					radius: '0 1em',
+					runTab: false,
+					tabs: true,
+					useTheme: defaultTheme,
+				}).borderRadius).toBe('0 1em');
+			});
+
+			it('should square the top right corner with only a run tab', () => {
+				expect(usePreTagStyles({
+					copyTab: false,
+					height,
+					maxHeight,
+					radius: '0 1em',
+					runTab: true,
+					tabs: true,
+					useTheme: defaultTheme,
+				}).borderRadius).toBe('0 0 0 1em !important');
+			});
+
+			it('should not set a radius when the value is empty', () => {
+				expect(getRadius('', true)).toBeUndefined();
+				expect(getRadius(undefined, false)).toBeUndefined();
+			});
+
+			it('should leave a value with more than four corners unchanged', () => {
+				expect(getRadius('1px 2px 3px 4px 5px', true)).toBe('1px 2px 3px 4px 5px !important');
+			});
 		});
 
 	});
