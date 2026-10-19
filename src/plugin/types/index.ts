@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-unused-vars */
-import type{
+
+
+import type {
 	CSSProperties,
 	MaybeRef,
 } from 'vue';
@@ -9,8 +9,16 @@ import VCodeBlock from '../VCodeBlock.vue';
 export * from '../index';
 
 
+// -------------------------------------------------- Globals //
+declare global {
+	interface KeyStringAny<T = any> {
+		[key: string]: T;
+	}
+}
+
+
 // -------------------------------------------------- Types //
-export type UseTheme = MaybeRef<string | boolean>;
+export type UseTheme = MaybeRef<Settings['theme']>;
 export type CopyStatus = MaybeRef<'copy' | 'success' | 'failed'>;
 
 
@@ -46,6 +54,13 @@ export interface Props {
 };
 
 
+declare global {
+	export interface PluginOptions extends Partial<Props> { }
+
+	export interface Settings extends PluginOptions { }
+}
+
+
 // -------------------------------------------------- Helpers //
 export interface UseConvertToUnit {
 	(
@@ -62,7 +77,7 @@ export interface UseCodeBlockClasses {
 	(
 		options: {
 			isMobile: MaybeRef<boolean>;
-			isPrism: MaybeRef<boolean>;
+			isPrism: MaybeRef<Settings['prismjs']>;
 		}
 	): object;
 }
@@ -147,7 +162,7 @@ export interface UseTabGroupStyles {
 }
 
 
-declare module "vue" {
+declare module 'vue' {
 	interface ComponentCustomProperties {
 
 	}

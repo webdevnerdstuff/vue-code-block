@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+		"allowImportingTsExtensions": false,
+	},
+	"exclude": [
+		"**/*__TEMP.*",
+		"**/*__TEMP/",
+		"node_modules",
+		"playground",
+		"src/**/*.spec.ts",
+		"src/**/*.test.ts",
+		"src/App.vue",
+		"src/documentation/**/*.ts",
+		"src/documentation/**/*.tsx",
+		"src/documentation/**/*.vue",
+		"src/libraries/**/*.ts",
+		"src/main.ts",
+		"src/playground/**/*.ts",
+		"src/playground/**/*.vue",
+		"src/plugins/**/*.ts",
+		"src/stores/**/*.ts",
+	],
+	"extends": "./tsconfig.app.json"
+}

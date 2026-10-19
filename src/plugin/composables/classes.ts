@@ -1,4 +1,4 @@
-import { pluginName } from '../utils/globals';
+import { pluginName } from '../data/globals';
 import {
 	UseCodeBlockClasses,
 	UseCopyButtonClasses,
@@ -8,8 +8,7 @@ import {
 } from '@/plugin/types';
 
 
-
-function getTheme(useTheme: string | boolean): string | boolean {
+function getTheme(useTheme: Settings['theme']): Settings['theme'] {
 	return useTheme === '' || useTheme === 'prism' ? 'default' : useTheme;
 }
 

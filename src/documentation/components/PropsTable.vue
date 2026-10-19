@@ -77,33 +77,24 @@
 	</v-row>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { inject } from 'vue';
 
 
-const classes = inject('classes');
+const classes = inject<Docs.GlobalClasses>('classes')!;
 
-defineProps({
-	headers: {
-		default: () => [],
-		type: Array,
-	},
-	items: {
-		default: () => [],
-		type: Array,
-	},
-	sectionId: {
-		default: '',
-		type: String,
-	},
-	sectionTitle: {
-		default: null,
-		type: String,
-	},
-	subtitle: {
-		default: null,
-		type: String,
-	},
+withDefaults(defineProps<{
+	headers?: Docs.TableHeader[];
+	items?: Docs.PropItem[];
+	sectionId?: string;
+	sectionTitle?: string;
+	subtitle?: string;
+}>(), {
+	headers: () => [],
+	items: () => [],
+	sectionId: '',
+	sectionTitle: undefined,
+	subtitle: undefined,
 });
 
 const search = ref('');

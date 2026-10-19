@@ -1,0 +1,89 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"baseUrl": "./",
+		"composite": true,
+		"declaration": true,
+		"declarationDir": "./dist",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"importHelpers": true,
+		"jsx": "preserve",
+		"lib": [
+			"ESNext",
+			"DOM"
+		],
+		"module": "ESNext",
+		"moduleResolution": "Node",
+		"noEmit": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitAny": false,
+		"noUncheckedIndexedAccess": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"outDir": "./dist",
+		"paths": {
+			"@/*": [
+				"./src/*"
+			],
+			"@components/*": [
+				"./src/plugin/components/*"
+			],
+			"@composables/*": [
+				"./src/plugin/composables/*"
+			],
+			"@data/*": [
+				"./src/plugin/data/*"
+			],
+			"@plugin/*": [
+				"./src/plugin/*"
+			],
+			"@root/*": [
+				"./*"
+			],
+			"@slots/*": [
+				"./src/plugin/slots/*"
+			],
+			"@types/*": [
+				"./src/plugin/types/*"
+			]
+		},
+		"resolveJsonModule": true,
+		"rootDir": "./src",
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "ESNext",
+		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+		"typeRoots": [
+			"./src/plugin/types",
+			"./src/documentation/types",
+			"./node_modules/@types",
+			"./node_modules/vuetify"
+		],
+		"types": [
+			"node"
+		],
+		"useDefineForClassFields": true
+	},
+	"include": [
+		"env.d.ts",
+		"src/**/*",
+		"src/**/*.vue",
+		"eslint.config.mjs",
+		"src/App.vue",
+		"src/main.ts",
+		"src/playground/**/*.ts",
+		"src/playground/**/*.vue",
+		"src/documentation/**/*.ts",
+		"src/documentation/**/*.tsx",
+		"src/documentation/**/*.vue",
+		"src/plugin/**/*.ts",
+		"src/plugin/**/*.tsx",
+		"src/plugin/**/*.vue"
+	],
+	"exclude": [
+		"src/**/__tests__/*",
+		"playground",
+		"src/playground/configs/templates/PlaygroundPage.vue"
+	],
+}

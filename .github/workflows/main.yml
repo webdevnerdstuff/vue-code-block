@@ -16,27 +16,29 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [20]
-
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        version: 10.33.0
 
-    - name: Build
+    - name: Use Node.js from .nvmrc
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: .nvmrc
+        cache: pnpm
+
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+
+    - name: Build & Deploy
       run: |
         git config --global user.email "webdevnerdstuff@gmail.com"
         git config --global user.name "webdevnerdstuff"
-        mkdir docs
-        npm install --g gh-pages
-        npm i
-        npm run build:docs
+        pnpm build:docs
         git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-        npm run deploy -u "github-actions-bot <support+actions@github.com>"
+        pnpm run deploy -u "github-actions-bot <support+actions@github.com>"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

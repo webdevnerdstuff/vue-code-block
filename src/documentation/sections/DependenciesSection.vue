@@ -45,11 +45,10 @@
 	</v-row>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { usePropsStore } from '@/stores/props';
 
-const classes = inject('classes');
-const links = inject('links');
+const classes = inject<Docs.GlobalClasses>('classes')!;
+const links = inject<Docs.Links>('links')!;
 const { highlightJsLinks, prismLinks } = usePropsStore();
-
 </script>

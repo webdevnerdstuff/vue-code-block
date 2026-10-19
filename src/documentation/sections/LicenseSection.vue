@@ -31,9 +31,7 @@
 	</v-row>
 </template>
 
-<script setup>
-import { inject } from 'vue';
-
-const classes = inject('classes');
-const links = inject('links');
+<script setup lang="ts">
+const classes = inject<Docs.GlobalClasses>('classes')!;
+const links = inject<Docs.Links>('links')!;
 </script>

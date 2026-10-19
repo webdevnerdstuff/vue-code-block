@@ -49,10 +49,10 @@
 							<td colspan="2">
 								<VCodeBlock
 									:code="copyButtonSlotsCode"
-									:highlightjs="selectedLibrary.id === 'highlightjs'"
+									:highlightjs="codeBlockSettings.plugin.id === 'highlightjs'"
 									lang="typescript"
-									:prismjs="selectedLibrary.id === 'prismjs'"
-									:theme="selectedTheme"
+									:prismjs="codeBlockSettings.plugin.id === 'prismjs'"
+									:theme="codeBlockSettings.theme"
 								/>
 							</td>
 						</tr>
@@ -80,10 +80,10 @@
 							<td colspan="2">
 								<VCodeBlock
 									:code="labelSlotsCode"
-									:highlightjs="selectedLibrary.id === 'highlightjs'"
+									:highlightjs="codeBlockSettings.plugin.id === 'highlightjs'"
 									lang="typescript"
-									:prismjs="selectedLibrary.id === 'prismjs'"
-									:theme="selectedTheme"
+									:prismjs="codeBlockSettings.plugin.id === 'prismjs'"
+									:theme="codeBlockSettings.theme"
 								/>
 							</td>
 						</tr>
@@ -111,10 +111,10 @@
 							<td colspan="2">
 								<VCodeBlock
 									:code="tabsSlotsCode"
-									:highlightjs="selectedLibrary.id === 'highlightjs'"
+									:highlightjs="codeBlockSettings.plugin.id === 'highlightjs'"
 									lang="typescript"
-									:prismjs="selectedLibrary.id === 'prismjs'"
-									:theme="selectedTheme"
+									:prismjs="codeBlockSettings.plugin.id === 'prismjs'"
+									:theme="codeBlockSettings.theme"
 								/>
 							</td>
 						</tr>
@@ -125,14 +125,12 @@
 	</v-row>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useTheme } from 'vuetify';
 
 
-const selectedLibrary = inject('selectedLibrary');
-const selectedTheme = inject('selectedTheme');
-
-const classes = inject('classes');
+const classes = inject<Docs.GlobalClasses>('classes')!;
+const codeBlockSettings = inject<Docs.CodeBlockSettings>('codeBlockSettings')!;
 const theme = useTheme();
 const isDark = ref(true);
 

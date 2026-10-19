@@ -2931,5 +2931,5 @@ export {
 	neonBunnyThemeMin,
 	neonBunnyCarrotThemeMin,
 	neonBunnyHighlightThemeMin,
-	neonBunnyCarrotHighlightThemeMin
+	neonBunnyCarrotHighlightThemeMin,
 };

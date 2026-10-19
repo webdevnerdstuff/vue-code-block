@@ -52,11 +52,11 @@
 </template>
 
 
-<script setup>
+<script setup lang="ts">
 import { inject } from 'vue';
 
 
-const classes = inject('classes');
+const classes = inject<Docs.GlobalClasses>('classes')!;
 
 const headers = [
 	{
@@ -74,7 +74,7 @@ const headers = [
 		sortable: false,
 		title: 'Description',
 	},
-];
+] as const;
 const items = [
 	{
 		desc: 'The event emitted when the run tab is clicked.',

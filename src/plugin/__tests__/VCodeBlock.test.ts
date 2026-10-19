@@ -1,9 +1,11 @@
 import VCodeBlock from '../VCodeBlock.vue';
 import { h } from 'vue';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
+import 'prismjs';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 import { mount } from '@vue/test-utils';
-import { pluginName } from '../utils/globals';
-import { codeBlockOptions } from '../';
+import { pluginName } from '../data/globals';
+import { pluginOptionsInjectionKey } from '../data/globals';
 
 describe('VCodeBlock Component', () => {
 
@@ -23,7 +25,7 @@ describe('VCodeBlock Component', () => {
 			const wrapper = mount(VCodeBlock, {
 				global: {
 					provide: {
-						[codeBlockOptions]: {
+						[pluginOptionsInjectionKey as symbol]: {
 							browserWindow: true,
 						},
 					}
@@ -32,6 +34,108 @@ describe('VCodeBlock Component', () => {
 			});
 
 			expect(wrapper.html()).toContain('v-code-block--code-browser');
+		});
+
+		it('should let component props override global options', () => {
+			const wrapper = mount(VCodeBlock, {
+				global: {
+					provide: {
+						[pluginOptionsInjectionKey as symbol]: {
+							browserWindow: true,
+						},
+					}
+				},
+				props: { browserWindow: false, highlightjs: true }
+			});
+
+			expect(wrapper.html()).not.toContain('v-code-block--code-browser');
+		});
+	});
+
+
+	// -------------------------------------------------- Code //
+	describe('Code', () => {
+		it('should stringify object code', async () => {
+			const wrapper = mount(VCodeBlock, {
+				props: {
+					code: { foo: 'bar' },
+					lang: 'json',
+					prismjs: true,
+				}
+			});
+
+			await vi.waitFor(() => {
+				expect(wrapper.find('code').text()).toContain('"foo": "bar"');
+			});
+		});
+
+		it('should clear the rendered code when code is emptied', async () => {
+			const wrapper = mount(VCodeBlock, {
+				props: {
+					code: 'const a = 1;',
+					prismjs: true,
+				}
+			});
+
+			await vi.waitFor(() => {
+				expect(wrapper.find('code').text()).toContain('const a = 1;');
+			});
+
+			await wrapper.setProps({ code: '' });
+
+			await vi.waitFor(() => {
+				expect(wrapper.find('code').text()).toBe('');
+			});
+		});
+	});
+
+
+	// -------------------------------------------------- Prism Plugins //
+	describe('Prism Plugins', () => {
+		it('should render line numbers when using the prism line-numbers plugin', async () => {
+			const wrapper = mount(VCodeBlock, {
+				attachTo: document.body,
+				attrs: { class: 'line-numbers' },
+				props: {
+					code: 'const a = 1;\nconst b = 2;\nconst c = 3;',
+					lang: 'javascript',
+					prismPlugin: true,
+					prismjs: true,
+				}
+			});
+
+			await vi.waitFor(() => {
+				expect(wrapper.find('.line-numbers-rows').exists()).toBe(true);
+			});
+
+			expect(wrapper.findAll('.line-numbers-rows > span')).toHaveLength(3);
+			expect(wrapper.find('code .token.keyword').exists()).toBe(true);
+
+			wrapper.unmount();
+		});
+
+		it('should re-highlight when the code prop changes', async () => {
+			const wrapper = mount(VCodeBlock, {
+				attachTo: document.body,
+				attrs: { class: 'line-numbers' },
+				props: {
+					code: 'const a = 1;',
+					prismPlugin: true,
+					prismjs: true,
+				}
+			});
+
+			await vi.waitFor(() => {
+				expect(wrapper.findAll('.line-numbers-rows > span')).toHaveLength(1);
+			});
+
+			await wrapper.setProps({ code: 'const a = 1;\nconst b = 2;' });
+
+			await vi.waitFor(() => {
+				expect(wrapper.findAll('.line-numbers-rows > span')).toHaveLength(2);
+			});
+
+			wrapper.unmount();
 		});
 	});
 

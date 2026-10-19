@@ -62,23 +62,23 @@
 </template>
 
 
-<script setup>
+<script setup lang="ts">
 import { useCoreStore } from '@/stores/index';
 
 const emit = defineEmits(['changedLibrary', 'changedTheme']);
 
 defineProps({
 	playground: {
-		type: Boolean,
 		default: false,
-	}
+		type: Boolean,
+	},
 });
 
 const store = useCoreStore();
 
 const highlightThemes = store.highlightThemes;
 const libraries = ref(store.libraries);
-const library = ref(libraries.value[1]);
+const library = ref<string>('prismjs');
 const neonBunnyThemes = store.neonBunnyThemes;
 const prismThemes = store.prismThemes;
 const theme = ref('neon-bunny');
@@ -87,7 +87,7 @@ const theme = ref('neon-bunny');
 onMounted(() => {
 	const storedValue = store.getLocalStorage() ?? store.setLocalStorage('prismjs');
 
-	changeLibrary(storedValue ?? library.value.id);
+	changeLibrary(storedValue ?? library.value);
 });
 
 
@@ -99,7 +99,7 @@ const items = computed(() => {
 	return [...neonBunnyThemes, ...highlightThemes];
 });
 
-function changeLibrary(val) {
+function changeLibrary(val: string): void {
 	const libraryObj = libraries.value.find((item) => item.id === val);
 	library.value = val;
 	store.setLocalStorage(library.value);
